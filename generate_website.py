@@ -649,17 +649,20 @@ def generate_html(sections):
                     <h2 style="margin-top: 2rem;">The Universal Artifact Stack</h2>
 
                     <div class="framework-box">
-                        <strong>The Five-Layer Framework:</strong><br>
                         <span style="font-size: 1.1rem; display: block; margin: 0.75rem 0;">
-                            Identity → Direction → Priorities → Action → Accountability
+                            <strong>Identity</strong> → <strong>Direction</strong> → <strong>Priorities</strong> → <strong>Action</strong> → <strong>Accountability</strong>
                         </span>
-                    </div>
-
-                    <div class="framework-box">
-                        <strong>Translated into Specific Artifacts:</strong><br>
-                        <span style="font-size: 1.05rem; display: block; margin: 0.75rem 0;">
+                        <span style="font-size: 1.05rem; display: block; margin: 0.75rem 0; opacity: 0.9;">
                             Vision & Mission → Guiding Principles/Values → Strategic Goals → Initiatives/Plans → Performance Metrics
                         </span>
+                        <ul style="margin-top: 0.75rem; list-style: none; padding-left: 0;">
+                            <li>• <strong>Vision Statement</strong> - Aspirational future state (Identity)</li>
+                            <li>• <strong>Mission Statement</strong> - Current purpose and operations (Identity)</li>
+                            <li>• <strong>Core Values</strong> - Behavioral expectations and culture (Direction)</li>
+                            <li>• <strong>Guiding Principles</strong> - Decision-making frameworks (Direction)</li>
+                            <li>• <strong>Strategic Goals</strong> - Major 3-5 year objectives (Priorities)</li>
+                            <li>• <strong>Strategic Priorities</strong> - Current focus areas for resource allocation (Priorities)</li>
+                        </ul>
                     </div>
                 </div>
 
