@@ -436,14 +436,9 @@ def generate_html(sections):
             color: #7b1fa2;
         }
 
-        .sector-tag.business {
+        .sector-tag.general {
             background: #e8f5e9;
             color: #388e3c;
-        }
-
-        .sector-tag.consulting {
-            background: #fff3e0;
-            color: #f57c00;
         }
 
         .methodology {
@@ -590,7 +585,7 @@ def generate_html(sections):
     <div class="header">
         <div class="container">
             <h1>Master List of Organizational and Leadership Artifacts</h1>
-            <p>A comprehensive compilation of organizational, leadership, strategic, operational, and governance artifacts used across public administration, nonprofit leadership, business administration, and management consulting</p>
+            <p>A comprehensive compilation of organizational, leadership, strategic, operational, and governance artifacts used across public administration, nonprofit leadership, and general organizational management</p>
             <div class="stats">
                 <div class="stat-item">
                     <span class="stat-number" id="totalArtifacts">153</span>
@@ -620,7 +615,7 @@ def generate_html(sections):
                         <button class="filter-btn active" data-sector="all">All</button>
                         <button class="filter-btn" data-sector="public">Public</button>
                         <button class="filter-btn" data-sector="nonprofit">Nonprofit</button>
-                        <button class="filter-btn" data-sector="business">Business</button>
+                        <button class="filter-btn" data-sector="general">General</button>
                     </div>
                 </div>
 
