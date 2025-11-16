@@ -726,20 +726,20 @@ def generate_html(sections):
             let html = markdown;
 
             // Convert markdown table to HTML
-            const tableRegex = /\|(.+)\|\n\|[-:\s|]+\|\n((?:\|.+\|\n?)+)/g;
+            const tableRegex = /\\|(.+)\\|\\n\\|[-:\\s|]+\\|\\n((?:\\|.+\\|\\n?)+)/g;
             html = html.replace(tableRegex, (match, header, rows) => {
                 const headers = header.split('|').map(h => h.trim()).filter(h => h);
-                const rowsArray = rows.trim().split('\n').map(row =>
+                const rowsArray = rows.trim().split('\\n').map(row =>
                     row.split('|').map(cell => cell.trim()).filter(cell => cell)
                 );
 
                 let tableHtml = '<table class="comparison-table"><thead><tr>';
-                headers.forEach(h => tableHtml += `<th>${h}</th>`);
+                headers.forEach(h => tableHtml += \`<th>\${h}</th>\`);
                 tableHtml += '</tr></thead><tbody>';
 
                 rowsArray.forEach(row => {
                     tableHtml += '<tr>';
-                    row.forEach(cell => tableHtml += `<td>${cell}</td>`);
+                    row.forEach(cell => tableHtml += \`<td>\${cell}</td>\`);
                     tableHtml += '</tr>';
                 });
 
@@ -751,22 +751,22 @@ def generate_html(sections):
             html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
 
             // Convert bold
-            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            html = html.replace(/\\*\\*(.+?)\\*\\*/g, '<strong>$1</strong>');
 
             // Convert numbered lists
-            html = html.replace(/^(\d+\.\s+.+?)(?=\n\d+\.|\n\n|$)/gms, (match) => {
-                const items = match.split(/\n(?=\d+\.\s)/).map(item => {
-                    const text = item.replace(/^\d+\.\s+/, '');
-                    return `<li>${text}</li>`;
+            html = html.replace(/^(\\d+\\.\\s+.+?)(?=\\n\\d+\\.|\\ n\\n|$)/gms, (match) => {
+                const items = match.split(/\\n(?=\\d+\\.\\s)/).map(item => {
+                    const text = item.replace(/^\\d+\\.\\s+/, '');
+                    return \`<li>\${text}</li>\`;
                 }).join('');
-                return `<ol>${items}</ol>`;
+                return \`<ol>\${items}</ol>\`;
             });
 
             // Convert paragraphs
             html = html.replace(/^(?!<[holt]|<table)(.+)$/gm, '<p>$1</p>');
 
             // Wrap key insights
-            html = html.replace(/<h3>Key Insights from Comparative Analysis:<\/h3>(.*?)(?=<h3>|$)/s,
+            html = html.replace(/<h3>Key Insights from Comparative Analysis:<\\/h3>(.*?)(?=<h3>|$)/s,
                 '<div class="key-insights"><h3>Key Insights from Comparative Analysis:</h3>$1</div>');
 
             return html;
