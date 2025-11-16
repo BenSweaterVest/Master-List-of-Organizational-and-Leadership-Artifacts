@@ -1,0 +1,678 @@
+#!/usr/bin/env python3
+"""
+Generate a complete interactive HTML website from README.md
+"""
+
+import re
+import json
+
+def parse_readme():
+    """Parse README.md and extract all artifacts"""
+    with open('README.md', 'r', encoding='utf-8') as f:
+        content = f.read()
+
+    sections = []
+    current_section = None
+    current_artifact = None
+
+    # Split by major sections (A-N)
+    section_pattern = r'^## ([A-N])\. (.+)$'
+    artifact_pattern = r'^### (\d+)\. (.+)$'
+
+    lines = content.split('\n')
+
+    for i, line in enumerate(lines):
+        # Check for section headers
+        section_match = re.match(section_pattern, line)
+        if section_match:
+            if current_section:
+                sections.append(current_section)
+            current_section = {
+                'letter': section_match.group(1),
+                'title': section_match.group(2),
+                'artifacts': []
+            }
+            current_artifact = None
+            continue
+
+        # Check for numbered artifacts
+        artifact_match = re.match(artifact_pattern, line)
+        if artifact_match and current_section:
+            if current_artifact:
+                current_section['artifacts'].append(current_artifact)
+
+            current_artifact = {
+                'number': artifact_match.group(1),
+                'name': artifact_match.group(2),
+                'purpose': '',
+                'example': '',
+                'sectors': [],
+                'note': ''
+            }
+            continue
+
+        # Parse artifact details
+        if current_artifact:
+            if line.startswith('**Purpose:**'):
+                current_artifact['purpose'] = line.replace('**Purpose:**', '').strip()
+            elif line.startswith('**Example:**'):
+                current_artifact['example'] = line.replace('**Example:**', '').strip()
+            elif line.startswith('**Sectors:**'):
+                sectors_text = line.replace('**Sectors:**', '').strip()
+                current_artifact['sectors'] = [s.strip() for s in sectors_text.split(',')]
+            elif line.startswith('**Note:**'):
+                current_artifact['note'] = line.replace('**Note:**', '').strip()
+
+    # Add last artifact and section
+    if current_artifact and current_section:
+        current_section['artifacts'].append(current_artifact)
+    if current_section:
+        sections.append(current_section)
+
+    return sections
+
+def generate_html(sections):
+    """Generate complete HTML with all artifacts"""
+
+    # Convert sections to JavaScript format
+    artifacts_js = json.dumps(sections, indent=4)
+
+    html_template = '''<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master List of Organizational and Leadership Artifacts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light-bg: #ecf0f1;
+            --dark-text: #2c3e50;
+            --light-text: #7f8c8d;
+            --card-bg: #ffffff;
+            --border: #bdc3c7;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: var(--light-bg);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem 2rem 3rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            margin-top: -2rem;
+            position: relative;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 1rem;
+            height: fit-content;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .filter-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--light-text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.4rem 0.75rem;
+            background: var(--light-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .filter-btn.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .nav-sections {
+            list-style: none;
+        }
+
+        .nav-sections li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-sections a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .nav-sections a:hover {
+            background: var(--light-bg);
+            padding-left: 1rem;
+        }
+
+        .content {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .section-letter {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .artifacts-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .artifact-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .artifact-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .artifact-number {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .artifact-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .artifact-purpose {
+            color: var(--dark-text);
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .artifact-example {
+            background: var(--light-bg);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            color: var(--light-text);
+        }
+
+        .artifact-example strong {
+            color: var(--dark-text);
+        }
+
+        .artifact-note {
+            background: #fff3cd;
+            border-left: 3px solid var(--warning);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            color: #856404;
+        }
+
+        .sectors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .sector-tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .sector-tag.public {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .sector-tag.nonprofit {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .sector-tag.business {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+
+        .sector-tag.consulting {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .methodology {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .methodology h2 {
+            margin-bottom: 1rem;
+        }
+
+        .methodology p {
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .framework-box {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 968px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .stats {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+        }
+
+        .reset-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Master List of Organizational and Leadership Artifacts</h1>
+            <p>A comprehensive compilation of organizational, leadership, strategic, operational, and governance artifacts used across public administration, nonprofit leadership, business administration, and management consulting</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalArtifacts">153</span>
+                    <span class="stat-label">Artifacts</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">14</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Sectors</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-layout">
+            <aside class="sidebar">
+                <button class="reset-btn" onclick="resetFilters()">Reset All Filters</button>
+                <input type="text" class="search-box" id="searchBox" placeholder="Search artifacts...">
+
+                <div class="filter-section">
+                    <div class="filter-title">Filter by Sector</div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-sector="all">All</button>
+                        <button class="filter-btn" data-sector="public">Public</button>
+                        <button class="filter-btn" data-sector="nonprofit">Nonprofit</button>
+                        <button class="filter-btn" data-sector="business">Business</button>
+                        <button class="filter-btn" data-sector="consulting">Consulting</button>
+                    </div>
+                </div>
+
+                <div class="filter-title">Sections</div>
+                <ul class="nav-sections" id="navList">
+                    <!-- Will be populated dynamically -->
+                </ul>
+            </aside>
+
+            <main>
+                <div class="content methodology">
+                    <h2>The Universal Artifact Stack</h2>
+                    <p>Despite different terminology across sectors, nearly all organizations rely on the same core "stack" of foundational artifacts that flow from identity through accountability.</p>
+                    <div class="framework-box">
+                        <strong>The Five-Layer Framework:</strong><br>
+                        Identity → Direction → Priorities → Action → Accountability
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div id="artifactContainer">
+                        <!-- Artifacts will be dynamically loaded here -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Artifact data
+        const artifactsData = ''' + artifacts_js + ''';
+
+        // Render navigation
+        function renderNavigation() {
+            const navList = document.getElementById('navList');
+            navList.innerHTML = artifactsData.map(section => `
+                <li><a href="#section-${section.letter.toLowerCase()}">${section.letter}. ${section.title.split(' ').slice(0, 3).join(' ')}...</a></li>
+            `).join('');
+        }
+
+        // Render artifacts
+        function renderArtifacts() {
+            const container = document.getElementById('artifactContainer');
+            container.innerHTML = '';
+
+            artifactsData.forEach(section => {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'section';
+                sectionDiv.id = `section-${section.letter.toLowerCase()}`;
+
+                sectionDiv.innerHTML = `
+                    <div class="section-header">
+                        <div class="section-letter">${section.letter}</div>
+                        <h2 class="section-title">${section.title}</h2>
+                    </div>
+                    <div class="artifacts-grid">
+                        ${section.artifacts.map(artifact => `
+                            <div class="artifact-card" data-sectors="${artifact.sectors.join(',').toLowerCase()}" data-name="${artifact.name.toLowerCase()}" data-number="${artifact.number}">
+                                <div class="artifact-number">#${artifact.number}</div>
+                                <div class="artifact-name">${artifact.name}</div>
+                                <div class="artifact-purpose">${artifact.purpose}</div>
+                                ${artifact.example ? `<div class="artifact-example"><strong>Example:</strong> ${artifact.example}</div>` : ''}
+                                ${artifact.note ? `<div class="artifact-note"><strong>Note:</strong> ${artifact.note}</div>` : ''}
+                                <div class="sectors">
+                                    ${artifact.sectors.map(sector => `
+                                        <span class="sector-tag ${sector.toLowerCase()}">${sector}</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                container.appendChild(sectionDiv);
+            });
+
+            updateVisibleCount();
+        }
+
+        // Update visible artifact count
+        function updateVisibleCount() {
+            const visibleCards = document.querySelectorAll('.artifact-card:not([style*="display: none"])');
+            document.getElementById('totalArtifacts').textContent = visibleCards.length;
+        }
+
+        // Search functionality
+        document.getElementById('searchBox').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.artifact-card');
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+
+            updateVisibleCount();
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+
+                const sector = e.target.dataset.sector;
+                const cards = document.querySelectorAll('.artifact-card');
+
+                cards.forEach(card => {
+                    if (sector === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const cardSectors = card.dataset.sectors;
+                        card.style.display = cardSectors.includes(sector) ? 'block' : 'none';
+                    }
+                });
+
+                updateVisibleCount();
+            });
+        });
+
+        // Reset filters
+        function resetFilters() {
+            document.getElementById('searchBox').value = '';
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('.filter-btn[data-sector="all"]').classList.add('active');
+            document.querySelectorAll('.artifact-card').forEach(card => {
+                card.style.display = 'block';
+            });
+            updateVisibleCount();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        renderNavigation();
+        renderArtifacts();
+    </script>
+</body>
+</html>'''
+
+    return html_template
+
+def main():
+    print("Parsing README.md...")
+    sections = parse_readme()
+
+    print(f"Found {len(sections)} sections")
+    total_artifacts = sum(len(s['artifacts']) for s in sections)
+    print(f"Found {total_artifacts} artifacts")
+
+    print("Generating HTML...")
+    html = generate_html(sections)
+
+    with open('index.html', 'w', encoding='utf-8') as f:
+        f.write(html)
+
+    print("✓ Generated index.html successfully!")
+    print(f"✓ Includes all {total_artifacts} artifacts across {len(sections)} sections")
+
+if __name__ == '__main__':
+    main()

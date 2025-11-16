@@ -1,0 +1,2285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master List of Organizational and Leadership Artifacts</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light-bg: #ecf0f1;
+            --dark-text: #2c3e50;
+            --light-text: #7f8c8d;
+            --card-bg: #ffffff;
+            --border: #bdc3c7;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark-text);
+            background: var(--light-bg);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem 2rem 3rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 2rem;
+            margin-top: -2rem;
+            position: relative;
+        }
+
+        .sidebar {
+            position: sticky;
+            top: 1rem;
+            height: fit-content;
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            max-height: calc(100vh - 2rem);
+            overflow-y: auto;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            transition: border-color 0.3s;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .filter-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .filter-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--light-text);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.75rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .filter-btn {
+            padding: 0.4rem 0.75rem;
+            background: var(--light-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .filter-btn.active {
+            background: var(--secondary);
+            color: white;
+            border-color: var(--secondary);
+        }
+
+        .nav-sections {
+            list-style: none;
+        }
+
+        .nav-sections li {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-sections a {
+            display: block;
+            padding: 0.5rem 0.75rem;
+            color: var(--dark-text);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.2s;
+            font-size: 0.9rem;
+        }
+
+        .nav-sections a:hover {
+            background: var(--light-bg);
+            padding-left: 1rem;
+        }
+
+        .content {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 2rem;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+            scroll-margin-top: 2rem;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--secondary);
+        }
+
+        .section-letter {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .artifacts-grid {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .artifact-card {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1.25rem;
+            transition: all 0.3s;
+            background: white;
+        }
+
+        .artifact-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .artifact-number {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .artifact-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .artifact-purpose {
+            color: var(--dark-text);
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .artifact-example {
+            background: var(--light-bg);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            color: var(--light-text);
+        }
+
+        .artifact-example strong {
+            color: var(--dark-text);
+        }
+
+        .artifact-note {
+            background: #fff3cd;
+            border-left: 3px solid var(--warning);
+            padding: 0.75rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            margin-top: 0.75rem;
+            color: #856404;
+        }
+
+        .sectors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .sector-tag {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .sector-tag.public {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .sector-tag.nonprofit {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .sector-tag.business {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+
+        .sector-tag.consulting {
+            background: #fff3e0;
+            color: #f57c00;
+        }
+
+        .methodology {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .methodology h2 {
+            margin-bottom: 1rem;
+        }
+
+        .methodology p {
+            opacity: 0.95;
+            line-height: 1.7;
+        }
+
+        .framework-box {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            backdrop-filter: blur(10px);
+        }
+
+        @media (max-width: 968px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: relative;
+                top: 0;
+                max-height: none;
+            }
+
+            .header h1 {
+                font-size: 1.75rem;
+            }
+
+            .stats {
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+        }
+
+        .reset-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+
+        .reset-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="container">
+            <h1>Master List of Organizational and Leadership Artifacts</h1>
+            <p>A comprehensive compilation of organizational, leadership, strategic, operational, and governance artifacts used across public administration, nonprofit leadership, business administration, and management consulting</p>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number" id="totalArtifacts">153</span>
+                    <span class="stat-label">Artifacts</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">14</span>
+                    <span class="stat-label">Categories</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">4</span>
+                    <span class="stat-label">Sectors</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="main-layout">
+            <aside class="sidebar">
+                <button class="reset-btn" onclick="resetFilters()">Reset All Filters</button>
+                <input type="text" class="search-box" id="searchBox" placeholder="Search artifacts...">
+
+                <div class="filter-section">
+                    <div class="filter-title">Filter by Sector</div>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-sector="all">All</button>
+                        <button class="filter-btn" data-sector="public">Public</button>
+                        <button class="filter-btn" data-sector="nonprofit">Nonprofit</button>
+                        <button class="filter-btn" data-sector="business">Business</button>
+                        <button class="filter-btn" data-sector="consulting">Consulting</button>
+                    </div>
+                </div>
+
+                <div class="filter-title">Sections</div>
+                <ul class="nav-sections" id="navList">
+                    <!-- Will be populated dynamically -->
+                </ul>
+            </aside>
+
+            <main>
+                <div class="content methodology">
+                    <h2>The Universal Artifact Stack</h2>
+                    <p>Despite different terminology across sectors, nearly all organizations rely on the same core "stack" of foundational artifacts that flow from identity through accountability.</p>
+                    <div class="framework-box">
+                        <strong>The Five-Layer Framework:</strong><br>
+                        Identity → Direction → Priorities → Action → Accountability
+                    </div>
+                </div>
+
+                <div class="content">
+                    <div id="artifactContainer">
+                        <!-- Artifacts will be dynamically loaded here -->
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // Artifact data
+        const artifactsData = [
+    {
+        "letter": "A",
+        "title": "Strategic Direction & Organizational Identity",
+        "artifacts": [
+            {
+                "number": "1",
+                "name": "Mission Statement",
+                "purpose": "Defines the organization's fundamental reason for existing and what it does for whom.",
+                "example": "\"To organize the world's information and make it universally accessible and useful\" (Google) or \"Partnering to deliver secure, reliable technology solutions\" (public agency)",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "2",
+                "name": "Vision Statement",
+                "purpose": "Describes the aspirational future state the organization seeks to achieve.",
+                "example": "\"A computer on every desk and in every home\" (Microsoft, 1980s) or \"An equitable, sustainable future where all residents thrive\"",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "3",
+                "name": "Core Values / Guiding Principles",
+                "purpose": "Articulates behavioral principles and cultural norms that guide daily decisions and actions.",
+                "example": "\"Integrity, Collaboration, Accountability, Respect, Excellence\" or Amazon's Leadership Principles",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "4",
+                "name": "Purpose Statement",
+                "purpose": "Sits between mission and values; defines \"why we exist\" in a single sentence.",
+                "example": "\"We serve Minnesotans by enabling secure digital government\"",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "5",
+                "name": "Strategic Goals",
+                "purpose": "Major objectives aligned with the organization's vision, typically 3-7 long-term goals spanning 3-5 years.",
+                "example": "\"Achieve carbon neutrality by 2030\" or \"Expand into 5 new markets\"",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "6",
+                "name": "Strategic Priorities",
+                "purpose": "Current focus areas that organize work and resource allocation, often annual or biennial.",
+                "example": "\"Digital transformation, Customer experience, Operational efficiency\"",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "7",
+                "name": "Guiding Principles / Decision-Making Principles",
+                "purpose": "Frameworks that help choose between competing options.",
+                "example": "\"Customer-first in all decisions\" or \"Prefer build over buy when core competency\"",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": "This differs from #3 (Core Values) which are cultural beliefs; these are strategic decision-making frameworks."
+            },
+            {
+                "number": "8",
+                "name": "Strategic Plan",
+                "purpose": "Comprehensive document integrating mission, vision, goals, strategies, and resource allocation over 3-5 years.",
+                "example": "Federal agency 4-year strategic plan, corporate strategic plan",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "9",
+                "name": "Annual Operating Plan (AOP)",
+                "purpose": "One-year plan operationalizing strategic priorities into budgets and deliverables.",
+                "example": "Corporate AOP, nonprofit annual work plan, agency plan-of-work",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "10",
+                "name": "North Star Metric",
+                "purpose": "Single, high-level measure that reflects the organization's ultimate value.",
+                "example": "\"Time to delivery for public services\" or \"Households lifted out of homelessness\"",
+                "sectors": [
+                    "Business",
+                    "Nonprofit",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "11",
+                "name": "Organizational Theory of Value / Value Proposition Framework",
+                "purpose": "Defines exactly what value the organization creates and for whom.",
+                "example": "Nonprofit value proposition canvas or \"Faster. Cheaper. Better.\" (business)",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "12",
+                "name": "Organizational Charter / Articles of Incorporation",
+                "purpose": "Legal document establishing the organization's existence, purpose, authority, and boundaries.",
+                "example": "Corporate charter (business), articles of incorporation (nonprofit), enabling legislation (public agency)",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "13",
+                "name": "Organizational Minutes",
+                "purpose": "Official record of board decisions, votes, and actions taken; required for legal compliance.",
+                "example": "Nonprofit board meeting minutes documenting vote to approve annual budget",
+                "sectors": [
+                    "Nonprofit",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "14",
+                "name": "Organizational Narrative / \"Story of Us\"",
+                "purpose": "Shared narrative describing the organization's origin, purpose, core identity, and story of impact.",
+                "example": "\"Founding Story + Turning Point + North Star\" format used in nonprofits",
+                "sectors": [
+                    "Nonprofit",
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "B",
+        "title": "Governance, Oversight & Accountability",
+        "artifacts": [
+            {
+                "number": "16",
+                "name": "Governance Framework",
+                "purpose": "Defines decision-making authority, committee structures, meeting cadences, and escalation paths.",
+                "example": "Board \u2192 Executive Committee \u2192 Management Team; decision rights matrix",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "17",
+                "name": "Delegation of Authority (DOA) Matrix",
+                "purpose": "Formal rules for who is authorized to approve what (purchases, decisions, contracts).",
+                "example": "Procurement authority matrix by dollar threshold",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "18",
+                "name": "Accountability Framework",
+                "purpose": "Clarifies responsibility, oversight, escalation paths, and enforcement mechanisms.",
+                "example": "Canadian government's Management Accountability Framework (MAF)",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "19",
+                "name": "Board Governance Handbook / Matrix",
+                "purpose": "Defines roles and responsibilities of a governing board.",
+                "example": "Nonprofit board governance matrix showing board vs. management responsibilities",
+                "sectors": [
+                    "Nonprofit",
+                    "Public",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "20",
+                "name": "Internal Controls Framework",
+                "purpose": "Defines financial, operational, and compliance controls to ensure accuracy and reliability.",
+                "example": "COSO Internal Controls Framework",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "21",
+                "name": "Oversight Framework",
+                "purpose": "Describes internal and external watchdog functions and oversight bodies.",
+                "example": "Inspector General oversight model",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "22",
+                "name": "Performance Accountability Agreement",
+                "purpose": "Formal agreement between leaders and their governing body defining performance expectations.",
+                "example": "Commissioner performance compacts, Results-Based Accountability agreements",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "23",
+                "name": "Board Minutes & Governance Records",
+                "purpose": "Formal documentation of decisions for legal compliance and institutional memory.",
+                "example": "Nonprofit board archives, executive steering committee minutes",
+                "sectors": [
+                    "Public",
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "24",
+                "name": "Mandate Letter / Charge Letter",
+                "purpose": "Directive from an executive identifying priorities and expectations for a leader.",
+                "example": "Prime Ministerial minister mandate letters (Westminster governments)",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "25",
+                "name": "Community Advisory Board Charter",
+                "purpose": "Defines community engagement governance structure.",
+                "example": "Health or human services community advisory board charter",
+                "sectors": [
+                    "Public",
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "26",
+                "name": "Ethics Review Process Documentation",
+                "purpose": "Governs conflicts of interest, recusals, transparency, and disclosures.",
+                "example": "State ethics board review procedures",
+                "sectors": [
+                    "Public",
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "27",
+                "name": "Whistleblower Policy",
+                "purpose": "Protects employees who report misconduct; required by Sarbanes-Oxley Act for public companies.",
+                "example": "Anonymous reporting hotline procedures and retaliation protections",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "28",
+                "name": "Document Retention and Destruction Policy",
+                "purpose": "Defines how long records must be kept and procedures for destruction; prevents illegal document destruction.",
+                "example": "\"Financial records retained for 7 years; email retention policy\"",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "29",
+                "name": "Shareholder Agreements",
+                "purpose": "Defines rights, responsibilities, and relationships among company shareholders.",
+                "example": "Buy-sell agreement, voting rights structure",
+                "sectors": [
+                    "Business"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "C",
+        "title": "Operational Management & Service Delivery",
+        "artifacts": [
+            {
+                "number": "31",
+                "name": "Operating Model / Target Operating Model (TOM)",
+                "purpose": "Architectural blueprint showing how the organization executes its strategy through structure, processes, technology, governance, and people. Distinct from Business Model (which describes commercial activities/go-to-market); the Operating Model is the organizational \"nervous system\" or \"engine\" that executes the business model. Critical for closing the strategy-to-performance gap.",
+                "example": "Centralized vs. decentralized model, shared services design, McKinsey's \"Organize to Value\" framework",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "32",
+                "name": "Business Capability Map / Capability Framework",
+                "purpose": "Visual map of organizational capabilities needed to deliver on strategy (what the organization must be able to do).",
+                "example": "Strategic capabilities (planning, innovation), Core capabilities (service delivery), Enabling capabilities (HR, finance, IT)",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "33",
+                "name": "Enterprise Architecture Framework",
+                "purpose": "Aligns business strategy, processes, information, and technology systems.",
+                "example": "TOGAF enterprise architecture, FEAF (Federal Enterprise Architecture Framework)",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "34",
+                "name": "Organizational Structure",
+                "purpose": "Formal structure showing reporting relationships, roles, responsibilities, and hierarchies.",
+                "example": "Traditional hierarchy, matrix structure, flat organization",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "35",
+                "name": "Service Catalog",
+                "purpose": "Defines all services offered, including SLAs, owners, and request pathways.",
+                "example": "IT service catalog listing all technology services",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "36",
+                "name": "Service Blueprint",
+                "purpose": "Maps front-stage (customer-facing) and back-stage (internal) service processes.",
+                "example": "Public library service blueprint",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "37",
+                "name": "Customer Journey Map / User Journey Map",
+                "purpose": "Visualizes citizen or customer experience through touchpoints and pain points.",
+                "example": "DMV customer journey, SNAP benefits application process",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "38",
+                "name": "Service Level Agreements (SLAs)",
+                "purpose": "Documented expectations for service performance and response times.",
+                "example": "\"IT help desk tickets resolved within 24 hours\"",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "39",
+                "name": "Customer Charter / Service Standards",
+                "purpose": "Explicit, measurable commitments to customers about service quality.",
+                "example": "\"We will respond to inquiries within 24 hours\" or \"99.9% system uptime guarantee\"",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "40",
+                "name": "Standard Operating Procedures (SOPs)",
+                "purpose": "Detailed instructions for executing routine processes consistently.",
+                "example": "Employee onboarding SOP",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "41",
+                "name": "Operating Principles / \"Rules of the Road\"",
+                "purpose": "Short, tactical principles governing how teams work day-to-day.",
+                "example": "\"Default to open,\" \"Users before shareholders,\" \"Document everything\"",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "42",
+                "name": "Playbooks (Operations, Crisis, Communications)",
+                "purpose": "Action-oriented manuals for consistent execution of common tasks.",
+                "example": "Cyber incident response playbook, crisis communications playbook, volunteer management playbook",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "43",
+                "name": "RACI Matrix (Responsibility Assignment Matrix)",
+                "purpose": "Clarifies who is Responsible, Accountable, Consulted, and Informed for major tasks.",
+                "example": "Project RACI showing R, A, C, I for each stakeholder role",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "44",
+                "name": "Value Stream Map / Process Map",
+                "purpose": "Lean diagrams showing workflow, value creation, and waste.",
+                "example": "Employee onboarding process map",
+                "sectors": [
+                    "Business",
+                    "Public",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "45",
+                "name": "Knowledge Base / Process Library",
+                "purpose": "Central repository of SOPs, instructions, templates, and decision guides.",
+                "example": "SharePoint library for service delivery processes",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "D",
+        "title": "Human Resources, Workforce & Leadership Development",
+        "artifacts": [
+            {
+                "number": "47",
+                "name": "Leadership Competency Model",
+                "purpose": "Defines what \"good leadership\" looks like in the organization.",
+                "example": "Zenger/Folkman competency model, federal Executive Core Qualifications (ECQs)",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "48",
+                "name": "Leadership Philosophy Statement",
+                "purpose": "Defines a leader's personal theory of leadership and core beliefs.",
+                "example": "\"I believe leadership is about servant leadership and empowering others\"",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "49",
+                "name": "Competency Dictionary / Competency Model",
+                "purpose": "Defines expected competencies (knowledge, skills, abilities) for roles or leadership tiers.",
+                "example": "SHRM competency dictionary",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "50",
+                "name": "Role Architecture / Job Family Framework",
+                "purpose": "Classifies jobs into families, levels, and progression pathways.",
+                "example": "HR job family tree with career progression",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "51",
+                "name": "Workforce Development Framework",
+                "purpose": "Defines training, leadership development, and career pathways structure.",
+                "example": "Leadership development pathways, DOD Civilian Leader Development Framework",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "52",
+                "name": "Workforce Planning Strategy / Workforce Plan",
+                "purpose": "Future staffing needs, skills gaps, retirement risk, and recruitment priorities.",
+                "example": "State HR five-year workforce plan",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "53",
+                "name": "Succession Planning / Succession Management Plan",
+                "purpose": "Identifies critical positions and develops future leaders to ensure continuity.",
+                "example": "State agency succession plan, talent pipeline development",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "54",
+                "name": "Succession Pipeline / Talent Pipeline Map",
+                "purpose": "Identifies readiness of internal candidates for future roles.",
+                "example": "9-box talent grid showing high performers",
+                "sectors": [
+                    "Business",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "55",
+                "name": "Skills Inventory / Skills Taxonomy",
+                "purpose": "Catalog of organizational skills used in workforce planning.",
+                "example": "Technical and soft skills inventory",
+                "sectors": [
+                    "Business",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "56",
+                "name": "Team Charter / Staff Charter",
+                "purpose": "Defines team agreements, norms, roles, and communication expectations.",
+                "example": "Agile team charter",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "57",
+                "name": "Onboarding Framework / Onboarding Journey Map",
+                "purpose": "High-level structure for new employee experience.",
+                "example": "90-day onboarding journey with milestones",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "58",
+                "name": "Performance Review Framework",
+                "purpose": "Outlines how performance evaluations are structured and conducted.",
+                "example": "State competency model, 9-box talent grid",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "59",
+                "name": "Performance Calibration Framework",
+                "purpose": "Ensures rating consistency across supervisors.",
+                "example": "Calibration committees, forced distribution",
+                "sectors": [
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "60",
+                "name": "Employee Value Proposition (EVP)",
+                "purpose": "Articulates what makes the organization an attractive place to work.",
+                "example": "\"Meaningful work, flexibility, growth opportunities, inclusive culture\"",
+                "sectors": [
+                    "Business",
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "61",
+                "name": "Workforce Diversity & Inclusion Plan",
+                "purpose": "Formal DEI goals, metrics, and initiatives.",
+                "example": "Government DEI strategic plan",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "62",
+                "name": "Employee Wellbeing & Resilience Framework",
+                "purpose": "Documented structure for mental health, burnout prevention, and workplace support.",
+                "example": "Employee assistance program structure",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "63",
+                "name": "Remote Work / Hybrid Work Playbook",
+                "purpose": "Governance for distributed workforces.",
+                "example": "Hybrid work policies and expectations",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "E",
+        "title": "Finance, Budgeting & Resource Management",
+        "artifacts": [
+            {
+                "number": "65",
+                "name": "Budget Book / Budget Narrative / Agency Budget Justification",
+                "purpose": "Explains resource requests and financial plans with narrative and numbers.",
+                "example": "State agency biennial budget book",
+                "sectors": [
+                    "Public",
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "66",
+                "name": "Cost Allocation Plan",
+                "purpose": "Explains how shared costs are distributed; required for federal grant recipients.",
+                "example": "OMB Uniform Guidance-compliant cost allocation plan",
+                "sectors": [
+                    "Public",
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "67",
+                "name": "Long-Range Financial Plan (LRFP)",
+                "purpose": "Multi-year financial forecasting (5-10 years).",
+                "example": "Municipal long-range financial plan",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "68",
+                "name": "Capital Improvement Plan (CIP)",
+                "purpose": "Multi-year plan for major capital investments, infrastructure, and assets.",
+                "example": "City CIP for roads, buildings, utilities",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "69",
+                "name": "Financial Controls Framework / Financial Controls Manual",
+                "purpose": "Defines financial procedures, expenditure processes, procurement, and auditing.",
+                "example": "Nonprofit financial policies handbook",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "70",
+                "name": "Grants Management Framework",
+                "purpose": "Structure for applying, managing, and reporting on grants.",
+                "example": "Federal Uniform Guidance-compliant grants management",
+                "sectors": [
+                    "Public",
+                    "Nonprofit"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "F",
+        "title": "Technology, Data & Digital Operations",
+        "artifacts": [
+            {
+                "number": "72",
+                "name": "Digital Transformation Roadmap",
+                "purpose": "Outlines modernization priorities, platforms, and timelines.",
+                "example": "Government digital service transformation roadmap",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "73",
+                "name": "Information Security Program Charter",
+                "purpose": "Defines security authority, responsibilities, and governance.",
+                "example": "NIST 800-53 aligned security program charter",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "74",
+                "name": "Data Governance Framework",
+                "purpose": "Defines ownership, stewardship, quality, access, and controls for organizational data.",
+                "example": "DAMA DMBOK data governance",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "75",
+                "name": "Data Architecture Diagram / Information Model",
+                "purpose": "Maps core data entities, relationships, and flows.",
+                "example": "Enterprise data model",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "76",
+                "name": "IT Service Management Framework",
+                "purpose": "Defines processes for IT service delivery.",
+                "example": "ITIL (Information Technology Infrastructure Library)",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "77",
+                "name": "API Governance Standards",
+                "purpose": "Formalizes how APIs are developed, secured, and managed.",
+                "example": "API design standards and security requirements",
+                "sectors": [
+                    "Business",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "78",
+                "name": "Digital Literacy / Digital Readiness Framework",
+                "purpose": "Assesses workforce digital competency.",
+                "example": "OECD digital readiness model",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "79",
+                "name": "Information Architecture (IA) Map",
+                "purpose": "Structured overview of how information is organized.",
+                "example": "Website information architecture",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "G",
+        "title": "Risk, Continuity & Resilience",
+        "artifacts": [
+            {
+                "number": "81",
+                "name": "Risk Management Framework",
+                "purpose": "Systematic approach to identifying, assessing, prioritizing, and mitigating organizational risks.",
+                "example": "ISO 31000, NIST Risk Management Framework",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "82",
+                "name": "Risk Register / Risk Charter",
+                "purpose": "Living document tracking all identified risks with severity, likelihood, ownership, and mitigation status.",
+                "example": "Enterprise risk register with heat map",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "83",
+                "name": "Enterprise Risk Management (ERM) Framework",
+                "purpose": "High-level approach for risk strategy, monitoring, and escalation.",
+                "example": "COSO ERM framework",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "84",
+                "name": "Business Impact Analysis (BIA)",
+                "purpose": "Identifies critical functions and acceptable downtime.",
+                "example": "IT business impact analysis form",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "85",
+                "name": "Continuity of Operations (COOP) Plan",
+                "purpose": "Ensures essential services continue during disruptions.",
+                "example": "FEMA COOP template",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "86",
+                "name": "Business Continuity Plan (BCP)",
+                "purpose": "Procedures for maintaining operations during disasters or system failures.",
+                "example": "Disaster recovery procedures, backup systems",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "87",
+                "name": "Crisis Management Plan / Crisis Action Plan (CAP)",
+                "purpose": "Defines organizational response to emergencies with chain of authority.",
+                "example": "Incident response playbook",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "88",
+                "name": "Threat Assessment Framework",
+                "purpose": "Identifies and categorizes threats (physical or cyber).",
+                "example": "Homeland Security threat matrix",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "89",
+                "name": "Vulnerability Assessment",
+                "purpose": "Identifies weaknesses in systems or processes.",
+                "example": "NIST cybersecurity vulnerability assessment",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "H",
+        "title": "Communications, Engagement & External Relations",
+        "artifacts": [
+            {
+                "number": "91",
+                "name": "Communications Plan / Communications Strategy Framework",
+                "purpose": "Defines messaging, channels, audiences, and cadence.",
+                "example": "Strategic communications plan for state agency",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "92",
+                "name": "Brand Guidelines / Identity Standards",
+                "purpose": "Defines logos, colors, fonts, tone, photography, and visual identity.",
+                "example": "City or nonprofit branding manual",
+                "sectors": [
+                    "Nonprofit",
+                    "Business",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "93",
+                "name": "Stakeholder Map / Stakeholder Analysis",
+                "purpose": "Identifies key stakeholders, their interests, power, and influence.",
+                "example": "Power/Interest matrix, Influence/Impact grid",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "94",
+                "name": "Stakeholder Engagement Plan",
+                "purpose": "Defines how to engage different stakeholders with tailored strategies.",
+                "example": "Constituent engagement plan, donor engagement strategy",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "95",
+                "name": "Public Engagement Framework",
+                "purpose": "Guides engagement with communities and the public.",
+                "example": "IAP2 Spectrum of Engagement",
+                "sectors": [
+                    "Public",
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "96",
+                "name": "Leadership Talking Points / Messaging Guide",
+                "purpose": "Ensures leaders speak consistently about priorities.",
+                "example": "Commissioner briefing points",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "97",
+                "name": "Engagement/Communications Calendar",
+                "purpose": "Schedule of announcements, outreach, and engagement touchpoints.",
+                "example": "Monthly commissioner newsletters, nonprofit donor communications plan",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "98",
+                "name": "Annual Report",
+                "purpose": "Summary of yearly activities, accomplishments, and financials.",
+                "example": "Nonprofit annual impact report, shareholder annual report",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "99",
+                "name": "Transparency Framework",
+                "purpose": "Defines what information is proactively published.",
+                "example": "Open data policy",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "I",
+        "title": "Evaluation, Learning & Improvement",
+        "artifacts": [
+            {
+                "number": "101",
+                "name": "Performance Measurement Framework",
+                "purpose": "Defines how success is measured across the organization.",
+                "example": "Balanced Scorecard, OKRs, KPI dashboard",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "102",
+                "name": "Balanced Scorecard (BSC)",
+                "purpose": "Strategic management system measuring performance across 4 perspectives: Financial, Customer, Internal Process, Learning & Growth.",
+                "example": "Objectives, measures, targets, and initiatives across each perspective",
+                "sectors": [
+                    "Business",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "103",
+                "name": "OKR Framework (Objectives & Key Results)",
+                "purpose": "Agile goal-setting framework with 2-3 objectives and 3-5 measurable key results per objective, typically quarterly.",
+                "example": "Objective: \"Launch in mobile market\" / Key Results: \"1M downloads, 4.5 star rating, 40% retention\"",
+                "sectors": [
+                    "Business",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "104",
+                "name": "KPIs / Metrics Dashboard",
+                "purpose": "Selected, measurable values demonstrating how effectively established processes achieve strategic objectives. KPIs function as \"ongoing vital signs\" monitoring organizational health. Must be clearly defined, measurable, actionable, influential on decisions, and regularly reported. Distinct from metrics (tactical processes/actions like \"monthly store visits\") which feed into higher-level KPIs (like \"targeted monthly revenue\").",
+                "example": "Customer satisfaction score 85%, response time <2 hours, 95% uptime, conversion rate, ROI",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "105",
+                "name": "Theory of Change",
+                "purpose": "Structured planning tool mapping the causal logic\u2014the \"missing middle\"\u2014between organizational activities (interventions) and desired long-term outcomes. Explains how and why desired change is expected to occur under certain conditions. Includes Long-Term Goals, specific Outcomes, Activities, and critical Assumptions (underlying conditions that must exist). Defines the \"Value Agenda\" for social impact and provides framework for evaluation.",
+                "example": "\"Providing 1:1 mentorship (Activity) + Academic support \u2192 Increased achievement (Outcome) \u2192 College enrollment (Long-term Goal)\" with assumption \"Supportive family environment exists\"",
+                "sectors": [
+                    "Nonprofit",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "106",
+                "name": "Logic Model",
+                "purpose": "Program-level framework mapping inputs \u2192 activities \u2192 outputs \u2192 outcomes \u2192 impact with specific metrics.",
+                "example": "Staff + funding \u2192 training programs \u2192 # trained \u2192 skill improvement \u2192 job placement rate",
+                "sectors": [
+                    "Nonprofit",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "107",
+                "name": "Monitoring & Evaluation (M&E) Plan",
+                "purpose": "Framework for tracking outputs, outcomes, and impact. Includes both Implementation Studies (proving program is implemented as intended/fidelity) and Impact Studies (establishing whether program generated desired effects/causality). Validates Theory of Change assumptions.",
+                "example": "USAID M&E Plan with outcome indicators and data collection methods",
+                "sectors": [
+                    "Public",
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "108",
+                "name": "Learning Agenda",
+                "purpose": "Planning tool identifying what the organization needs to learn to make better decisions.",
+                "example": "Federal agency Evidence Act Learning Agenda",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "109",
+                "name": "Audit Reports (Internal or External)",
+                "purpose": "Independent assessment of compliance, performance, or risk.",
+                "example": "Legislative Auditor reports, financial audits",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "110",
+                "name": "Maturity Model Assessment",
+                "purpose": "Rates the organization on levels (1-5) of maturity across capabilities.",
+                "example": "CMMI, ITIL maturity, DEI maturity, customer experience maturity",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "111",
+                "name": "Reflective Practice Framework / After-Action Review",
+                "purpose": "Defines organizational learning routines.",
+                "example": "After-action review process",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "112",
+                "name": "Organizational Health Index / Culture Scorecard",
+                "purpose": "Measures trust, psychological safety, engagement, etc.",
+                "example": "McKinsey Organizational Health Index",
+                "sectors": [
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "J",
+        "title": "Program, Project & Portfolio Management",
+        "artifacts": [
+            {
+                "number": "114",
+                "name": "Program Charter",
+                "purpose": "Defines the purpose, scope, and boundaries of a program.",
+                "example": "Public health program charter",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "115",
+                "name": "Project Charter",
+                "purpose": "Authorizes a project and defines objectives, scope, and stakeholders.",
+                "example": "IT modernization project charter",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "116",
+                "name": "Project Governance Plan",
+                "purpose": "Decision-making structure for a project.",
+                "example": "PMBOK project governance plan",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "117",
+                "name": "Portfolio Prioritization Framework",
+                "purpose": "Defines how projects are selected and funded.",
+                "example": "Weighted scoring model",
+                "sectors": [
+                    "Business",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "118",
+                "name": "Program/Portfolio Roadmap",
+                "purpose": "Timeline showing major initiatives, milestones, and dependencies.",
+                "example": "Application modernization roadmap",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "119",
+                "name": "Benefits Realization Plan",
+                "purpose": "Shows how long-term outcomes and ROI will be tracked.",
+                "example": "PMI benefits realization framework",
+                "sectors": [
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "K",
+        "title": "Change Management & Organizational Development",
+        "artifacts": [
+            {
+                "number": "121",
+                "name": "Change Management Plan / Change Management Framework",
+                "purpose": "Structured approach to implementing organizational change.",
+                "example": "Prosci ADKAR model, Kotter's 8-step process",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "122",
+                "name": "Change Readiness Assessment",
+                "purpose": "Measures cultural and operational readiness for change.",
+                "example": "Organizational pulse survey with heat maps",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "123",
+                "name": "Change Adoption Plan",
+                "purpose": "Different from implementation; focuses on training, communication, and reinforcement.",
+                "example": "User adoption strategy",
+                "sectors": [
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "124",
+                "name": "Transformation Charter / Modernization Charter",
+                "purpose": "Defines scope, value, and governance of a major transformation program.",
+                "example": "Enterprise transformation charter",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "125",
+                "name": "Implementation Playbook / Roadmap",
+                "purpose": "Step-by-step \"how to do it\" guide for execution.",
+                "example": "Digital service transformation playbook",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "126",
+                "name": "Culture Assessment Report",
+                "purpose": "Describes culture strengths, barriers, and archetypes.",
+                "example": "Organizational culture diagnostic",
+                "sectors": [
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "127",
+                "name": "Organizational Culture Framework / Culture Playbook",
+                "purpose": "Artifacts articulating desired norms, leadership behaviors, and shared identity.",
+                "example": "\"Point North\" servant-leadership principles, Netflix Culture Deck",
+                "sectors": [
+                    "Business",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "128",
+                "name": "Sensemaking Framework / Sensemaking Brief",
+                "purpose": "Helps leaders interpret complex or ambiguous situations.",
+                "example": "Cynefin framework",
+                "sectors": [
+                    "Public",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "129",
+                "name": "Narrative Change Plan",
+                "purpose": "Shifting mindsets and stories over time.",
+                "example": "Advocacy narrative change strategy",
+                "sectors": [
+                    "Nonprofit",
+                    "Public"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "L",
+        "title": "Specialized & Sector-Specific Frameworks",
+        "artifacts": []
+    },
+    {
+        "letter": "M",
+        "title": "Advanced & Specialized Tools",
+        "artifacts": [
+            {
+                "number": "131",
+                "name": "Design Principles",
+                "purpose": "Core tenets guiding design decisions.",
+                "example": "\"Digital-first,\" \"Accessible by default,\" \"Human-centered\"",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "132",
+                "name": "Content Strategy Framework",
+                "purpose": "Defines voice, tone, taxonomy, and governance.",
+                "example": "Web content strategy",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "133",
+                "name": "User Personas",
+                "purpose": "Fictional profiles representing different user types.",
+                "example": "Civic tech personas",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "134",
+                "name": "Environmental Scan / PESTLE Analysis",
+                "purpose": "Analysis of Political, Economic, Social, Technological, Legal, Environmental forces.",
+                "example": "Strategic planning environmental scan",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "135",
+                "name": "SWOT Analysis",
+                "purpose": "Strengths, Weaknesses, Opportunities, Threats assessment.",
+                "example": "Used in retreats and strategic planning",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "136",
+                "name": "Business Case / Problem Statement",
+                "purpose": "Formal document justifying a significant project or investment. Bridges strategic intent with project execution by outlining the problem, analyzing options (with pros/cons/costs), recommending a solution, and providing financial appraisal and implementation plan. Ensures informed decision-making and optimal resource prioritization.",
+                "example": "Enterprise software investment justification, ERP system business case with ROI analysis",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "137",
+                "name": "Scenario Planning / Strategic Foresight Framework",
+                "purpose": "Explores plausible futures to inform proactive strategy.",
+                "example": "\"Future of digital services in 2035\" scenario book",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "138",
+                "name": "Systems Map / Causal Loop Diagram",
+                "purpose": "Models complex interdependent systems.",
+                "example": "Public health systems dynamics map",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "139",
+                "name": "Decision-Making Framework",
+                "purpose": "Structured approach to making decisions.",
+                "example": "RAPID (Recommend, Agree, Perform, Input, Decide), consent-based decision making",
+                "sectors": [
+                    "Public",
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "140",
+                "name": "Ethical Decision Framework",
+                "purpose": "Structured lens for decisions involving moral challenges.",
+                "example": "Ethics decision tree",
+                "sectors": [
+                    "Public",
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "141",
+                "name": "Compliance Framework",
+                "purpose": "Documentation of laws, regulations, and internal controls.",
+                "example": "SOC 2, ISO 27001, GDPR, HIPAA compliance programs",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "142",
+                "name": "Organizational Learning System",
+                "purpose": "Infrastructure governing how the org learns, experiments, and adapts.",
+                "example": "Toyota \"Hoshin Kanri\" learning rhythm",
+                "sectors": [
+                    "Business",
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "143",
+                "name": "Ethnographic Observation Notes / Organizational Anthropology Reports",
+                "purpose": "Deep insight into organizational culture and behavior.",
+                "example": "Workplace ethnography report",
+                "sectors": [
+                    "Consulting"
+                ],
+                "note": ""
+            },
+            {
+                "number": "144",
+                "name": "Annual Compliance Calendar",
+                "purpose": "Lists all mandatory filings, audits, reports, renewals.",
+                "example": "HR compliance calendar",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "145",
+                "name": "Harassment Prevention & Respectful Workplace Framework",
+                "purpose": "System including training, reporting pathways, and restorative practices.",
+                "example": "Respectful workplace program",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "146",
+                "name": "Principles of Practice / Standards of Professional Conduct",
+                "purpose": "Sector-specific behavioral norms beyond general ethics.",
+                "example": "NASW standards for social work, Agile Manifesto principles",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "147",
+                "name": "Operating Constraints List (\"Guardrails\")",
+                "purpose": "Explicit description of non-negotiables.",
+                "example": "Budget constraints, regulatory requirements",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "148",
+                "name": "Executive Briefing Book / Principal's Book",
+                "purpose": "Comprehensive reference for executives with key info, contacts, and context.",
+                "example": "Commissioner's briefing book",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "149",
+                "name": "Equity Framework / DEI Framework",
+                "purpose": "Organizational commitment and plan related to equity, diversity, inclusion.",
+                "example": "State DEI strategic plan, DEI charter",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "150",
+                "name": "Leadership Development Curriculum",
+                "purpose": "Formal structure for leadership training.",
+                "example": "Multi-level leadership program",
+                "sectors": [
+                    "Public",
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "151",
+                "name": "Culture Code",
+                "purpose": "Defines informal but codified workplace behavioral expectations.",
+                "example": "Netflix Culture Deck",
+                "sectors": [
+                    "Business"
+                ],
+                "note": ""
+            },
+            {
+                "number": "152",
+                "name": "Impact Manifesto / Change Statement",
+                "purpose": "Public statement of intended societal value.",
+                "example": "Patagonia's \"Our reason for being\"",
+                "sectors": [
+                    "Nonprofit",
+                    "Business"
+                ],
+                "note": ""
+            }
+        ]
+    },
+    {
+        "letter": "N",
+        "title": "Cross-Sector Comparative Analysis",
+        "artifacts": []
+    }
+];
+
+        // Render navigation
+        function renderNavigation() {
+            const navList = document.getElementById('navList');
+            navList.innerHTML = artifactsData.map(section => `
+                <li><a href="#section-${section.letter.toLowerCase()}">${section.letter}. ${section.title.split(' ').slice(0, 3).join(' ')}...</a></li>
+            `).join('');
+        }
+
+        // Render artifacts
+        function renderArtifacts() {
+            const container = document.getElementById('artifactContainer');
+            container.innerHTML = '';
+
+            artifactsData.forEach(section => {
+                const sectionDiv = document.createElement('div');
+                sectionDiv.className = 'section';
+                sectionDiv.id = `section-${section.letter.toLowerCase()}`;
+
+                sectionDiv.innerHTML = `
+                    <div class="section-header">
+                        <div class="section-letter">${section.letter}</div>
+                        <h2 class="section-title">${section.title}</h2>
+                    </div>
+                    <div class="artifacts-grid">
+                        ${section.artifacts.map(artifact => `
+                            <div class="artifact-card" data-sectors="${artifact.sectors.join(',').toLowerCase()}" data-name="${artifact.name.toLowerCase()}" data-number="${artifact.number}">
+                                <div class="artifact-number">#${artifact.number}</div>
+                                <div class="artifact-name">${artifact.name}</div>
+                                <div class="artifact-purpose">${artifact.purpose}</div>
+                                ${artifact.example ? `<div class="artifact-example"><strong>Example:</strong> ${artifact.example}</div>` : ''}
+                                ${artifact.note ? `<div class="artifact-note"><strong>Note:</strong> ${artifact.note}</div>` : ''}
+                                <div class="sectors">
+                                    ${artifact.sectors.map(sector => `
+                                        <span class="sector-tag ${sector.toLowerCase()}">${sector}</span>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+
+                container.appendChild(sectionDiv);
+            });
+
+            updateVisibleCount();
+        }
+
+        // Update visible artifact count
+        function updateVisibleCount() {
+            const visibleCards = document.querySelectorAll('.artifact-card:not([style*="display: none"])');
+            document.getElementById('totalArtifacts').textContent = visibleCards.length;
+        }
+
+        // Search functionality
+        document.getElementById('searchBox').addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.artifact-card');
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                card.style.display = text.includes(searchTerm) ? 'block' : 'none';
+            });
+
+            updateVisibleCount();
+        });
+
+        // Filter functionality
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                e.target.classList.add('active');
+
+                const sector = e.target.dataset.sector;
+                const cards = document.querySelectorAll('.artifact-card');
+
+                cards.forEach(card => {
+                    if (sector === 'all') {
+                        card.style.display = 'block';
+                    } else {
+                        const cardSectors = card.dataset.sectors;
+                        card.style.display = cardSectors.includes(sector) ? 'block' : 'none';
+                    }
+                });
+
+                updateVisibleCount();
+            });
+        });
+
+        // Reset filters
+        function resetFilters() {
+            document.getElementById('searchBox').value = '';
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            document.querySelector('.filter-btn[data-sector="all"]').classList.add('active');
+            document.querySelectorAll('.artifact-card').forEach(card => {
+                card.style.display = 'block';
+            });
+            updateVisibleCount();
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize
+        renderNavigation();
+        renderArtifacts();
+    </script>
+</body>
+</html>
