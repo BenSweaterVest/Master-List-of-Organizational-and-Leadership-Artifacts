@@ -335,12 +335,35 @@ def generate_html(sections):
             padding: 1.25rem;
             transition: all 0.3s;
             background: white;
+            position: relative;
         }
 
         .artifact-card:hover {
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
             border-color: var(--secondary);
             transform: translateY(-2px);
+        }
+
+        .bookmark-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            padding: 0.25rem;
+            transition: all 0.2s;
+            opacity: 0.5;
+        }
+
+        .bookmark-btn:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .bookmark-btn.bookmarked {
+            opacity: 1;
         }
 
         .artifact-number {
@@ -578,7 +601,7 @@ def generate_html(sections):
                     <span class="stat-label">Categories</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">4</span>
+                    <span class="stat-number">3</span>
                     <span class="stat-label">Sectors</span>
                 </div>
             </div>
@@ -598,8 +621,13 @@ def generate_html(sections):
                         <button class="filter-btn" data-sector="public">Public</button>
                         <button class="filter-btn" data-sector="nonprofit">Nonprofit</button>
                         <button class="filter-btn" data-sector="business">Business</button>
-                        <button class="filter-btn" data-sector="consulting">Consulting</button>
                     </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-title">Bookmarked <span id="bookmarkCount">(0)</span></div>
+                    <button class="filter-btn" id="showBookmarked" data-filter="bookmarked">View Saved</button>
+                    <button class="filter-btn" id="clearBookmarks" style="margin-top: 0.5rem;">Clear All</button>
                 </div>
 
                 <div class="filter-title">Sections</div>
@@ -775,6 +803,9 @@ def generate_html(sections):
                         <div class="artifacts-grid">
                             ${section.artifacts.map(artifact => `
                                 <div class="artifact-card" data-sectors="${artifact.sectors.join(',').toLowerCase()}" data-name="${artifact.name.toLowerCase()}" data-number="${artifact.number}">
+                                    <button class="bookmark-btn" onclick="toggleBookmark(${artifact.number})" title="Bookmark this artifact">
+                                        📚
+                                    </button>
                                     <div class="artifact-number">#${artifact.number}</div>
                                     <div class="artifact-name">${artifact.name}</div>
                                     <div class="artifact-purpose">${artifact.purpose}</div>
@@ -801,6 +832,68 @@ def generate_html(sections):
         function updateVisibleCount() {
             const visibleCards = document.querySelectorAll('.artifact-card:not([style*="display: none"])');
             document.getElementById('totalArtifacts').textContent = visibleCards.length;
+        }
+
+        // Bookmark functionality
+        function getBookmarks() {
+            const saved = localStorage.getItem('artifactBookmarks');
+            return saved ? JSON.parse(saved) : [];
+        }
+
+        function saveBookmarks(bookmarks) {
+            localStorage.setItem('artifactBookmarks', JSON.stringify(bookmarks));
+            updateBookmarkCount();
+            updateBookmarkButtons();
+        }
+
+        function toggleBookmark(artifactNumber) {
+            let bookmarks = getBookmarks();
+            const index = bookmarks.indexOf(artifactNumber);
+
+            if (index > -1) {
+                bookmarks.splice(index, 1);
+            } else {
+                bookmarks.push(artifactNumber);
+            }
+
+            saveBookmarks(bookmarks);
+        }
+
+        function updateBookmarkCount() {
+            const count = getBookmarks().length;
+            document.getElementById('bookmarkCount').textContent = `(${count})`;
+        }
+
+        function updateBookmarkButtons() {
+            const bookmarks = getBookmarks();
+            document.querySelectorAll('.bookmark-btn').forEach(btn => {
+                const card = btn.closest('.artifact-card');
+                const number = parseInt(card.dataset.number);
+                if (bookmarks.includes(number)) {
+                    btn.classList.add('bookmarked');
+                } else {
+                    btn.classList.remove('bookmarked');
+                }
+            });
+        }
+
+        function showBookmarkedOnly() {
+            const bookmarks = getBookmarks();
+            const cards = document.querySelectorAll('.artifact-card');
+
+            cards.forEach(card => {
+                const number = parseInt(card.dataset.number);
+                card.style.display = bookmarks.includes(number) ? 'block' : 'none';
+            });
+
+            updateVisibleCount();
+        }
+
+        function clearAllBookmarks() {
+            if (confirm('Are you sure you want to clear all bookmarked artifacts?')) {
+                saveBookmarks([]);
+                resetFilters();
+            }
         }
 
         // Search functionality
@@ -863,9 +956,15 @@ def generate_html(sections):
             });
         });
 
+        // Bookmark button event listeners
+        document.getElementById('showBookmarked').addEventListener('click', showBookmarkedOnly);
+        document.getElementById('clearBookmarks').addEventListener('click', clearAllBookmarks);
+
         // Initialize
         renderNavigation();
         renderArtifacts();
+        updateBookmarkCount();
+        updateBookmarkButtons();
     </script>
 </body>
 </html>'''
