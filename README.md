@@ -112,9 +112,10 @@ Each artifact is presented with:
 **Sectors:** Public, Nonprofit, Business, Consulting
 
 ### 7. Guiding Principles / Decision-Making Principles
-**Purpose:** Frameworks that help choose between competing options.  
-**Example:** "Customer-first in all decisions" or "Prefer build over buy when core competency"  
+**Purpose:** Frameworks that help choose between competing options.
+**Example:** "Customer-first in all decisions" or "Prefer build over buy when core competency"
 **Sectors:** Public, Nonprofit, Business, Consulting
+**Note:** This differs from #3 (Core Values) which are cultural beliefs; these are strategic decision-making frameworks.
 
 ### 8. Strategic Plan
 **Purpose:** Comprehensive document integrating mission, vision, goals, strategies, and resource allocation over 3-5 years.  
@@ -244,536 +245,536 @@ Each artifact is presented with:
 **Example:** Centralized vs. decentralized model, shared services design, McKinsey's "Organize to Value" framework  
 **Sectors:** Public, Business, Consulting
 
-### Business Capability Map / Capability Framework
+### 32. Business Capability Map / Capability Framework
 **Purpose:** Visual map of organizational capabilities needed to deliver on strategy (what the organization must be able to do).  
 **Example:** Strategic capabilities (planning, innovation), Core capabilities (service delivery), Enabling capabilities (HR, finance, IT)  
 **Sectors:** Public, Business, Consulting
 
-### Enterprise Architecture Framework
+### 33. Enterprise Architecture Framework
 **Purpose:** Aligns business strategy, processes, information, and technology systems.  
 **Example:** TOGAF enterprise architecture, FEAF (Federal Enterprise Architecture Framework)  
 **Sectors:** Public, Business
 
-### Organizational Structure
+### 34. Organizational Structure
 **Purpose:** Formal structure showing reporting relationships, roles, responsibilities, and hierarchies.  
 **Example:** Traditional hierarchy, matrix structure, flat organization  
 **Sectors:** Public, Nonprofit, Business, Consulting
 
-### Service Catalog
+### 35. Service Catalog
 **Purpose:** Defines all services offered, including SLAs, owners, and request pathways.  
 **Example:** IT service catalog listing all technology services  
 **Sectors:** Public, Business
 
-### Service Blueprint
+### 36. Service Blueprint
 **Purpose:** Maps front-stage (customer-facing) and back-stage (internal) service processes.  
 **Example:** Public library service blueprint  
 **Sectors:** Public, Nonprofit, Business
 
-### Customer Journey Map / User Journey Map
+### 37. Customer Journey Map / User Journey Map
 **Purpose:** Visualizes citizen or customer experience through touchpoints and pain points.  
 **Example:** DMV customer journey, SNAP benefits application process  
 **Sectors:** Public, Nonprofit, Business, Consulting
 
-### Service Level Agreements (SLAs)
+### 38. Service Level Agreements (SLAs)
 **Purpose:** Documented expectations for service performance and response times.  
 **Example:** "IT help desk tickets resolved within 24 hours"  
 **Sectors:** Public, Business
 
-### Customer Charter / Service Standards
+### 39. Customer Charter / Service Standards
 **Purpose:** Explicit, measurable commitments to customers about service quality.  
 **Example:** "We will respond to inquiries within 24 hours" or "99.9% system uptime guarantee"  
 **Sectors:** Public, Business
 
-### Standard Operating Procedures (SOPs)
+### 40. Standard Operating Procedures (SOPs)
 **Purpose:** Detailed instructions for executing routine processes consistently.  
 **Example:** Employee onboarding SOP  
 **Sectors:** Public, Nonprofit, Business
 
-### Operating Principles / "Rules of the Road"
+### 41. Operating Principles / "Rules of the Road"
 **Purpose:** Short, tactical principles governing how teams work day-to-day.  
 **Example:** "Default to open," "Users before shareholders," "Document everything"  
 **Sectors:** Public, Business, Consulting
 
-### Playbooks (Operations, Crisis, Communications)
+### 42. Playbooks (Operations, Crisis, Communications)
 **Purpose:** Action-oriented manuals for consistent execution of common tasks.  
 **Example:** Cyber incident response playbook, crisis communications playbook, volunteer management playbook  
 **Sectors:** Public, Nonprofit, Business, Consulting
 
-### RACI Matrix (Responsibility Assignment Matrix)
+### 43. RACI Matrix (Responsibility Assignment Matrix)
 **Purpose:** Clarifies who is Responsible, Accountable, Consulted, and Informed for major tasks.  
 **Example:** Project RACI showing R, A, C, I for each stakeholder role  
 **Sectors:** Public, Business, Consulting
 
-### Value Stream Map / Process Map
+### 44. Value Stream Map / Process Map
 **Purpose:** Lean diagrams showing workflow, value creation, and waste.  
 **Example:** Employee onboarding process map  
 **Sectors:** Business, Public, Consulting
 
-### Knowledge Base / Process Library
+### 45. Knowledge Base / Process Library
 **Purpose:** Central repository of SOPs, instructions, templates, and decision guides.  
 **Example:** SharePoint library for service delivery processes  
 **Sectors:** Public, Business
 
-### Operating Rhythm / Meeting Cadence Calendar
+### 46. Operating Rhythm / Meeting Cadence Calendar
 **Purpose:** Defines key annual/quarterly/monthly/weekly meetings, reviews, and reporting cycles.  
 **Example:** "Quarterly results review → Monthly cabinet meeting → Weekly standups"  
 **Sectors:** Business, Public
 
 ---
 
-## 4. Human Resources, Workforce & Leadership Development
+## D. Human Resources, Workforce & Leadership Development
 
-### Leadership Competency Model
+### 47. Leadership Competency Model
 **Purpose:** Defines what "good leadership" looks like in the organization.  
 **Example:** Zenger/Folkman competency model, federal Executive Core Qualifications (ECQs)  
 **Sectors:** Public, Business, Consulting
 
-### Leadership Philosophy Statement
+### 48. Leadership Philosophy Statement
 **Purpose:** Defines a leader's personal theory of leadership and core beliefs.  
 **Example:** "I believe leadership is about servant leadership and empowering others"  
 **Sectors:** Public, Nonprofit, Business
 
-### Competency Dictionary / Competency Model
+### 49. Competency Dictionary / Competency Model
 **Purpose:** Defines expected competencies (knowledge, skills, abilities) for roles or leadership tiers.  
 **Example:** SHRM competency dictionary  
 **Sectors:** Public, Business, Consulting
 
-### Role Architecture / Job Family Framework
+### 50. Role Architecture / Job Family Framework
 **Purpose:** Classifies jobs into families, levels, and progression pathways.  
 **Example:** HR job family tree with career progression  
 **Sectors:** Public, Business
 
-### Workforce Development Framework
+### 51. Workforce Development Framework
 **Purpose:** Defines training, leadership development, and career pathways structure.  
 **Example:** Leadership development pathways, DOD Civilian Leader Development Framework  
 **Sectors:** Public, Business
 
-### Workforce Planning Strategy / Workforce Plan
+### 52. Workforce Planning Strategy / Workforce Plan
 **Purpose:** Future staffing needs, skills gaps, retirement risk, and recruitment priorities.  
 **Example:** State HR five-year workforce plan  
 **Sectors:** Public, Business
 
-### Succession Planning / Succession Management Plan
+### 53. Succession Planning / Succession Management Plan
 **Purpose:** Identifies critical positions and develops future leaders to ensure continuity.  
 **Example:** State agency succession plan, talent pipeline development  
 **Sectors:** Public, Business
 
-### Succession Pipeline / Talent Pipeline Map
+### 54. Succession Pipeline / Talent Pipeline Map
 **Purpose:** Identifies readiness of internal candidates for future roles.  
 **Example:** 9-box talent grid showing high performers  
 **Sectors:** Business, Public
 
-### Skills Inventory / Skills Taxonomy
+### 55. Skills Inventory / Skills Taxonomy
 **Purpose:** Catalog of organizational skills used in workforce planning.  
 **Example:** Technical and soft skills inventory  
 **Sectors:** Business, Public
 
-### Team Charter / Staff Charter
+### 56. Team Charter / Staff Charter
 **Purpose:** Defines team agreements, norms, roles, and communication expectations.  
 **Example:** Agile team charter  
 **Sectors:** Public, Business, Consulting
 
-### Onboarding Framework / Onboarding Journey Map
+### 57. Onboarding Framework / Onboarding Journey Map
 **Purpose:** High-level structure for new employee experience.  
 **Example:** 90-day onboarding journey with milestones  
 **Sectors:** Public, Business
 
-### Performance Review Framework
+### 58. Performance Review Framework
 **Purpose:** Outlines how performance evaluations are structured and conducted.  
 **Example:** State competency model, 9-box talent grid  
 **Sectors:** Public, Business
 
-### Performance Calibration Framework
+### 59. Performance Calibration Framework
 **Purpose:** Ensures rating consistency across supervisors.  
 **Example:** Calibration committees, forced distribution  
 **Sectors:** Business
 
-### Employee Value Proposition (EVP)
+### 60. Employee Value Proposition (EVP)
 **Purpose:** Articulates what makes the organization an attractive place to work.  
 **Example:** "Meaningful work, flexibility, growth opportunities, inclusive culture"  
 **Sectors:** Business, Nonprofit
 
-### Workforce Diversity & Inclusion Plan
+### 61. Workforce Diversity & Inclusion Plan
 **Purpose:** Formal DEI goals, metrics, and initiatives.  
 **Example:** Government DEI strategic plan  
 **Sectors:** Public, Nonprofit, Business
 
-### Employee Wellbeing & Resilience Framework
+### 62. Employee Wellbeing & Resilience Framework
 **Purpose:** Documented structure for mental health, burnout prevention, and workplace support.  
 **Example:** Employee assistance program structure  
 **Sectors:** Public, Business
 
-### Remote Work / Hybrid Work Playbook
+### 63. Remote Work / Hybrid Work Playbook
 **Purpose:** Governance for distributed workforces.  
 **Example:** Hybrid work policies and expectations  
 **Sectors:** Public, Business
 
-### Knowledge Transfer Plan
+### 64. Knowledge Transfer Plan
 **Purpose:** Template for handing off roles between staff during transitions.  
 **Example:** Succession knowledge transfer checklist  
 **Sectors:** Public, Business
 
 ---
 
-## 5. Finance, Budgeting & Resource Management
+## E. Finance, Budgeting & Resource Management
 
-### Budget Book / Budget Narrative / Agency Budget Justification
+### 65. Budget Book / Budget Narrative / Agency Budget Justification
 **Purpose:** Explains resource requests and financial plans with narrative and numbers.  
 **Example:** State agency biennial budget book  
 **Sectors:** Public, Nonprofit
 
-### Cost Allocation Plan
+### 66. Cost Allocation Plan
 **Purpose:** Explains how shared costs are distributed; required for federal grant recipients.  
 **Example:** OMB Uniform Guidance-compliant cost allocation plan  
 **Sectors:** Public, Nonprofit
 
-### Long-Range Financial Plan (LRFP)
+### 67. Long-Range Financial Plan (LRFP)
 **Purpose:** Multi-year financial forecasting (5-10 years).  
 **Example:** Municipal long-range financial plan  
 **Sectors:** Public
 
-### Capital Improvement Plan (CIP)
+### 68. Capital Improvement Plan (CIP)
 **Purpose:** Multi-year plan for major capital investments, infrastructure, and assets.  
 **Example:** City CIP for roads, buildings, utilities  
 **Sectors:** Public
 
-### Financial Controls Framework / Financial Controls Manual
+### 69. Financial Controls Framework / Financial Controls Manual
 **Purpose:** Defines financial procedures, expenditure processes, procurement, and auditing.  
 **Example:** Nonprofit financial policies handbook  
 **Sectors:** Public, Nonprofit, Business
 
-### Grants Management Framework
+### 70. Grants Management Framework
 **Purpose:** Structure for applying, managing, and reporting on grants.  
 **Example:** Federal Uniform Guidance-compliant grants management  
 **Sectors:** Public, Nonprofit
 
-### Investment Committee Charter
+### 71. Investment Committee Charter
 **Purpose:** For organizations with reserves, endowments, or capital projects.  
 **Example:** Nonprofit endowment investment committee charter  
 **Sectors:** Nonprofit
 
 ---
 
-## 6. Technology, Data & Digital Operations
+## F. Technology, Data & Digital Operations
 
-### Digital Transformation Roadmap
+### 72. Digital Transformation Roadmap
 **Purpose:** Outlines modernization priorities, platforms, and timelines.  
 **Example:** Government digital service transformation roadmap  
 **Sectors:** Public, Business
 
-### Information Security Program Charter
+### 73. Information Security Program Charter
 **Purpose:** Defines security authority, responsibilities, and governance.  
 **Example:** NIST 800-53 aligned security program charter  
 **Sectors:** Public, Business
 
-### Data Governance Framework
+### 74. Data Governance Framework
 **Purpose:** Defines ownership, stewardship, quality, access, and controls for organizational data.  
 **Example:** DAMA DMBOK data governance  
 **Sectors:** Public, Business, Consulting
 
-### Data Architecture Diagram / Information Model
+### 75. Data Architecture Diagram / Information Model
 **Purpose:** Maps core data entities, relationships, and flows.  
 **Example:** Enterprise data model  
 **Sectors:** Public, Business
 
-### IT Service Management Framework
+### 76. IT Service Management Framework
 **Purpose:** Defines processes for IT service delivery.  
 **Example:** ITIL (Information Technology Infrastructure Library)  
 **Sectors:** Public, Business
 
-### API Governance Standards
+### 77. API Governance Standards
 **Purpose:** Formalizes how APIs are developed, secured, and managed.  
 **Example:** API design standards and security requirements  
 **Sectors:** Business, Public
 
-### Digital Literacy / Digital Readiness Framework
+### 78. Digital Literacy / Digital Readiness Framework
 **Purpose:** Assesses workforce digital competency.  
 **Example:** OECD digital readiness model  
 **Sectors:** Public, Business
 
-### Information Architecture (IA) Map
+### 79. Information Architecture (IA) Map
 **Purpose:** Structured overview of how information is organized.  
 **Example:** Website information architecture  
 **Sectors:** Public, Business, Consulting
 
-### Innovation Portfolio
+### 80. Innovation Portfolio
 **Purpose:** Organizes innovation initiatives by risk and horizon.  
 **Example:** "Horizon 1, 2, 3" innovation framework (core, adjacent, transformational)  
 **Sectors:** Business, Consulting
 
 ---
 
-## 7. Risk, Continuity & Resilience
+## G. Risk, Continuity & Resilience
 
-### Risk Management Framework
+### 81. Risk Management Framework
 **Purpose:** Systematic approach to identifying, assessing, prioritizing, and mitigating organizational risks.  
 **Example:** ISO 31000, NIST Risk Management Framework  
 **Sectors:** Public, Business, Consulting
 
-### Risk Register / Risk Charter
+### 82. Risk Register / Risk Charter
 **Purpose:** Living document tracking all identified risks with severity, likelihood, ownership, and mitigation status.  
 **Example:** Enterprise risk register with heat map  
 **Sectors:** Public, Business, Consulting
 
-### Enterprise Risk Management (ERM) Framework
+### 83. Enterprise Risk Management (ERM) Framework
 **Purpose:** High-level approach for risk strategy, monitoring, and escalation.  
 **Example:** COSO ERM framework  
 **Sectors:** Public, Business
 
-### Business Impact Analysis (BIA)
+### 84. Business Impact Analysis (BIA)
 **Purpose:** Identifies critical functions and acceptable downtime.  
 **Example:** IT business impact analysis form  
 **Sectors:** Public, Business
 
-### Continuity of Operations (COOP) Plan
+### 85. Continuity of Operations (COOP) Plan
 **Purpose:** Ensures essential services continue during disruptions.  
 **Example:** FEMA COOP template  
 **Sectors:** Public, Business
 
-### Business Continuity Plan (BCP)
+### 86. Business Continuity Plan (BCP)
 **Purpose:** Procedures for maintaining operations during disasters or system failures.  
 **Example:** Disaster recovery procedures, backup systems  
 **Sectors:** Public, Business
 
-### Crisis Management Plan / Crisis Action Plan (CAP)
+### 87. Crisis Management Plan / Crisis Action Plan (CAP)
 **Purpose:** Defines organizational response to emergencies with chain of authority.  
 **Example:** Incident response playbook  
 **Sectors:** Public, Business, Consulting
 
-### Threat Assessment Framework
+### 88. Threat Assessment Framework
 **Purpose:** Identifies and categorizes threats (physical or cyber).  
 **Example:** Homeland Security threat matrix  
 **Sectors:** Public, Business
 
-### Vulnerability Assessment
+### 89. Vulnerability Assessment
 **Purpose:** Identifies weaknesses in systems or processes.  
 **Example:** NIST cybersecurity vulnerability assessment  
 **Sectors:** Public, Business
 
-### Continuity Resource Inventory
+### 90. Continuity Resource Inventory
 **Purpose:** List of essential personnel, assets, and tools required during COOP.  
 **Example:** Emergency essential staff roster  
 **Sectors:** Public
 
 ---
 
-## 8. Communications, Engagement & External Relations
+## H. Communications, Engagement & External Relations
 
-### Communications Plan / Communications Strategy Framework
+### 91. Communications Plan / Communications Strategy Framework
 **Purpose:** Defines messaging, channels, audiences, and cadence.  
 **Example:** Strategic communications plan for state agency  
 **Sectors:** Public, Nonprofit, Business, Consulting
 
-### Brand Guidelines / Identity Standards
+### 92. Brand Guidelines / Identity Standards
 **Purpose:** Defines logos, colors, fonts, tone, photography, and visual identity.  
 **Example:** City or nonprofit branding manual  
 **Sectors:** Nonprofit, Business, Public
 
-### Stakeholder Map / Stakeholder Analysis
+### 93. Stakeholder Map / Stakeholder Analysis
 **Purpose:** Identifies key stakeholders, their interests, power, and influence.  
 **Example:** Power/Interest matrix, Influence/Impact grid  
 **Sectors:** Public, Nonprofit, Business, Consulting
 
-### Stakeholder Engagement Plan
+### 94. Stakeholder Engagement Plan
 **Purpose:** Defines how to engage different stakeholders with tailored strategies.  
 **Example:** Constituent engagement plan, donor engagement strategy  
 **Sectors:** Public, Nonprofit, Business
 
-### Public Engagement Framework
+### 95. Public Engagement Framework
 **Purpose:** Guides engagement with communities and the public.  
 **Example:** IAP2 Spectrum of Engagement  
 **Sectors:** Public, Nonprofit
 
-### Leadership Talking Points / Messaging Guide
+### 96. Leadership Talking Points / Messaging Guide
 **Purpose:** Ensures leaders speak consistently about priorities.  
 **Example:** Commissioner briefing points  
 **Sectors:** Public, Business
 
-### Engagement/Communications Calendar
+### 97. Engagement/Communications Calendar
 **Purpose:** Schedule of announcements, outreach, and engagement touchpoints.  
 **Example:** Monthly commissioner newsletters, nonprofit donor communications plan  
 **Sectors:** Public, Nonprofit, Business
 
-### Annual Report
+### 98. Annual Report
 **Purpose:** Summary of yearly activities, accomplishments, and financials.  
 **Example:** Nonprofit annual impact report, shareholder annual report  
 **Sectors:** Public, Nonprofit, Business
 
-### Transparency Framework
+### 99. Transparency Framework
 **Purpose:** Defines what information is proactively published.  
 **Example:** Open data policy  
 **Sectors:** Public
 
-### Public Participation Plan (P3)
+### 100. Public Participation Plan (P3)
 **Purpose:** Defines how the public will be engaged in decision-making.  
 **Example:** IAP2 ladder of engagement mapping  
 **Sectors:** Public
 
 ---
 
-## 9. Evaluation, Learning & Improvement
+## I. Evaluation, Learning & Improvement
 
-### Performance Measurement Framework
+### 101. Performance Measurement Framework
 **Purpose:** Defines how success is measured across the organization.  
 **Example:** Balanced Scorecard, OKRs, KPI dashboard  
 **Sectors:** Public, Business, Consulting
 
-### Balanced Scorecard (BSC)
+### 102. Balanced Scorecard (BSC)
 **Purpose:** Strategic management system measuring performance across 4 perspectives: Financial, Customer, Internal Process, Learning & Growth.  
 **Example:** Objectives, measures, targets, and initiatives across each perspective  
 **Sectors:** Business, Public
 
-### OKR Framework (Objectives & Key Results)
+### 103. OKR Framework (Objectives & Key Results)
 **Purpose:** Agile goal-setting framework with 2-3 objectives and 3-5 measurable key results per objective, typically quarterly.  
 **Example:** Objective: "Launch in mobile market" / Key Results: "1M downloads, 4.5 star rating, 40% retention"  
 **Sectors:** Business, Public
 
-### KPIs / Metrics Dashboard
+### 104. KPIs / Metrics Dashboard
 **Purpose:** Selected, measurable values demonstrating how effectively established processes achieve strategic objectives. KPIs function as "ongoing vital signs" monitoring organizational health. Must be clearly defined, measurable, actionable, influential on decisions, and regularly reported. Distinct from metrics (tactical processes/actions like "monthly store visits") which feed into higher-level KPIs (like "targeted monthly revenue").  
 **Example:** Customer satisfaction score 85%, response time <2 hours, 95% uptime, conversion rate, ROI  
 **Sectors:** Public, Business, Consulting
 
-### Theory of Change
+### 105. Theory of Change
 **Purpose:** Structured planning tool mapping the causal logic—the "missing middle"—between organizational activities (interventions) and desired long-term outcomes. Explains how and why desired change is expected to occur under certain conditions. Includes Long-Term Goals, specific Outcomes, Activities, and critical Assumptions (underlying conditions that must exist). Defines the "Value Agenda" for social impact and provides framework for evaluation.  
 **Example:** "Providing 1:1 mentorship (Activity) + Academic support → Increased achievement (Outcome) → College enrollment (Long-term Goal)" with assumption "Supportive family environment exists"  
 **Sectors:** Nonprofit, Public
 
-### Logic Model
+### 106. Logic Model
 **Purpose:** Program-level framework mapping inputs → activities → outputs → outcomes → impact with specific metrics.  
 **Example:** Staff + funding → training programs → # trained → skill improvement → job placement rate  
 **Sectors:** Nonprofit, Public
 
-### Monitoring & Evaluation (M&E) Plan
+### 107. Monitoring & Evaluation (M&E) Plan
 **Purpose:** Framework for tracking outputs, outcomes, and impact. Includes both Implementation Studies (proving program is implemented as intended/fidelity) and Impact Studies (establishing whether program generated desired effects/causality). Validates Theory of Change assumptions.  
 **Example:** USAID M&E Plan with outcome indicators and data collection methods  
 **Sectors:** Public, Nonprofit
 
-### Learning Agenda
+### 108. Learning Agenda
 **Purpose:** Planning tool identifying what the organization needs to learn to make better decisions.  
 **Example:** Federal agency Evidence Act Learning Agenda  
 **Sectors:** Public
 
-### Audit Reports (Internal or External)
+### 109. Audit Reports (Internal or External)
 **Purpose:** Independent assessment of compliance, performance, or risk.  
 **Example:** Legislative Auditor reports, financial audits  
 **Sectors:** Public, Nonprofit, Business
 
-### Maturity Model Assessment
+### 110. Maturity Model Assessment
 **Purpose:** Rates the organization on levels (1-5) of maturity across capabilities.  
 **Example:** CMMI, ITIL maturity, DEI maturity, customer experience maturity  
 **Sectors:** Public, Business, Consulting
 
-### Reflective Practice Framework / After-Action Review
+### 111. Reflective Practice Framework / After-Action Review
 **Purpose:** Defines organizational learning routines.  
 **Example:** After-action review process  
 **Sectors:** Public, Business, Consulting
 
-### Organizational Health Index / Culture Scorecard
+### 112. Organizational Health Index / Culture Scorecard
 **Purpose:** Measures trust, psychological safety, engagement, etc.  
 **Example:** McKinsey Organizational Health Index  
 **Sectors:** Business, Consulting
 
-### Workforce Sentiment Analysis / Employee Listening Strategy
+### 113. Workforce Sentiment Analysis / Employee Listening Strategy
 **Purpose:** Defines how feedback is gathered and used.  
 **Example:** Pulse survey + listening posts + engagement surveys  
 **Sectors:** Business, Public
 
 ---
 
-## 10. Program, Project & Portfolio Management
+## J. Program, Project & Portfolio Management
 
-### Program Charter
+### 114. Program Charter
 **Purpose:** Defines the purpose, scope, and boundaries of a program.  
 **Example:** Public health program charter  
 **Sectors:** Public, Nonprofit, Business
 
-### Project Charter
+### 115. Project Charter
 **Purpose:** Authorizes a project and defines objectives, scope, and stakeholders.  
 **Example:** IT modernization project charter  
 **Sectors:** Public, Business, Consulting
 
-### Project Governance Plan
+### 116. Project Governance Plan
 **Purpose:** Decision-making structure for a project.  
 **Example:** PMBOK project governance plan  
 **Sectors:** Public, Business, Consulting
 
-### Portfolio Prioritization Framework
+### 117. Portfolio Prioritization Framework
 **Purpose:** Defines how projects are selected and funded.  
 **Example:** Weighted scoring model  
 **Sectors:** Business, Public
 
-### Program/Portfolio Roadmap
+### 118. Program/Portfolio Roadmap
 **Purpose:** Timeline showing major initiatives, milestones, and dependencies.  
 **Example:** Application modernization roadmap  
 **Sectors:** Public, Business, Consulting
 
-### Benefits Realization Plan
+### 119. Benefits Realization Plan
 **Purpose:** Shows how long-term outcomes and ROI will be tracked.  
 **Example:** PMI benefits realization framework  
 **Sectors:** Business, Consulting
 
-### Resource Plan / Staffing Plan
+### 120. Resource Plan / Staffing Plan
 **Purpose:** Maps staffing requirements to responsibilities and timeline.  
 **Example:** Project resource allocation plan  
 **Sectors:** Public, Business, Consulting
 
 ---
 
-## 11. Change Management & Organizational Development
+## K. Change Management & Organizational Development
 
-### Change Management Plan / Change Management Framework
+### 121. Change Management Plan / Change Management Framework
 **Purpose:** Structured approach to implementing organizational change.  
 **Example:** Prosci ADKAR model, Kotter's 8-step process  
 **Sectors:** Public, Business, Consulting
 
-### Change Readiness Assessment
+### 122. Change Readiness Assessment
 **Purpose:** Measures cultural and operational readiness for change.  
 **Example:** Organizational pulse survey with heat maps  
 **Sectors:** Public, Business, Consulting
 
-### Change Adoption Plan
+### 123. Change Adoption Plan
 **Purpose:** Different from implementation; focuses on training, communication, and reinforcement.  
 **Example:** User adoption strategy  
 **Sectors:** Business, Consulting
 
-### Transformation Charter / Modernization Charter
+### 124. Transformation Charter / Modernization Charter
 **Purpose:** Defines scope, value, and governance of a major transformation program.  
 **Example:** Enterprise transformation charter  
 **Sectors:** Public, Business, Consulting
 
-### Implementation Playbook / Roadmap
+### 125. Implementation Playbook / Roadmap
 **Purpose:** Step-by-step "how to do it" guide for execution.  
 **Example:** Digital service transformation playbook  
 **Sectors:** Public, Business, Consulting
 
-### Culture Assessment Report
+### 126. Culture Assessment Report
 **Purpose:** Describes culture strengths, barriers, and archetypes.  
 **Example:** Organizational culture diagnostic  
 **Sectors:** Business, Consulting
 
-### Organizational Culture Framework / Culture Playbook
+### 127. Organizational Culture Framework / Culture Playbook
 **Purpose:** Artifacts articulating desired norms, leadership behaviors, and shared identity.  
 **Example:** "Point North" servant-leadership principles, Netflix Culture Deck  
 **Sectors:** Business, Public
 
-### Sensemaking Framework / Sensemaking Brief
+### 128. Sensemaking Framework / Sensemaking Brief
 **Purpose:** Helps leaders interpret complex or ambiguous situations.  
 **Example:** Cynefin framework  
 **Sectors:** Public, Consulting
 
-### Narrative Change Plan
+### 129. Narrative Change Plan
 **Purpose:** Shifting mindsets and stories over time.  
 **Example:** Advocacy narrative change strategy  
 **Sectors:** Nonprofit, Public
 
-### Symbolic Actions Playbook
+### 130. Symbolic Actions Playbook
 **Purpose:** Identifies rituals, stories, and signals leaders use to reinforce culture.  
 **Example:** "First 90 days" symbolic action plan  
 **Sectors:** Public, Business
 
 ---
 
-## 12. Specialized & Sector-Specific Frameworks
+## L. Specialized & Sector-Specific Frameworks
 
 ### PUBLIC ADMINISTRATION SPECIFIC
 
@@ -960,126 +961,126 @@ Each artifact is presented with:
 
 ---
 
-## 13. Advanced & Specialized Tools
+## M. Advanced & Specialized Tools
 
-### Design Principles
+### 131. Design Principles
 **Purpose:** Core tenets guiding design decisions.  
 **Example:** "Digital-first," "Accessible by default," "Human-centered"  
 **Sectors:** Public, Business, Consulting
 
-### Content Strategy Framework
+### 132. Content Strategy Framework
 **Purpose:** Defines voice, tone, taxonomy, and governance.  
 **Example:** Web content strategy  
 **Sectors:** Public, Business
 
-### User Personas
+### 133. User Personas
 **Purpose:** Fictional profiles representing different user types.  
 **Example:** Civic tech personas  
 **Sectors:** Public, Business, Consulting
 
-### Environmental Scan / PESTLE Analysis
+### 134. Environmental Scan / PESTLE Analysis
 **Purpose:** Analysis of Political, Economic, Social, Technological, Legal, Environmental forces.  
 **Example:** Strategic planning environmental scan  
 **Sectors:** Public, Business, Consulting
 
-### SWOT Analysis
+### 135. SWOT Analysis
 **Purpose:** Strengths, Weaknesses, Opportunities, Threats assessment.  
 **Example:** Used in retreats and strategic planning  
 **Sectors:** Public, Nonprofit, Business, Consulting
 
-### Business Case / Problem Statement
+### 136. Business Case / Problem Statement
 **Purpose:** Formal document justifying a significant project or investment. Bridges strategic intent with project execution by outlining the problem, analyzing options (with pros/cons/costs), recommending a solution, and providing financial appraisal and implementation plan. Ensures informed decision-making and optimal resource prioritization.  
 **Example:** Enterprise software investment justification, ERP system business case with ROI analysis  
 **Sectors:** Public, Business, Consulting
 
-### Scenario Planning / Strategic Foresight Framework
+### 137. Scenario Planning / Strategic Foresight Framework
 **Purpose:** Explores plausible futures to inform proactive strategy.  
 **Example:** "Future of digital services in 2035" scenario book  
 **Sectors:** Public, Business, Consulting
 
-### Systems Map / Causal Loop Diagram
+### 138. Systems Map / Causal Loop Diagram
 **Purpose:** Models complex interdependent systems.  
 **Example:** Public health systems dynamics map  
 **Sectors:** Public, Nonprofit, Consulting
 
-### Decision-Making Framework
+### 139. Decision-Making Framework
 **Purpose:** Structured approach to making decisions.  
 **Example:** RAPID (Recommend, Agree, Perform, Input, Decide), consent-based decision making  
 **Sectors:** Public, Business, Consulting
 
-### Ethical Decision Framework
+### 140. Ethical Decision Framework
 **Purpose:** Structured lens for decisions involving moral challenges.  
 **Example:** Ethics decision tree  
 **Sectors:** Public, Nonprofit
 
-### Compliance Framework
+### 141. Compliance Framework
 **Purpose:** Documentation of laws, regulations, and internal controls.  
 **Example:** SOC 2, ISO 27001, GDPR, HIPAA compliance programs  
 **Sectors:** Public, Business
 
-### Organizational Learning System
+### 142. Organizational Learning System
 **Purpose:** Infrastructure governing how the org learns, experiments, and adapts.  
 **Example:** Toyota "Hoshin Kanri" learning rhythm  
 **Sectors:** Business, Consulting
 
-### Ethnographic Observation Notes / Organizational Anthropology Reports
+### 143. Ethnographic Observation Notes / Organizational Anthropology Reports
 **Purpose:** Deep insight into organizational culture and behavior.  
 **Example:** Workplace ethnography report  
 **Sectors:** Consulting
 
-### Annual Compliance Calendar
+### 144. Annual Compliance Calendar
 **Purpose:** Lists all mandatory filings, audits, reports, renewals.  
 **Example:** HR compliance calendar  
 **Sectors:** Public, Nonprofit, Business
 
-### Harassment Prevention & Respectful Workplace Framework
+### 145. Harassment Prevention & Respectful Workplace Framework
 **Purpose:** System including training, reporting pathways, and restorative practices.  
 **Example:** Respectful workplace program  
 **Sectors:** Public, Business
 
-### Principles of Practice / Standards of Professional Conduct
+### 146. Principles of Practice / Standards of Professional Conduct
 **Purpose:** Sector-specific behavioral norms beyond general ethics.  
 **Example:** NASW standards for social work, Agile Manifesto principles  
 **Sectors:** Public, Nonprofit, Business
 
-### Operating Constraints List ("Guardrails")
+### 147. Operating Constraints List ("Guardrails")
 **Purpose:** Explicit description of non-negotiables.  
 **Example:** Budget constraints, regulatory requirements  
 **Sectors:** Public, Business
 
-### Executive Briefing Book / Principal's Book
+### 148. Executive Briefing Book / Principal's Book
 **Purpose:** Comprehensive reference for executives with key info, contacts, and context.  
 **Example:** Commissioner's briefing book  
 **Sectors:** Public
 
-### Equity Framework / DEI Framework
+### 149. Equity Framework / DEI Framework
 **Purpose:** Organizational commitment and plan related to equity, diversity, inclusion.  
 **Example:** State DEI strategic plan, DEI charter  
 **Sectors:** Public, Nonprofit, Business
 
-### Leadership Development Curriculum
+### 150. Leadership Development Curriculum
 **Purpose:** Formal structure for leadership training.  
 **Example:** Multi-level leadership program  
 **Sectors:** Public, Business
 
-### Culture Code
+### 151. Culture Code
 **Purpose:** Defines informal but codified workplace behavioral expectations.  
 **Example:** Netflix Culture Deck  
 **Sectors:** Business
 
-### Impact Manifesto / Change Statement
+### 152. Impact Manifesto / Change Statement
 **Purpose:** Public statement of intended societal value.  
 **Example:** Patagonia's "Our reason for being"  
 **Sectors:** Nonprofit, Business
 
-### Outcome Chain / Benefits Realization Map
+### 153. Outcome Chain / Benefits Realization Map
 **Purpose:** Links outputs → intermediate outcomes → ultimate impacts.  
 **Example:** Theory of Change outcome pathway  
 **Sectors:** Nonprofit, Public
 
 ---
 
-## 14. Cross-Sector Comparative Analysis
+## N. Cross-Sector Comparative Analysis
 
 Understanding why artifacts vary across sectors requires examining the different motivational and regulatory drivers:
 
