@@ -386,6 +386,79 @@
         .reset-btn:hover {
             background: #c0392b;
         }
+
+        /* Comparison table styles */
+        .comparison-content {
+            margin-top: 1.5rem;
+        }
+
+        .comparison-content p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .comparison-content h3 {
+            color: var(--primary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.25rem;
+        }
+
+        .comparison-content strong {
+            color: var(--primary);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-table thead {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: var(--light-bg);
+        }
+
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-content ol {
+            margin: 1rem 0 1rem 2rem;
+            line-height: 1.8;
+        }
+
+        .comparison-content ol li {
+            margin-bottom: 0.75rem;
+        }
+
+        .key-insights {
+            background: #f8f9fa;
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
     </style>
 </head>
 <body>
@@ -2160,7 +2233,8 @@
     {
         "letter": "N",
         "title": "Cross-Sector Comparative Analysis",
-        "artifacts": []
+        "artifacts": [],
+        "content": "Understanding why artifacts vary across sectors requires examining the different motivational and regulatory drivers:\n### Comparative Drivers of Foundational Artifacts\n| Driver Category | Business / Consulting | Nonprofit | Public Administration |\n|----------------|----------------------|-----------|----------------------|\n| **Primary Motivation** | Profit maximization, Shareholder value, Market capture | Mission attainment, Social impact, Donor trust | Legislative mandate, Public accountability, Rule of law |\n| **Key Governance Artifacts** | Corporate Charter, Governance Guidelines, Operating Model, Shareholder Agreements | Articles of Incorporation, Bylaws, Conflict of Interest Policy, Whistleblower Policy | Constitution/Charter, Enabling Legislation, Legislative Rules, General Policy Statements |\n| **Strategic Planning Model** | Operating Model (execution focus), Business Case (ROI justification) | Theory of Change (causal logic justification), Logic Model | Policy White Papers, Strategic Plans, Budget Requests, Briefing Papers |\n| **Accountability Focus** | Financial performance, Efficiency, Revenue/growth KPIs, Shareholder returns | Program impact, Cost per outcome, Social ROI, Fiduciary duty to mission | Stewardship over assets, Budgetary control, Transparency (CAFR), Service delivery metrics |\n| **Mandate Source** | Market forces, Shareholders, Contractual obligations (SOW), Competition | IRS 501(c)(3) rules, State incorporation laws, Funder requirements | Congressional/Legislative delegation of authority, Constitutional framework |\n| **Performance Measurement** | Financial KPIs, Market share, Operational efficiency, Customer acquisition | Social impact metrics, Outcomes achieved, Program evaluation, Cost-effectiveness | Public satisfaction, Service levels, Regulatory compliance, Financial stewardship |\n| **Primary Stakeholders** | Shareholders, Customers, Employees, Market | Beneficiaries, Donors, Volunteers, Community | Citizens/Constituents, Legislators, Taxpayers, Other government entities |\n### Key Insights from Comparative Analysis:\n1. **Universal Structure, Different Drivers:** While the motivational drivers differ profoundly\u2014profit (business), mission (nonprofit), mandate (public)\u2014the structure of effective leadership is remarkably similar across sectors.\n2. **Strategy-to-Performance Consistency:** All sectors require a unified, internally consistent document ecosystem where stable foundations (Purpose, Values) dictate adaptive structures (Operating Model, Theory of Change), which dictate measurement systems (KPIs, Evaluation Reports).\n3. **Cross-Sector Literacy:** Modern leadership increasingly requires understanding artifacts across sectors. A public administrator must grasp business cases for public-private partnerships; business consultants must understand Theories of Change for social enterprise clients; nonprofit leaders must understand legislative processes for advocacy.\n4. **Accountability Mechanisms Vary:** Business accountability flows primarily through financial performance to shareholders; nonprofit accountability flows through mission impact to donors and beneficiaries; public sector accountability flows through transparency and stewardship to citizens and legislative bodies.\n5. **Document Complexity Trap:** Regardless of sector, overly complex strategic documents diminish visibility and accountability. Effective leaders streamline artifacts, prioritize clarity, and link them directly to performance mechanisms.\nThis master list represents the most comprehensive compilation of organizational, leadership, strategic, operational, and governance artifacts used across public administration, nonprofit leadership, business administration, and management consulting."
     }
 ];
 
@@ -2170,6 +2244,67 @@
             navList.innerHTML = artifactsData.map(section => `
                 <li><a href="#section-${section.letter.toLowerCase()}">${section.letter}. ${section.title.split(' ').slice(0, 3).join(' ')}...</a></li>
             `).join('');
+        }
+
+        // Convert markdown content to HTML (for Section N)
+        function markdownToHtml(markdown) {
+            if (!markdown) return '';
+
+            let html = markdown;
+
+            // Convert markdown table to HTML
+            const tableRegex = /\|(.+)\|
+\|[-:\s|]+\|
+((?:\|.+\|
+?)+)/g;
+            html = html.replace(tableRegex, (match, header, rows) => {
+                const headers = header.split('|').map(h => h.trim()).filter(h => h);
+                const rowsArray = rows.trim().split('
+').map(row =>
+                    row.split('|').map(cell => cell.trim()).filter(cell => cell)
+                );
+
+                let tableHtml = '<table class="comparison-table"><thead><tr>';
+                headers.forEach(h => tableHtml += `<th>${h}</th>`);
+                tableHtml += '</tr></thead><tbody>';
+
+                rowsArray.forEach(row => {
+                    tableHtml += '<tr>';
+                    row.forEach(cell => tableHtml += `<td>${cell}</td>`);
+                    tableHtml += '</tr>';
+                });
+
+                tableHtml += '</tbody></table>';
+                return tableHtml;
+            });
+
+            // Convert headings
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+
+            // Convert bold
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+            // Convert numbered lists
+            html = html.replace(/^(\d+\.\s+.+?)(?=
+\d+\.|
+
+|$)/gms, (match) => {
+                const items = match.split(/
+(?=\d+\.\s)/).map(item => {
+                    const text = item.replace(/^\d+\.\s+/, '');
+                    return `<li>${text}</li>`;
+                }).join('');
+                return `<ol>${items}</ol>`;
+            });
+
+            // Convert paragraphs
+            html = html.replace(/^(?!<[holt]|<table)(.+)$/gm, '<p>$1</p>');
+
+            // Wrap key insights
+            html = html.replace(/<h3>Key Insights from Comparative Analysis:<\/h3>(.*?)(?=<h3>|$)/s,
+                '<div class="key-insights"><h3>Key Insights from Comparative Analysis:</h3>$1</div>');
+
+            return html;
         }
 
         // Render artifacts
@@ -2182,28 +2317,42 @@
                 sectionDiv.className = 'section';
                 sectionDiv.id = `section-${section.letter.toLowerCase()}`;
 
-                sectionDiv.innerHTML = `
-                    <div class="section-header">
-                        <div class="section-letter">${section.letter}</div>
-                        <h2 class="section-title">${section.title}</h2>
-                    </div>
-                    <div class="artifacts-grid">
-                        ${section.artifacts.map(artifact => `
-                            <div class="artifact-card" data-sectors="${artifact.sectors.join(',').toLowerCase()}" data-name="${artifact.name.toLowerCase()}" data-number="${artifact.number}">
-                                <div class="artifact-number">#${artifact.number}</div>
-                                <div class="artifact-name">${artifact.name}</div>
-                                <div class="artifact-purpose">${artifact.purpose}</div>
-                                ${artifact.example ? `<div class="artifact-example"><strong>Example:</strong> ${artifact.example}</div>` : ''}
-                                ${artifact.note ? `<div class="artifact-note"><strong>Note:</strong> ${artifact.note}</div>` : ''}
-                                <div class="sectors">
-                                    ${artifact.sectors.map(sector => `
-                                        <span class="sector-tag ${sector.toLowerCase()}">${sector}</span>
-                                    `).join('')}
+                // Check if section has special content (like Section N)
+                if (section.content) {
+                    sectionDiv.innerHTML = `
+                        <div class="section-header">
+                            <div class="section-letter">${section.letter}</div>
+                            <h2 class="section-title">${section.title}</h2>
+                        </div>
+                        <div class="comparison-content">
+                            ${markdownToHtml(section.content)}
+                        </div>
+                    `;
+                } else {
+                    // Regular artifact cards
+                    sectionDiv.innerHTML = `
+                        <div class="section-header">
+                            <div class="section-letter">${section.letter}</div>
+                            <h2 class="section-title">${section.title}</h2>
+                        </div>
+                        <div class="artifacts-grid">
+                            ${section.artifacts.map(artifact => `
+                                <div class="artifact-card" data-sectors="${artifact.sectors.join(',').toLowerCase()}" data-name="${artifact.name.toLowerCase()}" data-number="${artifact.number}">
+                                    <div class="artifact-number">#${artifact.number}</div>
+                                    <div class="artifact-name">${artifact.name}</div>
+                                    <div class="artifact-purpose">${artifact.purpose}</div>
+                                    ${artifact.example ? `<div class="artifact-example"><strong>Example:</strong> ${artifact.example}</div>` : ''}
+                                    ${artifact.note ? `<div class="artifact-note"><strong>Note:</strong> ${artifact.note}</div>` : ''}
+                                    <div class="sectors">
+                                        ${artifact.sectors.map(sector => `
+                                            <span class="sector-tag ${sector.toLowerCase()}">${sector}</span>
+                                        `).join('')}
+                                    </div>
                                 </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
+                            `).join('')}
+                        </div>
+                    `;
+                }
 
                 container.appendChild(sectionDiv);
             });

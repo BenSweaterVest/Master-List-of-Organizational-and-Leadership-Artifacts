@@ -14,6 +14,8 @@ def parse_readme():
     sections = []
     current_section = None
     current_artifact = None
+    capturing_section_n_content = False
+    section_n_content = []
 
     # Split by major sections (A-N)
     section_pattern = r'^## ([A-N])\. (.+)$'
@@ -26,18 +28,36 @@ def parse_readme():
         section_match = re.match(section_pattern, line)
         if section_match:
             if current_section:
+                # Special handling for Section N - add captured content
+                if capturing_section_n_content and section_n_content:
+                    current_section['content'] = '\n'.join(section_n_content)
+                    capturing_section_n_content = False
+                    section_n_content = []
                 sections.append(current_section)
+
             current_section = {
                 'letter': section_match.group(1),
                 'title': section_match.group(2),
                 'artifacts': []
             }
             current_artifact = None
+
+            # Start capturing content for Section N
+            if section_match.group(1) == 'N':
+                capturing_section_n_content = True
+
+            continue
+
+        # If we're capturing Section N content
+        if capturing_section_n_content and line.strip():
+            # Skip the separator line and total artifacts line
+            if not line.startswith('---') and not line.startswith('**Total Artifacts'):
+                section_n_content.append(line)
             continue
 
         # Check for numbered artifacts
         artifact_match = re.match(artifact_pattern, line)
-        if artifact_match and current_section:
+        if artifact_match and current_section and not capturing_section_n_content:
             if current_artifact:
                 current_section['artifacts'].append(current_artifact)
 
@@ -67,6 +87,9 @@ def parse_readme():
     if current_artifact and current_section:
         current_section['artifacts'].append(current_artifact)
     if current_section:
+        # Handle Section N content if we're still capturing
+        if capturing_section_n_content and section_n_content:
+            current_section['content'] = '\n'.join(section_n_content)
         sections.append(current_section)
 
     return sections
@@ -465,6 +488,79 @@ def generate_html(sections):
         .reset-btn:hover {
             background: #c0392b;
         }
+
+        /* Comparison table styles */
+        .comparison-content {
+            margin-top: 1.5rem;
+        }
+
+        .comparison-content p {
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        .comparison-content h3 {
+            color: var(--primary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.25rem;
+        }
+
+        .comparison-content strong {
+            color: var(--primary);
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+            background: white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-table thead {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .comparison-table th {
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .comparison-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+            line-height: 1.6;
+        }
+
+        .comparison-table tbody tr:hover {
+            background: var(--light-bg);
+        }
+
+        .comparison-table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-content ol {
+            margin: 1rem 0 1rem 2rem;
+            line-height: 1.8;
+        }
+
+        .comparison-content ol li {
+            margin-bottom: 0.75rem;
+        }
+
+        .key-insights {
+            background: #f8f9fa;
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
     </style>
 </head>
 <body>
@@ -543,6 +639,59 @@ def generate_html(sections):
             `).join('');
         }
 
+        // Convert markdown content to HTML (for Section N)
+        function markdownToHtml(markdown) {
+            if (!markdown) return '';
+
+            let html = markdown;
+
+            // Convert markdown table to HTML
+            const tableRegex = /\|(.+)\|\n\|[-:\s|]+\|\n((?:\|.+\|\n?)+)/g;
+            html = html.replace(tableRegex, (match, header, rows) => {
+                const headers = header.split('|').map(h => h.trim()).filter(h => h);
+                const rowsArray = rows.trim().split('\n').map(row =>
+                    row.split('|').map(cell => cell.trim()).filter(cell => cell)
+                );
+
+                let tableHtml = '<table class="comparison-table"><thead><tr>';
+                headers.forEach(h => tableHtml += `<th>${h}</th>`);
+                tableHtml += '</tr></thead><tbody>';
+
+                rowsArray.forEach(row => {
+                    tableHtml += '<tr>';
+                    row.forEach(cell => tableHtml += `<td>${cell}</td>`);
+                    tableHtml += '</tr>';
+                });
+
+                tableHtml += '</tbody></table>';
+                return tableHtml;
+            });
+
+            // Convert headings
+            html = html.replace(/^### (.+)$/gm, '<h3>$1</h3>');
+
+            // Convert bold
+            html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+
+            // Convert numbered lists
+            html = html.replace(/^(\d+\.\s+.+?)(?=\n\d+\.|\n\n|$)/gms, (match) => {
+                const items = match.split(/\n(?=\d+\.\s)/).map(item => {
+                    const text = item.replace(/^\d+\.\s+/, '');
+                    return `<li>${text}</li>`;
+                }).join('');
+                return `<ol>${items}</ol>`;
+            });
+
+            // Convert paragraphs
+            html = html.replace(/^(?!<[holt]|<table)(.+)$/gm, '<p>$1</p>');
+
+            // Wrap key insights
+            html = html.replace(/<h3>Key Insights from Comparative Analysis:<\/h3>(.*?)(?=<h3>|$)/s,
+                '<div class="key-insights"><h3>Key Insights from Comparative Analysis:</h3>$1</div>');
+
+            return html;
+        }
+
         // Render artifacts
         function renderArtifacts() {
             const container = document.getElementById('artifactContainer');
@@ -553,28 +702,42 @@ def generate_html(sections):
                 sectionDiv.className = 'section';
                 sectionDiv.id = `section-${section.letter.toLowerCase()}`;
 
-                sectionDiv.innerHTML = `
-                    <div class="section-header">
-                        <div class="section-letter">${section.letter}</div>
-                        <h2 class="section-title">${section.title}</h2>
-                    </div>
-                    <div class="artifacts-grid">
-                        ${section.artifacts.map(artifact => `
-                            <div class="artifact-card" data-sectors="${artifact.sectors.join(',').toLowerCase()}" data-name="${artifact.name.toLowerCase()}" data-number="${artifact.number}">
-                                <div class="artifact-number">#${artifact.number}</div>
-                                <div class="artifact-name">${artifact.name}</div>
-                                <div class="artifact-purpose">${artifact.purpose}</div>
-                                ${artifact.example ? `<div class="artifact-example"><strong>Example:</strong> ${artifact.example}</div>` : ''}
-                                ${artifact.note ? `<div class="artifact-note"><strong>Note:</strong> ${artifact.note}</div>` : ''}
-                                <div class="sectors">
-                                    ${artifact.sectors.map(sector => `
-                                        <span class="sector-tag ${sector.toLowerCase()}">${sector}</span>
-                                    `).join('')}
+                // Check if section has special content (like Section N)
+                if (section.content) {
+                    sectionDiv.innerHTML = `
+                        <div class="section-header">
+                            <div class="section-letter">${section.letter}</div>
+                            <h2 class="section-title">${section.title}</h2>
+                        </div>
+                        <div class="comparison-content">
+                            ${markdownToHtml(section.content)}
+                        </div>
+                    `;
+                } else {
+                    // Regular artifact cards
+                    sectionDiv.innerHTML = `
+                        <div class="section-header">
+                            <div class="section-letter">${section.letter}</div>
+                            <h2 class="section-title">${section.title}</h2>
+                        </div>
+                        <div class="artifacts-grid">
+                            ${section.artifacts.map(artifact => `
+                                <div class="artifact-card" data-sectors="${artifact.sectors.join(',').toLowerCase()}" data-name="${artifact.name.toLowerCase()}" data-number="${artifact.number}">
+                                    <div class="artifact-number">#${artifact.number}</div>
+                                    <div class="artifact-name">${artifact.name}</div>
+                                    <div class="artifact-purpose">${artifact.purpose}</div>
+                                    ${artifact.example ? `<div class="artifact-example"><strong>Example:</strong> ${artifact.example}</div>` : ''}
+                                    ${artifact.note ? `<div class="artifact-note"><strong>Note:</strong> ${artifact.note}</div>` : ''}
+                                    <div class="sectors">
+                                        ${artifact.sectors.map(sector => `
+                                            <span class="sector-tag ${sector.toLowerCase()}">${sector}</span>
+                                        `).join('')}
+                                    </div>
                                 </div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
+                            `).join('')}
+                        </div>
+                    `;
+                }
 
                 container.appendChild(sectionDiv);
             });
