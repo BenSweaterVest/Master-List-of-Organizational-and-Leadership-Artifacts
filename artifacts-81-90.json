@@ -1,0 +1,132 @@
+[
+  {
+    "number": "81",
+    "name": "Risk Management Framework",
+    "example": "ISO 31000, NIST Risk Management Framework",
+    "explanationLink": {
+      "url": "https://www.iso.org/standard/65694.html",
+      "title": "ISO - ISO 31000:2018 Risk Management Guidelines"
+    },
+    "exampleLink": {
+      "url": "https://www.eccouncil.org/cybersecurity-exchange/incident-handling/nist-risk-management-framework-rmf-guide/",
+      "title": "EC-Council - The NIST Risk Management Framework (RMF): A Complete Guide"
+    }
+  },
+  {
+    "number": "82",
+    "name": "Risk Register / Risk Charter",
+    "example": "Enterprise risk register with heat map",
+    "explanationLink": {
+      "url": "https://www.ecclesiastical.com/risk-management/enterprise-risk-management/insights/risk-register-template-your-foundation/",
+      "title": "Ecclesiastical - Our Risk Register Template is Your Foundation"
+    },
+    "exampleLink": {
+      "url": "https://www.smartsheet.com/content/risk-heat-map-templates",
+      "title": "Smartsheet - Free Risk Heat Map Templates"
+    }
+  },
+  {
+    "number": "83",
+    "name": "Enterprise Risk Management (ERM) Framework",
+    "example": "COSO ERM framework",
+    "explanationLink": {
+      "url": "https://www.coso.org/guidance-erm",
+      "title": "COSO - Enterprise Risk Management Guidance"
+    },
+    "exampleLink": {
+      "url": "https://erm.ncsu.edu/resource-center/cosos-erm-framework/",
+      "title": "NC State ERM Initiative - COSO's ERM Framework"
+    }
+  },
+  {
+    "number": "84",
+    "name": "Business Impact Analysis (BIA)",
+    "example": "IT business impact analysis form",
+    "explanationLink": {
+      "url": "https://www.alertmedia.com/blog/business-impact-analysis/",
+      "title": "AlertMedia - How to Conduct a Business Impact Analysis (BIA)"
+    },
+    "exampleLink": {
+      "url": "https://www.cms.gov/Research-Statistics-Data-and-Systems/CMS-Information-Technology/InformationSecurity/Downloads/Business-Impact-Analysis-BIA-Process-and-Template.docx",
+      "title": "CMS - Business Impact Analysis (BIA) Process and Template (DOC)"
+    }
+  },
+  {
+    "number": "85",
+    "name": "Continuity of Operations (COOP) Plan",
+    "example": "FEMA COOP template",
+    "explanationLink": {
+      "url": "https://www.fema.gov/emergency-managers/national-preparedness/continuity/documents",
+      "title": "FEMA - Continuity Resources"
+    },
+    "exampleLink": {
+      "url": "https://www.fema.gov/pdf/about/org/ncp/coop/continuity_plan_federal_d_a.pdf",
+      "title": "FEMA - Continuity of Operations Plan Template for Federal Departments (PDF)"
+    }
+  },
+  {
+    "number": "86",
+    "name": "Business Continuity Plan (BCP)",
+    "example": "Disaster recovery procedures, backup systems",
+    "explanationLink": {
+      "url": "https://www.bdc.ca/en/articles-tools/business-strategy-planning/manage-business/business-continuity-8-steps-building-plan",
+      "title": "BDC - Business Continuity Plan (BCP) in 8 Steps, with Templates"
+    },
+    "exampleLink": {
+      "url": "https://www.optial.com/resources/business-continuity-plan",
+      "title": "Optial - Business Continuity Plan (BCP) Guide + Free Template Tool"
+    }
+  },
+  {
+    "number": "87",
+    "name": "Crisis Management Plan / Crisis Action Plan (CAP)",
+    "example": "Incident response playbook",
+    "explanationLink": {
+      "url": "https://asana.com/templates/crisis-management-plan",
+      "title": "Asana - Stay Prepared with a Crisis Management Plan Template"
+    },
+    "exampleLink": {
+      "url": "https://www.techtarget.com/searchdisasterrecovery/Complete-crisis-management-guide-and-free-template",
+      "title": "TechTarget - Complete Crisis Management Guide and Free Template"
+    }
+  },
+  {
+    "number": "88",
+    "name": "Threat Assessment Framework",
+    "example": "Homeland Security threat matrix",
+    "explanationLink": {
+      "url": "https://www.dhs.gov/publication/homeland-threat-assessment",
+      "title": "Department of Homeland Security - Homeland Threat Assessment"
+    },
+    "exampleLink": {
+      "url": "https://www.mitre.org/sites/default/files/2021-11/prs-18-1174-ngci-cyber-threat-modeling.pdf",
+      "title": "MITRE - Cyber Threat Modeling for DHS (PDF)"
+    }
+  },
+  {
+    "number": "89",
+    "name": "Vulnerability Assessment",
+    "example": "NIST cybersecurity vulnerability assessment",
+    "explanationLink": {
+      "url": "https://www.getastra.com/blog/compliance/nist/nist-vulnerability-assessment/",
+      "title": "Astra - A Closer Look at NIST Vulnerability Assessment"
+    },
+    "exampleLink": {
+      "url": "https://nvlpubs.nist.gov/nistpubs/legacy/sp/nistspecialpublication800-115.pdf",
+      "title": "NIST - SP 800-115: Technical Guide to Information Security Testing and Assessment (PDF)"
+    }
+  },
+  {
+    "number": "90",
+    "name": "Continuity Resource Inventory",
+    "example": "Emergency essential staff roster",
+    "explanationLink": {
+      "url": "https://emergency.appstate.edu/coop",
+      "title": "Appalachian State University - Continuity of Operations Planning (COOP)"
+    },
+    "exampleLink": {
+      "url": "https://ospi.k12.wa.us/sites/default/files/2022-12/coopessentialcomponents.pdf",
+      "title": "Washington OSPI - COOP Essential Components (PDF)"
+    }
+  }
+]
