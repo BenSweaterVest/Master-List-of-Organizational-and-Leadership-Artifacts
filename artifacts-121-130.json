@@ -1,0 +1,132 @@
+[
+  {
+    "number": "121",
+    "name": "Change Management Plan / Change Management Framework",
+    "example": "Prosci ADKAR model, Kotter's 8-step process",
+    "explanationLink": {
+      "url": "https://www.prosci.com/methodology/adkar",
+      "title": "Prosci - The ADKAR Model"
+    },
+    "exampleLink": {
+      "url": "https://hbr.org/2007/11/a-leaders-framework-for-decision-making",
+      "title": "Harvard Business Review - A Leader's Framework for Decision Making"
+    }
+  },
+  {
+    "number": "122",
+    "name": "Change Readiness Assessment",
+    "example": "Organizational pulse survey with heat maps",
+    "explanationLink": {
+      "url": "https://implementationscience.biomedcentral.com/articles/10.1186/1748-5908-4-38",
+      "title": "Implementation Science - Organizational Readiness to Change Assessment (ORCA)"
+    },
+    "exampleLink": {
+      "url": "https://www.pmi.org/learning/library/change-readiness-11126",
+      "title": "PMI - Change Readiness Assessment"
+    }
+  },
+  {
+    "number": "123",
+    "name": "Change Adoption Plan",
+    "example": "User adoption strategy",
+    "explanationLink": {
+      "url": "https://whatfix.com/blog/change-adoption/",
+      "title": "Whatfix - How to Drive Change Adoption: 5-Step Strategy"
+    },
+    "exampleLink": {
+      "url": "https://learn.microsoft.com/en-us/dynamics365/guidance/implementation-guide/implementation-strategy-define-strategy-adoption-change-management",
+      "title": "Microsoft Learn - Define a Strategy for Adoption and Change Management"
+    }
+  },
+  {
+    "number": "124",
+    "name": "Transformation Charter / Modernization Charter",
+    "example": "Enterprise transformation charter",
+    "explanationLink": {
+      "url": "https://www.businessofgovernment.org/sites/default/files/Digital%20Modernization%20for%20Government.pdf",
+      "title": "IBM Center for The Business of Government - Digital Modernization for Government (PDF)"
+    },
+    "exampleLink": {
+      "url": "https://coe.gsa.gov/2022/06/08/da-update-10.html",
+      "title": "GSA Centers of Excellence - Data Governance Charter Templates"
+    }
+  },
+  {
+    "number": "125",
+    "name": "Implementation Playbook / Roadmap",
+    "example": "Digital service transformation playbook",
+    "explanationLink": {
+      "url": "https://www.palantir.net/blog/applying-us-digital-services-playbook-strategic-and-sustainable-success",
+      "title": "Palantir.net - Applying the U.S. Digital Services Playbook"
+    },
+    "exampleLink": {
+      "url": "https://www.gov.uk/government/publications/transforming-for-a-digital-future-governments-2022-to-25-roadmap-for-digital-and-data/transforming-for-a-digital-future-governments-2022-to-25-roadmap-for-digital-and-data",
+      "title": "UK Government - Transforming for a Digital Future: 2022 to 25 Roadmap"
+    }
+  },
+  {
+    "number": "126",
+    "name": "Culture Assessment Report",
+    "example": "Organizational culture diagnostic",
+    "explanationLink": {
+      "url": "https://www.ocai-online.com/about-the-Organizational-Culture-Assessment-Instrument-OCAI",
+      "title": "OCAI Online - About the Organizational Culture Assessment Instrument"
+    },
+    "exampleLink": {
+      "url": "https://webuser.bus.umich.edu/cameronk/PDFs/Organizational%20Culture/CULTURE%20BOOK-CHAPTER%201.pdf",
+      "title": "University of Michigan - Diagnosing and Changing Organizational Culture (Cameron & Quinn) (PDF)"
+    }
+  },
+  {
+    "number": "127",
+    "name": "Organizational Culture Framework / Culture Playbook",
+    "example": "\"Point North\" servant-leadership principles, Netflix Culture Deck",
+    "explanationLink": {
+      "url": "https://knowledge.wharton.upenn.edu/podcast/knowledge-at-wharton-podcast/how-netflix-built-its-company-culture/",
+      "title": "Wharton - How Netflix Built Its Company Culture"
+    },
+    "exampleLink": {
+      "url": "https://jobs.netflix.com/culture",
+      "title": "Netflix - Culture Memo"
+    }
+  },
+  {
+    "number": "128",
+    "name": "Sensemaking Framework / Sensemaking Brief",
+    "example": "Cynefin framework",
+    "explanationLink": {
+      "url": "https://hbr.org/2007/11/a-leaders-framework-for-decision-making",
+      "title": "Harvard Business Review - A Leader's Framework for Decision Making (Cynefin)"
+    },
+    "exampleLink": {
+      "url": "https://thecynefin.co/about-us/about-cynefin-framework/",
+      "title": "The Cynefin Co - About Cynefin Framework (Dave Snowden)"
+    }
+  },
+  {
+    "number": "129",
+    "name": "Narrative Change Plan",
+    "example": "Advocacy narrative change strategy",
+    "explanationLink": {
+      "url": "https://belonging.berkeley.edu/shifting-narrative",
+      "title": "UC Berkeley Othering & Belonging Institute - Shifting the Narrative"
+    },
+    "exampleLink": {
+      "url": "https://opportunityagenda.org/messaging_reports/shifting-the-narrative/",
+      "title": "The Opportunity Agenda - Shifting the Narrative"
+    }
+  },
+  {
+    "number": "130",
+    "name": "Symbolic Actions Playbook",
+    "example": "\"First 90 days\" symbolic action plan",
+    "explanationLink": {
+      "url": "https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/the-organization-blog/elephant-in-the-room-making-a-culture-transformation-stick-with-symbolic-actions",
+      "title": "McKinsey - Making Culture Transformation Stick with Symbolic Actions"
+    },
+    "exampleLink": {
+      "url": "https://www.scmr.com/article/culture-is-built-by-rituals-argues-leadership-expert",
+      "title": "Supply Chain Management Review - Culture is Built by Rituals"
+    }
+  }
+]
