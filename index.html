@@ -273,7 +273,8 @@
         }
 
         .methodology-header {
-            background: var(--card-bg);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
             padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -282,16 +283,17 @@
 
         .methodology-header h3 {
             margin: 0 0 0.75rem 0;
-            color: var(--primary);
+            color: white;
             font-size: 1.1rem;
         }
 
         .framework-box-full {
-            background: linear-gradient(135deg, rgba(52, 73, 94, 0.15) 0%, rgba(155, 89, 182, 0.25) 100%);
-            border-left: 4px solid var(--secondary);
+            background: rgba(255,255,255,0.1);
+            border-left: 4px solid rgba(255,255,255,0.5);
             padding: 1.5rem;
             border-radius: 8px;
             margin: 0.5rem 0;
+            backdrop-filter: blur(10px);
         }
 
         .priority-selector {
@@ -2927,26 +2929,30 @@
         function toggleBookmark(artifactNumber) {
             let bookmarks = getBookmarks();
             const existingIndex = bookmarks.findIndex(b => b.number === artifactNumber);
+            const selector = document.getElementById('priority-' + artifactNumber);
 
             if (existingIndex > -1) {
-                // Remove bookmark
-                bookmarks.splice(existingIndex, 1);
-                saveBookmarks(bookmarks);
-                // Hide priority selector
-                const selector = document.getElementById('priority-' + artifactNumber);
-                if (selector) selector.classList.remove('show');
-            } else {
-                // Show priority selector inline
-                const selector = document.getElementById('priority-' + artifactNumber);
+                // Already bookmarked - toggle priority selector to change priority
                 if (selector) {
                     selector.classList.toggle('show');
                 }
+            } else {
+                // Not bookmarked - auto-save with "none" priority
+                addBookmarkWithPriority(artifactNumber, 'none');
             }
         }
 
         function addBookmarkWithPriority(artifactNumber, priority) {
             let bookmarks = getBookmarks();
-            bookmarks.push({ number: artifactNumber, priority: priority });
+            const existingIndex = bookmarks.findIndex(b => b.number === artifactNumber);
+
+            if (existingIndex > -1) {
+                // Update existing bookmark's priority
+                bookmarks[existingIndex].priority = priority;
+            } else {
+                // Add new bookmark
+                bookmarks.push({ number: artifactNumber, priority: priority });
+            }
             saveBookmarks(bookmarks);
         }
 
