@@ -1,0 +1,132 @@
+[
+  {
+    "number": "71",
+    "name": "Investment Committee Charter",
+    "example": "Nonprofit endowment investment committee charter",
+    "explanationLink": {
+      "url": "https://www.getecio.com/resources/how-to-create-a-committee-charter-for-your-nonprofit-organization",
+      "title": "eCIO - How to Create an Investment Committee Charter for Your Nonprofit"
+    },
+    "exampleLink": {
+      "url": "https://www.rwjf.org/en/about-rwjf/how-we-work/organizational-policies/investment-committee-charter.html",
+      "title": "Robert Wood Johnson Foundation - Investment Committee Charter"
+    }
+  },
+  {
+    "number": "72",
+    "name": "Digital Transformation Roadmap",
+    "example": "Government digital service transformation roadmap",
+    "explanationLink": {
+      "url": "https://www2.deloitte.com/us/en/insights/industry/public-sector/government-digital-transformation-strategy.html",
+      "title": "Deloitte Insights - Government Digital Transformation Strategy"
+    },
+    "exampleLink": {
+      "url": "https://www.gov.uk/government/publications/transforming-for-a-digital-future-governments-2022-to-25-roadmap-for-digital-and-data/transforming-for-a-digital-future-governments-2022-to-25-roadmap-for-digital-and-data",
+      "title": "UK Government - Transforming for a Digital Future: 2022 to 2025 Roadmap"
+    }
+  },
+  {
+    "number": "73",
+    "name": "Information Security Program Charter",
+    "example": "NIST 800-53 aligned security program charter",
+    "explanationLink": {
+      "url": "https://csrc.nist.gov/pubs/sp/800/53/r5/upd1/final",
+      "title": "NIST - SP 800-53 Rev. 5: Security and Privacy Controls for Information Systems"
+    },
+    "exampleLink": {
+      "url": "https://www.cybersaint.io/blog/what-is-nist-800-53",
+      "title": "CyberSaint - What is NIST SP 800-53?"
+    }
+  },
+  {
+    "number": "74",
+    "name": "Data Governance Framework",
+    "example": "DAMA DMBOK data governance",
+    "explanationLink": {
+      "url": "https://atlan.com/dama-dmbok-framework/",
+      "title": "Atlan - DAMA DMBOK Framework: An Ultimate Guide for 2025"
+    },
+    "exampleLink": {
+      "url": "https://dama.org/learning-resources/dama-data-management-body-of-knowledge-dmbok/",
+      "title": "DAMA International - Data Management Body of Knowledge (DMBOK)"
+    }
+  },
+  {
+    "number": "75",
+    "name": "Data Architecture Diagram / Information Model",
+    "example": "Enterprise data model",
+    "explanationLink": {
+      "url": "https://www.ibm.com/think/topics/entity-relationship-diagram",
+      "title": "IBM - What is an Entity Relationship Diagram?"
+    },
+    "exampleLink": {
+      "url": "https://www.lucidchart.com/pages/er-diagrams",
+      "title": "Lucidchart - What is an Entity Relationship Diagram (ERD)?"
+    }
+  },
+  {
+    "number": "76",
+    "name": "IT Service Management Framework",
+    "example": "ITIL (Information Technology Infrastructure Library)",
+    "explanationLink": {
+      "url": "https://www.atlassian.com/itsm/itil",
+      "title": "Atlassian - What Is ITIL? Core Principles & Best Practices"
+    },
+    "exampleLink": {
+      "url": "https://itsm.tools/itil-best-practices/",
+      "title": "ITSM Tools - ITIL Best Practices: How to Improve IT Service Management in 2025"
+    }
+  },
+  {
+    "number": "77",
+    "name": "API Governance Standards",
+    "example": "API design standards and security requirements",
+    "explanationLink": {
+      "url": "https://www.ibm.com/think/topics/api-governance",
+      "title": "IBM - What Is API Governance?"
+    },
+    "exampleLink": {
+      "url": "https://www.gov.uk/guidance/gds-api-technical-and-data-standards",
+      "title": "UK Government - API Technical and Data Standards"
+    }
+  },
+  {
+    "number": "78",
+    "name": "Digital Literacy / Digital Readiness Framework",
+    "example": "OECD digital readiness model",
+    "explanationLink": {
+      "url": "https://www.oecd.org/en/publications/the-oecd-framework-for-digital-talent-and-skills-in-the-public-sector_4e7c3f58-en.html",
+      "title": "OECD - Framework for Digital Talent and Skills in the Public Sector"
+    },
+    "exampleLink": {
+      "url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2021/04/the-oecd-framework-for-digital-talent-and-skills-in-the-public-sector_f6fb7838/4e7c3f58-en.pdf",
+      "title": "OECD - Digital Talent and Skills Framework (PDF)"
+    }
+  },
+  {
+    "number": "79",
+    "name": "Information Architecture (IA) Map",
+    "example": "Website information architecture",
+    "explanationLink": {
+      "url": "https://www.nngroup.com/articles/information-architecture-sitemaps/",
+      "title": "Nielsen Norman Group - Information Architecture vs. Sitemaps: What's the Difference?"
+    },
+    "exampleLink": {
+      "url": "https://blog.hubspot.com/website/information-architecture",
+      "title": "HubSpot - What is Information Architecture & Why Does it Matter?"
+    }
+  },
+  {
+    "number": "80",
+    "name": "Innovation Portfolio",
+    "example": "\"Horizon 1, 2, 3\" innovation framework (core, adjacent, transformational)",
+    "explanationLink": {
+      "url": "https://digitalleadership.com/unite-articles/three-horizons-of-growth/",
+      "title": "Digital Leadership - The Three Horizons of Growth Model for Innovation Strategy"
+    },
+    "exampleLink": {
+      "url": "https://www.boardofinnovation.com/blog/what-is-the-3-horizons-model-how-can-you-use-it/",
+      "title": "Board of Innovation - What is the 3 Horizons Model & How Can You Use It?"
+    }
+  }
+]
