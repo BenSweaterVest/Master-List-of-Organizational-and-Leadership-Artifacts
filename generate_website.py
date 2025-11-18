@@ -31,6 +31,9 @@ def parse_readme():
         section_match = re.match(section_pattern, line)
         if section_match:
             if current_section:
+                # Add the last artifact before closing the section
+                if current_artifact:
+                    current_section['artifacts'].append(current_artifact)
                 # Special handling for Section N - add captured content
                 if capturing_section_n_content and section_n_content:
                     current_section['content'] = '\n'.join(section_n_content)
@@ -44,6 +47,11 @@ def parse_readme():
                 'artifacts': []
             }
             current_artifact = None
+
+            # Section L has non-numbered artifacts, so assign them numbers starting at 154
+            # (after all the numbered artifacts 1-153 from sections A-K and M)
+            if section_match.group(1) == 'L':
+                artifact_counter = 154
 
             # Start capturing content for Section N
             if section_match.group(1) == 'N':
