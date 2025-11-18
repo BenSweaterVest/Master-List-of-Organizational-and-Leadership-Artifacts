@@ -16,10 +16,13 @@ def parse_readme():
     current_artifact = None
     capturing_section_n_content = False
     section_n_content = []
+    artifact_counter = 1  # Track artifact numbers globally
 
     # Split by major sections (A-N)
     section_pattern = r'^## ([A-N])\. (.+)$'
     artifact_pattern = r'^### (\d+)\. (.+)$'
+    # Pattern for bold artifact names (used in Section L)
+    bold_artifact_pattern = r'^\*\*([^*]+)\*\*\s*$'
 
     lines = content.split('\n')
 
@@ -69,7 +72,27 @@ def parse_readme():
                 'sectors': [],
                 'note': ''
             }
+            artifact_counter = int(artifact_match.group(1)) + 1
             continue
+
+        # Check for bold artifact names (Section L format)
+        bold_match = re.match(bold_artifact_pattern, line)
+        if bold_match and current_section and not capturing_section_n_content:
+            # Skip subsection headers like "PUBLIC ADMINISTRATION SPECIFIC"
+            if not line.isupper() or '/' in line:
+                if current_artifact:
+                    current_section['artifacts'].append(current_artifact)
+
+                current_artifact = {
+                    'number': str(artifact_counter),
+                    'name': bold_match.group(1),
+                    'purpose': '',
+                    'example': '',
+                    'sectors': [],
+                    'note': ''
+                }
+                artifact_counter += 1
+                continue
 
         # Parse artifact details
         if current_artifact:
@@ -193,7 +216,7 @@ def generate_html(sections):
 
         .sidebar {
             position: sticky;
-            top: 1rem;
+            top: -3rem;
             height: fit-content;
             background: var(--card-bg);
             border-radius: 12px;
@@ -364,6 +387,91 @@ def generate_html(sections):
 
         .bookmark-btn.bookmarked {
             opacity: 1;
+        }
+
+        .priority-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .priority-modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .priority-modal h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .priority-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .priority-option {
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .priority-option:hover {
+            border-color: var(--secondary);
+            background: var(--light-bg);
+        }
+
+        .priority-immediate { border-left: 4px solid #dc3545; }
+        .priority-midterm { border-left: 4px solid #ffc107; }
+        .priority-longterm { border-left: 4px solid #28a745; }
+        .priority-none { border-left: 4px solid #6c757d; }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .modal-btn-secondary {
+            background: var(--light-bg);
+            color: var(--text);
+        }
+
+        .export-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
         }
 
         .artifact-number {
@@ -591,14 +699,6 @@ def generate_html(sections):
                     <span class="stat-number" id="totalArtifacts">153</span>
                     <span class="stat-label">Artifacts</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">14</span>
-                    <span class="stat-label">Categories</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">3</span>
-                    <span class="stat-label">Sectors</span>
-                </div>
             </div>
         </div>
     </div>
@@ -622,6 +722,9 @@ def generate_html(sections):
                 <div class="filter-section">
                     <div class="filter-title">Bookmarked <span id="bookmarkCount">(0)</span></div>
                     <button class="filter-btn" id="showBookmarked" data-filter="bookmarked">View Saved</button>
+                    <div class="export-section">
+                        <button class="filter-btn" id="exportBookmarks" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white;">Export Saved</button>
+                    </div>
                     <button class="filter-btn" id="clearBookmarks" style="margin-top: 0.5rem;">Clear All</button>
                 </div>
 
@@ -672,6 +775,31 @@ def generate_html(sections):
                     </div>
                 </div>
             </main>
+        </div>
+    </div>
+
+    <!-- Priority Selection Modal -->
+    <div id="priorityModal" class="priority-modal">
+        <div class="priority-modal-content">
+            <h3>Set Priority</h3>
+            <p>Choose a priority for this artifact:</p>
+            <div class="priority-options">
+                <div class="priority-option priority-immediate" data-priority="immediate">
+                    🔴 Immediate - Implement right away
+                </div>
+                <div class="priority-option priority-midterm" data-priority="mid-term">
+                    🟡 Mid-term - Implement within 6-12 months
+                </div>
+                <div class="priority-option priority-longterm" data-priority="long-term">
+                    🟢 Long-term - Future consideration
+                </div>
+                <div class="priority-option priority-none" data-priority="none">
+                    ⚪ No priority - Just bookmark for reference
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-secondary" id="cancelPriority">Cancel</button>
+            </div>
         </div>
     </div>
 
@@ -802,7 +930,9 @@ def generate_html(sections):
             document.getElementById('totalArtifacts').textContent = visibleCards.length;
         }
 
-        // Bookmark functionality
+        // Bookmark functionality with priorities
+        let currentBookmarkNumber = null;
+
         function getBookmarks() {
             const saved = localStorage.getItem('artifactBookmarks');
             return saved ? JSON.parse(saved) : [];
@@ -816,14 +946,22 @@ def generate_html(sections):
 
         function toggleBookmark(artifactNumber) {
             let bookmarks = getBookmarks();
-            const index = bookmarks.indexOf(artifactNumber);
+            const existingIndex = bookmarks.findIndex(b => b.number === artifactNumber);
 
-            if (index > -1) {
-                bookmarks.splice(index, 1);
+            if (existingIndex > -1) {
+                // Remove bookmark
+                bookmarks.splice(existingIndex, 1);
+                saveBookmarks(bookmarks);
             } else {
-                bookmarks.push(artifactNumber);
+                // Show priority modal
+                currentBookmarkNumber = artifactNumber;
+                document.getElementById('priorityModal').style.display = 'block';
             }
+        }
 
+        function addBookmarkWithPriority(artifactNumber, priority) {
+            let bookmarks = getBookmarks();
+            bookmarks.push({ number: artifactNumber, priority: priority });
             saveBookmarks(bookmarks);
         }
 
@@ -837,7 +975,8 @@ def generate_html(sections):
             document.querySelectorAll('.bookmark-btn').forEach(btn => {
                 const card = btn.closest('.artifact-card');
                 const number = parseInt(card.dataset.number);
-                if (bookmarks.includes(number)) {
+                const isBookmarked = bookmarks.some(b => b.number === number);
+                if (isBookmarked) {
                     btn.classList.add('bookmarked');
                 } else {
                     btn.classList.remove('bookmarked');
@@ -851,7 +990,8 @@ def generate_html(sections):
 
             cards.forEach(card => {
                 const number = parseInt(card.dataset.number);
-                card.style.display = bookmarks.includes(number) ? 'block' : 'none';
+                const isBookmarked = bookmarks.some(b => b.number === number);
+                card.style.display = isBookmarked ? 'block' : 'none';
             });
 
             updateVisibleCount();
@@ -863,6 +1003,89 @@ def generate_html(sections):
                 resetFilters();
             }
         }
+
+        function exportBookmarks() {
+            const bookmarks = getBookmarks();
+            if (bookmarks.length === 0) {
+                alert('No bookmarked artifacts to export!');
+                return;
+            }
+
+            // Group by priority
+            const grouped = {
+                immediate: [],
+                'mid-term': [],
+                'long-term': [],
+                none: []
+            };
+
+            bookmarks.forEach(bookmark => {
+                const artifact = findArtifactByNumber(bookmark.number);
+                if (artifact) {
+                    grouped[bookmark.priority].push({
+                        number: bookmark.number,
+                        name: artifact.name,
+                        purpose: artifact.purpose,
+                        example: artifact.example,
+                        sectors: artifact.sectors.join(', ')
+                    });
+                }
+            });
+
+            // Create CSV content
+            let csv = 'Priority,Number,Name,Purpose,Example,Sectors\\n';
+
+            ['immediate', 'mid-term', 'long-term', 'none'].forEach(priority => {
+                const priorityLabel = priority === 'none' ? 'Unprioritized' :
+                                     priority === 'mid-term' ? 'Mid-term' :
+                                     priority.charAt(0).toUpperCase() + priority.slice(1);
+                grouped[priority].forEach(artifact => {
+                    csv += `"${priorityLabel}","${artifact.number}","${artifact.name.replace(/"/g, '""')}","${artifact.purpose.replace(/"/g, '""')}","${artifact.example.replace(/"/g, '""')}","${artifact.sectors}"\\n`;
+                });
+            });
+
+            // Download CSV
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `leadership-artifacts-${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function findArtifactByNumber(number) {
+            for (const section of artifactsData) {
+                const artifact = section.artifacts.find(a => parseInt(a.number) === number);
+                if (artifact) return artifact;
+            }
+            return null;
+        }
+
+        // Priority modal event listeners
+        document.querySelectorAll('.priority-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const priority = this.dataset.priority;
+                addBookmarkWithPriority(currentBookmarkNumber, priority);
+                document.getElementById('priorityModal').style.display = 'none';
+                currentBookmarkNumber = null;
+            });
+        });
+
+        document.getElementById('cancelPriority').addEventListener('click', function() {
+            document.getElementById('priorityModal').style.display = 'none';
+            currentBookmarkNumber = null;
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('priorityModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                currentBookmarkNumber = null;
+            }
+        });
 
         // Search functionality
         document.getElementById('searchBox').addEventListener('input', (e) => {
@@ -926,6 +1149,7 @@ def generate_html(sections):
 
         // Bookmark button event listeners
         document.getElementById('showBookmarked').addEventListener('click', showBookmarkedOnly);
+        document.getElementById('exportBookmarks').addEventListener('click', exportBookmarks);
         document.getElementById('clearBookmarks').addEventListener('click', clearAllBookmarks);
 
         // Initialize

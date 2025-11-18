@@ -91,7 +91,7 @@
 
         .sidebar {
             position: sticky;
-            top: 1rem;
+            top: -3rem;
             height: fit-content;
             background: var(--card-bg);
             border-radius: 12px;
@@ -262,6 +262,91 @@
 
         .bookmark-btn.bookmarked {
             opacity: 1;
+        }
+
+        .priority-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .priority-modal-content {
+            background-color: white;
+            margin: 15% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+
+        .priority-modal h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        .priority-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .priority-option {
+            padding: 1rem;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .priority-option:hover {
+            border-color: var(--secondary);
+            background: var(--light-bg);
+        }
+
+        .priority-immediate { border-left: 4px solid #dc3545; }
+        .priority-midterm { border-left: 4px solid #ffc107; }
+        .priority-longterm { border-left: 4px solid #28a745; }
+        .priority-none { border-left: 4px solid #6c757d; }
+
+        .modal-actions {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: flex-end;
+        }
+
+        .modal-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .modal-btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .modal-btn-secondary {
+            background: var(--light-bg);
+            color: var(--text);
+        }
+
+        .export-section {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
         }
 
         .artifact-number {
@@ -489,14 +574,6 @@
                     <span class="stat-number" id="totalArtifacts">153</span>
                     <span class="stat-label">Artifacts</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">14</span>
-                    <span class="stat-label">Categories</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">3</span>
-                    <span class="stat-label">Sectors</span>
-                </div>
             </div>
         </div>
     </div>
@@ -520,6 +597,9 @@
                 <div class="filter-section">
                     <div class="filter-title">Bookmarked <span id="bookmarkCount">(0)</span></div>
                     <button class="filter-btn" id="showBookmarked" data-filter="bookmarked">View Saved</button>
+                    <div class="export-section">
+                        <button class="filter-btn" id="exportBookmarks" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white;">Export Saved</button>
+                    </div>
                     <button class="filter-btn" id="clearBookmarks" style="margin-top: 0.5rem;">Clear All</button>
                 </div>
 
@@ -570,6 +650,31 @@
                     </div>
                 </div>
             </main>
+        </div>
+    </div>
+
+    <!-- Priority Selection Modal -->
+    <div id="priorityModal" class="priority-modal">
+        <div class="priority-modal-content">
+            <h3>Set Priority</h3>
+            <p>Choose a priority for this artifact:</p>
+            <div class="priority-options">
+                <div class="priority-option priority-immediate" data-priority="immediate">
+                    🔴 Immediate - Implement right away
+                </div>
+                <div class="priority-option priority-midterm" data-priority="mid-term">
+                    🟡 Mid-term - Implement within 6-12 months
+                </div>
+                <div class="priority-option priority-longterm" data-priority="long-term">
+                    🟢 Long-term - Future consideration
+                </div>
+                <div class="priority-option priority-none" data-priority="none">
+                    ⚪ No priority - Just bookmark for reference
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn modal-btn-secondary" id="cancelPriority">Cancel</button>
+            </div>
         </div>
     </div>
 
@@ -1972,7 +2077,352 @@
     {
         "letter": "L",
         "title": "Specialized & Sector-Specific Frameworks",
-        "artifacts": []
+        "artifacts": [
+            {
+                "number": "131",
+                "name": "Briefing Book / Briefing Paper / Executive Briefing Book",
+                "purpose": "Distilled, highly skimmable document providing targeted information, analysis, and policy recommendations to decision-makers.",
+                "example": "Commissioner's briefing book with \"bottom line up front,\" bulleted findings, and detailed appendices",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "132",
+                "name": "General Statements of Policy / Policy Guidance Documents",
+                "purpose": "Advises the public on how the agency intends to exercise its discretionary authority; technically non-binding but practically influential.",
+                "example": "Agency guidance on regulatory interpretation",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "133",
+                "name": "Legislative Mandate / Statutory Mission Mandate",
+                "purpose": "The legal definition of an agency's mission and authority.",
+                "example": "Minnesota statute creating an agency",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "134",
+                "name": "Legislative Agenda",
+                "purpose": "Prioritized list of statutes/changes the agency seeks.",
+                "example": "Annual legislative priorities",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "135",
+                "name": "Legislative Report / Statutory Report",
+                "purpose": "Recurring reports required by state or federal law.",
+                "example": "Annual report to legislature on cybersecurity readiness",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "136",
+                "name": "Rulemaking Plan",
+                "purpose": "For agencies that adopt administrative rules.",
+                "example": "Health or environmental rulemaking schedule",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "137",
+                "name": "Policy Interpretation Bulletins",
+                "purpose": "Clarifications for regulated communities.",
+                "example": "Tax policy guidance bulletins",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "138",
+                "name": "Interagency Agreement (IAA) / MOU / MOA",
+                "purpose": "Defines roles in multi-agency partnerships.",
+                "example": "Data-sharing agreement between agencies",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "139",
+                "name": "Public Data Policies",
+                "purpose": "Transparency and compliance with data practices laws.",
+                "example": "Minnesota Government Data Practices Act compliance",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "140",
+                "name": "Citizen's Guide / Transparency Report",
+                "purpose": "Accessible document explaining complex government work in plain language.",
+                "example": "\"How your government works\" guide",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "141",
+                "name": "Accessibility Plan (ADA/508 Compliance)",
+                "purpose": "Formal commitment and roadmap for accessibility.",
+                "example": "Digital accessibility roadmap",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "142",
+                "name": "Records Retention Schedule",
+                "purpose": "Legally required schedule for retention and destruction of records.",
+                "example": "State records retention schedule",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "143",
+                "name": "Continuity of Government Plan",
+                "purpose": "Protects state governance during emergencies.",
+                "example": "COOP for executive agencies",
+                "sectors": [
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "144",
+                "name": "Case for Support / Case Statement",
+                "purpose": "Compelling narrative to persuade donors.",
+                "example": "Red Cross fundraising case statement",
+                "sectors": [
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "145",
+                "name": "Fundraising Strategy / Development Plan",
+                "purpose": "Revenue mix, donor journey, and stewardship approach.",
+                "example": "Annual fundraising strategy",
+                "sectors": [
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "146",
+                "name": "Donor Segmentation Framework",
+                "purpose": "Categorizes donors by behavior, capacity, and affinity.",
+                "example": "Major donors, mid-level, grassroots segmentation",
+                "sectors": [
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "147",
+                "name": "Volunteer Handbook & Volunteer Rights / Volunteer Engagement Framework",
+                "purpose": "Governance for non-staff contributors.",
+                "example": "Red Cross volunteer guide",
+                "sectors": [
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "148",
+                "name": "Impact Report / Community Benefit Report",
+                "purpose": "Narrative and data report distinct from annual report.",
+                "example": "Social impact measurement report",
+                "sectors": [
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "149",
+                "name": "Social Impact Framework / Social Return on Investment (SROI)",
+                "purpose": "Measures and explains societal value created.",
+                "example": "SROI calculation methodology",
+                "sectors": [
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "150",
+                "name": "Partner Value Proposition Canvas",
+                "purpose": "Maps partnership benefits and expectations.",
+                "example": "Nonprofit partnership planning canvas",
+                "sectors": [
+                    "Nonprofit"
+                ],
+                "note": ""
+            },
+            {
+                "number": "151",
+                "name": "Network Governance Model",
+                "purpose": "Defines decision-making in collaborative networks.",
+                "example": "Collective impact backbone organization roles",
+                "sectors": [
+                    "Nonprofit",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "152",
+                "name": "Coalition / Network Agreements",
+                "purpose": "Governance for multi-stakeholder collaborations.",
+                "example": "Collective impact coalition agreement",
+                "sectors": [
+                    "Nonprofit",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "153",
+                "name": "Value Proposition / Employer Value Proposition (EVP)",
+                "purpose": "What makes the organization attractive.",
+                "example": "\"Competitive pay, meaningful work, flexibility, growth\"",
+                "sectors": [
+                    "General"
+                ],
+                "note": ""
+            },
+            {
+                "number": "154",
+                "name": "Product Strategy",
+                "purpose": "Defines product direction and roadmap.",
+                "example": "SaaS platform product roadmap",
+                "sectors": [
+                    "General"
+                ],
+                "note": ""
+            },
+            {
+                "number": "155",
+                "name": "Operating Model Blueprint",
+                "purpose": "Visual and textual description of structure, decision rights, processes, and systems.",
+                "example": "Centralized shared services operating model",
+                "sectors": [
+                    "General"
+                ],
+                "note": ""
+            },
+            {
+                "number": "156",
+                "name": "Mission Success Criteria",
+                "purpose": "Defines \"success\" in concrete terms.",
+                "example": "NASA mission success criteria",
+                "sectors": [
+                    "General",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "157",
+                "name": "Integrity Framework",
+                "purpose": "Fraud prevention and ethical controls.",
+                "example": "OECD Integrity Framework",
+                "sectors": [
+                    "General",
+                    "Public"
+                ],
+                "note": ""
+            },
+            {
+                "number": "158",
+                "name": "Delivery Framework (Firm-Specific)",
+                "purpose": "Proprietary methodology for engagements.",
+                "example": "Deloitte Greenhouse, McKinsey 7S, Bain RAPID",
+                "sectors": [
+                    "General"
+                ],
+                "note": ""
+            },
+            {
+                "number": "159",
+                "name": "Statement of Work (SOW) / Engagement Charter",
+                "purpose": "Defines deliverables, scope, constraints for consulting project.",
+                "example": "Deloitte SOW template",
+                "sectors": [
+                    "General"
+                ],
+                "note": ""
+            },
+            {
+                "number": "160",
+                "name": "Diagnostic Toolkit / Discovery Framework",
+                "purpose": "Structured tools for evaluating client problems.",
+                "example": "SWOT, Root Cause Analysis (Fishbone), McKinsey 7S",
+                "sectors": [
+                    "General"
+                ],
+                "note": ""
+            },
+            {
+                "number": "161",
+                "name": "Client Readiness Assessment",
+                "purpose": "Assesses whether conditions exist to succeed.",
+                "example": "McKinsey change readiness tool",
+                "sectors": [
+                    "General"
+                ],
+                "note": ""
+            },
+            {
+                "number": "162",
+                "name": "Hypothesis Tree / Issue Tree",
+                "purpose": "Structures diagnostic hypotheses.",
+                "example": "MECE (Mutually Exclusive, Collectively Exhaustive) issue tree",
+                "sectors": [
+                    "General"
+                ],
+                "note": ""
+            },
+            {
+                "number": "163",
+                "name": "Blueprint Deck",
+                "purpose": "Mid-engagement document outlining proposed solution architecture.",
+                "example": "Consulting solution blueprint",
+                "sectors": [
+                    "General"
+                ],
+                "note": ""
+            },
+            {
+                "number": "164",
+                "name": "Insights Deck / Synthesis Pack",
+                "purpose": "Standardized output summarizing findings and themes.",
+                "example": "Executive summary deck",
+                "sectors": [
+                    "General"
+                ],
+                "note": ""
+            }
+        ]
     },
     {
         "letter": "M",
@@ -2353,7 +2803,9 @@
             document.getElementById('totalArtifacts').textContent = visibleCards.length;
         }
 
-        // Bookmark functionality
+        // Bookmark functionality with priorities
+        let currentBookmarkNumber = null;
+
         function getBookmarks() {
             const saved = localStorage.getItem('artifactBookmarks');
             return saved ? JSON.parse(saved) : [];
@@ -2367,14 +2819,22 @@
 
         function toggleBookmark(artifactNumber) {
             let bookmarks = getBookmarks();
-            const index = bookmarks.indexOf(artifactNumber);
+            const existingIndex = bookmarks.findIndex(b => b.number === artifactNumber);
 
-            if (index > -1) {
-                bookmarks.splice(index, 1);
+            if (existingIndex > -1) {
+                // Remove bookmark
+                bookmarks.splice(existingIndex, 1);
+                saveBookmarks(bookmarks);
             } else {
-                bookmarks.push(artifactNumber);
+                // Show priority modal
+                currentBookmarkNumber = artifactNumber;
+                document.getElementById('priorityModal').style.display = 'block';
             }
+        }
 
+        function addBookmarkWithPriority(artifactNumber, priority) {
+            let bookmarks = getBookmarks();
+            bookmarks.push({ number: artifactNumber, priority: priority });
             saveBookmarks(bookmarks);
         }
 
@@ -2388,7 +2848,8 @@
             document.querySelectorAll('.bookmark-btn').forEach(btn => {
                 const card = btn.closest('.artifact-card');
                 const number = parseInt(card.dataset.number);
-                if (bookmarks.includes(number)) {
+                const isBookmarked = bookmarks.some(b => b.number === number);
+                if (isBookmarked) {
                     btn.classList.add('bookmarked');
                 } else {
                     btn.classList.remove('bookmarked');
@@ -2402,7 +2863,8 @@
 
             cards.forEach(card => {
                 const number = parseInt(card.dataset.number);
-                card.style.display = bookmarks.includes(number) ? 'block' : 'none';
+                const isBookmarked = bookmarks.some(b => b.number === number);
+                card.style.display = isBookmarked ? 'block' : 'none';
             });
 
             updateVisibleCount();
@@ -2414,6 +2876,89 @@
                 resetFilters();
             }
         }
+
+        function exportBookmarks() {
+            const bookmarks = getBookmarks();
+            if (bookmarks.length === 0) {
+                alert('No bookmarked artifacts to export!');
+                return;
+            }
+
+            // Group by priority
+            const grouped = {
+                immediate: [],
+                'mid-term': [],
+                'long-term': [],
+                none: []
+            };
+
+            bookmarks.forEach(bookmark => {
+                const artifact = findArtifactByNumber(bookmark.number);
+                if (artifact) {
+                    grouped[bookmark.priority].push({
+                        number: bookmark.number,
+                        name: artifact.name,
+                        purpose: artifact.purpose,
+                        example: artifact.example,
+                        sectors: artifact.sectors.join(', ')
+                    });
+                }
+            });
+
+            // Create CSV content
+            let csv = 'Priority,Number,Name,Purpose,Example,Sectors\n';
+
+            ['immediate', 'mid-term', 'long-term', 'none'].forEach(priority => {
+                const priorityLabel = priority === 'none' ? 'Unprioritized' :
+                                     priority === 'mid-term' ? 'Mid-term' :
+                                     priority.charAt(0).toUpperCase() + priority.slice(1);
+                grouped[priority].forEach(artifact => {
+                    csv += `"${priorityLabel}","${artifact.number}","${artifact.name.replace(/"/g, '""')}","${artifact.purpose.replace(/"/g, '""')}","${artifact.example.replace(/"/g, '""')}","${artifact.sectors}"\n`;
+                });
+            });
+
+            // Download CSV
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `leadership-artifacts-${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function findArtifactByNumber(number) {
+            for (const section of artifactsData) {
+                const artifact = section.artifacts.find(a => parseInt(a.number) === number);
+                if (artifact) return artifact;
+            }
+            return null;
+        }
+
+        // Priority modal event listeners
+        document.querySelectorAll('.priority-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const priority = this.dataset.priority;
+                addBookmarkWithPriority(currentBookmarkNumber, priority);
+                document.getElementById('priorityModal').style.display = 'none';
+                currentBookmarkNumber = null;
+            });
+        });
+
+        document.getElementById('cancelPriority').addEventListener('click', function() {
+            document.getElementById('priorityModal').style.display = 'none';
+            currentBookmarkNumber = null;
+        });
+
+        // Close modal when clicking outside
+        document.getElementById('priorityModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+                currentBookmarkNumber = null;
+            }
+        });
 
         // Search functionality
         document.getElementById('searchBox').addEventListener('input', (e) => {
@@ -2477,6 +3022,7 @@
 
         // Bookmark button event listeners
         document.getElementById('showBookmarked').addEventListener('click', showBookmarkedOnly);
+        document.getElementById('exportBookmarks').addEventListener('click', exportBookmarks);
         document.getElementById('clearBookmarks').addEventListener('click', clearAllBookmarks);
 
         // Initialize
