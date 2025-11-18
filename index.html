@@ -723,6 +723,7 @@
                     <button class="filter-btn" id="showBookmarked" data-filter="bookmarked">View Saved</button>
                     <div class="export-section">
                         <button class="filter-btn" id="exportBookmarks" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%); color: white;">Export Saved</button>
+                        <button class="filter-btn" id="shareBookmarks" style="background: linear-gradient(135deg, #16a085 0%, #27ae60 100%); color: white; margin-top: 0.5rem;">Share Collection</button>
                     </div>
                     <button class="filter-btn" id="clearBookmarks" style="margin-top: 0.5rem;">Clear All</button>
                 </div>
@@ -4649,6 +4650,17 @@
                 return;
             }
 
+            // Ask user for format
+            const format = confirm('Click OK for CSV format, or Cancel for Printable HTML format');
+
+            if (format) {
+                exportToCSV(bookmarks);
+            } else {
+                exportToHTML(bookmarks);
+            }
+        }
+
+        function exportToCSV(bookmarks) {
             // Group by priority
             const grouped = {
                 immediate: [],
@@ -4665,20 +4677,24 @@
                         name: artifact.name,
                         purpose: artifact.purpose,
                         example: artifact.example,
-                        sectors: artifact.sectors.join(', ')
+                        sectors: artifact.sectors.join(', '),
+                        explanationUrl: artifact.explanationLink?.url || '',
+                        explanationTitle: artifact.explanationLink?.title || '',
+                        exampleUrl: artifact.exampleLink?.url || '',
+                        exampleTitle: artifact.exampleLink?.title || ''
                     });
                 }
             });
 
-            // Create CSV content
-            let csv = 'Priority,Number,Name,Purpose,Example,Sectors\n';
+            // Create CSV content with research links
+            let csv = 'Priority,Number,Name,Purpose,Example,Sectors,Explanation Link,Explanation Title,Example Link,Example Title\n';
 
             ['immediate', 'mid-term', 'long-term', 'none'].forEach(priority => {
                 const priorityLabel = priority === 'none' ? 'Unprioritized' :
                                      priority === 'mid-term' ? 'Mid-term' :
                                      priority.charAt(0).toUpperCase() + priority.slice(1);
                 grouped[priority].forEach(artifact => {
-                    csv += `"${priorityLabel}","${artifact.number}","${artifact.name.replace(/"/g, '""')}","${artifact.purpose.replace(/"/g, '""')}","${artifact.example.replace(/"/g, '""')}","${artifact.sectors}"\n`;
+                    csv += `"${priorityLabel}","${artifact.number}","${artifact.name.replace(/"/g, '""')}","${artifact.purpose.replace(/"/g, '""')}","${artifact.example.replace(/"/g, '""')}","${artifact.sectors}","${artifact.explanationUrl}","${artifact.explanationTitle.replace(/"/g, '""')}","${artifact.exampleUrl}","${artifact.exampleTitle.replace(/"/g, '""')}"\n`;
                 });
             });
 
@@ -4688,6 +4704,111 @@
             const a = document.createElement('a');
             a.href = url;
             a.download = `leadership-artifacts-${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+        }
+
+        function exportToHTML(bookmarks) {
+            // Group by priority
+            const grouped = {
+                immediate: [],
+                'mid-term': [],
+                'long-term': [],
+                none: []
+            };
+
+            bookmarks.forEach(bookmark => {
+                const artifact = findArtifactByNumber(bookmark.number);
+                if (artifact) {
+                    grouped[bookmark.priority].push(artifact);
+                }
+            });
+
+            // Create HTML content
+            let html = `<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>My Bookmarked Leadership Artifacts - ${new Date().toLocaleDateString()}</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; max-width: 1200px; margin: 0 auto; padding: 20px; }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; }
+        .priority-section { margin: 20px 0; }
+        .artifact { margin: 15px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; page-break-inside: avoid; }
+        .artifact-header { display: flex; align-items: baseline; margin-bottom: 10px; }
+        .artifact-number { background: #3498db; color: white; padding: 3px 8px; border-radius: 3px; margin-right: 10px; font-weight: bold; }
+        .artifact-name { font-size: 1.2em; font-weight: bold; color: #2c3e50; }
+        .artifact-purpose { margin: 10px 0; color: #555; }
+        .artifact-example { margin: 10px 0; padding: 10px; background: #f8f9fa; border-left: 3px solid #3498db; }
+        .artifact-sectors { color: #7f8c8d; font-size: 0.9em; margin: 5px 0; }
+        .resources { margin-top: 10px; }
+        .resource-link { display: block; margin: 5px 0; color: #3498db; text-decoration: none; }
+        .resource-link:hover { text-decoration: underline; }
+        .priority-immediate { border-left: 4px solid #e74c3c; }
+        .priority-mid-term { border-left: 4px solid #f39c12; }
+        .priority-long-term { border-left: 4px solid #2ecc71; }
+        @media print {
+            .artifact { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <h1>📚 My Bookmarked Leadership Artifacts</h1>
+    <p><strong>Generated:</strong> ${new Date().toLocaleString()}</p>
+    <p><strong>Total Artifacts:</strong> ${bookmarks.length}</p>
+`;
+
+            const priorityInfo = {
+                immediate: { label: '🔴 Immediate Priority', class: 'priority-immediate' },
+                'mid-term': { label: '🟡 Mid-term Priority', class: 'priority-mid-term' },
+                'long-term': { label: '🟢 Long-term Priority', class: 'priority-long-term' },
+                none: { label: '⚪ No Priority Set', class: '' }
+            };
+
+            ['immediate', 'mid-term', 'long-term', 'none'].forEach(priority => {
+                if (grouped[priority].length > 0) {
+                    html += `<div class="priority-section">
+                        <h2>${priorityInfo[priority].label} (${grouped[priority].length})</h2>`;
+
+                    grouped[priority].forEach(artifact => {
+                        html += `<div class="artifact ${priorityInfo[priority].class}">
+                            <div class="artifact-header">
+                                <span class="artifact-number">#${artifact.number}</span>
+                                <span class="artifact-name">${artifact.name}</span>
+                            </div>
+                            <div class="artifact-sectors">Sectors: ${artifact.sectors.join(', ')}</div>
+                            <div class="artifact-purpose"><strong>Purpose:</strong> ${artifact.purpose}</div>
+                            <div class="artifact-example"><strong>Example:</strong> ${artifact.example}</div>`;
+
+                        if (artifact.explanationLink || artifact.exampleLink) {
+                            html += `<div class="resources"><strong>🌐 Resources:</strong>`;
+                            if (artifact.explanationLink) {
+                                html += `<a href="${artifact.explanationLink.url}" class="resource-link" target="_blank">📖 ${artifact.explanationLink.title}</a>`;
+                            }
+                            if (artifact.exampleLink) {
+                                html += `<a href="${artifact.exampleLink.url}" class="resource-link" target="_blank">🔗 ${artifact.exampleLink.title}</a>`;
+                            }
+                            html += `</div>`;
+                        }
+
+                        html += `</div>`;
+                    });
+
+                    html += `</div>`;
+                }
+            });
+
+            html += `</body></html>`;
+
+            // Download HTML
+            const blob = new Blob([html], { type: 'text/html' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `leadership-artifacts-${new Date().toISOString().split('T')[0]}.html`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
@@ -4776,9 +4897,95 @@
         // Bookmark button event listeners
         document.getElementById('showBookmarked').addEventListener('click', showBookmarkedOnly);
         document.getElementById('exportBookmarks').addEventListener('click', exportBookmarks);
+        document.getElementById('shareBookmarks').addEventListener('click', shareBookmarks);
         document.getElementById('clearBookmarks').addEventListener('click', clearAllBookmarks);
 
+        // URL Sharing Functions
+        function encodeBookmarksToURL() {
+            const bookmarks = getBookmarks();
+            if (bookmarks.length === 0) return '';
+
+            // Encode as compact string: number:priority,number:priority
+            const encoded = bookmarks.map(b => {
+                const p = b.priority === 'none' ? '0' :
+                         b.priority === 'immediate' ? '1' :
+                         b.priority === 'mid-term' ? '2' : '3';
+                return `${b.number}:${p}`;
+            }).join(',');
+
+            return btoa(encoded); // Base64 encode
+        }
+
+        function decodeBookmarksFromURL(encoded) {
+            try {
+                const decoded = atob(encoded); // Base64 decode
+                const bookmarks = decoded.split(',').map(item => {
+                    const [number, priority] = item.split(':');
+                    const p = priority === '0' ? 'none' :
+                             priority === '1' ? 'immediate' :
+                             priority === '2' ? 'mid-term' : 'long-term';
+                    return { number: parseInt(number), priority: p };
+                });
+                return bookmarks;
+            } catch (e) {
+                console.error('Error decoding bookmarks:', e);
+                return [];
+            }
+        }
+
+        function shareBookmarks() {
+            const bookmarks = getBookmarks();
+            if (bookmarks.length === 0) {
+                alert('No bookmarked artifacts to share!');
+                return;
+            }
+
+            const encoded = encodeBookmarksToURL();
+            const shareURL = `${window.location.origin}${window.location.pathname}?bookmarks=${encoded}`;
+
+            // Try to copy to clipboard
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(shareURL)
+                    .then(() => {
+                        alert(`✓ Share URL copied to clipboard!\n\nYou can paste this link to share your ${bookmarks.length} bookmarked artifact(s).\n\nURL: ${shareURL}`);
+                    })
+                    .catch(() => {
+                        // Fallback: show in prompt
+                        prompt('Copy this URL to share your bookmarks:', shareURL);
+                    });
+            } else {
+                // Fallback for older browsers
+                prompt('Copy this URL to share your bookmarks:', shareURL);
+            }
+        }
+
+        function loadBookmarksFromURL() {
+            const params = new URLSearchParams(window.location.search);
+            const encoded = params.get('bookmarks');
+
+            if (encoded) {
+                const bookmarks = decodeBookmarksFromURL(encoded);
+                if (bookmarks.length > 0) {
+                    // Ask user if they want to load shared bookmarks
+                    const load = confirm(`This link contains ${bookmarks.length} shared bookmark(s).\n\nDo you want to load them?\n\n(Your existing bookmarks will be replaced)`);
+
+                    if (load) {
+                        saveBookmarks(bookmarks);
+                        updateBookmarkCount();
+                        updateBookmarkButtons();
+                        renderArtifacts();
+
+                        // Remove URL parameter after loading
+                        window.history.replaceState({}, document.title, window.location.pathname);
+
+                        alert(`✓ Loaded ${bookmarks.length} bookmark(s) successfully!`);
+                    }
+                }
+            }
+        }
+
         // Initialize
+        loadBookmarksFromURL(); // Check for shared bookmarks first
         renderNavigation();
         renderArtifacts();
         updateBookmarkCount();
