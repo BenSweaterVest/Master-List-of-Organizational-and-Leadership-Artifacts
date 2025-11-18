@@ -19,7 +19,8 @@ research_files = [
     'research-data/artifacts-101-120.json',   # Evaluation & Project Management (101-120)
     'research-data/artifacts-121-130.json',   # Change Management (121-130)
     'research-data/artifacts-131-153.json',   # Advanced & Specialized Tools (131-153)
-    'research-data/artifacts-154-186.json'    # Specialized & Sector-Specific (154-186)
+    'research-data/artifacts-154-186.json',   # Specialized & Sector-Specific (154-186)
+    'research-data/artifacts-187-188.json'    # Consulting Artifacts (187-188)
 ]
 
 # Build a dictionary of artifact number -> research data
