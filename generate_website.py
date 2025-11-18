@@ -397,6 +397,36 @@ def generate_html(sections):
             opacity: 1;
         }
 
+        .header-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .methodology-header {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .methodology-header h3 {
+            margin: 0 0 0.75rem 0;
+            color: var(--primary);
+            font-size: 1.1rem;
+        }
+
+        .framework-box-compact {
+            background: linear-gradient(135deg, rgba(52, 73, 94, 0.05) 0%, rgba(155, 89, 182, 0.05) 100%);
+            border-left: 4px solid var(--secondary);
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+        }
+
         .priority-modal {
             display: none;
             position: fixed;
@@ -405,75 +435,38 @@ def generate_html(sections):
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0,0,0,0.5);
+            background-color: rgba(0,0,0,0.3);
         }
 
-        .priority-modal-content {
+        .priority-modal-content-compact {
             background-color: white;
-            margin: 15% auto;
-            padding: 2rem;
-            border-radius: 12px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-        }
-
-        .priority-modal h3 {
-            margin-top: 0;
-            color: var(--primary);
-        }
-
-        .priority-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            margin: 1.5rem 0;
-        }
-
-        .priority-option {
+            margin: 20% auto;
             padding: 1rem;
-            border: 2px solid var(--border);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-align: center;
-            font-weight: 500;
+            border-radius: 12px;
+            width: fit-content;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
 
-        .priority-option:hover {
-            border-color: var(--secondary);
-            background: var(--light-bg);
-        }
-
-        .priority-immediate { border-left: 4px solid #dc3545; }
-        .priority-midterm { border-left: 4px solid #ffc107; }
-        .priority-longterm { border-left: 4px solid #28a745; }
-        .priority-none { border-left: 4px solid #6c757d; }
-
-        .modal-actions {
+        .priority-options-compact {
             display: flex;
-            gap: 0.75rem;
-            justify-content: flex-end;
+            gap: 1rem;
         }
 
-        .modal-btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            border-radius: 8px;
+        .priority-icon {
+            font-size: 2rem;
             cursor: pointer;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: all 0.3s;
+            transition: all 0.2s;
+            padding: 0.5rem;
+            border-radius: 50%;
         }
 
-        .modal-btn-primary {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-        }
-
-        .modal-btn-secondary {
+        .priority-icon:hover {
+            transform: scale(1.2);
             background: var(--light-bg);
-            color: var(--text);
+        }
+
+        .priority-icon[data-priority="none"] {
+            opacity: 0.5;
         }
 
         .export-section {
@@ -702,10 +695,26 @@ def generate_html(sections):
         <div class="container">
             <h1>Master List of Organizational and Leadership Artifacts</h1>
             <p>A comprehensive compilation of organizational, leadership, strategic, operational, and governance artifacts used across public administration, nonprofit leadership, and general organizational management</p>
-            <div class="stats">
-                <div class="stat-item">
-                    <span class="stat-number" id="totalArtifacts">153</span>
-                    <span class="stat-label">Artifacts</span>
+            <div class="header-bottom">
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="totalArtifacts">153</span>
+                        <span class="stat-label">Artifacts</span>
+                    </div>
+                </div>
+                <div class="methodology-header">
+                    <h3>The Strategic Foundation (Identity Layer)</h3>
+                    <div class="framework-box-compact">
+                        <span style="font-size: 1rem; display: block; margin: 0.5rem 0;">
+                            <strong>Purpose</strong> → <strong>Vision</strong> → <strong>Mission</strong> → <strong>Values</strong>
+                        </span>
+                    </div>
+                    <h3 style="margin-top: 1rem;">The Universal Artifact Stack</h3>
+                    <div class="framework-box-compact">
+                        <span style="font-size: 0.95rem; display: block; margin: 0.5rem 0;">
+                            <strong>Identity</strong> → <strong>Direction</strong> → <strong>Priorities</strong> → <strong>Action</strong> → <strong>Accountability</strong>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -743,40 +752,6 @@ def generate_html(sections):
             </aside>
 
             <main>
-                <div class="content methodology">
-                    <h2>The Strategic Foundation (Identity Layer)</h2>
-                    <div class="framework-box">
-                        <span style="font-size: 1.1rem; display: block; margin: 0.75rem 0;">
-                            <strong>Purpose</strong> (most stable) → <strong>Vision</strong> (aspirational) → <strong>Mission</strong> (operational) → <strong>Values</strong> (behavioral)
-                        </span>
-                        <ul style="margin-top: 0.75rem; list-style: none; padding-left: 0;">
-                            <li>• Purpose answers "Why do we exist?" and remains highly stable over time</li>
-                            <li>• Vision answers "Where are we going?" and provides the aspirational future state</li>
-                            <li>• Mission answers "What do we do and for whom?" and describes current operations</li>
-                            <li>• Values answer "How do we behave?" and guide daily decision-making</li>
-                        </ul>
-                    </div>
-
-                    <h2 style="margin-top: 2rem;">The Universal Artifact Stack</h2>
-
-                    <div class="framework-box">
-                        <span style="font-size: 1.1rem; display: block; margin: 0.75rem 0;">
-                            <strong>Identity</strong> → <strong>Direction</strong> → <strong>Priorities</strong> → <strong>Action</strong> → <strong>Accountability</strong>
-                        </span>
-                        <span style="font-size: 1.05rem; display: block; margin: 0.75rem 0; opacity: 0.9;">
-                            Vision & Mission → Guiding Principles/Values → Strategic Goals → Initiatives/Plans → Performance Metrics
-                        </span>
-                        <ul style="margin-top: 0.75rem; list-style: none; padding-left: 0;">
-                            <li>• <strong>Vision Statement</strong> - Aspirational future state (Identity)</li>
-                            <li>• <strong>Mission Statement</strong> - Current purpose and operations (Identity)</li>
-                            <li>• <strong>Core Values</strong> - Behavioral expectations and culture (Direction)</li>
-                            <li>• <strong>Guiding Principles</strong> - Decision-making frameworks (Direction)</li>
-                            <li>• <strong>Strategic Goals</strong> - Major 3-5 year objectives (Priorities)</li>
-                            <li>• <strong>Strategic Priorities</strong> - Current focus areas for resource allocation (Priorities)</li>
-                        </ul>
-                    </div>
-                </div>
-
                 <div class="content">
                     <div id="artifactContainer">
                         <!-- Artifacts will be dynamically loaded here -->
@@ -788,25 +763,12 @@ def generate_html(sections):
 
     <!-- Priority Selection Modal -->
     <div id="priorityModal" class="priority-modal">
-        <div class="priority-modal-content">
-            <h3>Set Priority</h3>
-            <p>Choose a priority for this artifact:</p>
-            <div class="priority-options">
-                <div class="priority-option priority-immediate" data-priority="immediate">
-                    🔴 Immediate - Implement right away
-                </div>
-                <div class="priority-option priority-midterm" data-priority="mid-term">
-                    🟡 Mid-term - Implement within 6-12 months
-                </div>
-                <div class="priority-option priority-longterm" data-priority="long-term">
-                    🟢 Long-term - Future consideration
-                </div>
-                <div class="priority-option priority-none" data-priority="none">
-                    ⚪ No priority - Just bookmark for reference
-                </div>
-            </div>
-            <div class="modal-actions">
-                <button class="modal-btn modal-btn-secondary" id="cancelPriority">Cancel</button>
+        <div class="priority-modal-content-compact">
+            <div class="priority-options-compact">
+                <div class="priority-icon" data-priority="none" title="No priority">⚪</div>
+                <div class="priority-icon" data-priority="immediate" title="Immediate">🔴</div>
+                <div class="priority-icon" data-priority="mid-term" title="Mid-term">🟡</div>
+                <div class="priority-icon" data-priority="long-term" title="Long-term">🟢</div>
             </div>
         </div>
     </div>
@@ -1073,8 +1035,8 @@ def generate_html(sections):
         }
 
         // Priority modal event listeners
-        document.querySelectorAll('.priority-option').forEach(option => {
-            option.addEventListener('click', function() {
+        document.querySelectorAll('.priority-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
                 const priority = this.dataset.priority;
                 addBookmarkWithPriority(currentBookmarkNumber, priority);
                 document.getElementById('priorityModal').style.display = 'none';
@@ -1082,14 +1044,10 @@ def generate_html(sections):
             });
         });
 
-        document.getElementById('cancelPriority').addEventListener('click', function() {
-            document.getElementById('priorityModal').style.display = 'none';
-            currentBookmarkNumber = null;
-        });
-
-        // Close modal when clicking outside
+        // Close modal when clicking outside - auto-save with "none" priority
         document.getElementById('priorityModal').addEventListener('click', function(e) {
             if (e.target === this) {
+                addBookmarkWithPriority(currentBookmarkNumber, 'none');
                 this.style.display = 'none';
                 currentBookmarkNumber = null;
             }
