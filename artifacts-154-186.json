@@ -1,0 +1,431 @@
+[
+  {
+    "number": "154",
+    "name": "Briefing Book / Briefing Paper / Executive Briefing Book",
+    "example": "Commissioner's briefing book with \"bottom line up front,\" bulleted findings, and detailed appendices",
+    "explanationLink": {
+      "url": "https://projects.iq.harvard.edu/files/hks-communications-program/files/ho_herman_white-papers-briefing-books-ws_10_31_12.pdf",
+      "title": "Harvard Kennedy School - White Papers and Briefing Books (PDF)"
+    },
+    "exampleLink": {
+      "url": "https://writingcenter.unc.edu/tips-and-tools/policy-briefs/",
+      "title": "UNC Writing Center - Policy Briefs"
+    }
+  },
+  {
+    "number": "155",
+    "name": "General Statements of Policy / Policy Guidance Documents",
+    "example": "Agency guidance on regulatory interpretation",
+    "explanationLink": {
+      "url": "https://www.acus.gov/recommendation/agency-guidance-through-policy-statements",
+      "title": "Administrative Conference of the United States - Agency Guidance Through Policy Statements"
+    },
+    "exampleLink": {
+      "url": "https://www.congress.gov/crs-product/R44468",
+      "title": "Congressional Research Service - General Policy Statements: Legal Overview"
+    }
+  },
+  {
+    "number": "156",
+    "name": "Legislative Mandate / Statutory Mission Mandate",
+    "example": "Minnesota statute creating an agency",
+    "explanationLink": {
+      "url": "https://www.irs.gov/about-irs/the-agency-its-mission-and-statutory-authority",
+      "title": "IRS - The Agency, Its Mission and Statutory Authority"
+    },
+    "exampleLink": {
+      "url": "https://ballotpedia.org/Statutory_authority",
+      "title": "Ballotpedia - Statutory Authority"
+    }
+  },
+  {
+    "number": "157",
+    "name": "Legislative Agenda",
+    "example": "Annual legislative priorities",
+    "explanationLink": {
+      "url": "https://fiscalnote.com/blog/legislative-strategy",
+      "title": "FiscalNote - How to Develop a Legislative Tracking Strategy"
+    },
+    "exampleLink": {
+      "url": "https://www.astho.org/advocacy/federal-government-affairs/federal-legislative-agenda/",
+      "title": "ASTHO - Federal Legislative Agenda"
+    }
+  },
+  {
+    "number": "158",
+    "name": "Legislative Report / Statutory Report",
+    "example": "Annual report to legislature on cybersecurity readiness",
+    "explanationLink": {
+      "url": "https://www.cisa.gov/topics/cyber-threats-and-advisories/information-sharing/cyber-incident-reporting-critical-infrastructure-act-2022-circia",
+      "title": "CISA - Cyber Incident Reporting for Critical Infrastructure Act (CIRCIA)"
+    },
+    "exampleLink": {
+      "url": "https://ncua.gov/news/publication-search/cybersecurity/cybersecurity-and-credit-union-system-resilience-annual-report-congress-2",
+      "title": "NCUA - Cybersecurity Annual Report to Congress"
+    }
+  },
+  {
+    "number": "159",
+    "name": "Rulemaking Plan",
+    "example": "Health or environmental rulemaking schedule",
+    "explanationLink": {
+      "url": "https://www.epa.gov/laws-regulations/basics-regulatory-process",
+      "title": "EPA - The Basics of the Regulatory Process"
+    },
+    "exampleLink": {
+      "url": "https://www.epa.gov/laws-regulations/regulatory-agendas-and-regulatory-plans",
+      "title": "EPA - Regulatory Agendas and Plan"
+    }
+  },
+  {
+    "number": "160",
+    "name": "Policy Interpretation Bulletins",
+    "example": "Tax policy guidance bulletins",
+    "explanationLink": {
+      "url": "https://www.irs.gov/privacy-disclosure/tax-code-regulations-and-official-guidance",
+      "title": "IRS - Tax Code, Regulations and Official Guidance"
+    },
+    "exampleLink": {
+      "url": "https://www.irs.gov/newsroom/irs-guidance",
+      "title": "IRS - IRS Guidance (Revenue Rulings and Procedures)"
+    }
+  },
+  {
+    "number": "161",
+    "name": "Interagency Agreement (IAA) / MOU / MOA",
+    "example": "Data-sharing agreement between agencies",
+    "explanationLink": {
+      "url": "https://home.treasury.gov/system/files/281/IAA-Guide-March-2013.pdf",
+      "title": "Department of the Treasury - Interagency Agreement Guide (PDF)"
+    },
+    "exampleLink": {
+      "url": "https://childcareta.acf.hhs.gov/resource/sample-inter-agency-data-sharing-memorandum-understanding-mou",
+      "title": "HHS Child Care Technical Assistance Network - Sample Inter-Agency Data Sharing MOU"
+    }
+  },
+  {
+    "number": "162",
+    "name": "Public Data Policies",
+    "example": "Minnesota Government Data Practices Act compliance",
+    "explanationLink": {
+      "url": "https://www.ag.state.mn.us/Office/Initiatives/WESA/Meetings/20210301/MN_DPA.pdf",
+      "title": "Minnesota Attorney General - Minnesota Government Data Practices Act (PDF)"
+    },
+    "exampleLink": {
+      "url": "https://mn.gov/admin/data-practices/data/",
+      "title": "State of Minnesota - Data Practices"
+    }
+  },
+  {
+    "number": "163",
+    "name": "Citizen's Guide / Transparency Report",
+    "example": "\"How your government works\" guide",
+    "explanationLink": {
+      "url": "https://files.transparencycdn.org/images/2009_TIPlainLanguageGuide_EN.pdf",
+      "title": "Transparency International - The Anti-Corruption Plain Language Guide (PDF)"
+    },
+    "exampleLink": {
+      "url": "https://www.gsa.gov/governmentwide-initiatives/plain-language",
+      "title": "GSA - Plain Language Initiative"
+    }
+  },
+  {
+    "number": "164",
+    "name": "Accessibility Plan (ADA/508 Compliance)",
+    "example": "Digital accessibility roadmap",
+    "explanationLink": {
+      "url": "https://www.section508.gov/manage/program-roadmap/",
+      "title": "Section508.gov - Revised 508 Standards Roadmap"
+    },
+    "exampleLink": {
+      "url": "https://www.section508.gov/manage/playbooks/technology-accessibility-playbook-intro/play03/",
+      "title": "Section508.gov - Develop a Section 508 Accessibility Roadmap"
+    }
+  },
+  {
+    "number": "165",
+    "name": "Records Retention Schedule",
+    "example": "State records retention schedule",
+    "explanationLink": {
+      "url": "https://www.archives.gov/records-mgmt/grs/intro.html",
+      "title": "National Archives - General Records Schedules Introduction"
+    },
+    "exampleLink": {
+      "url": "https://www.archives.nysed.gov/records/retention-schedules",
+      "title": "New York State Archives - Retention and Disposition Schedules"
+    }
+  },
+  {
+    "number": "166",
+    "name": "Continuity of Government Plan",
+    "example": "COOP for executive agencies",
+    "explanationLink": {
+      "url": "https://www.fema.gov/sites/default/files/documents/fema_sltt-cog-guidance_070921.pdf",
+      "title": "FEMA - Guide to Continuity of Government (PDF)"
+    },
+    "exampleLink": {
+      "url": "https://irp.fas.org/offdocs/pdd/pdd-67.htm",
+      "title": "FAS - Presidential Decision Directive 67: Enduring Constitutional Government"
+    }
+  },
+  {
+    "number": "167",
+    "name": "Case for Support / Case Statement",
+    "example": "Red Cross fundraising case statement",
+    "explanationLink": {
+      "url": "https://doublethedonation.com/case-for-support/",
+      "title": "Double the Donation - The Art of Persuasion: How to Build a Case for Support"
+    },
+    "exampleLink": {
+      "url": "https://grahampelton.com/fundraising-case-for-support/",
+      "title": "Graham-Pelton - How to Write a Case for Support"
+    }
+  },
+  {
+    "number": "168",
+    "name": "Fundraising Strategy / Development Plan",
+    "example": "Annual fundraising strategy",
+    "explanationLink": {
+      "url": "https://www.wildapricot.com/blog/nonprofit-fundraising-plan",
+      "title": "WildApricot - How to Prepare a Nonprofit Fundraising Plan + Template"
+    },
+    "exampleLink": {
+      "url": "https://www.nonprofits.freewill.com/resources/blog/donor-stewardship-plan",
+      "title": "FreeWill - How to Make a Nonprofit Donor Stewardship Plan: 7 Steps"
+    }
+  },
+  {
+    "number": "169",
+    "name": "Donor Segmentation Framework",
+    "example": "Major donors, mid-level, grassroots segmentation",
+    "explanationLink": {
+      "url": "https://neonone.com/resources/blog/donor-segmentation/",
+      "title": "Neon One - Donor Segmentation: The Complete Nonprofit Guide"
+    },
+    "exampleLink": {
+      "url": "https://www.bridgespan.org/insights/beneficiary-and-donor-segmentation",
+      "title": "Bridgespan - Beneficiary and Donor Segmentation"
+    }
+  },
+  {
+    "number": "170",
+    "name": "Volunteer Handbook & Volunteer Rights / Volunteer Engagement Framework",
+    "example": "Red Cross volunteer guide",
+    "explanationLink": {
+      "url": "https://volunteeringredcross.org/en/desarrollo/",
+      "title": "International Federation of Red Cross - Volunteering Development Framework"
+    },
+    "exampleLink": {
+      "url": "https://www.redcross.org/content/dam/redcross/atg/Chapters/Division_10_-_Media/Connecticut/Connecticut_-_PDFs/CT-RI-volunteer-handbook-8-14.pdf",
+      "title": "American Red Cross - Volunteer Handbook Connecticut and Rhode Island Region (PDF)"
+    }
+  },
+  {
+    "number": "171",
+    "name": "Impact Report / Community Benefit Report",
+    "example": "Social impact measurement report",
+    "explanationLink": {
+      "url": "https://www.socialimpactsolutions.com/what-is-an-impact-report/",
+      "title": "Social Impact Solutions - What is an Impact Report? A Complete Guide for Nonprofits"
+    },
+    "exampleLink": {
+      "url": "https://www.bonterratech.com/blog/impact-report",
+      "title": "Bonterra - Impact Report Guide: How to Demonstrate Impact Effectively"
+    }
+  },
+  {
+    "number": "172",
+    "name": "Social Impact Framework / Social Return on Investment (SROI)",
+    "example": "SROI calculation methodology",
+    "explanationLink": {
+      "url": "https://www.sopact.com/use-case/social-return-on-invesment-sroi",
+      "title": "Sopact - Social Return on Investment (SROI)"
+    },
+    "exampleLink": {
+      "url": "https://redfworkshop.org/resource/overview-of-sroi-analysis/",
+      "title": "REDF Workshop - Social Return on Investment (SROI) Analysis"
+    }
+  },
+  {
+    "number": "173",
+    "name": "Partner Value Proposition Canvas",
+    "example": "Nonprofit partnership planning canvas",
+    "explanationLink": {
+      "url": "https://valuechaingeneration.com/2014/10/17/the-partnership-canvas/",
+      "title": "Value Chain Generation - The Partnership Canvas"
+    },
+    "exampleLink": {
+      "url": "https://d-lab.mit.edu/sites/default/files/inline-files/8.%20Partnership%20Canvas_1.pdf",
+      "title": "MIT D-Lab - Partnership Canvas (PDF)"
+    }
+  },
+  {
+    "number": "174",
+    "name": "Network Governance Model",
+    "example": "Collective impact backbone organization roles",
+    "explanationLink": {
+      "url": "https://collectiveimpactforum.org/resource/the-value-of-backbone-organizations-in-collective-impact/",
+      "title": "Collective Impact Forum - The Value of Backbone Organizations"
+    },
+    "exampleLink": {
+      "url": "https://ssir.org/articles/entry/understanding_the_value_of_backbone_organizations_in_collective_impact_2",
+      "title": "Stanford Social Innovation Review - Understanding the Value of Backbone Organizations"
+    }
+  },
+  {
+    "number": "175",
+    "name": "Coalition / Network Agreements",
+    "example": "Collective impact coalition agreement",
+    "explanationLink": {
+      "url": "https://ssir.org/articles/entry/collective_impact",
+      "title": "Stanford Social Innovation Review - Collective Impact"
+    },
+    "exampleLink": {
+      "url": "https://thecne.org/cne-toolkits-2-coalition-design-take-action-blueprint/",
+      "title": "Center for Nonprofit Excellence - Coalition-Building Roadmap"
+    }
+  },
+  {
+    "number": "176",
+    "name": "Value Proposition / Employer Value Proposition (EVP)",
+    "example": "\"Competitive pay, meaningful work, flexibility, growth\"",
+    "explanationLink": {
+      "url": "https://www.qualtrics.com/experience-management/employee/employee-value-proposition/",
+      "title": "Qualtrics - Employee Value Proposition (EVP): Definition and Guide"
+    },
+    "exampleLink": {
+      "url": "https://www.greatplacetowork.com/resources/blog/employee-value-proposition-definition-and-strategies",
+      "title": "Great Place To Work - Employee Value Proposition: Definition and Strategies"
+    }
+  },
+  {
+    "number": "177",
+    "name": "Product Strategy",
+    "example": "SaaS platform product roadmap",
+    "explanationLink": {
+      "url": "https://www.savio.io/product-roadmap/saas-roadmap/",
+      "title": "Savio - SaaS Product Roadmap: How-to Guide, Examples, and Template"
+    },
+    "exampleLink": {
+      "url": "https://www.prodpad.com/blog/saas-product-roadmap/",
+      "title": "ProdPad - How to Create a Great SaaS Product Roadmap"
+    }
+  },
+  {
+    "number": "178",
+    "name": "Operating Model Blueprint",
+    "example": "Centralized shared services operating model",
+    "explanationLink": {
+      "url": "https://www.bain.com/insights/design-principles-for-a-robust-operating-model/",
+      "title": "Bain & Company - Principles for Robust Operating Model Design"
+    },
+    "exampleLink": {
+      "url": "https://www.peeriosity.com/shared-services/articles/2017/08/what-is-shared-services/",
+      "title": "Peeriosity - What is Shared Services?"
+    }
+  },
+  {
+    "number": "179",
+    "name": "Mission Success Criteria",
+    "example": "NASA mission success criteria",
+    "explanationLink": {
+      "url": "https://nodis3.gsfc.nasa.gov/displayCA.cfm?Internal_ID=N_PR_7120_005C_&page_name=AppendixC",
+      "title": "NASA - NPR 7120.5C Mission Success Criteria (Appendix C)"
+    },
+    "exampleLink": {
+      "url": "https://www.nasa.gov/wp-content/uploads/2024/01/niat.pdf",
+      "title": "NASA - Enhancing Mission Success: A Framework for the Future (PDF)"
+    }
+  },
+  {
+    "number": "180",
+    "name": "Integrity Framework",
+    "example": "OECD Integrity Framework",
+    "explanationLink": {
+      "url": "https://www.oecd.org/en/topics/anti-corruption-and-integrity.html",
+      "title": "OECD - Anti-Corruption and Integrity"
+    },
+    "exampleLink": {
+      "url": "https://www.oecd.org/governance/ethics/publicsectorintegrityaframeworkforassessment.htm",
+      "title": "OECD - Public Sector Integrity: A Framework for Assessment"
+    }
+  },
+  {
+    "number": "181",
+    "name": "Delivery Framework (Firm-Specific)",
+    "example": "Deloitte Greenhouse, McKinsey 7S, Bain RAPID",
+    "explanationLink": {
+      "url": "https://www.mckinsey.com/capabilities/strategy-and-corporate-finance/our-insights/enduring-ideas-the-7-s-framework",
+      "title": "McKinsey - Enduring Ideas: The 7-S Framework"
+    },
+    "exampleLink": {
+      "url": "https://www.bain.com/insights/rapid-decision-making/",
+      "title": "Bain & Company - RAPID Decision Making Framework"
+    }
+  },
+  {
+    "number": "182",
+    "name": "Statement of Work (SOW) / Engagement Charter",
+    "example": "Deloitte SOW template",
+    "explanationLink": {
+      "url": "https://www.consultingsuccess.com/consulting-statement-of-work-template",
+      "title": "Consulting Success - Consulting Statement Of Work Template: Your Complete Guide"
+    },
+    "exampleLink": {
+      "url": "https://www.smartsheet.com/free-statement-work-templates",
+      "title": "Smartsheet - Download Free Statement of Work Templates"
+    }
+  },
+  {
+    "number": "183",
+    "name": "Diagnostic Toolkit / Discovery Framework",
+    "example": "SWOT, Root Cause Analysis (Fishbone), McKinsey 7S",
+    "explanationLink": {
+      "url": "https://asq.org/quality-resources/fishbone",
+      "title": "American Society for Quality - What is a Fishbone Diagram?"
+    },
+    "exampleLink": {
+      "url": "https://www.cms.gov/medicare/provider-enrollment-and-certification/qapi/downloads/fishbonerevised.pdf",
+      "title": "CMS - How to Use the Fishbone Tool for Root Cause Analysis (PDF)"
+    }
+  },
+  {
+    "number": "184",
+    "name": "Client Readiness Assessment",
+    "example": "McKinsey change readiness tool",
+    "explanationLink": {
+      "url": "https://www.mckinsey.com/capabilities/implementation/how-we-help-clients",
+      "title": "McKinsey - Implementation and Change Management"
+    },
+    "exampleLink": {
+      "url": "https://whatfix.com/blog/change-readiness-assessment/",
+      "title": "Whatfix - 7 Traits of Change Readiness (+Assessment Template)"
+    }
+  },
+  {
+    "number": "185",
+    "name": "Hypothesis Tree / Issue Tree",
+    "example": "MECE (Mutually Exclusive, Collectively Exhaustive) issue tree",
+    "explanationLink": {
+      "url": "https://www.preplounge.com/en/case-interview-basics/case-cracking-toolbox/structure-your-thoughts/mece-principle",
+      "title": "PrepLounge - MECE Principle: A Guide with Applied Examples"
+    },
+    "exampleLink": {
+      "url": "https://mconsultingprep.com/issue-tree",
+      "title": "MConsultingPrep - Issue Tree in Consulting: A Complete Guide (With Examples)"
+    }
+  },
+  {
+    "number": "186",
+    "name": "Blueprint Deck",
+    "example": "Consulting solution blueprint",
+    "explanationLink": {
+      "url": "https://fdiinc.com/consulting/content-services/solution-blueprints/",
+      "title": "Flatirons Digital Innovations - Solution Blueprints"
+    },
+    "exampleLink": {
+      "url": "https://www.capstera.com/enterprise-architecture-deliverables/",
+      "title": "Capstera - A Comprehensive List of Enterprise Architecture Deliverables"
+    }
+  }
+]
