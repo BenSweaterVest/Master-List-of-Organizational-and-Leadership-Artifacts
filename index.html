@@ -218,9 +218,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
             font-size: 1.5rem;
             font-weight: 700;
             flex-shrink: 0;
+        }
+
+        .section-letter:hover {
+            background: var(--primary);
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .section-title {
@@ -384,9 +392,17 @@
             color: white;
             padding: 0.25rem 0.5rem;
             border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s ease;
             font-size: 0.75rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
+        }
+
+        .artifact-number:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         .artifact-name {
@@ -4476,7 +4492,7 @@
                 if (section.content) {
                     sectionDiv.innerHTML = `
                         <div class="section-header">
-                            <div class="section-letter">${section.letter}</div>
+                            <div class="section-letter" onclick="copySectionLink('${section.letter.toLowerCase()}')" title="Click to copy link to this section">${section.letter}</div>
                             <h2 class="section-title">${section.title}</h2>
                         </div>
                         <div class="comparison-content">
@@ -4487,12 +4503,12 @@
                     // Regular artifact cards
                     sectionDiv.innerHTML = `
                         <div class="section-header">
-                            <div class="section-letter">${section.letter}</div>
+                            <div class="section-letter" onclick="copySectionLink('${section.letter.toLowerCase()}')" title="Click to copy link to this section">${section.letter}</div>
                             <h2 class="section-title">${section.title}</h2>
                         </div>
                         <div class="artifacts-grid">
                             ${section.artifacts.map(artifact => `
-                                <div class="artifact-card" data-sectors="${artifact.sectors.join(',').toLowerCase()}" data-name="${artifact.name.toLowerCase()}" data-number="${artifact.number}">
+                                <div class="artifact-card" id="artifact-${artifact.number}" data-sectors="${artifact.sectors.join(',').toLowerCase()}" data-name="${artifact.name.toLowerCase()}" data-number="${artifact.number}">
                                     <div class="bookmark-container">
                                         <button class="bookmark-btn" onclick="toggleBookmark(${artifact.number})" title="Bookmark this artifact">
                                             📚
@@ -4504,7 +4520,7 @@
                                             <div class="priority-indicator" data-number="${artifact.number}" data-priority="long-term" title="Long-term">🟢</div>
                                         </div>
                                     </div>
-                                    <div class="artifact-number">#${artifact.number}</div>
+                                    <div class="artifact-number" onclick="copyArtifactLink(${artifact.number})" title="Click to copy link to this artifact">#${artifact.number}</div>
                                     <div class="artifact-name">${artifact.name}</div>
                                     <div class="artifact-purpose">${artifact.purpose}</div>
                                     ${artifact.example ? `<div class="artifact-example"><strong>Example:</strong> ${artifact.example}</div>` : ''}
@@ -5202,12 +5218,111 @@
             }
         }
 
+        /**
+         * Deep Linking Functions
+         *
+         * Allow users to link directly to specific artifacts or sections.
+         * Updates URL with hash and provides copy-to-clipboard functionality.
+         */
+
+        /**
+         * Copy link to specific artifact
+         *
+         * Creates a URL with hash pointing to artifact number (e.g., #artifact-123)
+         * and copies it to clipboard. Also scrolls to the artifact.
+         *
+         * @param {number} artifactNumber - The artifact number (1-188)
+         */
+        function copyArtifactLink(artifactNumber) {
+            const artifactURL = `${window.location.origin}${window.location.pathname}#artifact-${artifactNumber}`;
+
+            // Update browser URL without reloading
+            window.history.pushState(null, '', `#artifact-${artifactNumber}`);
+
+            // Scroll to artifact
+            const element = document.getElementById(`artifact-${artifactNumber}`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
+
+            // Copy to clipboard
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(artifactURL)
+                    .then(() => {
+                        // Visual feedback - could enhance this later
+                        console.log('✓ Link copied to clipboard:', artifactURL);
+                    })
+                    .catch(() => {
+                        console.log('Link:', artifactURL);
+                    });
+            }
+        }
+
+        /**
+         * Copy link to specific section
+         *
+         * Creates a URL with hash pointing to section letter (e.g., #section-a)
+         * and copies it to clipboard. Also scrolls to the section.
+         *
+         * @param {string} sectionLetter - The section letter (a-n)
+         */
+        function copySectionLink(sectionLetter) {
+            const sectionURL = `${window.location.origin}${window.location.pathname}#section-${sectionLetter}`;
+
+            // Update browser URL without reloading
+            window.history.pushState(null, '', `#section-${sectionLetter}`);
+
+            // Scroll to section
+            const element = document.getElementById(`section-${sectionLetter}`);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+
+            // Copy to clipboard
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(sectionURL)
+                    .then(() => {
+                        console.log('✓ Link copied to clipboard:', sectionURL);
+                    })
+                    .catch(() => {
+                        console.log('Link:', sectionURL);
+                    });
+            }
+        }
+
+        /**
+         * Scroll to element on page load if hash is present
+         *
+         * Checks URL hash on load and scrolls to matching artifact or section.
+         * Supports formats: #artifact-123, #section-a, or legacy #123
+         */
+        function scrollToHashOnLoad() {
+            const hash = window.location.hash;
+            if (!hash) return;
+
+            // Wait for page to render
+            setTimeout(() => {
+                const element = document.querySelector(hash);
+                if (element) {
+                    element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                    // Add temporary highlight effect
+                    element.style.transition = 'background-color 0.3s ease';
+                    element.style.backgroundColor = 'rgba(52, 152, 219, 0.1)';
+                    setTimeout(() => {
+                        element.style.backgroundColor = '';
+                    }, 2000);
+                }
+            }, 300);
+        }
+
         // Initialize
         loadBookmarksFromURL(); // Check for shared bookmarks first
         renderNavigation();
         renderArtifacts();
         updateBookmarkCount();
         updateBookmarkButtons();
+        scrollToHashOnLoad(); // Scroll to hash if present in URL
 
         /**
          * Progressive Web App (PWA) Setup
