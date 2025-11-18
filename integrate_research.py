@@ -5,20 +5,21 @@ Script to integrate research links into index.html
 import json
 import re
 
-# Load all research JSON files
+# Load all research JSON files (in sequential order)
+# Note: Artifacts 1-20 are already embedded in index.html
 research_files = [
-    'artifacts-21-30.json',
-    'artifacts-31-40.json',
-    'artifacts-41-50.json',
-    'artifacts-51-60.json',
-    'artifacts-61-70.json',
-    'artifacts-71-80.json',
-    'artifacts-81-90.json',
-    'artifacts-91-100.json',
-    'artifacts-101-120.json',
-    'artifacts-121-130.json',
-    'artifacts-131-153.json',
-    'artifacts-154-186.json'
+    'artifacts-21-30.json',     # Governance & Oversight (21-30)
+    'artifacts-31-40.json',     # Operational Management (31-40)
+    'artifacts-41-50.json',     # Operations & HR (41-50)
+    'artifacts-51-60.json',     # Workforce Development (51-60)
+    'artifacts-61-70.json',     # HR/Workforce & Finance (61-70)
+    'artifacts-71-80.json',     # Technology & Data (71-80)
+    'artifacts-81-90.json',     # Risk & Continuity (81-90)
+    'artifacts-91-100.json',    # Communications & Engagement (91-100)
+    'artifacts-101-120.json',   # Evaluation & Project Management (101-120)
+    'artifacts-121-130.json',   # Change Management (121-130)
+    'artifacts-131-153.json',   # Advanced & Specialized Tools (131-153)
+    'artifacts-154-186.json'    # Specialized & Sector-Specific (154-186)
 ]
 
 # Build a dictionary of artifact number -> research data
