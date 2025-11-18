@@ -1110,6 +1110,86 @@ Understanding why artifacts vary across sectors requires examining the different
 
 ---
 
-**Total Artifacts Catalogued:** 185+
+**Total Artifacts Catalogued:** 188
 
 This master list represents the most comprehensive compilation of organizational, leadership, strategic, operational, and governance artifacts used across public administration, nonprofit leadership, and general organizational management.
+
+---
+
+## How to Use This Repository
+
+### Interactive Website
+
+The easiest way to explore this catalog is through the **interactive website** (`index.html`). The website provides:
+- **Search functionality**: Find artifacts by name, purpose, or example
+- **Filter by sector**: View only Public, Nonprofit, or General artifacts
+- **Filter by section**: Browse by functional domain (Strategy, Governance, Operations, etc.)
+- **Bookmarking with priorities**: Save your frequently referenced artifacts and assign priority levels
+- **Export features**: Export bookmarked artifacts to JSON or share via URL
+- **Research links**: Access academic articles and real-world examples for each artifact
+- **Relationship visualization**: Explore how artifacts connect and relate to each other
+- **PWA support**: Install as an app and use offline
+- **Mobile-responsive design**: Access on any device
+
+To use the website:
+1. Open `index.html` in any modern web browser
+2. Use the search bar to find specific artifacts
+3. Click on sector or section tags to filter results
+4. Bookmark artifacts and assign priority levels (Essential/Important/Reference)
+5. Explore research links for deeper learning
+6. Export or share your bookmarked collections
+
+### Regenerating the Website
+
+If you modify `README.md` and want to regenerate the interactive website:
+
+```bash
+python3 generate_website.py
+```
+
+**Requirements:** Python 3.6 or higher (no external dependencies required)
+
+The script will:
+- Parse `README.md` and extract all artifacts
+- Generate a fully self-contained `index.html` file
+- Include all search, filter, bookmark, and research link functionality
+
+### Research Data
+
+The `research-data/` directory contains JSON files with curated research links for each artifact:
+- Academic articles and papers
+- Real-world examples and case studies
+- Framework documentation
+- Best practices guides
+
+Use `integrate_research.py` to regenerate or update research links in the HTML.
+
+### Relationship Visualization
+
+Open `relationships.html` to explore an interactive visualization showing how artifacts connect across all 14 categories. This helps understand dependencies and strategic alignment.
+
+### PDF Reference Guide
+
+The `Organizational Foundational Documents Reference Guide.pdf` provides a condensed, printable version of key organizational artifacts for offline reference and quick consultation.
+
+### Contributing
+
+If you'd like to suggest additions or corrections:
+1. Fork this repository
+2. Make your changes to `README.md`
+3. Regenerate the website using `generate_website.py`
+4. Submit a pull request with a clear description of your changes
+
+### Documentation
+
+- `PROJECT_DOCUMENTATION.md`: Complete technical documentation and architecture
+- `FINAL_REVIEW_SUMMARY.md`: Summary of comprehensive research and polishing work
+
+### Citation
+
+When referencing this work, please use:
+```
+Master List of Organizational and Leadership Artifacts
+[Repository URL]
+Accessed: [Date]
+```
