@@ -421,12 +421,18 @@ def generate_html(sections):
         }
 
         .framework-box-full {
-            background: rgba(255,255,255,0.1);
-            border-left: 4px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.2);
+            border-left: 4px solid rgba(255,255,255,0.8);
             padding: 1.5rem;
             border-radius: 8px;
             margin: 0.5rem 0;
             backdrop-filter: blur(10px);
+        }
+
+        .framework-box-full ul,
+        .framework-box-full li,
+        .framework-box-full span {
+            color: white;
         }
 
         .priority-selector {
