@@ -1,0 +1,217 @@
+[
+  {
+    "number": "1",
+    "name": "Mission Statement",
+    "purpose": "Defines the organization's fundamental reason for existing and what it does for whom.",
+    "example": "\"To organize the world's information and make it universally accessible and useful\" (Google) or \"Partnering to deliver secure, reliable technology solutions\" (public agency)",
+    "sectors": ["Public", "Nonprofit", "General"],
+    "academicSource": {
+      "url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=28887",
+      "title": "Harvard Business School - Purposes and Functions of a Mission Statement",
+      "description": "HBS background note by Renato Tagiuri defining mission as 'a statement of why the organization exists, at the most meaningful level'"
+    },
+    "realExample": {
+      "url": "https://tomislavhorvat.com/mission-statement-examples/",
+      "title": "Fortune 500 Mission Statement Database",
+      "description": "Comprehensive collection of mission statements from all Fortune 500 companies with analysis"
+    },
+    "additionalResource": {
+      "url": "https://projects.iq.harvard.edu/files/hks-communications-program/files/ho_sushma_raman_2017_brief_-_strategic_planning.pdf",
+      "title": "Harvard Kennedy School - Strategic Planning Brief",
+      "description": "Defines mission statements in context of strategic planning frameworks"
+    }
+  },
+  {
+    "number": "2",
+    "name": "Vision Statement",
+    "purpose": "Describes the aspirational future state the organization seeks to achieve.",
+    "example": "\"A computer on every desk and in every home\" (Microsoft, 1980s) or \"An equitable, sustainable future where all residents thrive\"",
+    "sectors": ["Public", "Nonprofit", "General"],
+    "academicSource": {
+      "url": "https://www.gsb.stanford.edu/faculty-research/working-papers/organizational-vision-visionary-organizations",
+      "title": "Stanford Graduate School of Business - Organizational Vision Working Paper",
+      "description": "Research-based framework for setting organizational vision, enriched by study of 20 visionary companies"
+    },
+    "realExample": {
+      "url": "https://ourvision.stanford.edu/",
+      "title": "Stanford University Vision Planning Process",
+      "description": "Stanford's institutional vision development with 37 white papers and conceptual framework"
+    }
+  },
+  {
+    "number": "3",
+    "name": "Core Values / Guiding Principles",
+    "purpose": "Articulates behavioral principles and cultural norms that guide daily decisions and actions.",
+    "example": "\"Integrity, Collaboration, Accountability, Respect, Excellence\" or Amazon's Leadership Principles",
+    "sectors": ["Public", "Nonprofit", "General"],
+    "academicSource": {
+      "url": "https://sloanreview.mit.edu/article/when-it-comes-to-culture-does-your-company-walk-the-talk/",
+      "title": "MIT Sloan Management Review - Organizational Culture & Values",
+      "description": "Research on how core values align with organizational culture and behavior"
+    },
+    "realExample": {
+      "url": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+      "title": "Amazon Leadership Principles",
+      "description": "16 leadership principles that guide decision-making at Amazon"
+    },
+    "additionalResource": {
+      "url": "https://www.ncbi.nlm.nih.gov/books/NBK560543/",
+      "title": "NCBI Bookshelf - Organizational Culture",
+      "description": "Academic definition: system of shared assumptions, values, and beliefs guiding behavior"
+    }
+  },
+  {
+    "number": "4",
+    "name": "Purpose Statement",
+    "purpose": "Sits between mission and values; defines \"why we exist\" in a single sentence.",
+    "example": "\"We serve Minnesotans by enabling secure digital government\"",
+    "sectors": ["Public", "Nonprofit", "General"],
+    "academicSource": {
+      "url": "https://www.cesarritzcolleges.edu/en/news/simon-sinek-golden-circle/",
+      "title": "Cesar Ritz Colleges - Simon Sinek's Golden Circle Framework",
+      "description": "Educational analysis of the 'Start with Why' purpose-driven framework"
+    },
+    "realExample": {
+      "url": "https://purposebrand.com/blog/best-purpose-statements-fortune-500/",
+      "title": "Purpose Statements from Fortune 500 Companies",
+      "description": "170 purpose statements from Fortune 500 companies with examples from AbbVie, Adobe, Amazon, AMD"
+    },
+    "additionalResource": {
+      "url": "https://simonsinek.com/golden-circle/",
+      "title": "Simon Sinek - The Golden Circle",
+      "description": "Original framework: 'People don't buy WHAT you do, they buy WHY you do it'"
+    }
+  },
+  {
+    "number": "5",
+    "name": "Strategic Goals",
+    "purpose": "Major objectives aligned with the organization's vision, typically 3-7 long-term goals spanning 3-5 years.",
+    "example": "\"Achieve carbon neutrality by 2030\" or \"Expand into 5 new markets\"",
+    "sectors": ["Public", "Nonprofit", "General"],
+    "academicSource": {
+      "url": "https://edis.ifas.ufl.edu/publication/FE577",
+      "title": "University of Florida IFAS - Developing SMART Goals",
+      "description": "Process for setting goals that are Specific, Measurable, Achievable, Realistic, and Timely"
+    },
+    "realExample": {
+      "url": "https://www.iit.edu/strategic-plan/2020-2025/smart-goals",
+      "title": "Illinois Institute of Technology Strategic SMART Goals 2020-2025",
+      "description": "Published strategic goals supporting IIT's long-term strategic plan"
+    },
+    "additionalResource": {
+      "url": "https://opair.psu.edu/planning-handbook/goals-objectives/",
+      "title": "Penn State - Goals and Objectives Planning Handbook",
+      "description": "Traces SMART technique to Peter Drucker's 1954 'Management by Objectives'"
+    }
+  },
+  {
+    "number": "6",
+    "name": "Strategic Priorities",
+    "purpose": "Current focus areas that organize work and resource allocation, often annual or biennial.",
+    "example": "\"Digital transformation, Customer experience, Operational efficiency\"",
+    "sectors": ["Public", "Nonprofit", "General"],
+    "academicSource": {
+      "url": "https://www.brandonu.ca/ld/files/Strategic-Action-Plans-and-Alignment-Guide.pdf",
+      "title": "Brandon University - Strategic Action Plans & Alignment Guide",
+      "description": "Cascade effect where strategy drives vision, values, priorities through organizational levels"
+    },
+    "realExample": {
+      "url": "https://scholarblogs.emory.edu/ranews/2024/01/22/introducing-okrs-a-new-chapter-in-the-office-of-research-administration-at-emory/",
+      "title": "Emory University - OKRs for Research Administration",
+      "description": "How Emory uses cascading OKRs to align priorities toward $1B research expenditure goal"
+    },
+    "additionalResource": {
+      "url": "https://www.whatmatters.com/faqs/a-critical-step-of-the-strategic-planning-process-writing-great-okrs",
+      "title": "What Matters - Writing Great OKRs",
+      "description": "Critical step in strategic planning process linking priorities to measurable results"
+    }
+  },
+  {
+    "number": "7",
+    "name": "Guiding Principles / Decision-Making Principles",
+    "purpose": "Frameworks that help choose between competing options.",
+    "example": "\"Customer-first in all decisions\" or \"Prefer build over buy when core competency\"",
+    "sectors": ["Public", "Nonprofit", "General"],
+    "academicSource": {
+      "url": "https://www.researchgate.net/publication/36381185_Developing_guiding_principles_An_organizational_learning_perspective",
+      "title": "ResearchGate - Developing Guiding Principles: Organizational Learning Perspective",
+      "description": "Study of European telecom firm: guiding principles as knowledge structures with emotional content used heuristically"
+    },
+    "realExample": {
+      "url": "https://www.cdisc.org/guiding-principles",
+      "title": "CDISC Guiding Principles",
+      "description": "Clinical data standards org with Organization Principles and Standards Development Principles"
+    },
+    "additionalResource": {
+      "url": "https://pubmed.ncbi.nlm.nih.gov/26526257/",
+      "title": "PubMed - Guiding Principles Framework for Stakeholders",
+      "description": "Six principles ensuring partnerships are accountable in pursuing health goals"
+    }
+  },
+  {
+    "number": "8",
+    "name": "Strategic Plan",
+    "purpose": "Comprehensive document integrating mission, vision, goals, strategies, and resource allocation over 3-5 years.",
+    "example": "Federal agency 4-year strategic plan, corporate strategic plan",
+    "sectors": ["Public", "Nonprofit", "General"],
+    "academicSource": {
+      "url": "https://www.suno.edu/assets/suno/PDFs/Administration/Strategic_Planning_Handbook_12-2-10.pdf",
+      "title": "Southern University New Orleans - Strategic Planning Handbook",
+      "description": "Comprehensive handbook with manager implementation tools for strategic planning"
+    },
+    "realExample": {
+      "url": "https://www.subr.edu/assets/subr/COBJournal/Vision-Statement-Study---Final.pdf",
+      "title": "Vision Statements of Fortune 50 Companies Study",
+      "description": "Academic analysis of Fortune 50 vision and mission statements in strategic plans"
+    },
+    "additionalResource": {
+      "url": "https://prosper-strategies.com/nonprofit-strategic-plan-example/",
+      "title": "50+ Nonprofit Strategic Plan Examples",
+      "description": "Comprehensive collection including SUNY Research Foundation, NCI Center for Global Health plans"
+    }
+  },
+  {
+    "number": "9",
+    "name": "Annual Operating Plan (AOP)",
+    "purpose": "One-year plan operationalizing strategic priorities into budgets and deliverables.",
+    "example": "Corporate AOP, nonprofit annual work plan, agency plan-of-work",
+    "sectors": ["Public", "General"],
+    "academicSource": {
+      "url": "https://www.azeusconvene.com/articles/annual-operating-plan",
+      "title": "Azeus Convene - What is an Annual Operating Plan",
+      "description": "Detailed document outlining yearly objectives, action plans, resource allocation, KPIs, and budgets"
+    },
+    "realExample": {
+      "url": "https://www.sussexicb.nhs.uk/about-us/our-plans/annual-report-and-accounts/",
+      "title": "University Hospitals Sussex NHS Trust - 2023-24 Annual Operating Plan",
+      "description": "Example of turning long-term strategy into focused year-long priorities (note: exact link may need verification)"
+    },
+    "additionalResource": {
+      "url": "https://www.mosaic.tech/post/annual-operating-plans",
+      "title": "Mosaic - Annual Operating Plans Guide",
+      "description": "How departmental leaders develop AOPs to set course for the year with short and long-term objectives"
+    }
+  },
+  {
+    "number": "10",
+    "name": "North Star Metric",
+    "purpose": "Single, high-level measure that reflects the organization's ultimate value.",
+    "example": "\"Time to delivery for public services\" or \"Households lifted out of homelessness\"",
+    "sectors": ["General", "Nonprofit", "Public"],
+    "academicSource": {
+      "url": "https://mixpanel.com/blog/north-star-metric/",
+      "title": "Mixpanel - What is a North Star Metric",
+      "description": "Single measurable product metric capturing core value delivered to customers, created by Amplitude"
+    },
+    "realExample": {
+      "url": "https://productschool.com/blog/analytics/north-star-metric",
+      "title": "Product School - North Star Metric Examples",
+      "description": "Netflix: watch time | Slack: active daily users | Spotify: time spent listening"
+    },
+    "additionalResource": {
+      "url": "https://www.hyperact.co.uk/blog/product-metrics-frameworks",
+      "title": "Product Metrics: AARRR vs HEART vs North Star",
+      "description": "How NSM relates to Pirate Metrics (Acquisition, Activation, Retention, Revenue, Referral)"
+    }
+  }
+]
