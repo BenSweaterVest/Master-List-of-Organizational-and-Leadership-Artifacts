@@ -210,6 +210,7 @@
 
             <div class="controls">
                 <a href="index.html" class="btn btn-secondary">← Back to Catalog</a>
+                <button class="btn btn-primary" onclick="showMasterView()" title="Show essential foundational artifacts">⭐ Master View</button>
                 <button class="btn btn-primary" onclick="resetNetwork()">Reset View</button>
                 <button class="btn btn-primary" onclick="fitNetwork()">Fit to Screen</button>
                 <button class="btn btn-primary" onclick="togglePhysics()">Toggle Physics</button>
@@ -1119,6 +1120,73 @@
             });
 
             filterCategories();
+        }
+
+        /**
+         * Master View - Shows only essential foundational artifacts
+         *
+         * Displays the "Universal Artifact Stack" - the bare minimum artifacts
+         * that every organization needs regardless of size, sector, or complexity.
+         *
+         * Essential artifacts include:
+         * - Strategic Foundation: Mission, Vision, Values, Purpose, Goals
+         * - Core Governance: Charter, Bylaws, Board, Ethics, Controls
+         * - Planning: Strategic Plan, Annual Plan
+         * - Operations: Operating Model, Org Structure
+         * - Financial: Annual Budget
+         * - Performance: Performance Framework, KPIs
+         */
+        function showMasterView() {
+            // Essential artifact IDs that form the universal stack
+            const masterArtifacts = [
+                1,   // Mission Statement
+                2,   // Vision Statement
+                3,   // Core Values
+                4,   // Purpose Statement
+                5,   // Strategic Goals
+                8,   // Strategic Plan
+                10,  // Strategic Plan (original)
+                11,  // Bylaws
+                12,  // Board Charter
+                14,  // Organizational Narrative
+                15,  // Code of Ethics
+                16,  // Governance Framework
+                20,  // Internal Controls Framework
+                22,  // Annual Plan
+                31,  // Operating Model
+                34,  // Org Structure
+                59,  // Org Chart
+                65,  // Annual Budget
+                101, // Performance Framework
+                104  // KPIs
+            ];
+
+            // Hide all nodes first
+            nodes.forEach(node => {
+                const shouldShow = masterArtifacts.includes(node.id);
+                nodes.update({ id: node.id, hidden: !shouldShow });
+            });
+
+            // Show only edges between visible master artifacts
+            edges.forEach(edge => {
+                const fromVisible = masterArtifacts.includes(edge.from);
+                const toVisible = masterArtifacts.includes(edge.to);
+                const shouldShow = fromVisible && toVisible;
+                edges.update({ id: edge.id, hidden: !shouldShow });
+            });
+
+            // Update checkboxes to reflect the visible categories
+            const checkboxes = document.querySelectorAll('.category-filter input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                // Check foundation, strategic, governance, operations, financial, performance
+                const masterCategories = ['foundation', 'strategic', 'governance', 'operations', 'financial', 'performance'];
+                cb.checked = masterCategories.includes(cb.value);
+            });
+
+            network.fit({ animation: true });
+
+            // Show notification
+            alert('⭐ Master View: Showing 20 essential foundational artifacts\n\nThese are the core artifacts every organization needs:\n• Strategic Foundation (Mission, Vision, Values, Purpose, Goals)\n• Core Governance (Charter, Bylaws, Board, Ethics, Controls)\n• Planning (Strategic Plan, Annual Plan)\n• Operations (Operating Model, Org Structure)\n• Financial (Annual Budget)\n• Performance (Framework, KPIs)\n\nClick "Reset View" to see all artifacts again.');
         }
 
         // Add event listeners to category checkboxes
