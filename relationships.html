@@ -228,8 +228,52 @@
     </div>
 
     <script>
-        // Sample artifact relationship data
-        // This represents key relationships between major artifacts
+        /**
+         * Artifact Relationship Visualization
+         *
+         * This page provides an interactive network graph showing how organizational
+         * artifacts connect and depend on each other. Uses vis.js for rendering.
+         *
+         * Key Concepts:
+         * - Nodes: Individual artifacts (Mission, Vision, Strategic Plan, etc.)
+         * - Edges: Relationships between artifacts (feeds_into, depends_on, related_to)
+         * - Groups: Color-coded categories (foundation, governance, operations, performance)
+         * - Levels: Hierarchical positioning (0=top foundational, 5=operational detail)
+         *
+         * Interaction:
+         * - Click nodes to view details
+         * - Drag to rearrange
+         * - Zoom and pan
+         * - Toggle physics for static/dynamic layout
+         */
+
+        /**
+         * Artifact Relationship Data
+         *
+         * Defines the network graph structure with 30+ key artifacts and their relationships.
+         *
+         * Data Structure:
+         * - nodes: Array of artifacts with id, label, group (category), level (hierarchy)
+         * - edges: Array of relationships with from/to node ids, type, and label
+         *
+         * Relationship Types:
+         * - feeds_into: Artifact A provides input/direction to B (green arrows)
+         * - depends_on: Artifact A requires B to exist/function (blue arrows)
+         * - related_to: Artifacts are complementary/alternatives (yellow arrows)
+         *
+         * Groups (color-coded):
+         * - foundation (red): Mission, Vision, Values, Purpose
+         * - governance (blue): Bylaws, Board Charter, Policies
+         * - operations (green): Plans, Budgets, Workforce
+         * - performance (orange): KPIs, OKRs, Balanced Scorecard
+         *
+         * Levels (hierarchical positioning):
+         * - Level 0: Foundational (Mission, Vision, Values)
+         * - Level 1: Strategic Direction (Goals, Priorities)
+         * - Level 2: Governance (Strategic Plan, Policies)
+         * - Level 3: Operational (Annual Plans, Budgets)
+         * - Level 4-5: Measurement (Performance, KPIs)
+         */
         const artifactRelationships = {
             nodes: [
                 // Strategic Foundation (1-10)
@@ -326,10 +370,29 @@
             ]
         };
 
-        // Create network
+        /**
+         * Initialize vis.js Network Graph
+         *
+         * This section configures and renders the interactive network visualization.
+         */
+
+        // Get the HTML container element
         const container = document.getElementById('networkContainer');
 
-        // Configure nodes with colors
+        /**
+         * Configure node appearance
+         *
+         * Each node is styled based on its group (category):
+         * - foundation: Red background (#e74c3c)
+         * - governance: Blue background (#3498db)
+         * - operations: Green background (#27ae60)
+         * - performance: Orange background (#f39c12)
+         *
+         * All nodes have:
+         * - Box shape with margin for text padding
+         * - Dark border (#2c3e50)
+         * - Orange highlight on hover/select
+         */
         const nodes = new vis.DataSet(artifactRelationships.nodes.map(node => ({
             ...node,
             shape: 'box',
@@ -348,6 +411,18 @@
             }
         })));
 
+        /**
+         * Configure edge (connection) appearance
+         *
+         * Edges are color-coded by relationship type:
+         * - feeds_into: Green (#27ae60) - Shows directional flow
+         * - depends_on: Blue (#3498db) - Shows dependencies
+         * - related_to: Orange (#f39c12) - Shows complementary relationships
+         *
+         * All edges have:
+         * - Directional arrows pointing to target
+         * - Curved lines for better visibility
+         */
         const edges = new vis.DataSet(artifactRelationships.edges.map(edge => ({
             ...edge,
             arrows: 'to',
@@ -357,8 +432,30 @@
             smooth: { type: 'curvedCW', roundness: 0.2 }
         })));
 
+        // Combine nodes and edges into dataset
         const data = { nodes, edges };
 
+        /**
+         * vis.js Network Configuration Options
+         *
+         * Physics: Enables dynamic layout with hierarchical repulsion
+         * - Nodes push away from each other for clarity
+         * - Spring forces keep connected nodes closer
+         * - Stabilization runs 1000 iterations on initial load
+         *
+         * Layout: Hierarchical top-down arrangement
+         * - Direction: UD (up-down, top to bottom)
+         * - Level separation: 150px vertical spacing
+         * - Node spacing: 200px horizontal spacing
+         * - Sorted by directed edges (dependencies flow downward)
+         *
+         * Interaction: User controls
+         * - Hover effects enabled
+         * - Navigation buttons for zoom/pan
+         * - Keyboard shortcuts enabled
+         *
+         * @see https://visjs.github.io/vis-network/docs/network/
+         */
         const options = {
             physics: {
                 enabled: true,
@@ -392,9 +489,23 @@
             }
         };
 
+        // Create the network visualization
         const network = new vis.Network(container, data, options);
 
-        // Click event to show details
+        /**
+         * Event Handlers
+         */
+
+        /**
+         * Handle node click events
+         *
+         * When user clicks on an artifact node, display detailed information
+         * in the side panel including:
+         * - Artifact name and number
+         * - Category (group)
+         * - Hierarchical level
+         * - Link back to main catalog
+         */
         network.on('click', function(params) {
             if (params.nodes.length > 0) {
                 const nodeId = params.nodes[0];
@@ -403,6 +514,14 @@
             }
         });
 
+        /**
+         * Display artifact information in side panel
+         *
+         * Shows details for the clicked artifact and provides navigation
+         * back to the main catalog with anchor link to specific artifact.
+         *
+         * @param {Object} node - The vis.js node object containing artifact data
+         */
         function showArtifactInfo(node) {
             const panel = document.getElementById('infoPanel');
             const content = document.getElementById('infoPanelContent');
@@ -421,10 +540,28 @@
             panel.classList.add('show');
         }
 
+        /**
+         * Close the information panel
+         *
+         * Hides the side panel when user clicks the close button
+         * or wants to return to exploring the graph.
+         */
         function closeInfo() {
             document.getElementById('infoPanel').classList.remove('show');
         }
 
+        /**
+         * Toggle physics engine on/off
+         *
+         * Physics creates the dynamic, spring-based layout where nodes
+         * repel each other and edges act like springs.
+         *
+         * Reasons to toggle physics:
+         * - Turn OFF: Freeze the layout for easier reading/screenshots
+         * - Turn ON: Let graph reorganize after adding/removing filters
+         *
+         * @global {boolean} physicsEnabled - Tracks current physics state
+         */
         let physicsEnabled = true;
         function togglePhysics() {
             physicsEnabled = !physicsEnabled;

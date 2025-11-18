@@ -4551,20 +4551,51 @@
             document.getElementById('totalArtifacts').textContent = visibleCards.length;
         }
 
-        // Bookmark functionality with priorities
+        /**
+         * Bookmark Management System
+         *
+         * Provides functionality for users to save artifacts with priority levels.
+         * Bookmarks are persisted in localStorage and include priority indicators
+         * (none, immediate, mid-term, long-term) for personal organization.
+         */
         let currentBookmarkNumber = null;
 
+        /**
+         * Retrieve bookmarks from localStorage
+         *
+         * Bookmarks are stored as an array of objects:
+         * [{ number: 123, priority: 'immediate' }, ...]
+         *
+         * @returns {Array<{number: number, priority: string}>} Array of bookmark objects
+         */
         function getBookmarks() {
             const saved = localStorage.getItem('artifactBookmarks');
             return saved ? JSON.parse(saved) : [];
         }
 
+        /**
+         * Save bookmarks to localStorage and update UI
+         *
+         * This is the central persistence function - all bookmark modifications
+         * should call this to ensure data is saved and UI stays synchronized.
+         *
+         * @param {Array<{number: number, priority: string}>} bookmarks - Array of bookmark objects to save
+         */
         function saveBookmarks(bookmarks) {
             localStorage.setItem('artifactBookmarks', JSON.stringify(bookmarks));
             updateBookmarkCount();
             updateBookmarkButtons();
         }
 
+        /**
+         * Toggle bookmark on/off for an artifact
+         *
+         * Called when user clicks the bookmark button (⭐).
+         * If artifact is already bookmarked, it removes the bookmark.
+         * If not bookmarked, it adds with 'none' priority (user can set priority after).
+         *
+         * @param {number} artifactNumber - The artifact number (1-188)
+         */
         function toggleBookmark(artifactNumber) {
             let bookmarks = getBookmarks();
             const existingIndex = bookmarks.findIndex(b => b.number === artifactNumber);
@@ -4579,6 +4610,22 @@
             }
         }
 
+        /**
+         * Add or update a bookmark with a specific priority
+         *
+         * Called when user clicks a priority indicator (⚪🔴🟡🟢).
+         * If artifact is already bookmarked, updates its priority.
+         * If not bookmarked, adds it with the selected priority.
+         *
+         * Priority values:
+         * - 'none': No priority set (⚪)
+         * - 'immediate': Urgent/immediate priority (🔴)
+         * - 'mid-term': Mid-term priority (🟡)
+         * - 'long-term': Long-term priority (🟢)
+         *
+         * @param {number} artifactNumber - The artifact number (1-188)
+         * @param {string} priority - Priority level (none|immediate|mid-term|long-term)
+         */
         function addBookmarkWithPriority(artifactNumber, priority) {
             let bookmarks = getBookmarks();
             const existingIndex = bookmarks.findIndex(b => b.number === artifactNumber);
@@ -4593,11 +4640,27 @@
             saveBookmarks(bookmarks);
         }
 
+        /**
+         * Update the bookmark count display in the sidebar
+         *
+         * Shows the total number of bookmarked artifacts in the format "(X)"
+         * next to the "My Bookmarks" section header.
+         */
         function updateBookmarkCount() {
             const count = getBookmarks().length;
             document.getElementById('bookmarkCount').textContent = `(${count})`;
         }
 
+        /**
+         * Update all bookmark buttons and priority indicators across all artifact cards
+         *
+         * This function synchronizes the UI with the bookmark state:
+         * - Adds 'bookmarked' class to starred artifacts
+         * - Shows/hides priority indicators
+         * - Highlights the selected priority for each bookmarked artifact
+         *
+         * Called after any bookmark change to ensure UI consistency.
+         */
         function updateBookmarkButtons() {
             const bookmarks = getBookmarks();
             document.querySelectorAll('.bookmark-btn').forEach(btn => {
@@ -4634,6 +4697,14 @@
             });
         }
 
+        /**
+         * Filter view to show only bookmarked artifacts
+         *
+         * Hides all non-bookmarked artifacts and displays only those
+         * the user has saved. Updates the visible count display.
+         *
+         * Called when user clicks "Show Bookmarked" button in sidebar.
+         */
         function showBookmarkedOnly() {
             const bookmarks = getBookmarks();
             const cards = document.querySelectorAll('.artifact-card');
@@ -4647,6 +4718,12 @@
             updateVisibleCount();
         }
 
+        /**
+         * Clear all bookmarks after user confirmation
+         *
+         * Prompts user to confirm before permanently deleting all bookmarks.
+         * If confirmed, clears localStorage and resets the UI to show all artifacts.
+         */
         function clearAllBookmarks() {
             if (confirm('Are you sure you want to clear all bookmarked artifacts?')) {
                 saveBookmarks([]);
@@ -4654,6 +4731,15 @@
             }
         }
 
+        /**
+         * Export bookmarks to file
+         *
+         * Prompts user to choose export format:
+         * - OK button: CSV format (for spreadsheets/analysis)
+         * - Cancel button: HTML format (for printing/sharing)
+         *
+         * Displays alert if no bookmarks exist to export.
+         */
         function exportBookmarks() {
             const bookmarks = getBookmarks();
             if (bookmarks.length === 0) {
@@ -4671,6 +4757,24 @@
             }
         }
 
+        /**
+         * Export bookmarks to CSV format
+         *
+         * Creates a CSV file with all bookmarked artifacts, grouped by priority.
+         * Each row contains the full artifact details plus research links.
+         *
+         * CSV Structure (10 columns):
+         * Priority, Number, Name, Purpose, Example, Sectors,
+         * Explanation Link, Explanation Title, Example Link, Example Title
+         *
+         * Features:
+         * - Properly quoted fields for Excel/Google Sheets compatibility
+         * - Double-quote escaping per RFC 4180
+         * - Sorted by priority (immediate → mid-term → long-term → none)
+         * - Filename includes today's date
+         *
+         * @param {Array<{number: number, priority: string}>} bookmarks - Bookmarks to export
+         */
         function exportToCSV(bookmarks) {
             // Group by priority
             const grouped = {
@@ -4705,11 +4809,12 @@
                                      priority === 'mid-term' ? 'Mid-term' :
                                      priority.charAt(0).toUpperCase() + priority.slice(1);
                 grouped[priority].forEach(artifact => {
+                    // Escape double quotes per CSV RFC 4180 (replace " with "")
                     csv += `"${priorityLabel}","${artifact.number}","${artifact.name.replace(/"/g, '""')}","${artifact.purpose.replace(/"/g, '""')}","${artifact.example.replace(/"/g, '""')}","${artifact.sectors}","${artifact.explanationUrl}","${artifact.explanationTitle.replace(/"/g, '""')}","${artifact.exampleUrl}","${artifact.exampleTitle.replace(/"/g, '""')}"\n`;
                 });
             });
 
-            // Download CSV
+            // Download CSV using Blob API
             const blob = new Blob([csv], { type: 'text/csv' });
             const url = window.URL.createObjectURL(blob);
             const a = document.createElement('a');
@@ -4718,9 +4823,31 @@
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
-            window.URL.revokeObjectURL(url);
+            window.URL.revokeObjectURL(url); // Clean up memory
         }
 
+        /**
+         * Export bookmarks to printable HTML format
+         *
+         * Creates a standalone HTML document with all bookmarked artifacts,
+         * beautifully formatted for printing or sharing.
+         *
+         * Features:
+         * - Color-coded priority sections (red/yellow/green borders)
+         * - Complete artifact details including research links
+         * - Print-optimized CSS (page-break-inside: avoid)
+         * - Self-contained (no external dependencies)
+         * - Professional typography and spacing
+         * - Clickable research links
+         *
+         * Perfect for:
+         * - Printing physical reference sheets
+         * - Sharing with non-technical stakeholders
+         * - Creating PDF exports (print to PDF)
+         * - Offline reading
+         *
+         * @param {Array<{number: number, priority: string}>} bookmarks - Bookmarks to export
+         */
         function exportToHTML(bookmarks) {
             // Group by priority
             const grouped = {
@@ -4826,6 +4953,15 @@
             window.URL.revokeObjectURL(url);
         }
 
+        /**
+         * Find an artifact by its number
+         *
+         * Searches through all artifact sections to find an artifact
+         * matching the given number (1-188).
+         *
+         * @param {number} number - The artifact number to find
+         * @returns {Object|null} The artifact object if found, null otherwise
+         */
         function findArtifactByNumber(number) {
             for (const section of artifactsData) {
                 const artifact = section.artifacts.find(a => parseInt(a.number) === number);
@@ -4911,7 +5047,31 @@
         document.getElementById('shareBookmarks').addEventListener('click', shareBookmarks);
         document.getElementById('clearBookmarks').addEventListener('click', clearAllBookmarks);
 
-        // URL Sharing Functions
+        /**
+         * URL Sharing Functions
+         *
+         * Allow users to share their bookmark collections via URL.
+         * Bookmarks are encoded as compact Base64 strings in URL parameters.
+         *
+         * Example URL: https://example.com/?bookmarks=MToxLDU6MiwxMDow
+         * Decodes to: artifact #1 (immediate), #5 (mid-term), #10 (none)
+         */
+
+        /**
+         * Encode bookmarks to URL-safe Base64 string
+         *
+         * Encoding format: "number:priority,number:priority,..."
+         * Priority codes: 0=none, 1=immediate, 2=mid-term, 3=long-term
+         *
+         * Example:
+         * Input: [{ number: 1, priority: 'immediate' }, { number: 5, priority: 'mid-term' }]
+         * Intermediate: "1:1,5:2"
+         * Output: "MToxLDU6Mg==" (Base64)
+         *
+         * This compact format keeps URLs short even with many bookmarks.
+         *
+         * @returns {string} Base64-encoded bookmark string, or empty string if no bookmarks
+         */
         function encodeBookmarksToURL() {
             const bookmarks = getBookmarks();
             if (bookmarks.length === 0) return '';
@@ -4927,6 +5087,15 @@
             return btoa(encoded); // Base64 encode
         }
 
+        /**
+         * Decode bookmarks from URL-safe Base64 string
+         *
+         * Reverses the encoding done by encodeBookmarksToURL().
+         * Handles errors gracefully by returning empty array on decode failure.
+         *
+         * @param {string} encoded - Base64-encoded bookmark string
+         * @returns {Array<{number: number, priority: string}>} Decoded bookmark array
+         */
         function decodeBookmarksFromURL(encoded) {
             try {
                 const decoded = atob(encoded); // Base64 decode
@@ -4944,6 +5113,24 @@
             }
         }
 
+        /**
+         * Generate shareable URL and copy to clipboard
+         *
+         * Creates a URL containing the user's current bookmarks, then attempts
+         * to copy it to the clipboard for easy sharing.
+         *
+         * Flow:
+         * 1. Check if bookmarks exist
+         * 2. Encode bookmarks as Base64 URL parameter
+         * 3. Try modern Clipboard API (with fallback to prompt dialog)
+         * 4. Show success message with URL
+         *
+         * Browser compatibility:
+         * - Modern browsers: Auto-copies to clipboard
+         * - Older browsers: Shows prompt dialog for manual copy
+         *
+         * @see encodeBookmarksToURL
+         */
         function shareBookmarks() {
             const bookmarks = getBookmarks();
             if (bookmarks.length === 0) {
@@ -4954,22 +5141,42 @@
             const encoded = encodeBookmarksToURL();
             const shareURL = `${window.location.origin}${window.location.pathname}?bookmarks=${encoded}`;
 
-            // Try to copy to clipboard
+            // Try to copy to clipboard using modern API
             if (navigator.clipboard && navigator.clipboard.writeText) {
                 navigator.clipboard.writeText(shareURL)
                     .then(() => {
                         alert(`✓ Share URL copied to clipboard!\n\nYou can paste this link to share your ${bookmarks.length} bookmarked artifact(s).\n\nURL: ${shareURL}`);
                     })
                     .catch(() => {
-                        // Fallback: show in prompt
+                        // Fallback: show in prompt for manual copy
                         prompt('Copy this URL to share your bookmarks:', shareURL);
                     });
             } else {
-                // Fallback for older browsers
+                // Fallback for older browsers (IE, older Safari)
                 prompt('Copy this URL to share your bookmarks:', shareURL);
             }
         }
 
+        /**
+         * Load bookmarks from URL parameter on page load
+         *
+         * Checks for ?bookmarks=... in the URL and prompts user to load them.
+         * Runs automatically during page initialization.
+         *
+         * Flow:
+         * 1. Parse URL parameters
+         * 2. If bookmarks parameter exists, decode it
+         * 3. Ask user for confirmation (warns about replacing existing bookmarks)
+         * 4. If confirmed, load bookmarks and update UI
+         * 5. Clean URL by removing parameter (for clean browser history)
+         *
+         * Safety features:
+         * - Requires user confirmation before replacing bookmarks
+         * - Clear warning that existing bookmarks will be replaced
+         * - Graceful handling of invalid/corrupted bookmark data
+         *
+         * @see decodeBookmarksFromURL
+         */
         function loadBookmarksFromURL() {
             const params = new URLSearchParams(window.location.search);
             const encoded = params.get('bookmarks');
@@ -4986,7 +5193,7 @@
                         updateBookmarkButtons();
                         renderArtifacts();
 
-                        // Remove URL parameter after loading
+                        // Remove URL parameter after loading (clean URL)
                         window.history.replaceState({}, document.title, window.location.pathname);
 
                         alert(`✓ Loaded ${bookmarks.length} bookmark(s) successfully!`);
@@ -5002,19 +5209,33 @@
         updateBookmarkCount();
         updateBookmarkButtons();
 
-        // PWA: Register Service Worker
+        /**
+         * Progressive Web App (PWA) Setup
+         *
+         * Registers service worker for offline functionality and handles app installation.
+         * This makes the catalog installable on mobile/desktop devices and provides
+         * offline access to all cached content.
+         *
+         * Features enabled:
+         * - Offline caching (via sw.js)
+         * - Installable app (Add to Home Screen)
+         * - Automatic updates
+         * - Fast loading from cache
+         */
+
+        // PWA: Register Service Worker for offline functionality
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('/sw.js')
                     .then(registration => {
                         console.log('✓ Service Worker registered:', registration.scope);
 
-                        // Check for updates
+                        // Check for updates to service worker
                         registration.addEventListener('updatefound', () => {
                             const newWorker = registration.installing;
                             newWorker.addEventListener('statechange', () => {
                                 if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
-                                    // New update available
+                                    // New version available - prompt user to reload
                                     if (confirm('New version available! Reload to update?')) {
                                         newWorker.postMessage({ type: 'SKIP_WAITING' });
                                         window.location.reload();
@@ -5027,26 +5248,28 @@
                         console.log('Service Worker registration failed:', error);
                     });
 
-                // Listen for controller change (new SW activated)
+                // Listen for controller change (new service worker activated)
+                // Automatically reload to ensure latest version is running
                 navigator.serviceWorker.addEventListener('controllerchange', () => {
                     window.location.reload();
                 });
             });
         }
 
-        // PWA: Install prompt
+        // PWA: Handle installation prompt
         let deferredPrompt;
         window.addEventListener('beforeinstallprompt', (e) => {
-            // Prevent the mini-infobar from appearing on mobile
+            // Prevent the browser's default install prompt
             e.preventDefault();
-            // Stash the event so it can be triggered later
+            // Save the event for later use (could trigger from a custom button)
             deferredPrompt = e;
 
-            // Show install button/banner (optional - you could add a button for this)
+            // Note: You could add a custom "Install App" button here
+            // that calls deferredPrompt.prompt() when clicked
             console.log('💡 App can be installed! Use browser menu or we could add an install button.');
         });
 
-        // Track installation
+        // Track successful installation for analytics/logging
         window.addEventListener('appinstalled', () => {
             console.log('✓ PWA installed successfully!');
             deferredPrompt = null;
