@@ -8,18 +8,18 @@ import re
 # Load all research JSON files (in sequential order)
 # Note: Artifacts 1-20 are already embedded in index.html
 research_files = [
-    'artifacts-21-30.json',     # Governance & Oversight (21-30)
-    'artifacts-31-40.json',     # Operational Management (31-40)
-    'artifacts-41-50.json',     # Operations & HR (41-50)
-    'artifacts-51-60.json',     # Workforce Development (51-60)
-    'artifacts-61-70.json',     # HR/Workforce & Finance (61-70)
-    'artifacts-71-80.json',     # Technology & Data (71-80)
-    'artifacts-81-90.json',     # Risk & Continuity (81-90)
-    'artifacts-91-100.json',    # Communications & Engagement (91-100)
-    'artifacts-101-120.json',   # Evaluation & Project Management (101-120)
-    'artifacts-121-130.json',   # Change Management (121-130)
-    'artifacts-131-153.json',   # Advanced & Specialized Tools (131-153)
-    'artifacts-154-186.json'    # Specialized & Sector-Specific (154-186)
+    'research-data/artifacts-21-30.json',     # Governance & Oversight (21-30)
+    'research-data/artifacts-31-40.json',     # Operational Management (31-40)
+    'research-data/artifacts-41-50.json',     # Operations & HR (41-50)
+    'research-data/artifacts-51-60.json',     # Workforce Development (51-60)
+    'research-data/artifacts-61-70.json',     # HR/Workforce & Finance (61-70)
+    'research-data/artifacts-71-80.json',     # Technology & Data (71-80)
+    'research-data/artifacts-81-90.json',     # Risk & Continuity (81-90)
+    'research-data/artifacts-91-100.json',    # Communications & Engagement (91-100)
+    'research-data/artifacts-101-120.json',   # Evaluation & Project Management (101-120)
+    'research-data/artifacts-121-130.json',   # Change Management (121-130)
+    'research-data/artifacts-131-153.json',   # Advanced & Specialized Tools (131-153)
+    'research-data/artifacts-154-186.json'    # Specialized & Sector-Specific (154-186)
 ]
 
 # Build a dictionary of artifact number -> research data
