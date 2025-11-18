@@ -418,6 +418,73 @@
             color: #856404;
         }
 
+        .artifact-resources {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .resource-title {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--dark-text);
+            margin-bottom: 0.5rem;
+        }
+
+        .resource-links {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .resource-link {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            padding: 0.5rem;
+            background: var(--light-bg);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--dark-text);
+            transition: all 0.2s;
+            font-size: 0.85rem;
+            border: 1px solid transparent;
+        }
+
+        .resource-link:hover {
+            background: white;
+            border-color: var(--secondary);
+            transform: translateX(4px);
+        }
+
+        .link-icon {
+            flex-shrink: 0;
+            font-size: 1rem;
+        }
+
+        .link-text {
+            flex: 1;
+            line-height: 1.4;
+        }
+
+        .explanation-link:hover .link-icon {
+            animation: pulse 0.5s ease-in-out;
+        }
+
+        .example-link:hover .link-icon {
+            animation: bounce 0.5s ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-3px); }
+        }
+
         .sectors {
             display: flex;
             flex-wrap: wrap;
@@ -698,7 +765,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=28887",
+                    "title": "Harvard Business School - Purposes and Functions of a Mission Statement"
+                },
+                "exampleLink": {
+                    "url": "https://about.google/",
+                    "title": "Google's Mission Statement (Official)"
+                }
             },
             {
                 "number": "2",
@@ -710,7 +785,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://www.gsb.stanford.edu/faculty-research/working-papers/organizational-vision-visionary-organizations",
+                    "title": "Stanford GSB - Organizational Vision Framework"
+                },
+                "exampleLink": {
+                    "url": "https://ourvision.stanford.edu/",
+                    "title": "Stanford University Vision Planning"
+                }
             },
             {
                 "number": "3",
@@ -722,7 +805,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://sloanreview.mit.edu/article/when-it-comes-to-culture-does-your-company-walk-the-talk/",
+                    "title": "MIT Sloan - Culture and Core Values"
+                },
+                "exampleLink": {
+                    "url": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+                    "title": "Amazon's 16 Leadership Principles"
+                }
             },
             {
                 "number": "4",
@@ -734,7 +825,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://simonsinek.com/golden-circle/",
+                    "title": "Simon Sinek - The Golden Circle (Start with Why)"
+                },
+                "exampleLink": {
+                    "url": "https://www.patagonia.com/our-footprint/",
+                    "title": "Patagonia's Purpose: 'We're in business to save our home planet'"
+                }
             },
             {
                 "number": "5",
@@ -746,7 +845,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://edis.ifas.ufl.edu/publication/FE577",
+                    "title": "University of Florida - Developing SMART Goals"
+                },
+                "exampleLink": {
+                    "url": "https://www.iit.edu/strategic-plan/2020-2025/smart-goals",
+                    "title": "Illinois Institute of Technology Strategic Goals 2020-2025"
+                }
             },
             {
                 "number": "6",
@@ -758,7 +865,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://www.brandonu.ca/ld/files/Strategic-Action-Plans-and-Alignment-Guide.pdf",
+                    "title": "Brandon University - Strategic Action Plans & Alignment"
+                },
+                "exampleLink": {
+                    "url": "https://scholarblogs.emory.edu/ranews/2024/01/22/introducing-okrs-a-new-chapter-in-the-office-of-research-administration-at-emory/",
+                    "title": "Emory University - Strategic Priorities via OKRs"
+                }
             },
             {
                 "number": "7",
@@ -770,7 +885,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": "This differs from #3 (Core Values) which are cultural beliefs; these are strategic decision-making frameworks."
+                "note": "This differs from #3 (Core Values) which are cultural beliefs; these are strategic decision-making frameworks.",
+                "explanationLink": {
+                    "url": "https://www.researchgate.net/publication/36381185_Developing_guiding_principles_An_organizational_learning_perspective",
+                    "title": "ResearchGate - Developing Guiding Principles"
+                },
+                "exampleLink": {
+                    "url": "https://www.cdisc.org/guiding-principles",
+                    "title": "CDISC Guiding Principles (Clinical Data Standards)"
+                }
             },
             {
                 "number": "8",
@@ -782,7 +905,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://www.suno.edu/assets/suno/PDFs/Administration/Strategic_Planning_Handbook_12-2-10.pdf",
+                    "title": "Southern University - Strategic Planning Handbook"
+                },
+                "exampleLink": {
+                    "url": "https://about.gitlab.com/company/strategy/",
+                    "title": "GitLab's Public Strategic Plan"
+                }
             },
             {
                 "number": "9",
@@ -793,7 +924,15 @@
                     "Public",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://www.azeusconvene.com/articles/annual-operating-plan",
+                    "title": "Azeus Convene - What is an Annual Operating Plan"
+                },
+                "exampleLink": {
+                    "url": "https://www.atlassian.com/blog/strategy/annual-planning",
+                    "title": "Atlassian's Annual Planning Process"
+                }
             },
             {
                 "number": "10",
@@ -805,7 +944,15 @@
                     "Nonprofit",
                     "Public"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://mixpanel.com/blog/north-star-metric/",
+                    "title": "Mixpanel - What is a North Star Metric"
+                },
+                "exampleLink": {
+                    "url": "https://productschool.com/blog/analytics/north-star-metric",
+                    "title": "North Star Metric Examples: Netflix, Slack, Spotify"
+                }
             },
             {
                 "number": "11",
@@ -817,7 +964,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://libguides.wustl.edu/BusinessModelCanvas/ValueProposition",
+                    "title": "Washington University St. Louis - Value Proposition & Business Model Canvas"
+                },
+                "exampleLink": {
+                    "url": "https://www.bauer.uh.edu/undergraduate/documents/Business_Model_Canvas_Explained.pdf",
+                    "title": "University of Houston - Business Model Canvas Explained (PDF)"
+                }
             },
             {
                 "number": "12",
@@ -829,7 +984,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://www.irs.gov/charities-non-profits/charitable-organizations/sample-organizing-documents-public-charity",
+                    "title": "IRS - Sample Organizing Documents for Public Charities"
+                },
+                "exampleLink": {
+                    "url": "https://publiccounsel.org/publications/annotated-form-of-articles-of-incorporation-for-a-california-nonprofit-public-benefit-corporation/",
+                    "title": "Public Counsel - Annotated Sample Articles of Incorporation (California Nonprofit)"
+                }
             },
             {
                 "number": "13",
@@ -840,7 +1003,15 @@
                     "Nonprofit",
                     "Public"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://smartgivers.org/wp-content/uploads/2016/12/Guide-Taking-Nonprofit-Board-Meeting-Minutes.pdf",
+                    "title": "Charities Review Council - Guide to Taking Nonprofit Board Meeting Minutes (PDF)"
+                },
+                "exampleLink": {
+                    "url": "https://propelnonprofits.org/resources/board-of-directors-meeting-minutes-template/",
+                    "title": "Propel Nonprofits - Board Meeting Minutes Template"
+                }
             },
             {
                 "number": "14",
@@ -852,7 +1023,15 @@
                     "Public",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://www.hks.harvard.edu/educational-programs/executive-education/public-narrative-leadership-storytelling-and-action",
+                    "title": "Harvard Kennedy School - Public Narrative: Self, Us & Now (Marshall Ganz)"
+                },
+                "exampleLink": {
+                    "url": "https://www.instrumentl.com/blog/storytelling-for-nonprofits-tips",
+                    "title": "45 Nonprofit Storytelling Examples: Kiva, Firelight Foundation, World Bicycle Relief"
+                }
             },
             {
                 "number": "15",
@@ -864,7 +1043,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://www.naspaa.org/membership/join-naspaa/naspaa-code-good-practice",
+                    "title": "NASPAA - Code of Good Practice for Public Affairs Programs"
+                },
+                "exampleLink": {
+                    "url": "https://www.jnj.com/credo",
+                    "title": "Johnson & Johnson - Our Credo (Code of Ethics)"
+                }
             }
         ]
     },
@@ -882,7 +1069,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://onlinedegrees.sandiego.edu/nonprofit-board-governance/",
+                    "title": "University of San Diego - Nonprofit Board Governance Guide"
+                },
+                "exampleLink": {
+                    "url": "https://boardsource.org/wp-content/uploads/2016/10/Recommended-Gov-Practices.pdf",
+                    "title": "BoardSource - Recommended Governance Practices (PDF)"
+                }
             },
             {
                 "number": "17",
@@ -893,7 +1088,15 @@
                     "Public",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://daf.csulb.edu/offices/financial/sig_auth_overview.html",
+                    "title": "Cal State Long Beach - Signature and Delegation of Authority Overview"
+                },
+                "exampleLink": {
+                    "url": "https://gggi.org/site/assets/uploads/2018/11/GGGI-DELEGATION-OF-AUTHORITY-Ver-4-28-November-2018-signed.pdf",
+                    "title": "GGGI - Delegation of Authority Document (PDF Example)"
+                }
             },
             {
                 "number": "18",
@@ -904,7 +1107,15 @@
                     "Public",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://www.canada.ca/en/treasury-board-secretariat/services/management-accountability-framework.html",
+                    "title": "Government of Canada - Management Accountability Framework"
+                },
+                "exampleLink": {
+                    "url": "https://www.atlas101.ca/pm/concepts/management-accountability-framework/",
+                    "title": "Atlas of Public Management - MAF Explained with Examples"
+                }
             },
             {
                 "number": "19",
@@ -915,7 +1126,15 @@
                     "Nonprofit",
                     "Public"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://boardsource.org/resources/recommended-board-practices/",
+                    "title": "BoardSource - Recommended Board Practices Handbook"
+                },
+                "exampleLink": {
+                    "url": "https://www.pwsausa.org/wp-content/uploads/2021/01/Board-Comp-Matrix-Worksheets.pdf",
+                    "title": "Strategic Board Composition Matrix Worksheet (PDF)"
+                }
             },
             {
                 "number": "20",
@@ -927,7 +1146,15 @@
                     "Nonprofit",
                     "General"
                 ],
-                "note": ""
+                "note": "",
+                "explanationLink": {
+                    "url": "https://finance.cornell.edu/controller/internalcontrols/cosoframework",
+                    "title": "Cornell University - About the COSO Internal Controls Framework"
+                },
+                "exampleLink": {
+                    "url": "https://www.anafp.org/Internal-Control-COSO",
+                    "title": "Association of Nonprofit Accounting - Internal Control for Nonprofits COSO Framework"
+                }
             },
             {
                 "number": "21",
@@ -2930,6 +3157,25 @@
                                     <div class="artifact-purpose">${artifact.purpose}</div>
                                     ${artifact.example ? `<div class="artifact-example"><strong>Example:</strong> ${artifact.example}</div>` : ''}
                                     ${artifact.note ? `<div class="artifact-note"><strong>Note:</strong> ${artifact.note}</div>` : ''}
+                                    ${artifact.explanationLink || artifact.exampleLink ? `
+                                        <div class="artifact-resources">
+                                            <div class="resource-title">📚 Resources:</div>
+                                            <div class="resource-links">
+                                                ${artifact.explanationLink ? `
+                                                    <a href="${artifact.explanationLink.url}" target="_blank" rel="noopener noreferrer" class="resource-link explanation-link">
+                                                        <span class="link-icon">📖</span>
+                                                        <span class="link-text">${artifact.explanationLink.title}</span>
+                                                    </a>
+                                                ` : ''}
+                                                ${artifact.exampleLink ? `
+                                                    <a href="${artifact.exampleLink.url}" target="_blank" rel="noopener noreferrer" class="resource-link example-link">
+                                                        <span class="link-icon">🔗</span>
+                                                        <span class="link-text">${artifact.exampleLink.title}</span>
+                                                    </a>
+                                                ` : ''}
+                                            </div>
+                                        </div>
+                                    ` : ''}
                                     <div class="sectors">
                                         ${artifact.sectors.map(sector => `
                                             <span class="sector-tag ${sector.toLowerCase()}">${sector}</span>
