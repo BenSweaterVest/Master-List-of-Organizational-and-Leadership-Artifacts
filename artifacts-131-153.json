@@ -1,0 +1,301 @@
+[
+  {
+    "number": "131",
+    "name": "Design Principles",
+    "example": "\"Digital-first,\" \"Accessible by default,\" \"Human-centered\"",
+    "explanationLink": {
+      "url": "https://designsystem.digital.gov/design-principles/",
+      "title": "U.S. Web Design System (USWDS) - Design Principles"
+    },
+    "exampleLink": {
+      "url": "https://digital.gov/guides/hcd/introduction/principles",
+      "title": "Digital.gov - Human-Centered Design (HCD) Principles"
+    }
+  },
+  {
+    "number": "132",
+    "name": "Content Strategy Framework",
+    "example": "Web content strategy",
+    "explanationLink": {
+      "url": "https://www.contentful.com/blog/what-is-content-governance/",
+      "title": "Contentful - What is Content Governance?"
+    },
+    "exampleLink": {
+      "url": "https://www.acrolinx.com/blog/how-to-build-a-content-governance-framework-in-4-steps/",
+      "title": "Acrolinx - Building a Content Governance Model in Four Steps"
+    }
+  },
+  {
+    "number": "133",
+    "name": "User Personas",
+    "example": "Civic tech personas",
+    "explanationLink": {
+      "url": "https://www.maxiomtech.com/accessible-ux-civic-design-systems/",
+      "title": "MaxiomTech - Civic Design Systems: Ultimate Guide to Smart UX"
+    },
+    "exampleLink": {
+      "url": "https://www.vtechsolution.com/user-centered-design-transforming-government-interfaces-for-better-ux/",
+      "title": "vTech Solution - User-Centered Design: Transforming Government Interfaces for Better UX"
+    }
+  },
+  {
+    "number": "134",
+    "name": "Environmental Scan / PESTLE Analysis",
+    "example": "Strategic planning environmental scan",
+    "explanationLink": {
+      "url": "https://www.clearpointstrategy.com/blog/how-to-use-pestel-to-identify-external-factors-that-threaten-your-business-strategic-plan",
+      "title": "ClearPoint Strategy - Master PESTEL Analysis to Safeguard Your Business Strategy"
+    },
+    "exampleLink": {
+      "url": "https://www.thestrategyinstitute.org/insights/understanding-external-business-environments-with-pest-and-pestle-analysis",
+      "title": "The Strategy Institute - Understanding External Business Environments with PEST and PESTLE Analysis"
+    }
+  },
+  {
+    "number": "135",
+    "name": "SWOT Analysis",
+    "example": "Used in retreats and strategic planning",
+    "explanationLink": {
+      "url": "https://ctb.ku.edu/en/table-of-contents/assessment/assessing-community-needs-and-resources/swot-analysis/main",
+      "title": "Community Tool Box - SWOT Analysis: Strengths, Weaknesses, Opportunities, and Threats"
+    },
+    "exampleLink": {
+      "url": "https://asana.com/resources/swot-analysis",
+      "title": "Asana - SWOT Analysis: Examples and Templates [2025]"
+    }
+  },
+  {
+    "number": "136",
+    "name": "Business Case / Problem Statement",
+    "example": "Enterprise software investment justification, ERP system business case with ROI analysis",
+    "explanationLink": {
+      "url": "https://www.oracle.com/uk/erp/erp-business-implementation-business-case/",
+      "title": "Oracle - Build an ERP Business Case in 5 Steps with Template"
+    },
+    "exampleLink": {
+      "url": "https://pemeco.com/how-to-build-roi-analysis-to-support-your-business-case-for-erp/",
+      "title": "Pemeco - How to Build an ROI to Support Your Business Case for ERP"
+    }
+  },
+  {
+    "number": "137",
+    "name": "Scenario Planning / Strategic Foresight Framework",
+    "example": "\"Future of digital services in 2035\" scenario book",
+    "explanationLink": {
+      "url": "https://dkiapcss.edu/nexus_articles/simplifying-complexity-with-strategic-foresight-and-scenario-planning/",
+      "title": "Daniel K. Inouye Asia-Pacific Center - Simplifying Complexity with Strategic Foresight and Scenario Planning"
+    },
+    "exampleLink": {
+      "url": "http://www.foresight-platform.eu/community/forlearn/how-to-do-foresight/methods/scenario/",
+      "title": "European Foresight Platform - Scenario Method"
+    }
+  },
+  {
+    "number": "138",
+    "name": "Systems Map / Causal Loop Diagram",
+    "example": "Public health systems dynamics map",
+    "explanationLink": {
+      "url": "https://ahpsr.who.int/docs/librariesprovider11/teaching-material/cld_course_participant_manual.pdf?sfvrsn=f6e03b91_3",
+      "title": "WHO - Systems Tools for Complex Health Systems: Causal Loop Diagrams (PDF)"
+    },
+    "exampleLink": {
+      "url": "https://www.ssph-journal.org/journals/public-health-reviews/articles/10.3389/phrs.2021.1604352/full",
+      "title": "Swiss School of Public Health - Diverse Approaches to Creating and Using Causal Loop Diagrams in Public Health Research"
+    }
+  },
+  {
+    "number": "139",
+    "name": "Decision-Making Framework",
+    "example": "RAPID (Recommend, Agree, Perform, Input, Decide), consent-based decision making",
+    "explanationLink": {
+      "url": "https://www.bain.com/insights/rapid-decision-making/",
+      "title": "Bain & Company - RAPID Decision Making Framework"
+    },
+    "exampleLink": {
+      "url": "https://www.mindtools.com/av8ceid/bains-rapid-framework/",
+      "title": "MindTools - Bain's RAPID Framework"
+    }
+  },
+  {
+    "number": "140",
+    "name": "Ethical Decision Framework",
+    "example": "Ethics decision tree",
+    "explanationLink": {
+      "url": "https://www.scu.edu/ethics/ethics-resources/a-framework-for-ethical-decision-making/",
+      "title": "Santa Clara University - A Framework for Ethical Decision Making"
+    },
+    "exampleLink": {
+      "url": "https://sts.brown.edu/events/events-archive/making-choices/framework-making-ethical-decisions",
+      "title": "Brown University - A Framework for Making Ethical Decisions"
+    }
+  },
+  {
+    "number": "141",
+    "name": "Compliance Framework",
+    "example": "SOC 2, ISO 27001, GDPR, HIPAA compliance programs",
+    "explanationLink": {
+      "url": "https://sprinto.com/blog/compliance-standards/",
+      "title": "Sprinto - Top 10 Compliance Standards: SOC 2, GDPR, HIPAA & More"
+    },
+    "exampleLink": {
+      "url": "https://help.swif.ai/en/articles/9002538-difference-between-soc-2-hipaa-iso-27001-and-gdpr",
+      "title": "Swif - Difference between SOC 2, HIPAA, ISO 27001, and GDPR"
+    }
+  },
+  {
+    "number": "142",
+    "name": "Organizational Learning System",
+    "example": "Toyota \"Hoshin Kanri\" learning rhythm",
+    "explanationLink": {
+      "url": "https://www.lean.org/the-lean-post/articles/how-hoshin-kanri-aligns-your-key-organizational-systems/",
+      "title": "Lean Enterprise Institute - How Hoshin Kanri Aligns Your Key Organizational Systems"
+    },
+    "exampleLink": {
+      "url": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2945344",
+      "title": "SSRN - Hoshin Kanri: How Toyota Creates a Culture of Continuous Improvement"
+    }
+  },
+  {
+    "number": "143",
+    "name": "Ethnographic Observation Notes / Organizational Anthropology Reports",
+    "example": "Workplace ethnography report",
+    "explanationLink": {
+      "url": "https://www.researchgate.net/publication/304194726_Organizational_Culture_Anthropology_of",
+      "title": "ResearchGate - Organizational Culture, Anthropology of"
+    },
+    "exampleLink": {
+      "url": "https://insight7.io/workplace-ethnography-improving-organizational-culture/",
+      "title": "Insight7 - Workplace Ethnography: Improving Organizational Culture"
+    }
+  },
+  {
+    "number": "144",
+    "name": "Annual Compliance Calendar",
+    "example": "HR compliance calendar",
+    "explanationLink": {
+      "url": "https://www.paychex.com/articles/human-resources/hr-compliance-calendar",
+      "title": "Paychex - 2026 HR Compliance Calendar: Full Downloadable Guides"
+    },
+    "exampleLink": {
+      "url": "https://www.goco.io/blog/annual-hr-compliance-calendar",
+      "title": "GoCo - 2025 HR Compliance Calendar & Deadlines"
+    }
+  },
+  {
+    "number": "145",
+    "name": "Harassment Prevention & Respectful Workplace Framework",
+    "example": "Respectful workplace program",
+    "explanationLink": {
+      "url": "https://www.eeoc.gov/training-institute/harassment-prevention-and-respectful-workplaces-training",
+      "title": "U.S. EEOC - Harassment Prevention and Respectful Workplaces Training"
+    },
+    "exampleLink": {
+      "url": "https://www.easyllama.com/blog/simple-workplace-harassment-prevention-strategies-that-HR-will-love",
+      "title": "EasyLlama - Simple Workplace Harassment Prevention Strategies"
+    }
+  },
+  {
+    "number": "146",
+    "name": "Principles of Practice / Standards of Professional Conduct",
+    "example": "NASW standards for social work, Agile Manifesto principles",
+    "explanationLink": {
+      "url": "https://www.socialworkers.org/LinkClick.aspx?fileticket=KZmmbz15evc%3D",
+      "title": "NASW - Code of Ethics of the National Association of Social Workers"
+    },
+    "exampleLink": {
+      "url": "https://socialwork.buffalo.edu/admissions/is-social-work-right-career-for-me/values-ethics.html",
+      "title": "University at Buffalo - Social Work Core Values and Code of Ethics"
+    }
+  },
+  {
+    "number": "147",
+    "name": "Operating Constraints List (\"Guardrails\")",
+    "example": "Budget constraints, regulatory requirements",
+    "explanationLink": {
+      "url": "https://framework.scaledagile.com/guardrails",
+      "title": "Scaled Agile Framework - Lean Budget Guardrails"
+    },
+    "exampleLink": {
+      "url": "https://monday.com/blog/project-management/project-constraints/",
+      "title": "Monday.com - Project Constraints: The 6 Critical Factors To Manage"
+    }
+  },
+  {
+    "number": "148",
+    "name": "Executive Briefing Book / Principal's Book",
+    "example": "Commissioner's briefing book",
+    "explanationLink": {
+      "url": "https://www.hks.harvard.edu/sites/default/files/Academic%20Dean's%20Office/communications_program/digital_resources/new_briefing_book_guide_10_31_18.pdf",
+      "title": "Harvard Kennedy School - Briefing Book Guide (PDF)"
+    },
+    "exampleLink": {
+      "url": "https://crtc.gc.ca/eng/acrtc/transition/eatrides.htm",
+      "title": "CRTC - Briefing book for Chairperson, Vice-Chairpersons and Commissioners"
+    }
+  },
+  {
+    "number": "149",
+    "name": "Equity Framework / DEI Framework",
+    "example": "State DEI strategic plan, DEI charter",
+    "explanationLink": {
+      "url": "https://bidenwhitehouse.archives.gov/wp-content/uploads/2021/11/Strategic-Plan-to-Advance-Diversity-Equity-Inclusion-and-Accessibility-in-the-Federal-Workforce-11.23.21.pdf",
+      "title": "White House - Government-Wide Strategic Plan to Advance DEIA in the Federal Workforce (PDF)"
+    },
+    "exampleLink": {
+      "url": "https://2021-2025.state.gov/deia-strategy/",
+      "title": "U.S. Department of State - Diversity, Equity, Inclusion, and Accessibility Strategic Plan 2022–2026"
+    }
+  },
+  {
+    "number": "150",
+    "name": "Leadership Development Curriculum",
+    "example": "Multi-level leadership program",
+    "explanationLink": {
+      "url": "https://www.ccl.org/leadership-programs/leadership-development-program/",
+      "title": "Center for Creative Leadership (CCL) - Leadership Development Program (LDP)®"
+    },
+    "exampleLink": {
+      "url": "https://www.gsb.stanford.edu/exec-ed/programs/executive-leadership-development/curriculum",
+      "title": "Stanford Graduate School of Business - Executive Leadership Development Curriculum"
+    }
+  },
+  {
+    "number": "151",
+    "name": "Culture Code",
+    "example": "Netflix Culture Deck",
+    "explanationLink": {
+      "url": "https://jobs.netflix.com/culture",
+      "title": "Netflix - Culture Memo"
+    },
+    "exampleLink": {
+      "url": "https://knowledge.wharton.upenn.edu/podcast/knowledge-at-wharton-podcast/how-netflix-built-its-company-culture/",
+      "title": "Wharton - How Netflix Built Its Company Culture"
+    }
+  },
+  {
+    "number": "152",
+    "name": "Impact Manifesto / Change Statement",
+    "example": "Patagonia's \"Our reason for being\"",
+    "explanationLink": {
+      "url": "https://www.patagonia.com.hk/pages/our-mission",
+      "title": "Patagonia - Our Mission"
+    },
+    "exampleLink": {
+      "url": "https://insights.som.yale.edu/insights/how-patagonia-learned-to-act-on-its-values",
+      "title": "Yale Insights - How Patagonia Learned to Act on Its Values"
+    }
+  },
+  {
+    "number": "153",
+    "name": "Outcome Chain / Benefits Realization Map",
+    "example": "Theory of Change outcome pathway",
+    "explanationLink": {
+      "url": "https://www.theoryofchange.org/what-is-theory-of-change/how-does-theory-of-change-work/",
+      "title": "Theory of Change Community - How Does Theory of Change Work?"
+    },
+    "exampleLink": {
+      "url": "https://www.bridgespan.org/insights/nonprofit-strategy/intended-impact-and-theory-of-change",
+      "title": "Bridgespan - What Are Intended Impact and Theory of Change?"
+    }
+  }
+]

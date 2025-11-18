@@ -17,6 +17,7 @@ research_files = [
     'artifacts-91-100.json',
     'artifacts-101-120.json',
     'artifacts-121-130.json',
+    'artifacts-131-153.json',
     'artifacts-154-186.json'
 ]
 
