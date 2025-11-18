@@ -420,7 +420,7 @@ def generate_html(sections):
         }
 
         .framework-box-full {
-            background: linear-gradient(135deg, rgba(52, 73, 94, 0.08) 0%, rgba(155, 89, 182, 0.12) 100%);
+            background: linear-gradient(135deg, rgba(52, 73, 94, 0.15) 0%, rgba(155, 89, 182, 0.25) 100%);
             border-left: 4px solid var(--secondary);
             padding: 1.5rem;
             border-radius: 8px;
@@ -929,11 +929,11 @@ def generate_html(sections):
                 bookmarks.splice(existingIndex, 1);
                 saveBookmarks(bookmarks);
                 // Hide priority selector
-                const selector = document.getElementById(\`priority-\${artifactNumber}\`);
+                const selector = document.getElementById('priority-' + artifactNumber);
                 if (selector) selector.classList.remove('show');
             } else {
                 // Show priority selector inline
-                const selector = document.getElementById(\`priority-\${artifactNumber}\`);
+                const selector = document.getElementById('priority-' + artifactNumber);
                 if (selector) {
                     selector.classList.toggle('show');
                 }
@@ -1052,7 +1052,7 @@ def generate_html(sections):
                 const priority = e.target.dataset.priority;
                 addBookmarkWithPriority(artifactNumber, priority);
                 // Hide the priority selector
-                const selector = document.getElementById(\`priority-\${artifactNumber}\`);
+                const selector = document.getElementById('priority-' + artifactNumber);
                 if (selector) selector.classList.remove('show');
             }
         });
