@@ -176,6 +176,30 @@
         .close-btn:hover {
             color: var(--danger);
         }
+
+        .category-filter {
+            display: block;
+            margin: 0.4rem 0;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .category-filter input {
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .category-filter:hover {
+            background: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .legend h4 {
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
     </style>
 </head>
 <body>
@@ -203,22 +227,38 @@
     <div id="networkContainer"></div>
 
     <div class="legend">
-        <h3>Relationship Types</h3>
-        <div class="legend-item">
-            <div class="legend-color" style="background: #27ae60;"></div>
-            <span>Feeds Into (informs)</span>
+        <h3>Categories</h3>
+        <div style="max-height: 400px; overflow-y: auto;">
+            <label class="category-filter"><input type="checkbox" value="foundation" checked> <span style="color: #e74c3c;">●</span> Foundation</label>
+            <label class="category-filter"><input type="checkbox" value="strategic" checked> <span style="color: #9b59b6;">●</span> Strategic</label>
+            <label class="category-filter"><input type="checkbox" value="governance" checked> <span style="color: #3498db;">●</span> Governance</label>
+            <label class="category-filter"><input type="checkbox" value="operations" checked> <span style="color: #27ae60;">●</span> Operations</label>
+            <label class="category-filter"><input type="checkbox" value="workforce" checked> <span style="color: #1abc9c;">●</span> Workforce</label>
+            <label class="category-filter"><input type="checkbox" value="financial" checked> <span style="color: #f39c12;">●</span> Financial</label>
+            <label class="category-filter"><input type="checkbox" value="technology" checked> <span style="color: #00acc1;">●</span> Technology</label>
+            <label class="category-filter"><input type="checkbox" value="risk" checked> <span style="color: #e67e22;">●</span> Risk</label>
+            <label class="category-filter"><input type="checkbox" value="communications" checked> <span style="color: #ec407a;">●</span> Communications</label>
+            <label class="category-filter"><input type="checkbox" value="performance" checked> <span style="color: #ff9800;">●</span> Performance</label>
+            <label class="category-filter"><input type="checkbox" value="change" checked> <span style="color: #ffc107;">●</span> Change</label>
+            <label class="category-filter"><input type="checkbox" value="sector_specific" checked> <span style="color: #34495e;">●</span> Sector-Specific</label>
+            <label class="category-filter"><input type="checkbox" value="specialized" checked> <span style="color: #95a5a6;">●</span> Specialized</label>
+            <label class="category-filter"><input type="checkbox" value="cross_functional" checked> <span style="color: #7b1fa2;">●</span> Cross-Functional</label>
         </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background: #3498db;"></div>
-            <span>Depends On (requires)</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background: #f39c12;"></div>
-            <span>Related To (connected)</span>
-        </div>
-        <div class="legend-item">
-            <div class="legend-color" style="background: #e74c3c;"></div>
-            <span>Strategic Foundation</span>
+        <button onclick="toggleAllCategories()" style="margin-top: 10px; padding: 5px 10px;">Toggle All</button>
+        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+            <h4>Relationship Types</h4>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #27ae60;"></div>
+                <span>Feeds Into</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #3498db;"></div>
+                <span>Depends On</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #f39c12;"></div>
+                <span>Related To</span>
+            </div>
         </div>
     </div>
 
@@ -373,12 +413,147 @@
                 { id: 119, label: "Lessons\nLearned", group: "performance", level: 5 },
 
                 // Change & Culture (121-130) - Level 3
-                { id: 121, label: "Change\nPlan", group: "operations", level: 3 },
-                { id: 122, label: "Change\nReadiness\nAssessment", group: "performance", level: 4 },
-                { id: 123, label: "Adoption\nPlan", group: "operations", level: 4 },
+                { id: 121, label: "Change\nPlan", group: "change", level: 3 },
+                { id: 122, label: "Change\nReadiness\nAssessment", group: "change", level: 4 },
+                { id: 123, label: "Adoption\nPlan", group: "change", level: 4 },
+                { id: 124, label: "Training\nPlan", group: "workforce", level: 4 },
+                { id: 125, label: "Communication\nPlan (Change)", group: "change", level: 4 },
+                { id: 126, label: "Resistance\nManagement\nPlan", group: "change", level: 4 },
                 { id: 127, label: "Culture\nFramework", group: "foundation", level: 1 },
                 { id: 128, label: "Employee\nEngagement\nSurvey", group: "performance", level: 4 },
-                { id: 129, label: "Climate\nSurvey", group: "performance", level: 4 }
+                { id: 129, label: "Climate\nSurvey", group: "performance", level: 4 },
+                { id: 130, label: "Symbolic\nActions", group: "change", level: 4 },
+
+                // Strategic Planning & Direction (8, 11, 14, 179) - Level 1-2
+                { id: 8, label: "Strategic\nPlan", group: "strategic", level: 2 },
+                { id: 11, label: "Theory of\nValue", group: "strategic", level: 1 },
+                { id: 14, label: "Org\nNarrative", group: "strategic", level: 1 },
+                { id: 179, label: "Mission\nSuccess\nCriteria", group: "strategic", level: 2 },
+
+                // Governance Expansion (17-19, 23-30) - Level 2
+                { id: 17, label: "Delegation\nMatrix", group: "governance", level: 2 },
+                { id: 18, label: "Accountability\nFramework", group: "governance", level: 2 },
+                { id: 19, label: "Board\nGovernance\nHandbook", group: "governance", level: 2 },
+                { id: 23, label: "Board\nMinutes", group: "governance", level: 3 },
+                { id: 24, label: "Mandate\nLetter", group: "governance", level: 2 },
+                { id: 25, label: "Community\nAdvisory\nBoard", group: "governance", level: 3 },
+                { id: 26, label: "Ethics\nReview", group: "governance", level: 3 },
+                { id: 27, label: "Whistleblower\nPolicy", group: "governance", level: 2 },
+                { id: 28, label: "Document\nRetention", group: "governance", level: 3 },
+                { id: 29, label: "Shareholder\nAgreements", group: "governance", level: 2 },
+                { id: 30, label: "Committee\nCharters", group: "governance", level: 3 },
+
+                // Operations Expansion (38-50) - Level 3-4
+                { id: 38, label: "SLAs", group: "operations", level: 4 },
+                { id: 39, label: "Customer\nCharter", group: "operations", level: 3 },
+                { id: 40, label: "SOPs", group: "operations", level: 4 },
+                { id: 41, label: "Operating\nPrinciples", group: "operations", level: 3 },
+                { id: 42, label: "Playbooks", group: "operations", level: 4 },
+                { id: 43, label: "RACI\nMatrix", group: "cross_functional", level: 4 },
+                { id: 44, label: "Value Stream\nMap", group: "operations", level: 3 },
+                { id: 45, label: "Knowledge\nBase", group: "operations", level: 4 },
+                { id: 46, label: "Operating\nRhythm", group: "operations", level: 3 },
+                { id: 47, label: "Leadership\nCompetencies", group: "workforce", level: 3 },
+                { id: 48, label: "Leadership\nPhilosophy", group: "foundation", level: 1 },
+                { id: 49, label: "Competency\nDictionary", group: "workforce", level: 3 },
+                { id: 50, label: "Role\nArchitecture", group: "workforce", level: 3 },
+
+                // Workforce Expansion (62-64, 149-150) - Level 3-4
+                { id: 62, label: "Employee\nHandbook", group: "workforce", level: 4 },
+                { id: 63, label: "Remote Work\nPolicy", group: "workforce", level: 4 },
+                { id: 64, label: "Wellness\nProgram", group: "workforce", level: 4 },
+                { id: 149, label: "Equity\nFramework", group: "workforce", level: 3 },
+                { id: 150, label: "Leadership\nDevelopment", group: "workforce", level: 4 },
+
+                // Financial Expansion (70, 76-80) - Level 3-4
+                { id: 70, label: "Grant\nManagement", group: "financial", level: 3 },
+                { id: 76, label: "Investment\nPolicy", group: "financial", level: 3 },
+                { id: 77, label: "Cash Flow\nForecast", group: "financial", level: 4 },
+                { id: 78, label: "Procurement\nPolicy", group: "financial", level: 3 },
+                { id: 79, label: "Asset\nManagement", group: "financial", level: 3 },
+                { id: 80, label: "Indirect Cost\nRate", group: "financial", level: 4 },
+
+                // Risk & Continuity Expansion (87-90) - Level 3-4
+                { id: 87, label: "Threat\nAssessment", group: "risk", level: 4 },
+                { id: 88, label: "Emergency\nResponse", group: "risk", level: 4 },
+                { id: 89, label: "Resilience\nPlan", group: "risk", level: 3 },
+                { id: 90, label: "Safety\nProgram", group: "risk", level: 4 },
+
+                // Communications Expansion (96-100) - Level 3-4
+                { id: 96, label: "Media\nStrategy", group: "communications", level: 4 },
+                { id: 97, label: "Public\nAffairs", group: "communications", level: 3 },
+                { id: 98, label: "Content\nStrategy", group: "communications", level: 4 },
+                { id: 99, label: "Messaging\nFramework", group: "communications", level: 3 },
+                { id: 100, label: "Crisis\nCommunications", group: "communications", level: 4 },
+
+                // Performance Expansion (111-113, 120) - Level 4-5
+                { id: 111, label: "Outcome\nFramework", group: "performance", level: 4 },
+                { id: 112, label: "Impact\nMeasurement", group: "performance", level: 4 },
+                { id: 113, label: "Data\nDictionary", group: "performance", level: 5 },
+                { id: 120, label: "Portfolio\nDashboard", group: "performance", level: 5 },
+
+                // Advanced & Specialized Tools (131-153) - Level 3-4
+                { id: 131, label: "Design\nPrinciples", group: "specialized", level: 3 },
+                { id: 132, label: "User\nPersonas", group: "specialized", level: 4 },
+                { id: 133, label: "PESTLE\nAnalysis", group: "specialized", level: 3 },
+                { id: 134, label: "SWOT\nAnalysis", group: "specialized", level: 3 },
+                { id: 135, label: "Scenario\nPlanning", group: "specialized", level: 3 },
+                { id: 136, label: "Systems\nMapping", group: "specialized", level: 4 },
+                { id: 137, label: "Stakeholder\nMapping", group: "specialized", level: 3 },
+                { id: 138, label: "Power\nMapping", group: "specialized", level: 4 },
+                { id: 139, label: "Decision\nFramework", group: "cross_functional", level: 3 },
+                { id: 140, label: "Ethical\nDecision\nFramework", group: "governance", level: 3 },
+                { id: 141, label: "Compliance\nFramework", group: "governance", level: 3 },
+                { id: 142, label: "Learning\nSystem", group: "performance", level: 4 },
+                { id: 143, label: "Ethnographic\nStudies", group: "specialized", level: 4 },
+                { id: 144, label: "Compliance\nCalendar", group: "governance", level: 4 },
+                { id: 145, label: "Harassment\nPrevention", group: "workforce", level: 3 },
+                { id: 146, label: "Standards of\nConduct", group: "governance", level: 3 },
+                { id: 147, label: "Operating\nGuardrails", group: "governance", level: 3 },
+                { id: 148, label: "Executive\nBriefing Book", group: "sector_specific", level: 4 },
+                { id: 151, label: "Culture\nCode", group: "change", level: 2 },
+                { id: 152, label: "Impact\nManifesto", group: "strategic", level: 2 },
+                { id: 153, label: "Outcome\nChain", group: "performance", level: 4 },
+
+                // Sector-Specific: Public Sector (154-166) - Level 3-4
+                { id: 154, label: "Briefing\nPaper", group: "sector_specific", level: 4 },
+                { id: 155, label: "Policy\nGuidance", group: "sector_specific", level: 3 },
+                { id: 156, label: "Legislative\nMandate", group: "sector_specific", level: 2 },
+                { id: 157, label: "Legislative\nAgenda", group: "sector_specific", level: 3 },
+                { id: 158, label: "Statutory\nReport", group: "sector_specific", level: 4 },
+                { id: 159, label: "Rulemaking\nPlan", group: "sector_specific", level: 3 },
+                { id: 160, label: "Policy\nBulletins", group: "sector_specific", level: 4 },
+                { id: 161, label: "Interagency\nAgreement", group: "sector_specific", level: 3 },
+                { id: 162, label: "Public Data\nPolicies", group: "sector_specific", level: 3 },
+                { id: 163, label: "Transparency\nReport", group: "sector_specific", level: 4 },
+                { id: 164, label: "Accessibility\nPlan", group: "sector_specific", level: 3 },
+                { id: 165, label: "Records\nRetention", group: "sector_specific", level: 4 },
+                { id: 166, label: "Continuity of\nGovernment", group: "sector_specific", level: 3 },
+
+                // Sector-Specific: Nonprofit (167-176) - Level 3-4
+                { id: 167, label: "Case for\nSupport", group: "sector_specific", level: 3 },
+                { id: 168, label: "Fundraising\nStrategy", group: "sector_specific", level: 3 },
+                { id: 169, label: "Donor\nSegmentation", group: "sector_specific", level: 4 },
+                { id: 170, label: "Volunteer\nHandbook", group: "sector_specific", level: 4 },
+                { id: 171, label: "Impact\nReport", group: "sector_specific", level: 4 },
+                { id: 172, label: "SROI\nFramework", group: "sector_specific", level: 4 },
+                { id: 173, label: "Partner Value\nProposition", group: "sector_specific", level: 3 },
+                { id: 174, label: "Network\nGovernance", group: "sector_specific", level: 3 },
+                { id: 175, label: "Coalition\nAgreements", group: "sector_specific", level: 4 },
+                { id: 176, label: "Employer\nValue Prop", group: "workforce", level: 3 },
+
+                // Specialized: Consulting & Advanced (177-188) - Level 3-5
+                { id: 177, label: "Product\nStrategy", group: "specialized", level: 3 },
+                { id: 178, label: "Operating\nModel\nBlueprint", group: "specialized", level: 3 },
+                { id: 180, label: "Integrity\nFramework", group: "specialized", level: 3 },
+                { id: 181, label: "Delivery\nFramework", group: "specialized", level: 3 },
+                { id: 182, label: "Statement of\nWork", group: "specialized", level: 4 },
+                { id: 183, label: "Diagnostic\nToolkit", group: "specialized", level: 4 },
+                { id: 184, label: "Readiness\nAssessment", group: "specialized", level: 4 },
+                { id: 185, label: "Hypothesis\nTree", group: "specialized", level: 4 },
+                { id: 186, label: "Blueprint\nDeck", group: "specialized", level: 5 },
+                { id: 187, label: "Insights\nDeck", group: "specialized", level: 5 },
+                { id: 188, label: "Capability\nHeatmap", group: "specialized", level: 5 }
             ],
 
             edges: [
@@ -521,7 +696,158 @@
                 { from: 57, to: 110, type: "feeds_into", label: "reported in" }, // Performance Mgmt → Annual Report
                 { from: 82, to: 110, type: "feeds_into", label: "reported in" }, // Risk Register → Annual Report
                 { from: 10, to: 61, type: "feeds_into", label: "includes" },   // Strategic → DEI
-                { from: 32, to: 71, type: "feeds_into", label: "informs" }     // Capabilities → IT Strategic
+                { from: 32, to: 71, type: "feeds_into", label: "informs" },    // Capabilities → IT Strategic
+
+                // ========== STRATEGIC & FOUNDATION EXPANSION ==========
+                { from: 1, to: 8, type: "depends_on", label: "anchors" },      // Mission → Strategic Plan
+                { from: 8, to: 22, type: "feeds_into", label: "guides" },      // Strategic Plan → Annual Plan
+                { from: 8, to: 179, type: "feeds_into", label: "defines" },    // Strategic Plan → Success Criteria
+                { from: 11, to: 8, type: "feeds_into", label: "informs" },     // Theory of Value → Strategic Plan
+                { from: 14, to: 91, type: "feeds_into", label: "shapes" },     // Org Narrative → Comms Plan
+                { from: 14, to: 168, type: "feeds_into", label: "informs" },   // Org Narrative → Fundraising Strategy
+                { from: 152, to: 8, type: "feeds_into", label: "informs" },    // Impact Manifesto → Strategic Plan
+
+                // ========== GOVERNANCE EXPANSION ==========
+                { from: 11, to: 17, type: "feeds_into", label: "creates" },    // Bylaws → Delegation Matrix
+                { from: 17, to: 13, type: "related_to", label: "" },           // Delegation Matrix ↔ Delegation of Authority
+                { from: 18, to: 22, type: "feeds_into", label: "ensures" },    // Accountability Framework → Annual Plan
+                { from: 19, to: 12, type: "related_to", label: "" },           // Board Handbook ↔ Board Charter
+                { from: 12, to: 23, type: "feeds_into", label: "documented in" }, // Board Charter → Board Minutes
+                { from: 24, to: 22, type: "feeds_into", label: "sets direction" }, // Mandate Letter → Annual Plan
+                { from: 25, to: 93, type: "feeds_into", label: "enables" },    // Community Advisory Board → Stakeholder Engagement
+                { from: 26, to: 14, type: "feeds_into", label: "enforces" },   // Ethics Review → Ethics Policy
+                { from: 27, to: 14, type: "related_to", label: "" },           // Whistleblower ↔ Ethics Policy
+                { from: 28, to: 165, type: "related_to", label: "" },          // Document Retention ↔ Records Retention
+                { from: 12, to: 30, type: "feeds_into", label: "establishes" }, // Board Charter → Committee Charters
+                { from: 141, to: 144, type: "feeds_into", label: "creates" },  // Compliance Framework → Compliance Calendar
+                { from: 140, to: 139, type: "related_to", label: "" },         // Ethical Decision ↔ Decision Framework
+                { from: 146, to: 15, type: "related_to", label: "" },          // Standards of Conduct ↔ Code of Ethics
+                { from: 147, to: 20, type: "feeds_into", label: "constrains" }, // Operating Guardrails → Policy Framework
+
+                // ========== OPERATIONS EXPANSION ==========
+                { from: 38, to: 37, type: "related_to", label: "" },           // SLAs ↔ Service Level Agreements
+                { from: 39, to: 33, type: "feeds_into", label: "defines standards" }, // Customer Charter → Service Catalog
+                { from: 40, to: 36, type: "related_to", label: "" },           // SOPs ↔ Standard Operating Procedures
+                { from: 41, to: 31, type: "feeds_into", label: "guides" },     // Operating Principles → Operating Model
+                { from: 42, to: 40, type: "feeds_into", label: "documented as" }, // Playbooks → SOPs
+                { from: 43, to: 34, type: "feeds_into", label: "clarifies" },  // RACI → Process Map
+                { from: 44, to: 35, type: "related_to", label: "" },           // Value Stream Map ↔ Value Streams
+                { from: 45, to: 40, type: "feeds_into", label: "stores" },     // Knowledge Base → SOPs
+                { from: 46, to: 22, type: "feeds_into", label: "structures" }, // Operating Rhythm → Annual Plan
+
+                // ========== WORKFORCE EXPANSION ==========
+                { from: 47, to: 54, type: "related_to", label: "" },           // Leadership Competencies ↔ Competency Framework
+                { from: 49, to: 54, type: "feeds_into", label: "defines" },    // Competency Dictionary → Competency Framework
+                { from: 50, to: 58, type: "feeds_into", label: "structures" }, // Role Architecture → Job Descriptions
+                { from: 62, to: 56, type: "feeds_into", label: "includes" },   // Employee Handbook → Onboarding
+                { from: 63, to: 62, type: "feeds_into", label: "part of" },    // Remote Work Policy → Employee Handbook
+                { from: 64, to: 60, type: "feeds_into", label: "part of" },    // Wellness Program → Comp & Benefits
+                { from: 149, to: 61, type: "related_to", label: "" },          // Equity Framework ↔ DEI Strategy
+                { from: 150, to: 55, type: "related_to", label: "" },          // Leadership Development ↔ Learning & Dev
+                { from: 124, to: 55, type: "feeds_into", label: "part of" },   // Training Plan → Learning & Dev
+                { from: 145, to: 62, type: "feeds_into", label: "part of" },   // Harassment Prevention → Employee Handbook
+                { from: 176, to: 51, type: "feeds_into", label: "attracts talent" }, // Employer Value Prop → Workforce Plan
+
+                // ========== FINANCIAL EXPANSION ==========
+                { from: 70, to: 65, type: "feeds_into", label: "funds" },      // Grant Management → Annual Budget
+                { from: 76, to: 66, type: "feeds_into", label: "part of" },    // Investment Policy → Financial Policies
+                { from: 77, to: 65, type: "feeds_into", label: "informs" },    // Cash Flow Forecast → Annual Budget
+                { from: 78, to: 66, type: "feeds_into", label: "part of" },    // Procurement Policy → Financial Policies
+                { from: 79, to: 68, type: "feeds_into", label: "manages" },    // Asset Management → Capital Plan
+                { from: 80, to: 69, type: "related_to", label: "" },           // Indirect Cost Rate ↔ Cost Allocation
+
+                // ========== TECHNOLOGY & DIGITAL EXPANSION ==========
+                { from: 81, to: 72, type: "feeds_into", label: "part of" },    // Privacy Policy → Data Governance
+                { from: 88, to: 71, type: "feeds_into", label: "part of" },    // Cloud Strategy → IT Strategic Plan
+                { from: 89, to: 71, type: "related_to", label: "" },           // Digital Strategy ↔ IT Strategic Plan
+                { from: 90, to: 73, type: "feeds_into", label: "informs" },    // AI Ethics → Cybersecurity Policy
+
+                // ========== RISK & CONTINUITY EXPANSION ==========
+                { from: 87, to: 82, type: "feeds_into", label: "populates" },  // Threat Assessment → Risk Register
+                { from: 88, to: 83, type: "related_to", label: "" },           // Emergency Response ↔ Business Continuity
+                { from: 89, to: 81, type: "feeds_into", label: "implements" }, // Resilience Plan → Risk Framework
+                { from: 90, to: 83, type: "feeds_into", label: "supports" },   // Safety Program → Business Continuity
+
+                // ========== COMMUNICATIONS EXPANSION ==========
+                { from: 96, to: 91, type: "feeds_into", label: "part of" },    // Media Strategy → Communications Plan
+                { from: 97, to: 91, type: "feeds_into", label: "part of" },    // Public Affairs → Communications Plan
+                { from: 98, to: 91, type: "feeds_into", label: "implements" }, // Content Strategy → Communications Plan
+                { from: 99, to: 91, type: "feeds_into", label: "guides" },     // Messaging Framework → Communications Plan
+                { from: 100, to: 86, type: "related_to", label: "" },          // Crisis Communications ↔ Crisis Comms Plan
+                { from: 125, to: 91, type: "feeds_into", label: "part of" },   // Communication Plan (Change) → Communications Plan
+
+                // ========== PERFORMANCE & EVALUATION EXPANSION ==========
+                { from: 111, to: 101, type: "related_to", label: "" },         // Outcome Framework ↔ Performance Framework
+                { from: 112, to: 108, type: "feeds_into", label: "uses" },     // Impact Measurement → M&E Framework
+                { from: 113, to: 104, type: "feeds_into", label: "defines" },  // Data Dictionary → KPIs
+                { from: 120, to: 116, type: "feeds_into", label: "displays" }, // Portfolio Dashboard → Portfolio Prioritization
+                { from: 142, to: 119, type: "feeds_into", label: "captures" }, // Learning System → Lessons Learned
+                { from: 153, to: 106, type: "related_to", label: "" },         // Outcome Chain ↔ Logic Model
+
+                // ========== CHANGE & CULTURE EXPANSION ==========
+                { from: 125, to: 121, type: "feeds_into", label: "supports" }, // Communication Plan (Change) → Change Plan
+                { from: 126, to: 121, type: "feeds_into", label: "part of" },  // Resistance Management → Change Plan
+                { from: 130, to: 127, type: "feeds_into", label: "reinforces" }, // Symbolic Actions → Culture Framework
+                { from: 151, to: 127, type: "related_to", label: "" },         // Culture Code ↔ Culture Framework
+                { from: 124, to: 123, type: "feeds_into", label: "enables" },  // Training Plan → Adoption Plan
+
+                // ========== SPECIALIZED TOOLS & FRAMEWORKS ==========
+                { from: 131, to: 31, type: "feeds_into", label: "guides" },    // Design Principles → Operating Model
+                { from: 132, to: 37, type: "feeds_into", label: "informs" },   // User Personas → Service Blueprint
+                { from: 133, to: 8, type: "feeds_into", label: "informs" },    // PESTLE → Strategic Plan
+                { from: 134, to: 8, type: "feeds_into", label: "informs" },    // SWOT → Strategic Plan
+                { from: 135, to: 8, type: "feeds_into", label: "informs" },    // Scenario Planning → Strategic Plan
+                { from: 136, to: 34, type: "feeds_into", label: "visualizes" }, // Systems Mapping → Process Map
+                { from: 137, to: 93, type: "feeds_into", label: "creates" },   // Stakeholder Mapping → Stakeholder Engagement
+                { from: 138, to: 137, type: "feeds_into", label: "informs" },  // Power Mapping → Stakeholder Mapping
+                { from: 143, to: 127, type: "feeds_into", label: "studies" },  // Ethnographic Studies → Culture Framework
+
+                // ========== SECTOR-SPECIFIC: PUBLIC SECTOR ==========
+                { from: 154, to: 148, type: "related_to", label: "" },         // Briefing Paper ↔ Executive Briefing Book
+                { from: 155, to: 20, type: "feeds_into", label: "guides" },    // Policy Guidance → Policy Framework
+                { from: 156, to: 8, type: "depends_on", label: "authorizes" }, // Legislative Mandate → Strategic Plan
+                { from: 157, to: 156, type: "feeds_into", label: "implements" }, // Legislative Agenda → Legislative Mandate
+                { from: 158, to: 110, type: "related_to", label: "" },         // Statutory Report ↔ Annual Report
+                { from: 159, to: 20, type: "feeds_into", label: "creates" },   // Rulemaking Plan → Policy Framework
+                { from: 160, to: 20, type: "feeds_into", label: "interprets" }, // Policy Bulletins → Policy Framework
+                { from: 161, to: 174, type: "related_to", label: "" },         // Interagency Agreement ↔ Network Governance
+                { from: 162, to: 72, type: "feeds_into", label: "part of" },   // Public Data Policies → Data Governance
+                { from: 163, to: 110, type: "related_to", label: "" },         // Transparency Report ↔ Annual Report
+                { from: 164, to: 33, type: "feeds_into", label: "ensures" },   // Accessibility Plan → Service Catalog
+                { from: 165, to: 28, type: "related_to", label: "" },          // Records Retention ↔ Document Retention
+                { from: 166, to: 84, type: "related_to", label: "" },          // Continuity of Government ↔ COOP Plan
+
+                // ========== SECTOR-SPECIFIC: NONPROFIT ==========
+                { from: 167, to: 168, type: "feeds_into", label: "supports" }, // Case for Support → Fundraising Strategy
+                { from: 168, to: 65, type: "feeds_into", label: "funds" },     // Fundraising Strategy → Annual Budget
+                { from: 169, to: 168, type: "feeds_into", label: "informs" },  // Donor Segmentation → Fundraising Strategy
+                { from: 170, to: 51, type: "feeds_into", label: "manages" },   // Volunteer Handbook → Workforce Plan
+                { from: 171, to: 110, type: "related_to", label: "" },         // Impact Report ↔ Annual Report
+                { from: 172, to: 112, type: "related_to", label: "" },         // SROI Framework ↔ Impact Measurement
+                { from: 173, to: 174, type: "feeds_into", label: "enables" },  // Partner Value Proposition → Network Governance
+                { from: 175, to: 174, type: "feeds_into", label: "formalizes" }, // Coalition Agreements → Network Governance
+
+                // ========== SPECIALIZED: CONSULTING & ADVANCED ==========
+                { from: 177, to: 8, type: "feeds_into", label: "informs" },    // Product Strategy → Strategic Plan
+                { from: 178, to: 31, type: "related_to", label: "" },          // Operating Model Blueprint ↔ Operating Model
+                { from: 180, to: 14, type: "feeds_into", label: "ensures" },   // Integrity Framework → Ethics Policy
+                { from: 181, to: 115, type: "feeds_into", label: "guides" },   // Delivery Framework → Project Plan
+                { from: 182, to: 114, type: "related_to", label: "" },         // Statement of Work ↔ Project Charter
+                { from: 183, to: 8, type: "feeds_into", label: "assesses" },   // Diagnostic Toolkit → Strategic Plan
+                { from: 184, to: 122, type: "related_to", label: "" },         // Readiness Assessment ↔ Change Readiness
+                { from: 185, to: 134, type: "feeds_into", label: "structures" }, // Hypothesis Tree → SWOT Analysis
+                { from: 186, to: 181, type: "feeds_into", label: "documents" }, // Blueprint Deck → Delivery Framework
+                { from: 187, to: 186, type: "feeds_into", label: "informs" },  // Insights Deck → Blueprint Deck
+                { from: 188, to: 32, type: "feeds_into", label: "assesses" },  // Capability Heatmap → Capability Model
+
+                // ========== CROSS-FUNCTIONAL & INTEGRATIVE RELATIONSHIPS ==========
+                { from: 43, to: 59, type: "feeds_into", label: "clarifies" },  // RACI Matrix → Org Chart
+                { from: 139, to: 8, type: "feeds_into", label: "guides" },     // Decision Framework → Strategic Plan
+                { from: 8, to: 23, type: "feeds_into", label: "guides" },      // Strategic Plan → Operational Plan
+                { from: 23, to: 22, type: "feeds_into", label: "supports" },   // Operational Plan → Annual Plan
+                { from: 179, to: 101, type: "feeds_into", label: "defines" },  // Mission Success Criteria → Performance Framework
+                { from: 152, to: 1, type: "feeds_into", label: "amplifies" },  // Impact Manifesto → Mission
+                { from: 151, to: 3, type: "related_to", label: "" }            // Culture Code ↔ Core Values
             ]
         };
 
@@ -548,20 +874,37 @@
          * - Dark border (#2c3e50)
          * - Orange highlight on hover/select
          */
+        /**
+         * Color scheme for artifact categories (12 distinct categories)
+         */
+        const categoryColors = {
+            'foundation': '#e74c3c',        // Red - Mission, Vision, Values
+            'strategic': '#9b59b6',         // Purple - Strategic Plans, Goals
+            'governance': '#3498db',        // Blue - Bylaws, Board, Ethics
+            'operations': '#27ae60',        // Green - Operating Model, Processes
+            'workforce': '#1abc9c',         // Teal - HR, Talent, DEI
+            'financial': '#f39c12',         // Gold - Budgets, Capital
+            'technology': '#00acc1',        // Cyan - IT, Data, Cyber
+            'risk': '#e67e22',              // Dark Orange - Risk, Continuity
+            'communications': '#ec407a',    // Pink - Comms, Brand
+            'performance': '#ff9800',       // Orange - KPIs, Evaluation
+            'change': '#ffc107',            // Amber - Change, Culture
+            'sector_specific': '#34495e',   // Navy - Public/Nonprofit specific
+            'specialized': '#95a5a6',       // Gray - Consulting, Advanced Tools
+            'cross_functional': '#7b1fa2'   // Deep Purple - Cross-domain artifacts
+        };
+
         const nodes = new vis.DataSet(artifactRelationships.nodes.map(node => ({
             ...node,
             shape: 'box',
             margin: 10,
             font: { size: 12, multi: true },
             color: {
-                background: node.group === 'foundation' ? '#e74c3c' :
-                           node.group === 'governance' ? '#3498db' :
-                           node.group === 'operations' ? '#27ae60' :
-                           node.group === 'performance' ? '#f39c12' : '#95a5a6',
+                background: categoryColors[node.group] || '#95a5a6',
                 border: '#2c3e50',
                 highlight: {
-                    background: '#f39c12',
-                    border: '#e67e22'
+                    background: '#ff5722',
+                    border: '#e64a19'
                 }
             }
         })));
@@ -732,6 +1075,59 @@
         function fitNetwork() {
             network.fit({ animation: true });
         }
+
+        /**
+         * Filter nodes by checked categories
+         *
+         * Shows/hides nodes based on which category checkboxes are selected.
+         * Also hides edges that connect to hidden nodes.
+         */
+        function filterCategories() {
+            const checkboxes = document.querySelectorAll('.category-filter input[type="checkbox"]');
+            const selectedCategories = Array.from(checkboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            // Update node visibility
+            nodes.forEach(node => {
+                const shouldShow = selectedCategories.includes(node.group);
+                nodes.update({ id: node.id, hidden: !shouldShow });
+            });
+
+            // Update edge visibility (hide edges if either end is hidden)
+            edges.forEach(edge => {
+                const fromNode = nodes.get(edge.from);
+                const toNode = nodes.get(edge.to);
+                const shouldShow = fromNode && toNode &&
+                                 selectedCategories.includes(fromNode.group) &&
+                                 selectedCategories.includes(toNode.group);
+                edges.update({ id: edge.id, hidden: !shouldShow });
+            });
+
+            network.fit();
+        }
+
+        /**
+         * Toggle all category checkboxes on/off
+         */
+        function toggleAllCategories() {
+            const checkboxes = document.querySelectorAll('.category-filter input[type="checkbox"]');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+
+            checkboxes.forEach(cb => {
+                cb.checked = !allChecked;
+            });
+
+            filterCategories();
+        }
+
+        // Add event listeners to category checkboxes
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.category-filter input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', filterCategories);
+            });
+        });
 
         function filterByCategory() {
             const category = document.getElementById('filterCategory').value;
