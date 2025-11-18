@@ -30,11 +30,14 @@ A comprehensive, interactive web catalog of 188 organizational and leadership ar
 - Files: `manifest.json`, `sw.js`
 
 #### 2. Artifact Relationship Mapping
-- **Interactive Visualization**: Network graph using vis.js library
-- **Color-coded Categories**: Foundation (red), Governance (blue), Operations (green), Performance (orange)
-- **Relationship Types**: Feeds into, Depends on, Related to
-- **Hierarchical Layout**: Automatic top-down organization by dependency
-- **Click to Explore**: Click nodes to view details and navigate to catalog
+- **100% Coverage**: All 188 artifacts visualized with 285 relationships
+- **14 Category System**: Foundation, Strategic, Governance, Operations, Workforce, Financial, Technology, Risk, Communications, Performance, Change, Sector-Specific, Specialized, Cross-Functional
+- **Interactive Filtering**: Toggle categories on/off with checkboxes, "Toggle All" button
+- **Master View**: One-click access to 20 essential foundational artifacts
+- **Relationship Types**: Feeds into (green), Depends on (blue), Related to (orange)
+- **Hierarchical Layout**: 6 levels (0-5) showing organizational dependencies
+- **Color-Coded Nodes**: Each category has unique color for easy identification
+- **Interactive Controls**: Pan, zoom, drag, physics toggle, fit to screen
 - File: `relationships.html`
 
 #### 3. Export & Sharing
@@ -179,12 +182,20 @@ Impact frameworks, fundraising, volunteer management, consulting deliverables
    - Fast loading from cache
 
 6. **Relationship Visualization** (relationships.html):
-   - Interactive network graph with 30+ key artifacts
-   - Color-coded by category (foundation, governance, operations, performance)
-   - Hierarchical layout with 6 levels
+   - Interactive network graph with ALL 188 artifacts and 285 relationships
+   - 14 color-coded categories with individual filtering
+   - Master View showing 20 essential foundational artifacts
+   - Hierarchical layout with 6 levels (0-5)
+   - Category filter panel with checkboxes and "Toggle All"
    - Click nodes to view details and navigate to catalog
    - Toggle physics for static/dynamic layout
-   - Pan, zoom, and drag capabilities
+   - Pan, zoom, fit to screen, reset view capabilities
+
+7. **Differentiation Notes**:
+   - Strategic notes explaining differences between similar artifacts
+   - Green background (#d4edda) for high visibility
+   - Cross-references to related artifacts (e.g., #1 ↔ #4)
+   - Helps users choose the right artifact for their needs
 
 ### Data Structure
 
@@ -286,7 +297,12 @@ python3 integrate_research.py
 - [x] Export bookmarked artifacts to CSV (spreadsheet)
 - [x] Share bookmark collections via URL
 - [x] Print-friendly layouts (HTML export)
-- [x] Artifact relationship mapping (relationships.html)
+- [x] Artifact relationship mapping - 100% coverage (188 artifacts, 285 relationships)
+- [x] 14-category system with interactive filtering
+- [x] Master View for essential foundational artifacts
+- [x] Differentiation notes for similar artifacts
+- [x] Deep linking to individual artifacts (#artifact-123)
+- [x] Deep linking to sections (#section-a)
 - [x] User-submitted examples (GitHub Issues)
 - [x] Service worker for offline access
 - [x] Progressive Web App (installable)
@@ -295,12 +311,12 @@ python3 integrate_research.py
 
 ### Potential Features
 - [ ] Export bookmarked artifacts to PDF (native)
-- [ ] Advanced filtering by category/domain
 - [ ] Artifact comparison view (side-by-side)
 - [ ] Dark mode toggle
 - [ ] Community examples integrated into artifact cards
 - [ ] Artifact search by tags/keywords
-- [ ] Expand relationship visualization to all 188 artifacts
+- [ ] Relationship visualization with timeline view
+- [ ] Artifact maturity model/implementation roadmap
 
 ### Technical Improvements
 - [ ] Implement analytics tracking
@@ -376,8 +392,11 @@ All major JavaScript files include comprehensive inline documentation:
 ---
 
 **Last Updated:** November 2025
-**Version:** 3.0 (PWA, Relationships, Community Features)
+**Version:** 4.0 (100% Relationship Coverage, Master View, 14 Categories)
 **Total Artifacts:** 188
 **Research Links:** 376
+**Relationship Nodes:** 188
+**Relationship Edges:** 285
+**Categories:** 14
 **Coverage:** 100%
-**New Features:** PWA, Relationship Viz, Export/Share, Community Contributions
+**New Features:** Complete relationship visualization, Master View, category filtering, differentiation notes, deep linking
