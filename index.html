@@ -277,8 +277,7 @@
             padding: 1.5rem;
             border-radius: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            flex: 1;
-            max-width: 600px;
+            flex: 2;
         }
 
         .methodology-header h3 {
@@ -287,11 +286,12 @@
             font-size: 1.1rem;
         }
 
-        .framework-box-compact {
-            background: linear-gradient(135deg, rgba(52, 73, 94, 0.05) 0%, rgba(155, 89, 182, 0.05) 100%);
+        .framework-box-full {
+            background: linear-gradient(135deg, rgba(52, 73, 94, 0.08) 0%, rgba(155, 89, 182, 0.12) 100%);
             border-left: 4px solid var(--secondary);
-            padding: 0.75rem 1rem;
+            padding: 1.5rem;
             border-radius: 8px;
+            margin: 0.5rem 0;
         }
 
         .priority-modal {
@@ -571,16 +571,33 @@
                 </div>
                 <div class="methodology-header">
                     <h3>The Strategic Foundation (Identity Layer)</h3>
-                    <div class="framework-box-compact">
-                        <span style="font-size: 1rem; display: block; margin: 0.5rem 0;">
-                            <strong>Purpose</strong> → <strong>Vision</strong> → <strong>Mission</strong> → <strong>Values</strong>
+                    <div class="framework-box-full">
+                        <span style="font-size: 1.1rem; display: block; margin: 0.75rem 0;">
+                            <strong>Purpose</strong> (most stable) → <strong>Vision</strong> (aspirational) → <strong>Mission</strong> (operational) → <strong>Values</strong> (behavioral)
                         </span>
+                        <ul style="margin-top: 0.75rem; list-style: none; padding-left: 0;">
+                            <li>• Purpose answers "Why do we exist?" and remains highly stable over time</li>
+                            <li>• Vision answers "Where are we going?" and provides the aspirational future state</li>
+                            <li>• Mission answers "What do we do and for whom?" and describes current operations</li>
+                            <li>• Values answer "How do we behave?" and guide daily decision-making</li>
+                        </ul>
                     </div>
-                    <h3 style="margin-top: 1rem;">The Universal Artifact Stack</h3>
-                    <div class="framework-box-compact">
-                        <span style="font-size: 0.95rem; display: block; margin: 0.5rem 0;">
+                    <h3 style="margin-top: 1.5rem;">The Universal Artifact Stack</h3>
+                    <div class="framework-box-full">
+                        <span style="font-size: 1.1rem; display: block; margin: 0.75rem 0;">
                             <strong>Identity</strong> → <strong>Direction</strong> → <strong>Priorities</strong> → <strong>Action</strong> → <strong>Accountability</strong>
                         </span>
+                        <span style="font-size: 1.05rem; display: block; margin: 0.75rem 0; opacity: 0.9;">
+                            Vision & Mission → Guiding Principles/Values → Strategic Goals → Initiatives/Plans → Performance Metrics
+                        </span>
+                        <ul style="margin-top: 0.75rem; list-style: none; padding-left: 0;">
+                            <li>• <strong>Vision Statement</strong> - Aspirational future state (Identity)</li>
+                            <li>• <strong>Mission Statement</strong> - Current purpose and operations (Identity)</li>
+                            <li>• <strong>Core Values</strong> - Behavioral expectations and culture (Direction)</li>
+                            <li>• <strong>Guiding Principles</strong> - Decision-making frameworks (Direction)</li>
+                            <li>• <strong>Strategic Goals</strong> - Major 3-5 year objectives (Priorities)</li>
+                            <li>• <strong>Strategic Priorities</strong> - Current focus areas for resource allocation (Priorities)</li>
+                        </ul>
                     </div>
                 </div>
             </div>
