@@ -276,7 +276,7 @@
          */
         const artifactRelationships = {
             nodes: [
-                // Strategic Foundation (1-10)
+                // Strategic Foundation (1-10) - Level 0-1
                 { id: 1, label: "Mission\nStatement", group: "foundation", level: 0 },
                 { id: 2, label: "Vision\nStatement", group: "foundation", level: 0 },
                 { id: 3, label: "Core\nValues", group: "foundation", level: 0 },
@@ -284,89 +284,244 @@
                 { id: 5, label: "Strategic\nGoals", group: "foundation", level: 1 },
                 { id: 6, label: "Strategic\nPriorities", group: "foundation", level: 1 },
                 { id: 7, label: "Guiding\nPrinciples", group: "foundation", level: 0 },
+                { id: 8, label: "Brand\nPromise", group: "foundation", level: 1 },
+                { id: 9, label: "Leadership\nPhilosophy", group: "foundation", level: 0 },
 
-                // Strategic Planning
+                // Strategic Planning & Governance (10-30) - Level 2
                 { id: 10, label: "Strategic\nPlan", group: "governance", level: 2 },
+                { id: 11, label: "Bylaws", group: "governance", level: 1 },
+                { id: 12, label: "Board\nCharter", group: "governance", level: 2 },
+                { id: 13, label: "Delegation\nof Authority", group: "governance", level: 2 },
+                { id: 14, label: "Ethics\nPolicy", group: "governance", level: 2 },
+                { id: 15, label: "Conflict of\nInterest Policy", group: "governance", level: 2 },
+                { id: 16, label: "Whistleblower\nPolicy", group: "governance", level: 2 },
+                { id: 20, label: "Policy\nFramework", group: "governance", level: 2 },
+                { id: 21, label: "Procedure\nManual", group: "governance", level: 2 },
                 { id: 22, label: "Annual\nPlan", group: "operations", level: 3 },
                 { id: 23, label: "Operational\nPlan", group: "operations", level: 3 },
+                { id: 24, label: "Business\nPlan", group: "operations", level: 3 },
 
-                // Performance (100s)
+                // Operating Model & Capabilities (31-50) - Level 3
+                { id: 31, label: "Operating\nModel", group: "operations", level: 2 },
+                { id: 32, label: "Capability\nModel", group: "operations", level: 2 },
+                { id: 33, label: "Service\nCatalog", group: "operations", level: 3 },
+                { id: 34, label: "Process\nMap", group: "operations", level: 3 },
+                { id: 35, label: "Value\nStreams", group: "operations", level: 3 },
+                { id: 36, label: "Standard\nOperating\nProcedures", group: "operations", level: 4 },
+                { id: 37, label: "Service Level\nAgreements", group: "operations", level: 4 },
+
+                // Workforce & People (51-64) - Level 3
+                { id: 51, label: "Workforce\nPlan", group: "operations", level: 3 },
+                { id: 52, label: "Succession\nPlan", group: "operations", level: 3 },
+                { id: 53, label: "Skills\nMatrix", group: "operations", level: 4 },
+                { id: 54, label: "Competency\nFramework", group: "operations", level: 3 },
+                { id: 55, label: "Learning &\nDevelopment\nPlan", group: "operations", level: 4 },
+                { id: 56, label: "Onboarding\nProgram", group: "operations", level: 4 },
+                { id: 57, label: "Performance\nMgmt System", group: "operations", level: 3 },
+                { id: 58, label: "Job\nDescriptions", group: "operations", level: 4 },
+                { id: 59, label: "Org Chart", group: "operations", level: 3 },
+                { id: 60, label: "Comp &\nBenefits", group: "operations", level: 3 },
+                { id: 61, label: "DEI\nStrategy", group: "operations", level: 3 },
+
+                // Financial (65-70) - Level 3
+                { id: 65, label: "Annual\nBudget", group: "operations", level: 3 },
+                { id: 66, label: "Financial\nPolicies", group: "governance", level: 2 },
+                { id: 67, label: "Financial\nControls", group: "governance", level: 3 },
+                { id: 68, label: "Capital\nPlan", group: "operations", level: 3 },
+                { id: 69, label: "Cost\nAllocation\nModel", group: "operations", level: 4 },
+
+                // Technology & Data (71-80) - Level 3-4
+                { id: 71, label: "IT Strategic\nPlan", group: "operations", level: 3 },
+                { id: 72, label: "Data\nGovernance\nFramework", group: "governance", level: 3 },
+                { id: 73, label: "Cybersecurity\nPolicy", group: "governance", level: 3 },
+                { id: 74, label: "Enterprise\nArchitecture", group: "operations", level: 3 },
+                { id: 75, label: "Technology\nRoadmap", group: "operations", level: 4 },
+
+                // Risk & Continuity (81-90) - Level 3-4
+                { id: 81, label: "Risk\nFramework", group: "governance", level: 2 },
+                { id: 82, label: "Risk\nRegister", group: "operations", level: 3 },
+                { id: 83, label: "Business\nContinuity\nPlan", group: "operations", level: 3 },
+                { id: 84, label: "COOP\nPlan", group: "operations", level: 3 },
+                { id: 85, label: "Disaster\nRecovery\nPlan", group: "operations", level: 4 },
+                { id: 86, label: "Crisis\nComms Plan", group: "operations", level: 4 },
+
+                // Communications & Engagement (91-100) - Level 3-4
+                { id: 91, label: "Communications\nPlan", group: "operations", level: 3 },
+                { id: 92, label: "Brand\nGuidelines", group: "operations", level: 3 },
+                { id: 93, label: "Stakeholder\nEngagement\nPlan", group: "operations", level: 3 },
+                { id: 94, label: "Public\nParticipation\nPlan", group: "operations", level: 4 },
+                { id: 95, label: "Social Media\nStrategy", group: "operations", level: 4 },
+
+                // Performance & Evaluation (101-113) - Level 4-5
                 { id: 101, label: "Performance\nFramework", group: "performance", level: 4 },
                 { id: 102, label: "Balanced\nScorecard", group: "performance", level: 4 },
                 { id: 103, label: "OKRs", group: "performance", level: 4 },
                 { id: 104, label: "KPIs", group: "performance", level: 5 },
+                { id: 105, label: "Dashboard", group: "performance", level: 5 },
+                { id: 106, label: "Logic\nModel", group: "performance", level: 4 },
+                { id: 107, label: "Theory of\nChange", group: "performance", level: 3 },
+                { id: 108, label: "M&E\nFramework", group: "performance", level: 4 },
+                { id: 109, label: "Evaluation\nPlan", group: "performance", level: 4 },
+                { id: 110, label: "Annual\nReport", group: "performance", level: 5 },
 
-                // HR/People
-                { id: 51, label: "Workforce\nPlan", group: "operations", level: 3 },
-                { id: 60, label: "Comp &\nBenefits", group: "operations", level: 3 },
+                // Project & Portfolio Management (114-120) - Level 4
+                { id: 114, label: "Project\nCharter", group: "operations", level: 4 },
+                { id: 115, label: "Project\nPlan", group: "operations", level: 4 },
+                { id: 116, label: "Portfolio\nPrioritization", group: "operations", level: 3 },
+                { id: 117, label: "Project\nGovernance", group: "governance", level: 3 },
+                { id: 118, label: "Benefits\nRealization\nPlan", group: "operations", level: 4 },
+                { id: 119, label: "Lessons\nLearned", group: "performance", level: 5 },
 
-                // Governance
-                { id: 11, label: "Bylaws", group: "governance", level: 1 },
-                { id: 12, label: "Board\nCharter", group: "governance", level: 2 },
-                { id: 13, label: "Delegation\nof Authority", group: "governance", level: 2 },
-
-                // Financial
-                { id: 65, label: "Annual\nBudget", group: "operations", level: 3 },
-                { id: 66, label: "Financial\nPolicies", group: "governance", level: 2 },
-
-                // Communication
-                { id: 91, label: "Communications\nPlan", group: "operations", level: 3 },
-
-                // Risk
-                { id: 81, label: "Risk\nFramework", group: "governance", level: 2 },
-                { id: 82, label: "Risk\nRegister", group: "operations", level: 3 },
-
-                // Change
+                // Change & Culture (121-130) - Level 3
                 { id: 121, label: "Change\nPlan", group: "operations", level: 3 },
-
-                // Culture
-                { id: 127, label: "Culture\nFramework", group: "foundation", level: 1 }
+                { id: 122, label: "Change\nReadiness\nAssessment", group: "performance", level: 4 },
+                { id: 123, label: "Adoption\nPlan", group: "operations", level: 4 },
+                { id: 127, label: "Culture\nFramework", group: "foundation", level: 1 },
+                { id: 128, label: "Employee\nEngagement\nSurvey", group: "performance", level: 4 },
+                { id: 129, label: "Climate\nSurvey", group: "performance", level: 4 }
             ],
 
             edges: [
-                // Foundation relationships
-                { from: 4, to: 2, type: "feeds_into", label: "informs" },  // Purpose → Vision
-                { from: 2, to: 1, type: "feeds_into", label: "informs" },  // Vision → Mission
-                { from: 1, to: 5, type: "feeds_into", label: "drives" },   // Mission → Strategic Goals
-                { from: 3, to: 7, type: "feeds_into", label: "informs" },  // Values → Principles
-                { from: 3, to: 127, type: "feeds_into", label: "shapes" }, // Values → Culture
-                { from: 5, to: 6, type: "feeds_into", label: "sets" },     // Goals → Priorities
+                // ========== FOUNDATION RELATIONSHIPS (Level 0-1) ==========
+                { from: 4, to: 2, type: "feeds_into", label: "informs" },      // Purpose → Vision
+                { from: 2, to: 1, type: "feeds_into", label: "informs" },      // Vision → Mission
+                { from: 1, to: 5, type: "feeds_into", label: "drives" },       // Mission → Strategic Goals
+                { from: 3, to: 7, type: "feeds_into", label: "informs" },      // Values → Principles
+                { from: 3, to: 127, type: "feeds_into", label: "shapes" },     // Values → Culture
+                { from: 3, to: 8, type: "feeds_into", label: "defines" },      // Values → Brand Promise
+                { from: 3, to: 14, type: "feeds_into", label: "shapes" },      // Values → Ethics Policy
+                { from: 9, to: 127, type: "feeds_into", label: "shapes" },     // Leadership Philosophy → Culture
+                { from: 5, to: 6, type: "feeds_into", label: "sets" },         // Goals → Priorities
+                { from: 1, to: 8, type: "feeds_into", label: "defines" },      // Mission → Brand Promise
 
-                // Strategic Planning
-                { from: 1, to: 10, type: "depends_on", label: "requires" },  // Strategic Plan needs Mission
-                { from: 2, to: 10, type: "depends_on", label: "requires" },  // Strategic Plan needs Vision
-                { from: 5, to: 10, type: "depends_on", label: "requires" },  // Strategic Plan needs Goals
-                { from: 10, to: 22, type: "feeds_into", label: "guides" },   // Strategic → Annual Plan
-                { from: 10, to: 23, type: "feeds_into", label: "guides" },   // Strategic → Operational Plan
+                // ========== GOVERNANCE STRUCTURE (Level 1-2) ==========
+                { from: 11, to: 12, type: "feeds_into", label: "defines" },    // Bylaws → Board Charter
+                { from: 12, to: 13, type: "feeds_into", label: "sets" },       // Board Charter → Delegation
+                { from: 11, to: 20, type: "feeds_into", label: "establishes" }, // Bylaws → Policy Framework
+                { from: 20, to: 14, type: "feeds_into", label: "includes" },   // Policy Framework → Ethics
+                { from: 20, to: 15, type: "feeds_into", label: "includes" },   // Policy Framework → Conflict of Interest
+                { from: 20, to: 16, type: "feeds_into", label: "includes" },   // Policy Framework → Whistleblower
+                { from: 20, to: 21, type: "feeds_into", label: "guides" },     // Policy Framework → Procedures
+                { from: 12, to: 117, type: "feeds_into", label: "defines" },   // Board Charter → Project Governance
 
-                // Performance
-                { from: 5, to: 101, type: "feeds_into", label: "defines" },  // Goals → Performance Framework
-                { from: 101, to: 102, type: "related_to", label: "" },       // Framework ↔ BSC
-                { from: 101, to: 103, type: "related_to", label: "" },       // Framework ↔ OKRs
-                { from: 102, to: 104, type: "feeds_into", label: "uses" },   // BSC → KPIs
-                { from: 103, to: 104, type: "feeds_into", label: "uses" },   // OKRs → KPIs
+                // ========== STRATEGIC PLANNING (Level 2-3) ==========
+                { from: 1, to: 10, type: "depends_on", label: "requires" },    // Strategic Plan needs Mission
+                { from: 2, to: 10, type: "depends_on", label: "requires" },    // Strategic Plan needs Vision
+                { from: 5, to: 10, type: "depends_on", label: "requires" },    // Strategic Plan needs Goals
+                { from: 10, to: 22, type: "feeds_into", label: "guides" },     // Strategic → Annual Plan
+                { from: 10, to: 23, type: "feeds_into", label: "guides" },     // Strategic → Operational Plan
+                { from: 10, to: 24, type: "feeds_into", label: "guides" },     // Strategic → Business Plan
+                { from: 10, to: 31, type: "feeds_into", label: "defines" },    // Strategic → Operating Model
+                { from: 10, to: 107, type: "feeds_into", label: "based on" },  // Strategic → Theory of Change
 
-                // Governance
-                { from: 11, to: 12, type: "feeds_into", label: "defines" },  // Bylaws → Board Charter
-                { from: 12, to: 13, type: "feeds_into", label: "sets" },     // Board Charter → Delegation
+                // ========== OPERATING MODEL & CAPABILITIES (Level 2-4) ==========
+                { from: 31, to: 32, type: "feeds_into", label: "defines" },    // Operating Model → Capabilities
+                { from: 32, to: 33, type: "feeds_into", label: "defines" },    // Capabilities → Service Catalog
+                { from: 31, to: 34, type: "feeds_into", label: "documented by" }, // Operating Model → Process Map
+                { from: 34, to: 35, type: "feeds_into", label: "organized as" }, // Process Map → Value Streams
+                { from: 34, to: 36, type: "feeds_into", label: "detailed in" }, // Process Map → SOPs
+                { from: 33, to: 37, type: "feeds_into", label: "governed by" }, // Service Catalog → SLAs
+                { from: 23, to: 34, type: "feeds_into", label: "documented in" }, // Operational Plan → Process Map
 
-                // Operations
-                { from: 10, to: 51, type: "feeds_into", label: "informs" },  // Strategic Plan → Workforce
-                { from: 10, to: 65, type: "feeds_into", label: "drives" },   // Strategic Plan → Budget
-                { from: 10, to: 91, type: "feeds_into", label: "guides" },   // Strategic Plan → Comms
-                { from: 51, to: 60, type: "feeds_into", label: "informs" },  // Workforce → Comp & Benefits
+                // ========== WORKFORCE & PEOPLE (Level 3-4) ==========
+                { from: 10, to: 51, type: "feeds_into", label: "informs" },    // Strategic Plan → Workforce Plan
+                { from: 51, to: 52, type: "feeds_into", label: "includes" },   // Workforce → Succession
+                { from: 51, to: 53, type: "feeds_into", label: "uses" },       // Workforce → Skills Matrix
+                { from: 51, to: 59, type: "feeds_into", label: "shapes" },     // Workforce → Org Chart
+                { from: 32, to: 54, type: "feeds_into", label: "defines" },    // Capability Model → Competencies
+                { from: 54, to: 53, type: "feeds_into", label: "maps to" },    // Competencies → Skills
+                { from: 54, to: 55, type: "feeds_into", label: "drives" },     // Competencies → Learning & Dev
+                { from: 54, to: 58, type: "feeds_into", label: "defines" },    // Competencies → Job Descriptions
+                { from: 55, to: 56, type: "feeds_into", label: "includes" },   // L&D → Onboarding
+                { from: 52, to: 55, type: "feeds_into", label: "informs" },    // Succession → L&D
+                { from: 51, to: 57, type: "feeds_into", label: "uses" },       // Workforce → Performance Mgmt
+                { from: 57, to: 60, type: "feeds_into", label: "informs" },    // Performance → Comp & Benefits
+                { from: 51, to: 60, type: "feeds_into", label: "drives" },     // Workforce → Comp & Benefits
+                { from: 127, to: 61, type: "feeds_into", label: "supports" },  // Culture → DEI Strategy
+                { from: 3, to: 61, type: "feeds_into", label: "guides" },      // Values → DEI
+                { from: 61, to: 56, type: "feeds_into", label: "shapes" },     // DEI → Onboarding
 
-                // Risk
-                { from: 10, to: 81, type: "feeds_into", label: "informs" },  // Strategic Plan → Risk Framework
-                { from: 81, to: 82, type: "feeds_into", label: "creates" },  // Risk Framework → Register
+                // ========== FINANCIAL MANAGEMENT (Level 2-4) ==========
+                { from: 66, to: 67, type: "feeds_into", label: "establishes" }, // Financial Policies → Controls
+                { from: 6, to: 65, type: "feeds_into", label: "drives" },      // Priorities → Budget
+                { from: 10, to: 65, type: "feeds_into", label: "drives" },     // Strategic Plan → Budget
+                { from: 66, to: 65, type: "depends_on", label: "governs" },    // Budget needs Policies
+                { from: 67, to: 65, type: "depends_on", label: "controls" },   // Budget needs Controls
+                { from: 10, to: 68, type: "feeds_into", label: "drives" },     // Strategic → Capital Plan
+                { from: 68, to: 65, type: "feeds_into", label: "informs" },    // Capital → Budget
+                { from: 31, to: 69, type: "feeds_into", label: "uses" },       // Operating Model → Cost Allocation
 
-                // Financial
-                { from: 6, to: 65, type: "feeds_into", label: "drives" },    // Priorities → Budget
-                { from: 66, to: 65, type: "depends_on", label: "governs" },  // Budget needs Policies
+                // ========== TECHNOLOGY & DATA (Level 3-4) ==========
+                { from: 10, to: 71, type: "feeds_into", label: "informs" },    // Strategic → IT Strategic
+                { from: 71, to: 74, type: "feeds_into", label: "defines" },    // IT Strategic → Enterprise Architecture
+                { from: 71, to: 75, type: "feeds_into", label: "creates" },    // IT Strategic → Tech Roadmap
+                { from: 74, to: 75, type: "feeds_into", label: "guides" },     // Architecture → Roadmap
+                { from: 20, to: 72, type: "feeds_into", label: "includes" },   // Policy Framework → Data Governance
+                { from: 20, to: 73, type: "feeds_into", label: "includes" },   // Policy Framework → Cybersecurity
+                { from: 81, to: 73, type: "feeds_into", label: "informs" },    // Risk Framework → Cybersecurity
+                { from: 72, to: 108, type: "feeds_into", label: "supports" },  // Data Governance → M&E Framework
 
-                // Change
-                { from: 10, to: 121, type: "feeds_into", label: "drives" },  // Strategic Plan → Change Plan
-                { from: 127, to: 121, type: "feeds_into", label: "supports" } // Culture → Change
+                // ========== RISK & CONTINUITY (Level 2-4) ==========
+                { from: 10, to: 81, type: "feeds_into", label: "informs" },    // Strategic → Risk Framework
+                { from: 81, to: 82, type: "feeds_into", label: "creates" },    // Risk Framework → Risk Register
+                { from: 81, to: 83, type: "feeds_into", label: "requires" },   // Risk → Business Continuity
+                { from: 83, to: 84, type: "related_to", label: "" },           // BCP ↔ COOP
+                { from: 83, to: 85, type: "feeds_into", label: "includes" },   // BCP → Disaster Recovery
+                { from: 83, to: 86, type: "feeds_into", label: "includes" },   // BCP → Crisis Comms
+                { from: 91, to: 86, type: "feeds_into", label: "includes" },   // Comms Plan → Crisis Comms
+
+                // ========== COMMUNICATIONS & ENGAGEMENT (Level 3-4) ==========
+                { from: 10, to: 91, type: "feeds_into", label: "guides" },     // Strategic → Comms Plan
+                { from: 8, to: 92, type: "feeds_into", label: "defines" },     // Brand Promise → Brand Guidelines
+                { from: 91, to: 92, type: "depends_on", label: "uses" },       // Comms → Brand Guidelines
+                { from: 91, to: 95, type: "feeds_into", label: "includes" },   // Comms → Social Media
+                { from: 10, to: 93, type: "feeds_into", label: "drives" },     // Strategic → Stakeholder Engagement
+                { from: 93, to: 94, type: "feeds_into", label: "includes" },   // Stakeholder → Public Participation
+                { from: 92, to: 95, type: "feeds_into", label: "guides" },     // Brand Guidelines → Social Media
+
+                // ========== PERFORMANCE & EVALUATION (Level 3-5) ==========
+                { from: 5, to: 101, type: "feeds_into", label: "defines" },    // Goals → Performance Framework
+                { from: 101, to: 102, type: "related_to", label: "" },         // Framework ↔ BSC
+                { from: 101, to: 103, type: "related_to", label: "" },         // Framework ↔ OKRs
+                { from: 102, to: 104, type: "feeds_into", label: "uses" },     // BSC → KPIs
+                { from: 103, to: 104, type: "feeds_into", label: "uses" },     // OKRs → KPIs
+                { from: 104, to: 105, type: "feeds_into", label: "displayed in" }, // KPIs → Dashboard
+                { from: 107, to: 106, type: "feeds_into", label: "creates" },  // Theory of Change → Logic Model
+                { from: 106, to: 108, type: "feeds_into", label: "guides" },   // Logic Model → M&E Framework
+                { from: 108, to: 109, type: "feeds_into", label: "creates" },  // M&E Framework → Evaluation Plan
+                { from: 101, to: 108, type: "feeds_into", label: "guides" },   // Performance Framework → M&E
+                { from: 109, to: 110, type: "feeds_into", label: "produces" }, // Evaluation → Annual Report
+                { from: 104, to: 110, type: "feeds_into", label: "reported in" }, // KPIs → Annual Report
+                { from: 105, to: 110, type: "feeds_into", label: "informs" },  // Dashboard → Annual Report
+
+                // ========== PROJECT & PORTFOLIO MANAGEMENT (Level 3-5) ==========
+                { from: 6, to: 116, type: "feeds_into", label: "drives" },     // Priorities → Portfolio Prioritization
+                { from: 116, to: 114, type: "feeds_into", label: "selects" },  // Portfolio → Project Charter
+                { from: 114, to: 115, type: "feeds_into", label: "initiates" }, // Charter → Project Plan
+                { from: 117, to: 114, type: "feeds_into", label: "governs" },  // Governance → Charter
+                { from: 114, to: 118, type: "feeds_into", label: "defines" },  // Charter → Benefits Realization
+                { from: 115, to: 119, type: "feeds_into", label: "generates" }, // Project Plan → Lessons Learned
+                { from: 118, to: 110, type: "feeds_into", label: "reported in" }, // Benefits → Annual Report
+                { from: 119, to: 55, type: "feeds_into", label: "informs" },   // Lessons → Learning & Dev
+
+                // ========== CHANGE & CULTURE (Level 1-4) ==========
+                { from: 10, to: 121, type: "feeds_into", label: "drives" },    // Strategic → Change Plan
+                { from: 121, to: 122, type: "feeds_into", label: "uses" },     // Change → Readiness Assessment
+                { from: 122, to: 123, type: "feeds_into", label: "informs" },  // Readiness → Adoption Plan
+                { from: 127, to: 121, type: "feeds_into", label: "supports" }, // Culture → Change
+                { from: 127, to: 128, type: "feeds_into", label: "measured by" }, // Culture → Engagement Survey
+                { from: 127, to: 129, type: "feeds_into", label: "measured by" }, // Culture → Climate Survey
+                { from: 128, to: 121, type: "feeds_into", label: "informs" },  // Engagement → Change
+                { from: 91, to: 121, type: "feeds_into", label: "supports" },  // Comms → Change
+
+                // ========== CROSS-DOMAIN CONNECTIONS ==========
+                { from: 22, to: 65, type: "depends_on", label: "funded by" },  // Annual Plan → Budget
+                { from: 23, to: 65, type: "depends_on", label: "funded by" },  // Operational Plan → Budget
+                { from: 71, to: 65, type: "depends_on", label: "funded by" },  // IT Strategic → Budget
+                { from: 57, to: 110, type: "feeds_into", label: "reported in" }, // Performance Mgmt → Annual Report
+                { from: 82, to: 110, type: "feeds_into", label: "reported in" }, // Risk Register → Annual Report
+                { from: 10, to: 61, type: "feeds_into", label: "includes" },   // Strategic → DEI
+                { from: 32, to: 71, type: "feeds_into", label: "informs" }     // Capabilities → IT Strategic
             ]
         };
 
