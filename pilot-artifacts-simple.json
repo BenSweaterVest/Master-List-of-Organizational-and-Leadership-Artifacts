@@ -1,0 +1,132 @@
+[
+  {
+    "number": "1",
+    "name": "Mission Statement",
+    "example": "\"To organize the world's information and make it universally accessible and useful\" (Google) or \"Partnering to deliver secure, reliable technology solutions\" (public agency)",
+    "explanationLink": {
+      "url": "https://www.hbs.edu/faculty/Pages/item.aspx?num=28887",
+      "title": "Harvard Business School - Purposes and Functions of a Mission Statement"
+    },
+    "exampleLink": {
+      "url": "https://about.google/",
+      "title": "Google's Mission Statement (Official)"
+    }
+  },
+  {
+    "number": "2",
+    "name": "Vision Statement",
+    "example": "\"A computer on every desk and in every home\" (Microsoft, 1980s) or \"An equitable, sustainable future where all residents thrive\"",
+    "explanationLink": {
+      "url": "https://www.gsb.stanford.edu/faculty-research/working-papers/organizational-vision-visionary-organizations",
+      "title": "Stanford GSB - Organizational Vision Framework"
+    },
+    "exampleLink": {
+      "url": "https://ourvision.stanford.edu/",
+      "title": "Stanford University Vision Planning"
+    }
+  },
+  {
+    "number": "3",
+    "name": "Core Values / Guiding Principles",
+    "example": "\"Integrity, Collaboration, Accountability, Respect, Excellence\" or Amazon's Leadership Principles",
+    "explanationLink": {
+      "url": "https://sloanreview.mit.edu/article/when-it-comes-to-culture-does-your-company-walk-the-talk/",
+      "title": "MIT Sloan - Culture and Core Values"
+    },
+    "exampleLink": {
+      "url": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+      "title": "Amazon's 16 Leadership Principles"
+    }
+  },
+  {
+    "number": "4",
+    "name": "Purpose Statement",
+    "example": "\"We serve Minnesotans by enabling secure digital government\"",
+    "explanationLink": {
+      "url": "https://simonsinek.com/golden-circle/",
+      "title": "Simon Sinek - The Golden Circle (Start with Why)"
+    },
+    "exampleLink": {
+      "url": "https://www.patagonia.com/our-footprint/",
+      "title": "Patagonia's Purpose: 'We're in business to save our home planet'"
+    }
+  },
+  {
+    "number": "5",
+    "name": "Strategic Goals",
+    "example": "\"Achieve carbon neutrality by 2030\" or \"Expand into 5 new markets\"",
+    "explanationLink": {
+      "url": "https://edis.ifas.ufl.edu/publication/FE577",
+      "title": "University of Florida - Developing SMART Goals"
+    },
+    "exampleLink": {
+      "url": "https://www.iit.edu/strategic-plan/2020-2025/smart-goals",
+      "title": "Illinois Institute of Technology Strategic Goals 2020-2025"
+    }
+  },
+  {
+    "number": "6",
+    "name": "Strategic Priorities",
+    "example": "\"Digital transformation, Customer experience, Operational efficiency\"",
+    "explanationLink": {
+      "url": "https://www.brandonu.ca/ld/files/Strategic-Action-Plans-and-Alignment-Guide.pdf",
+      "title": "Brandon University - Strategic Action Plans & Alignment"
+    },
+    "exampleLink": {
+      "url": "https://scholarblogs.emory.edu/ranews/2024/01/22/introducing-okrs-a-new-chapter-in-the-office-of-research-administration-at-emory/",
+      "title": "Emory University - Strategic Priorities via OKRs"
+    }
+  },
+  {
+    "number": "7",
+    "name": "Guiding Principles / Decision-Making Principles",
+    "example": "\"Customer-first in all decisions\" or \"Prefer build over buy when core competency\"",
+    "explanationLink": {
+      "url": "https://www.researchgate.net/publication/36381185_Developing_guiding_principles_An_organizational_learning_perspective",
+      "title": "ResearchGate - Developing Guiding Principles"
+    },
+    "exampleLink": {
+      "url": "https://www.cdisc.org/guiding-principles",
+      "title": "CDISC Guiding Principles (Clinical Data Standards)"
+    }
+  },
+  {
+    "number": "8",
+    "name": "Strategic Plan",
+    "example": "Federal agency 4-year strategic plan, corporate strategic plan",
+    "explanationLink": {
+      "url": "https://www.suno.edu/assets/suno/PDFs/Administration/Strategic_Planning_Handbook_12-2-10.pdf",
+      "title": "Southern University - Strategic Planning Handbook"
+    },
+    "exampleLink": {
+      "url": "https://about.gitlab.com/company/strategy/",
+      "title": "GitLab's Public Strategic Plan"
+    }
+  },
+  {
+    "number": "9",
+    "name": "Annual Operating Plan (AOP)",
+    "example": "Corporate AOP, nonprofit annual work plan, agency plan-of-work",
+    "explanationLink": {
+      "url": "https://www.azeusconvene.com/articles/annual-operating-plan",
+      "title": "Azeus Convene - What is an Annual Operating Plan"
+    },
+    "exampleLink": {
+      "url": "https://www.atlassian.com/blog/strategy/annual-planning",
+      "title": "Atlassian's Annual Planning Process"
+    }
+  },
+  {
+    "number": "10",
+    "name": "North Star Metric",
+    "example": "\"Time to delivery for public services\" or \"Households lifted out of homelessness\"",
+    "explanationLink": {
+      "url": "https://mixpanel.com/blog/north-star-metric/",
+      "title": "Mixpanel - What is a North Star Metric"
+    },
+    "exampleLink": {
+      "url": "https://productschool.com/blog/analytics/north-star-metric",
+      "title": "North Star Metric Examples: Netflix, Slack, Spotify"
+    }
+  }
+]
