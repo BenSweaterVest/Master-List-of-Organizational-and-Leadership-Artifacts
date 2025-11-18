@@ -1,0 +1,32 @@
+{
+  "name": "Leadership Artifacts Catalog",
+  "short_name": "Artifacts",
+  "description": "Comprehensive catalog of 188 organizational and leadership artifacts with research links",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#2c3e50",
+  "theme_color": "#3498db",
+  "orientation": "any",
+  "categories": ["education", "productivity", "business"],
+  "icons": [
+    {
+      "src": "https://favicon.show/thesweatervest.com",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://favicon.show/thesweatervest.com",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot.png",
+      "sizes": "1280x720",
+      "type": "image/png"
+    }
+  ]
+}
