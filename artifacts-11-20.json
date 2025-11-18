@@ -1,0 +1,132 @@
+[
+  {
+    "number": "11",
+    "name": "Organizational Theory of Value / Value Proposition Framework",
+    "example": "Nonprofit value proposition canvas or \"Faster. Cheaper. Better.\" (business)",
+    "explanationLink": {
+      "url": "https://libguides.wustl.edu/BusinessModelCanvas/ValueProposition",
+      "title": "Washington University St. Louis - Value Proposition & Business Model Canvas"
+    },
+    "exampleLink": {
+      "url": "https://www.bauer.uh.edu/undergraduate/documents/Business_Model_Canvas_Explained.pdf",
+      "title": "University of Houston - Business Model Canvas Explained (PDF)"
+    }
+  },
+  {
+    "number": "12",
+    "name": "Organizational Charter / Articles of Incorporation",
+    "example": "Corporate charter (business), articles of incorporation (nonprofit), enabling legislation (public agency)",
+    "explanationLink": {
+      "url": "https://www.irs.gov/charities-non-profits/charitable-organizations/sample-organizing-documents-public-charity",
+      "title": "IRS - Sample Organizing Documents for Public Charities"
+    },
+    "exampleLink": {
+      "url": "https://publiccounsel.org/publications/annotated-form-of-articles-of-incorporation-for-a-california-nonprofit-public-benefit-corporation/",
+      "title": "Public Counsel - Annotated Sample Articles of Incorporation (California Nonprofit)"
+    }
+  },
+  {
+    "number": "13",
+    "name": "Organizational Minutes",
+    "example": "Nonprofit board meeting minutes documenting vote to approve annual budget",
+    "explanationLink": {
+      "url": "https://smartgivers.org/wp-content/uploads/2016/12/Guide-Taking-Nonprofit-Board-Meeting-Minutes.pdf",
+      "title": "Charities Review Council - Guide to Taking Nonprofit Board Meeting Minutes (PDF)"
+    },
+    "exampleLink": {
+      "url": "https://propelnonprofits.org/resources/board-of-directors-meeting-minutes-template/",
+      "title": "Propel Nonprofits - Board Meeting Minutes Template"
+    }
+  },
+  {
+    "number": "14",
+    "name": "Organizational Narrative / \"Story of Us\"",
+    "example": "\"Founding Story + Turning Point + North Star\" format used in nonprofits",
+    "explanationLink": {
+      "url": "https://www.hks.harvard.edu/educational-programs/executive-education/public-narrative-leadership-storytelling-and-action",
+      "title": "Harvard Kennedy School - Public Narrative: Self, Us & Now (Marshall Ganz)"
+    },
+    "exampleLink": {
+      "url": "https://www.instrumentl.com/blog/storytelling-for-nonprofits-tips",
+      "title": "45 Nonprofit Storytelling Examples: Kiva, Firelight Foundation, World Bicycle Relief"
+    }
+  },
+  {
+    "number": "15",
+    "name": "Code of Ethics / Code of Conduct",
+    "example": "NASPAA Public Service Values, corporate Code of Conduct (Johnson & Johnson \"Credo\")",
+    "explanationLink": {
+      "url": "https://www.naspaa.org/membership/join-naspaa/naspaa-code-good-practice",
+      "title": "NASPAA - Code of Good Practice for Public Affairs Programs"
+    },
+    "exampleLink": {
+      "url": "https://www.jnj.com/credo",
+      "title": "Johnson & Johnson - Our Credo (Code of Ethics)"
+    }
+  },
+  {
+    "number": "16",
+    "name": "Governance Framework",
+    "example": "Board → Executive Committee → Management Team; decision rights matrix",
+    "explanationLink": {
+      "url": "https://onlinedegrees.sandiego.edu/nonprofit-board-governance/",
+      "title": "University of San Diego - Nonprofit Board Governance Guide"
+    },
+    "exampleLink": {
+      "url": "https://boardsource.org/wp-content/uploads/2016/10/Recommended-Gov-Practices.pdf",
+      "title": "BoardSource - Recommended Governance Practices (PDF)"
+    }
+  },
+  {
+    "number": "17",
+    "name": "Delegation of Authority (DOA) Matrix",
+    "example": "Procurement authority matrix by dollar threshold",
+    "explanationLink": {
+      "url": "https://daf.csulb.edu/offices/financial/sig_auth_overview.html",
+      "title": "Cal State Long Beach - Signature and Delegation of Authority Overview"
+    },
+    "exampleLink": {
+      "url": "https://gggi.org/site/assets/uploads/2018/11/GGGI-DELEGATION-OF-AUTHORITY-Ver-4-28-November-2018-signed.pdf",
+      "title": "GGGI - Delegation of Authority Document (PDF Example)"
+    }
+  },
+  {
+    "number": "18",
+    "name": "Accountability Framework",
+    "example": "Canadian government's Management Accountability Framework (MAF)",
+    "explanationLink": {
+      "url": "https://www.canada.ca/en/treasury-board-secretariat/services/management-accountability-framework.html",
+      "title": "Government of Canada - Management Accountability Framework"
+    },
+    "exampleLink": {
+      "url": "https://www.atlas101.ca/pm/concepts/management-accountability-framework/",
+      "title": "Atlas of Public Management - MAF Explained with Examples"
+    }
+  },
+  {
+    "number": "19",
+    "name": "Board Governance Handbook / Matrix",
+    "example": "Nonprofit board governance matrix showing board vs. management responsibilities",
+    "explanationLink": {
+      "url": "https://boardsource.org/resources/recommended-board-practices/",
+      "title": "BoardSource - Recommended Board Practices Handbook"
+    },
+    "exampleLink": {
+      "url": "https://www.pwsausa.org/wp-content/uploads/2021/01/Board-Comp-Matrix-Worksheets.pdf",
+      "title": "Strategic Board Composition Matrix Worksheet (PDF)"
+    }
+  },
+  {
+    "number": "20",
+    "name": "Internal Controls Framework",
+    "example": "COSO Internal Controls Framework",
+    "explanationLink": {
+      "url": "https://finance.cornell.edu/controller/internalcontrols/cosoframework",
+      "title": "Cornell University - About the COSO Internal Controls Framework"
+    },
+    "exampleLink": {
+      "url": "https://www.anafp.org/Internal-Control-COSO",
+      "title": "Association of Nonprofit Accounting - Internal Control for Nonprofits COSO Framework"
+    }
+  }
+]
