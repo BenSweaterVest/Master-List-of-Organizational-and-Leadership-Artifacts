@@ -325,15 +325,15 @@
                 { id: 5, label: "Strategic\nGoals", group: "foundation", level: 1 },
                 { id: 6, label: "Strategic\nPriorities", group: "foundation", level: 1 },
                 { id: 7, label: "Guiding\nPrinciples", group: "foundation", level: 0 },
-                { id: 8, label: "Brand\nPromise", group: "foundation", level: 1 },
+                { id: "brand_promise", label: "Brand\nPromise", group: "foundation", level: 1 },
                 { id: 9, label: "Leadership\nPhilosophy", group: "foundation", level: 0 },
 
                 // Strategic Planning & Governance (10-30) - Level 2
                 { id: 10, label: "Strategic\nPlan", group: "governance", level: 2 },
-                { id: 11, label: "Bylaws", group: "governance", level: 1 },
+                { id: "bylaws", label: "Bylaws", group: "governance", level: 1 },
                 { id: 12, label: "Board\nCharter", group: "governance", level: 2 },
                 { id: 13, label: "Delegation\nof Authority", group: "governance", level: 2 },
-                { id: 14, label: "Ethics\nPolicy", group: "governance", level: 2 },
+                { id: "ethics_policy", label: "Ethics\nPolicy", group: "governance", level: 2 },
                 { id: 15, label: "Conflict of\nInterest Policy", group: "governance", level: 2 },
                 { id: 16, label: "Whistleblower\nPolicy", group: "governance", level: 2 },
                 { id: 20, label: "Policy\nFramework", group: "governance", level: 2 },
@@ -435,8 +435,8 @@
                 { id: 17, label: "Delegation\nMatrix", group: "governance", level: 2 },
                 { id: 18, label: "Accountability\nFramework", group: "governance", level: 2 },
                 { id: 19, label: "Board\nGovernance\nHandbook", group: "governance", level: 2 },
-                { id: 23, label: "Board\nMinutes", group: "governance", level: 3 },
-                { id: 24, label: "Mandate\nLetter", group: "governance", level: 2 },
+                { id: "board_minutes", label: "Board\nMinutes", group: "governance", level: 3 },
+                { id: "mandate_letter", label: "Mandate\nLetter", group: "governance", level: 2 },
                 { id: 25, label: "Community\nAdvisory\nBoard", group: "governance", level: 3 },
                 { id: 26, label: "Ethics\nReview", group: "governance", level: 3 },
                 { id: 27, label: "Whistleblower\nPolicy", group: "governance", level: 2 },
@@ -564,17 +564,17 @@
                 { from: 1, to: 5, type: "feeds_into", label: "drives" },       // Mission → Strategic Goals
                 { from: 3, to: 7, type: "feeds_into", label: "informs" },      // Values → Principles
                 { from: 3, to: 127, type: "feeds_into", label: "shapes" },     // Values → Culture
-                { from: 3, to: 8, type: "feeds_into", label: "defines" },      // Values → Brand Promise
-                { from: 3, to: 14, type: "feeds_into", label: "shapes" },      // Values → Ethics Policy
+                { from: 3, to: "brand_promise", type: "feeds_into", label: "defines" },      // Values → Brand Promise
+                { from: 3, to: "ethics_policy", type: "feeds_into", label: "shapes" },      // Values → Ethics Policy
                 { from: 9, to: 127, type: "feeds_into", label: "shapes" },     // Leadership Philosophy → Culture
                 { from: 5, to: 6, type: "feeds_into", label: "sets" },         // Goals → Priorities
-                { from: 1, to: 8, type: "feeds_into", label: "defines" },      // Mission → Brand Promise
+                { from: 1, to: "brand_promise", type: "feeds_into", label: "defines" },      // Mission → Brand Promise
 
                 // ========== GOVERNANCE STRUCTURE (Level 1-2) ==========
-                { from: 11, to: 12, type: "feeds_into", label: "defines" },    // Bylaws → Board Charter
+                { from: "bylaws", to: 12, type: "feeds_into", label: "defines" },    // Bylaws → Board Charter
                 { from: 12, to: 13, type: "feeds_into", label: "sets" },       // Board Charter → Delegation
-                { from: 11, to: 20, type: "feeds_into", label: "establishes" }, // Bylaws → Policy Framework
-                { from: 20, to: 14, type: "feeds_into", label: "includes" },   // Policy Framework → Ethics
+                { from: "bylaws", to: 20, type: "feeds_into", label: "establishes" }, // Bylaws → Policy Framework
+                { from: 20, to: "ethics_policy", type: "feeds_into", label: "includes" },   // Policy Framework → Ethics
                 { from: 20, to: 15, type: "feeds_into", label: "includes" },   // Policy Framework → Conflict of Interest
                 { from: 20, to: 16, type: "feeds_into", label: "includes" },   // Policy Framework → Whistleblower
                 { from: 20, to: 21, type: "feeds_into", label: "guides" },     // Policy Framework → Procedures
@@ -648,7 +648,7 @@
 
                 // ========== COMMUNICATIONS & ENGAGEMENT (Level 3-4) ==========
                 { from: 10, to: 91, type: "feeds_into", label: "guides" },     // Strategic → Comms Plan
-                { from: 8, to: 92, type: "feeds_into", label: "defines" },     // Brand Promise → Brand Guidelines
+                { from: "brand_promise", to: 92, type: "feeds_into", label: "defines" },     // Brand Promise → Brand Guidelines
                 { from: 91, to: 92, type: "depends_on", label: "uses" },       // Comms → Brand Guidelines
                 { from: 91, to: 95, type: "feeds_into", label: "includes" },   // Comms → Social Media
                 { from: 10, to: 93, type: "feeds_into", label: "drives" },     // Strategic → Stakeholder Engagement
@@ -709,15 +709,15 @@
                 { from: 152, to: 8, type: "feeds_into", label: "informs" },    // Impact Manifesto → Strategic Plan
 
                 // ========== GOVERNANCE EXPANSION ==========
-                { from: 11, to: 17, type: "feeds_into", label: "creates" },    // Bylaws → Delegation Matrix
+                { from: "bylaws", to: 17, type: "feeds_into", label: "creates" },    // Bylaws → Delegation Matrix
                 { from: 17, to: 13, type: "related_to", label: "" },           // Delegation Matrix ↔ Delegation of Authority
                 { from: 18, to: 22, type: "feeds_into", label: "ensures" },    // Accountability Framework → Annual Plan
                 { from: 19, to: 12, type: "related_to", label: "" },           // Board Handbook ↔ Board Charter
-                { from: 12, to: 23, type: "feeds_into", label: "documented in" }, // Board Charter → Board Minutes
-                { from: 24, to: 22, type: "feeds_into", label: "sets direction" }, // Mandate Letter → Annual Plan
+                { from: 12, to: "board_minutes", type: "feeds_into", label: "documented in" }, // Board Charter → Board Minutes
+                { from: "mandate_letter", to: 22, type: "feeds_into", label: "sets direction" }, // Mandate Letter → Annual Plan
                 { from: 25, to: 93, type: "feeds_into", label: "enables" },    // Community Advisory Board → Stakeholder Engagement
-                { from: 26, to: 14, type: "feeds_into", label: "enforces" },   // Ethics Review → Ethics Policy
-                { from: 27, to: 14, type: "related_to", label: "" },           // Whistleblower ↔ Ethics Policy
+                { from: 26, to: "ethics_policy", type: "feeds_into", label: "enforces" },   // Ethics Review → Ethics Policy
+                { from: 27, to: "ethics_policy", type: "related_to", label: "" },           // Whistleblower ↔ Ethics Policy
                 { from: 28, to: 165, type: "related_to", label: "" },          // Document Retention ↔ Records Retention
                 { from: 12, to: 30, type: "feeds_into", label: "establishes" }, // Board Charter → Committee Charters
                 { from: 141, to: 144, type: "feeds_into", label: "creates" },  // Compliance Framework → Compliance Calendar
@@ -831,7 +831,7 @@
                 // ========== SPECIALIZED: CONSULTING & ADVANCED ==========
                 { from: 177, to: 8, type: "feeds_into", label: "informs" },    // Product Strategy → Strategic Plan
                 { from: 178, to: 31, type: "related_to", label: "" },          // Operating Model Blueprint ↔ Operating Model
-                { from: 180, to: 14, type: "feeds_into", label: "ensures" },   // Integrity Framework → Ethics Policy
+                { from: 180, to: "ethics_policy", type: "feeds_into", label: "ensures" },   // Integrity Framework → Ethics Policy
                 { from: 181, to: 115, type: "feeds_into", label: "guides" },   // Delivery Framework → Project Plan
                 { from: 182, to: 114, type: "related_to", label: "" },         // Statement of Work ↔ Project Charter
                 { from: 183, to: 8, type: "feeds_into", label: "assesses" },   // Diagnostic Toolkit → Strategic Plan
@@ -1024,16 +1024,22 @@
         function showArtifactInfo(node) {
             const panel = document.getElementById('infoPanel');
             const content = document.getElementById('infoPanelContent');
+            const label = String(node.label).replace(/\n/g, ' ');
+            const numericId = Number(node.id);
+            const hasCatalogLink = Number.isInteger(numericId) && numericId > 0;
+            const catalogLink = hasCatalogLink
+                ? `<a href="index.html#artifact-${node.id}" class="btn btn-primary" style="color: white;">View in Catalog</a>`
+                : `<p style="color: #888; font-style: italic;">Not available in catalog view</p>`;
 
             content.innerHTML = `
-                <h2>${node.label.replace('\\n', ' ')}</h2>
+                <h2>${label}</h2>
                 <span class="artifact-number">#${node.id}</span>
                 <p><strong>Category:</strong> ${node.group}</p>
                 <p><strong>Hierarchy Level:</strong> ${node.level}</p>
                 <br>
                 <p><em>Click on connected nodes to explore relationships</em></p>
                 <br>
-                <a href="index.html#artifact-${node.id}" class="btn btn-primary" style="color: white;">View in Catalog</a>
+                ${catalogLink}
             `;
 
             panel.classList.add('show');
@@ -1138,28 +1144,28 @@
          */
         function showMasterView() {
             // Essential artifact IDs that form the universal stack
-            const masterArtifacts = [
-                1,   // Mission Statement
-                2,   // Vision Statement
-                3,   // Core Values
-                4,   // Purpose Statement
-                5,   // Strategic Goals
-                8,   // Strategic Plan
-                10,  // Strategic Plan (original)
-                11,  // Bylaws
-                12,  // Board Charter
-                14,  // Organizational Narrative
-                15,  // Code of Ethics
-                16,  // Governance Framework
-                20,  // Internal Controls Framework
-                22,  // Annual Plan
-                31,  // Operating Model
-                34,  // Org Structure
-                59,  // Org Chart
-                65,  // Annual Budget
-                101, // Performance Framework
-                104  // KPIs
-            ];
+              const masterArtifacts = [
+                  1,   // Mission Statement
+                  2,   // Vision Statement
+                  3,   // Core Values
+                  4,   // Purpose Statement
+                  5,   // Strategic Goals
+                  8,   // Strategic Plan
+                  10,  // Strategic Plan (original)
+                  "bylaws",  // Bylaws
+                  12,  // Board Charter
+                  14,  // Organizational Narrative
+                  15,  // Code of Ethics
+                  16,  // Governance Framework
+                  20,  // Internal Controls Framework
+                  22,  // Annual Plan
+                  31,  // Operating Model
+                  34,  // Org Structure
+                  59,  // Org Chart
+                  65,  // Annual Budget
+                  101, // Performance Framework
+                  104  // KPIs
+              ];
 
             // Hide all nodes first
             nodes.forEach(node => {
