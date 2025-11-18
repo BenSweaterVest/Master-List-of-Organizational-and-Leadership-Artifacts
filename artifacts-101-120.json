@@ -1,0 +1,262 @@
+[
+  {
+    "number": "101",
+    "name": "Performance Measurement Framework",
+    "example": "Balanced Scorecard, OKR framework, KPI dashboard",
+    "explanationLink": {
+      "url": "https://www.opm.gov/policy-data-oversight/performance-management/performance-management-cycle/",
+      "title": "U.S. Office of Personnel Management - Performance Management Cycle"
+    },
+    "exampleLink": {
+      "url": "https://www.performance.gov/",
+      "title": "Performance.gov - Federal Performance Framework"
+    }
+  },
+  {
+    "number": "102",
+    "name": "Balanced Scorecard",
+    "example": "Kaplan & Norton's BSC with financial, customer, internal, learning perspectives",
+    "explanationLink": {
+      "url": "https://www.balancedscorecard.org/bsc-basics/about-the-balanced-scorecard/",
+      "title": "Balanced Scorecard Institute - About the Balanced Scorecard"
+    },
+    "exampleLink": {
+      "url": "https://hbr.org/2007/07/using-the-balanced-scorecard-as-a-strategic-management-system",
+      "title": "Harvard Business Review - Using the Balanced Scorecard as a Strategic Management System"
+    }
+  },
+  {
+    "number": "103",
+    "name": "OKR Framework (Objectives & Key Results)",
+    "example": "Google OKR methodology (John Doerr)",
+    "explanationLink": {
+      "url": "https://www.whatmatters.com/get-started",
+      "title": "WhatMatters - Introduction to OKRs (John Doerr)"
+    },
+    "exampleLink": {
+      "url": "https://rework.withgoogle.com/guides/set-goals-with-okrs/steps/introduction/",
+      "title": "Google re:Work - Set Goals with OKRs"
+    }
+  },
+  {
+    "number": "104",
+    "name": "KPIs / Metrics Dashboard",
+    "example": "Live data dashboard showing mission KPIs",
+    "explanationLink": {
+      "url": "https://www.klipfolio.com/resources/articles/what-is-a-kpi",
+      "title": "Klipfolio - What is a Key Performance Indicator (KPI)?"
+    },
+    "exampleLink": {
+      "url": "https://www.data.gov/",
+      "title": "Data.gov - Federal Government KPI Dashboard"
+    }
+  },
+  {
+    "number": "105",
+    "name": "Theory of Change",
+    "example": "Nonprofit pathways from activities to long-term impact",
+    "explanationLink": {
+      "url": "https://www.theoryofchange.org/what-is-theory-of-change/",
+      "title": "Center for Theory of Change - What is Theory of Change?"
+    },
+    "exampleLink": {
+      "url": "https://www.betterevaluation.org/methods-approaches/approaches/theory-change",
+      "title": "BetterEvaluation - Theory of Change"
+    }
+  },
+  {
+    "number": "106",
+    "name": "Logic Model",
+    "example": "W.K. Kellogg Foundation logic model",
+    "explanationLink": {
+      "url": "https://www.cdc.gov/evaluation-capacity-building/php/logic-models/index.html",
+      "title": "CDC - Logic Models for Program Planning and Evaluation"
+    },
+    "exampleLink": {
+      "url": "https://www.wkkf.org/resource-directory/resources/2004/01/logic-model-development-guide",
+      "title": "W.K. Kellogg Foundation - Logic Model Development Guide"
+    }
+  },
+  {
+    "number": "107",
+    "name": "Monitoring & Evaluation Plan (M&E)",
+    "example": "USAID M&E plan for international development program",
+    "explanationLink": {
+      "url": "https://www.usaid.gov/evaluation/policy",
+      "title": "USAID - Evaluation Policy"
+    },
+    "exampleLink": {
+      "url": "https://www.betterevaluation.org/methods-approaches/themes/develop_me_plan",
+      "title": "BetterEvaluation - Develop a Monitoring and Evaluation Plan"
+    }
+  },
+  {
+    "number": "108",
+    "name": "Learning Agenda",
+    "example": "Federal Evidence Act learning agenda",
+    "explanationLink": {
+      "url": "https://www.evaluation.gov/evidence-plans/learning-agenda/",
+      "title": "Evaluation.gov - Learning Agenda Guidance"
+    },
+    "exampleLink": {
+      "url": "https://www.gao.gov/products/gao-23-105397",
+      "title": "GAO - Evidence-Based Policymaking: Learning Agendas"
+    }
+  },
+  {
+    "number": "109",
+    "name": "Audit Reports (Financial, Performance, Compliance)",
+    "example": "GAO performance audit of federal program",
+    "explanationLink": {
+      "url": "https://www.gao.gov/about/what-gao-does/fact_sheets/standards",
+      "title": "GAO - Government Auditing Standards (Yellow Book)"
+    },
+    "exampleLink": {
+      "url": "https://www.gao.gov/reports-testimonies",
+      "title": "GAO - Reports and Testimonies"
+    }
+  },
+  {
+    "number": "110",
+    "name": "Maturity Model Assessment",
+    "example": "CMMI (Capability Maturity Model Integration)",
+    "explanationLink": {
+      "url": "https://cmmiinstitute.com/cmmi",
+      "title": "CMMI Institute - What is CMMI?"
+    },
+    "exampleLink": {
+      "url": "https://www.cms.gov/data-research/monitoring-programs/medicare-medicaid-program-integrity-and-fraud-prevention/cms-program-integrity-maturity-model",
+      "title": "CMS - Program Integrity Maturity Model"
+    }
+  },
+  {
+    "number": "111",
+    "name": "After-Action Review (AAR) / Lessons Learned",
+    "example": "U.S. Army AAR methodology",
+    "explanationLink": {
+      "url": "https://www.army.mil/article/111822/the_after_action_review_aar",
+      "title": "U.S. Army - The After Action Review (AAR)"
+    },
+    "exampleLink": {
+      "url": "https://www.mindtools.com/a5z3fad/after-action-reviews",
+      "title": "MindTools - After-Action Reviews: Learning from Experience"
+    }
+  },
+  {
+    "number": "112",
+    "name": "Organizational Health Index / Culture Scorecard",
+    "example": "McKinsey Organizational Health Index",
+    "explanationLink": {
+      "url": "https://www.mckinsey.com/capabilities/people-and-organizational-performance/how-we-help-clients/organizational-health-index",
+      "title": "McKinsey - Organizational Health Index"
+    },
+    "exampleLink": {
+      "url": "https://www.gallup.com/workplace/285818/organizational-health-measurement.aspx",
+      "title": "Gallup - Organizational Health Measurement"
+    }
+  },
+  {
+    "number": "113",
+    "name": "Workforce Sentiment Analysis / Employee Listening Strategy",
+    "example": "Pulse survey + listening posts + engagement surveys",
+    "explanationLink": {
+      "url": "https://www.shrm.org/topics-tools/tools/toolkits/managing-employee-engagement-surveys",
+      "title": "SHRM - Managing Employee Engagement Surveys"
+    },
+    "exampleLink": {
+      "url": "https://www.opm.gov/policy-data-oversight/employee-relations/employee-engagement/",
+      "title": "U.S. Office of Personnel Management - Employee Engagement"
+    }
+  },
+  {
+    "number": "114",
+    "name": "Program Charter",
+    "example": "Public health program charter",
+    "explanationLink": {
+      "url": "https://www.pmi.org/learning/library/effective-program-management-success-7473",
+      "title": "PMI - Effective Program Management for Success"
+    },
+    "exampleLink": {
+      "url": "https://www.projectmanager.com/templates/program-charter-template",
+      "title": "ProjectManager - Program Charter Template"
+    }
+  },
+  {
+    "number": "115",
+    "name": "Project Charter",
+    "example": "IT modernization project charter",
+    "explanationLink": {
+      "url": "https://www.pmi.org/learning/library/charter-selling-project-7473",
+      "title": "PMI - The Project Charter: Selling Your Project"
+    },
+    "exampleLink": {
+      "url": "https://www.smartsheet.com/project-charter-templates",
+      "title": "Smartsheet - Free Project Charter Templates"
+    }
+  },
+  {
+    "number": "116",
+    "name": "Project Governance Plan",
+    "example": "PMBOK project governance plan",
+    "explanationLink": {
+      "url": "https://www.pmi.org/learning/library/project-governance-framework-7406",
+      "title": "PMI - Project Governance Framework"
+    },
+    "exampleLink": {
+      "url": "https://www.apm.org.uk/resources/find-a-resource/governance-of-project-management/",
+      "title": "Association for Project Management - Governance of Project Management"
+    }
+  },
+  {
+    "number": "117",
+    "name": "Portfolio Prioritization Framework",
+    "example": "Weighted scoring model",
+    "explanationLink": {
+      "url": "https://www.pmi.org/learning/library/portfolio-management-prioritization-criteria-6866",
+      "title": "PMI - Portfolio Management Prioritization Criteria"
+    },
+    "exampleLink": {
+      "url": "https://asana.com/resources/project-prioritization-methods",
+      "title": "Asana - 7 Project Prioritization Methods"
+    }
+  },
+  {
+    "number": "118",
+    "name": "Program/Portfolio Roadmap",
+    "example": "Application modernization roadmap",
+    "explanationLink": {
+      "url": "https://www.productplan.com/glossary/portfolio-roadmap/",
+      "title": "ProductPlan - What is a Portfolio Roadmap?"
+    },
+    "exampleLink": {
+      "url": "https://www.aha.io/roadmapping/guide/templates/portfolio-roadmap",
+      "title": "Aha! - Portfolio Roadmap Template"
+    }
+  },
+  {
+    "number": "119",
+    "name": "Benefits Realization Plan",
+    "example": "PMI benefits realization framework",
+    "explanationLink": {
+      "url": "https://www.pmi.org/learning/library/benefits-realization-management-6947",
+      "title": "PMI - Benefits Realization Management"
+    },
+    "exampleLink": {
+      "url": "https://www.apm.org.uk/resources/find-a-resource/benefits-management/",
+      "title": "Association for Project Management - Benefits Management"
+    }
+  },
+  {
+    "number": "120",
+    "name": "Resource Plan / Staffing Plan",
+    "example": "Project resource allocation plan",
+    "explanationLink": {
+      "url": "https://www.pmi.org/learning/library/resource-management-project-planning-6108",
+      "title": "PMI - Resource Management in Project Planning"
+    },
+    "exampleLink": {
+      "url": "https://www.teamgantt.com/guide-to-project-management/how-to-plan-a-project/resource-planning",
+      "title": "TeamGantt - Resource Planning Guide"
+    }
+  }
+]
