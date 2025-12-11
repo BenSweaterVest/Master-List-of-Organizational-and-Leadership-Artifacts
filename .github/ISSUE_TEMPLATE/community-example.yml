@@ -1,0 +1,113 @@
+name: 📝 Submit Community Example
+description: Share a real-world example of an organizational artifact
+title: "[Example] Artifact #XX: "
+labels: ["community-example", "pending-review"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Submit Your Real-World Example
+
+        Thank you for contributing! Your example will help others understand how this artifact is used in practice.
+
+        **Before submitting:**
+        - One example per issue
+        - Anonymize confidential information
+        - Provide context about your organization type
+
+  - type: dropdown
+    id: artifact-number
+    attributes:
+      label: Artifact Number
+      description: Which artifact is this example for? (1-188)
+      options:
+        - "1 - Mission Statement"
+        - "2 - Vision Statement"
+        - "3 - Core Values"
+        - "5 - Strategic Goals"
+        - "10 - Strategic Plan"
+        - "22 - Annual Plan"
+        - "51 - Workforce Plan"
+        - "65 - Annual Budget"
+        - "102 - Balanced Scorecard"
+        - "103 - OKRs"
+        - "Other (specify in text below)"
+    validations:
+      required: true
+
+  - type: input
+    id: artifact-custom
+    attributes:
+      label: If "Other", specify artifact number and name
+      placeholder: "e.g., #45 - Performance Management System"
+
+  - type: dropdown
+    id: organization-type
+    attributes:
+      label: Organization Type
+      description: What sector is this example from?
+      options:
+        - Public / Government
+        - Nonprofit
+        - Corporate / Business
+        - Education
+        - Healthcare
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: organization-name
+    attributes:
+      label: Organization Name (Optional)
+      description: You can specify an organization or keep it anonymous
+      placeholder: "e.g., City of Seattle, Anonymous Nonprofit, etc."
+
+  - type: textarea
+    id: example-text
+    attributes:
+      label: Example Text
+      description: Provide the example artifact text or description
+      placeholder: |
+        Example: "To deliver transparent, efficient, and equitable services that improve quality of life for all residents while promoting environmental sustainability and economic vitality."
+
+        For a Mission Statement from a local government.
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: Context & Notes
+      description: Any additional context about how this artifact is used or why it's effective
+      placeholder: |
+        This mission statement was developed through a 6-month community engagement process involving 2,000+ residents. It guides our strategic planning and is referenced in all major policy decisions.
+
+  - type: input
+    id: document-link
+    attributes:
+      label: Link to Public Document (Optional)
+      description: If this artifact is publicly available online
+      placeholder: "https://example.gov/strategic-plan.pdf"
+
+  - type: dropdown
+    id: sharing-permission
+    attributes:
+      label: Sharing Permission
+      description: Can we display this example on the website?
+      options:
+        - "Yes - Display publicly with attribution"
+        - "Yes - Display publicly anonymously"
+        - "No - For reference only"
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Confirmation
+      options:
+        - label: I confirm this example does not contain confidential or proprietary information
+          required: true
+        - label: I have the right to share this example
+          required: true

@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 💬 Ask a Question
+    url: https://github.com/BenSweaterVest/Master-List-of-Organizational-and-Leadership-Artifacts/discussions
+    about: Have a question about an artifact? Start a discussion!
+  - name: 📚 View Documentation
+    url: https://leadership-artifacts.pages.dev/
+    about: Browse the full catalog of 188 artifacts
+  - name: 🕸️ Relationship Map
+    url: https://leadership-artifacts.pages.dev/relationships.html
+    about: Explore how artifacts connect to each other

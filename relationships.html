@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artifact Relationships | Leadership Artifacts</title>
+    <meta name="description" content="Visual map showing how organizational artifacts connect and depend on each other">
+    <meta name="theme-color" content="#3498db">
+    <link rel="icon" type="image/x-icon" href="https://favicon.show/thesweatervest.com">
+    <script src="https://unpkg.com/vis-network@latest/dist/vis-network.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --light-bg: #ecf0f1;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            background: white;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .controls {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            padding: 0.6rem 1.2rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-secondary {
+            background: var(--light-bg);
+            color: var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: #d5dbdb;
+        }
+
+        #networkContainer {
+            width: 100%;
+            height: calc(100vh - 200px);
+            margin: 1rem auto;
+            max-width: 1400px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .legend {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            max-width: 300px;
+        }
+
+        .legend h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+            font-size: 0.85rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+
+        .info-panel {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            max-width: 350px;
+            max-height: 60vh;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .info-panel.show {
+            display: block;
+        }
+
+        .info-panel h2 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .info-panel .artifact-number {
+            background: var(--secondary);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .close-btn {
+            float: right;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close-btn:hover {
+            color: var(--danger);
+        }
+
+        .category-filter {
+            display: block;
+            margin: 0.4rem 0;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .category-filter input {
+            margin-right: 0.5rem;
+            cursor: pointer;
+        }
+
+        .category-filter:hover {
+            background: #f0f0f0;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .legend h4 {
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-content">
+            <h1>🕸️ Artifact Relationship Map</h1>
+            <p class="subtitle">Explore how organizational artifacts connect and build upon each other</p>
+
+            <div class="controls">
+                <a href="index.html" class="btn btn-secondary">← Back to Catalog</a>
+                <button class="btn btn-primary" onclick="showMasterView()" title="Show essential foundational artifacts">⭐ Master View</button>
+                <button class="btn btn-primary" onclick="resetNetwork()">Reset View</button>
+                <button class="btn btn-primary" onclick="fitNetwork()">Fit to Screen</button>
+                <button class="btn btn-primary" onclick="togglePhysics()">Toggle Physics</button>
+                <select id="filterCategory" class="btn btn-secondary" onchange="filterByCategory()">
+                    <option value="all">All Categories</option>
+                    <option value="foundation">Strategic Foundation</option>
+                    <option value="governance">Governance</option>
+                    <option value="operations">Operations</option>
+                    <option value="performance">Performance</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div id="networkContainer"></div>
+
+    <div class="legend">
+        <h3>Categories</h3>
+        <div style="max-height: 400px; overflow-y: auto;">
+            <label class="category-filter"><input type="checkbox" value="foundation" checked> <span style="color: #e74c3c;">●</span> Foundation</label>
+            <label class="category-filter"><input type="checkbox" value="strategic" checked> <span style="color: #9b59b6;">●</span> Strategic</label>
+            <label class="category-filter"><input type="checkbox" value="governance" checked> <span style="color: #3498db;">●</span> Governance</label>
+            <label class="category-filter"><input type="checkbox" value="operations" checked> <span style="color: #27ae60;">●</span> Operations</label>
+            <label class="category-filter"><input type="checkbox" value="workforce" checked> <span style="color: #1abc9c;">●</span> Workforce</label>
+            <label class="category-filter"><input type="checkbox" value="financial" checked> <span style="color: #f39c12;">●</span> Financial</label>
+            <label class="category-filter"><input type="checkbox" value="technology" checked> <span style="color: #00acc1;">●</span> Technology</label>
+            <label class="category-filter"><input type="checkbox" value="risk" checked> <span style="color: #e67e22;">●</span> Risk</label>
+            <label class="category-filter"><input type="checkbox" value="communications" checked> <span style="color: #ec407a;">●</span> Communications</label>
+            <label class="category-filter"><input type="checkbox" value="performance" checked> <span style="color: #ff9800;">●</span> Performance</label>
+            <label class="category-filter"><input type="checkbox" value="change" checked> <span style="color: #ffc107;">●</span> Change</label>
+            <label class="category-filter"><input type="checkbox" value="sector_specific" checked> <span style="color: #34495e;">●</span> Sector-Specific</label>
+            <label class="category-filter"><input type="checkbox" value="specialized" checked> <span style="color: #95a5a6;">●</span> Specialized</label>
+            <label class="category-filter"><input type="checkbox" value="cross_functional" checked> <span style="color: #7b1fa2;">●</span> Cross-Functional</label>
+        </div>
+        <button onclick="toggleAllCategories()" style="margin-top: 10px; padding: 5px 10px;">Toggle All</button>
+        <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #ddd;">
+            <h4>Relationship Types</h4>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #27ae60;"></div>
+                <span>Feeds Into</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #3498db;"></div>
+                <span>Depends On</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #f39c12;"></div>
+                <span>Related To</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="info-panel" id="infoPanel">
+        <button class="close-btn" onclick="closeInfo()">×</button>
+        <div id="infoPanelContent"></div>
+    </div>
+
+    <script>
+        /**
+         * Artifact Relationship Visualization
+         *
+         * This page provides an interactive network graph showing how organizational
+         * artifacts connect and depend on each other. Uses vis.js for rendering.
+         *
+         * Key Concepts:
+         * - Nodes: Individual artifacts (Mission, Vision, Strategic Plan, etc.)
+         * - Edges: Relationships between artifacts (feeds_into, depends_on, related_to)
+         * - Groups: Color-coded categories (foundation, governance, operations, performance)
+         * - Levels: Hierarchical positioning (0=top foundational, 5=operational detail)
+         *
+         * Interaction:
+         * - Click nodes to view details
+         * - Drag to rearrange
+         * - Zoom and pan
+         * - Toggle physics for static/dynamic layout
+         */
+
+        /**
+         * Artifact Relationship Data
+         *
+         * Defines the network graph structure with 30+ key artifacts and their relationships.
+         *
+         * Data Structure:
+         * - nodes: Array of artifacts with id, label, group (category), level (hierarchy)
+         * - edges: Array of relationships with from/to node ids, type, and label
+         *
+         * Relationship Types:
+         * - feeds_into: Artifact A provides input/direction to B (green arrows)
+         * - depends_on: Artifact A requires B to exist/function (blue arrows)
+         * - related_to: Artifacts are complementary/alternatives (yellow arrows)
+         *
+         * Groups (color-coded):
+         * - foundation (red): Mission, Vision, Values, Purpose
+         * - governance (blue): Bylaws, Board Charter, Policies
+         * - operations (green): Plans, Budgets, Workforce
+         * - performance (orange): KPIs, OKRs, Balanced Scorecard
+         *
+         * Levels (hierarchical positioning):
+         * - Level 0: Foundational (Mission, Vision, Values)
+         * - Level 1: Strategic Direction (Goals, Priorities)
+         * - Level 2: Governance (Strategic Plan, Policies)
+         * - Level 3: Operational (Annual Plans, Budgets)
+         * - Level 4-5: Measurement (Performance, KPIs)
+         */
+        const artifactRelationships = {
+            nodes: [
+                // Strategic Foundation (1-10) - Level 0-1
+                { id: 1, label: "Mission\nStatement", group: "foundation", level: 0 },
+                { id: 2, label: "Vision\nStatement", group: "foundation", level: 0 },
+                { id: 3, label: "Core\nValues", group: "foundation", level: 0 },
+                { id: 4, label: "Purpose\nStatement", group: "foundation", level: 0 },
+                { id: 5, label: "Strategic\nGoals", group: "foundation", level: 1 },
+                { id: 6, label: "Strategic\nPriorities", group: "foundation", level: 1 },
+                { id: 7, label: "Guiding\nPrinciples", group: "foundation", level: 0 },
+                { id: "brand_promise", label: "Brand\nPromise", group: "foundation", level: 1 },
+                { id: 9, label: "Leadership\nPhilosophy", group: "foundation", level: 0 },
+
+                // Strategic Planning & Governance (10-30) - Level 2
+                { id: 10, label: "Strategic\nPlan", group: "governance", level: 2 },
+                { id: "bylaws", label: "Bylaws", group: "governance", level: 1 },
+                { id: 12, label: "Board\nCharter", group: "governance", level: 2 },
+                { id: 13, label: "Delegation\nof Authority", group: "governance", level: 2 },
+                { id: "ethics_policy", label: "Ethics\nPolicy", group: "governance", level: 2 },
+                { id: 15, label: "Conflict of\nInterest Policy", group: "governance", level: 2 },
+                { id: 16, label: "Whistleblower\nPolicy", group: "governance", level: 2 },
+                { id: 20, label: "Policy\nFramework", group: "governance", level: 2 },
+                { id: 21, label: "Procedure\nManual", group: "governance", level: 2 },
+                { id: 22, label: "Annual\nPlan", group: "operations", level: 3 },
+                { id: 23, label: "Operational\nPlan", group: "operations", level: 3 },
+                { id: 24, label: "Business\nPlan", group: "operations", level: 3 },
+
+                // Operating Model & Capabilities (31-50) - Level 3
+                { id: 31, label: "Operating\nModel", group: "operations", level: 2 },
+                { id: 32, label: "Capability\nModel", group: "operations", level: 2 },
+                { id: 33, label: "Service\nCatalog", group: "operations", level: 3 },
+                { id: 34, label: "Process\nMap", group: "operations", level: 3 },
+                { id: 35, label: "Value\nStreams", group: "operations", level: 3 },
+                { id: 36, label: "Standard\nOperating\nProcedures", group: "operations", level: 4 },
+                { id: 37, label: "Service Level\nAgreements", group: "operations", level: 4 },
+
+                // Workforce & People (51-64) - Level 3
+                { id: 51, label: "Workforce\nPlan", group: "operations", level: 3 },
+                { id: 52, label: "Succession\nPlan", group: "operations", level: 3 },
+                { id: 53, label: "Skills\nMatrix", group: "operations", level: 4 },
+                { id: 54, label: "Competency\nFramework", group: "operations", level: 3 },
+                { id: 55, label: "Learning &\nDevelopment\nPlan", group: "operations", level: 4 },
+                { id: 56, label: "Onboarding\nProgram", group: "operations", level: 4 },
+                { id: 57, label: "Performance\nMgmt System", group: "operations", level: 3 },
+                { id: 58, label: "Job\nDescriptions", group: "operations", level: 4 },
+                { id: 59, label: "Org Chart", group: "operations", level: 3 },
+                { id: 60, label: "Comp &\nBenefits", group: "operations", level: 3 },
+                { id: 61, label: "DEI\nStrategy", group: "operations", level: 3 },
+
+                // Financial (65-70) - Level 3
+                { id: 65, label: "Annual\nBudget", group: "operations", level: 3 },
+                { id: 66, label: "Financial\nPolicies", group: "governance", level: 2 },
+                { id: 67, label: "Financial\nControls", group: "governance", level: 3 },
+                { id: 68, label: "Capital\nPlan", group: "operations", level: 3 },
+                { id: 69, label: "Cost\nAllocation\nModel", group: "operations", level: 4 },
+
+                // Technology & Data (71-80) - Level 3-4
+                { id: 71, label: "IT Strategic\nPlan", group: "operations", level: 3 },
+                { id: 72, label: "Data\nGovernance\nFramework", group: "governance", level: 3 },
+                { id: 73, label: "Cybersecurity\nPolicy", group: "governance", level: 3 },
+                { id: 74, label: "Enterprise\nArchitecture", group: "operations", level: 3 },
+                { id: 75, label: "Technology\nRoadmap", group: "operations", level: 4 },
+
+                // Risk & Continuity (81-90) - Level 3-4
+                { id: 81, label: "Risk\nFramework", group: "governance", level: 2 },
+                { id: 82, label: "Risk\nRegister", group: "operations", level: 3 },
+                { id: 83, label: "Business\nContinuity\nPlan", group: "operations", level: 3 },
+                { id: 84, label: "COOP\nPlan", group: "operations", level: 3 },
+                { id: 85, label: "Disaster\nRecovery\nPlan", group: "operations", level: 4 },
+                { id: 86, label: "Crisis\nComms Plan", group: "operations", level: 4 },
+
+                // Communications & Engagement (91-100) - Level 3-4
+                { id: 91, label: "Communications\nPlan", group: "operations", level: 3 },
+                { id: 92, label: "Brand\nGuidelines", group: "operations", level: 3 },
+                { id: 93, label: "Stakeholder\nEngagement\nPlan", group: "operations", level: 3 },
+                { id: 94, label: "Public\nParticipation\nPlan", group: "operations", level: 4 },
+                { id: 95, label: "Social Media\nStrategy", group: "operations", level: 4 },
+
+                // Performance & Evaluation (101-113) - Level 4-5
+                { id: 101, label: "Performance\nFramework", group: "performance", level: 4 },
+                { id: 102, label: "Balanced\nScorecard", group: "performance", level: 4 },
+                { id: 103, label: "OKRs", group: "performance", level: 4 },
+                { id: 104, label: "KPIs", group: "performance", level: 5 },
+                { id: 105, label: "Dashboard", group: "performance", level: 5 },
+                { id: 106, label: "Logic\nModel", group: "performance", level: 4 },
+                { id: 107, label: "Theory of\nChange", group: "performance", level: 3 },
+                { id: 108, label: "M&E\nFramework", group: "performance", level: 4 },
+                { id: 109, label: "Evaluation\nPlan", group: "performance", level: 4 },
+                { id: 110, label: "Annual\nReport", group: "performance", level: 5 },
+
+                // Project & Portfolio Management (114-120) - Level 4
+                { id: 114, label: "Project\nCharter", group: "operations", level: 4 },
+                { id: 115, label: "Project\nPlan", group: "operations", level: 4 },
+                { id: 116, label: "Portfolio\nPrioritization", group: "operations", level: 3 },
+                { id: 117, label: "Project\nGovernance", group: "governance", level: 3 },
+                { id: 118, label: "Benefits\nRealization\nPlan", group: "operations", level: 4 },
+                { id: 119, label: "Lessons\nLearned", group: "performance", level: 5 },
+
+                // Change & Culture (121-130) - Level 3
+                { id: 121, label: "Change\nPlan", group: "change", level: 3 },
+                { id: 122, label: "Change\nReadiness\nAssessment", group: "change", level: 4 },
+                { id: 123, label: "Adoption\nPlan", group: "change", level: 4 },
+                { id: 124, label: "Training\nPlan", group: "workforce", level: 4 },
+                { id: 125, label: "Communication\nPlan (Change)", group: "change", level: 4 },
+                { id: 126, label: "Resistance\nManagement\nPlan", group: "change", level: 4 },
+                { id: 127, label: "Culture\nFramework", group: "foundation", level: 1 },
+                { id: 128, label: "Employee\nEngagement\nSurvey", group: "performance", level: 4 },
+                { id: 129, label: "Climate\nSurvey", group: "performance", level: 4 },
+                { id: 130, label: "Symbolic\nActions", group: "change", level: 4 },
+
+                // Strategic Planning & Direction (8, 11, 14, 179) - Level 1-2
+                { id: 8, label: "Strategic\nPlan", group: "strategic", level: 2 },
+                { id: 11, label: "Theory of\nValue", group: "strategic", level: 1 },
+                { id: 14, label: "Org\nNarrative", group: "strategic", level: 1 },
+                { id: 179, label: "Mission\nSuccess\nCriteria", group: "strategic", level: 2 },
+
+                // Governance Expansion (17-19, 23-30) - Level 2
+                { id: 17, label: "Delegation\nMatrix", group: "governance", level: 2 },
+                { id: 18, label: "Accountability\nFramework", group: "governance", level: 2 },
+                { id: 19, label: "Board\nGovernance\nHandbook", group: "governance", level: 2 },
+                { id: "board_minutes", label: "Board\nMinutes", group: "governance", level: 3 },
+                { id: "mandate_letter", label: "Mandate\nLetter", group: "governance", level: 2 },
+                { id: 25, label: "Community\nAdvisory\nBoard", group: "governance", level: 3 },
+                { id: 26, label: "Ethics\nReview", group: "governance", level: 3 },
+                { id: 27, label: "Whistleblower\nPolicy", group: "governance", level: 2 },
+                { id: 28, label: "Document\nRetention", group: "governance", level: 3 },
+                { id: 29, label: "Shareholder\nAgreements", group: "governance", level: 2 },
+                { id: 30, label: "Committee\nCharters", group: "governance", level: 3 },
+
+                // Operations Expansion (38-50) - Level 3-4
+                { id: 38, label: "SLAs", group: "operations", level: 4 },
+                { id: 39, label: "Customer\nCharter", group: "operations", level: 3 },
+                { id: 40, label: "SOPs", group: "operations", level: 4 },
+                { id: 41, label: "Operating\nPrinciples", group: "operations", level: 3 },
+                { id: 42, label: "Playbooks", group: "operations", level: 4 },
+                { id: 43, label: "RACI\nMatrix", group: "cross_functional", level: 4 },
+                { id: 44, label: "Value Stream\nMap", group: "operations", level: 3 },
+                { id: 45, label: "Knowledge\nBase", group: "operations", level: 4 },
+                { id: 46, label: "Operating\nRhythm", group: "operations", level: 3 },
+                { id: 47, label: "Leadership\nCompetencies", group: "workforce", level: 3 },
+                { id: 48, label: "Leadership\nPhilosophy", group: "foundation", level: 1 },
+                { id: 49, label: "Competency\nDictionary", group: "workforce", level: 3 },
+                { id: 50, label: "Role\nArchitecture", group: "workforce", level: 3 },
+
+                // Workforce Expansion (62-64, 149-150) - Level 3-4
+                { id: 62, label: "Employee\nHandbook", group: "workforce", level: 4 },
+                { id: 63, label: "Remote Work\nPolicy", group: "workforce", level: 4 },
+                { id: 64, label: "Wellness\nProgram", group: "workforce", level: 4 },
+                { id: 149, label: "Equity\nFramework", group: "workforce", level: 3 },
+                { id: 150, label: "Leadership\nDevelopment", group: "workforce", level: 4 },
+
+                // Financial Expansion (70, 76-80) - Level 3-4
+                { id: 70, label: "Grant\nManagement", group: "financial", level: 3 },
+                { id: 76, label: "Investment\nPolicy", group: "financial", level: 3 },
+                { id: 77, label: "Cash Flow\nForecast", group: "financial", level: 4 },
+                { id: 78, label: "Procurement\nPolicy", group: "financial", level: 3 },
+                { id: 79, label: "Asset\nManagement", group: "financial", level: 3 },
+                { id: 80, label: "Indirect Cost\nRate", group: "financial", level: 4 },
+
+                // Risk & Continuity Expansion (87-90) - Level 3-4
+                { id: 87, label: "Threat\nAssessment", group: "risk", level: 4 },
+                { id: 88, label: "Emergency\nResponse", group: "risk", level: 4 },
+                { id: 89, label: "Resilience\nPlan", group: "risk", level: 3 },
+                { id: 90, label: "Safety\nProgram", group: "risk", level: 4 },
+
+                // Communications Expansion (96-100) - Level 3-4
+                { id: 96, label: "Media\nStrategy", group: "communications", level: 4 },
+                { id: 97, label: "Public\nAffairs", group: "communications", level: 3 },
+                { id: 98, label: "Content\nStrategy", group: "communications", level: 4 },
+                { id: 99, label: "Messaging\nFramework", group: "communications", level: 3 },
+                { id: 100, label: "Crisis\nCommunications", group: "communications", level: 4 },
+
+                // Performance Expansion (111-113, 120) - Level 4-5
+                { id: 111, label: "Outcome\nFramework", group: "performance", level: 4 },
+                { id: 112, label: "Impact\nMeasurement", group: "performance", level: 4 },
+                { id: 113, label: "Data\nDictionary", group: "performance", level: 5 },
+                { id: 120, label: "Portfolio\nDashboard", group: "performance", level: 5 },
+
+                // Advanced & Specialized Tools (131-153) - Level 3-4
+                { id: 131, label: "Design\nPrinciples", group: "specialized", level: 3 },
+                { id: 132, label: "User\nPersonas", group: "specialized", level: 4 },
+                { id: 133, label: "PESTLE\nAnalysis", group: "specialized", level: 3 },
+                { id: 134, label: "SWOT\nAnalysis", group: "specialized", level: 3 },
+                { id: 135, label: "Scenario\nPlanning", group: "specialized", level: 3 },
+                { id: 136, label: "Systems\nMapping", group: "specialized", level: 4 },
+                { id: 137, label: "Stakeholder\nMapping", group: "specialized", level: 3 },
+                { id: 138, label: "Power\nMapping", group: "specialized", level: 4 },
+                { id: 139, label: "Decision\nFramework", group: "cross_functional", level: 3 },
+                { id: 140, label: "Ethical\nDecision\nFramework", group: "governance", level: 3 },
+                { id: 141, label: "Compliance\nFramework", group: "governance", level: 3 },
+                { id: 142, label: "Learning\nSystem", group: "performance", level: 4 },
+                { id: 143, label: "Ethnographic\nStudies", group: "specialized", level: 4 },
+                { id: 144, label: "Compliance\nCalendar", group: "governance", level: 4 },
+                { id: 145, label: "Harassment\nPrevention", group: "workforce", level: 3 },
+                { id: 146, label: "Standards of\nConduct", group: "governance", level: 3 },
+                { id: 147, label: "Operating\nGuardrails", group: "governance", level: 3 },
+                { id: 148, label: "Executive\nBriefing Book", group: "sector_specific", level: 4 },
+                { id: 151, label: "Culture\nCode", group: "change", level: 2 },
+                { id: 152, label: "Impact\nManifesto", group: "strategic", level: 2 },
+                { id: 153, label: "Outcome\nChain", group: "performance", level: 4 },
+
+                // Sector-Specific: Public Sector (154-166) - Level 3-4
+                { id: 154, label: "Briefing\nPaper", group: "sector_specific", level: 4 },
+                { id: 155, label: "Policy\nGuidance", group: "sector_specific", level: 3 },
+                { id: 156, label: "Legislative\nMandate", group: "sector_specific", level: 2 },
+                { id: 157, label: "Legislative\nAgenda", group: "sector_specific", level: 3 },
+                { id: 158, label: "Statutory\nReport", group: "sector_specific", level: 4 },
+                { id: 159, label: "Rulemaking\nPlan", group: "sector_specific", level: 3 },
+                { id: 160, label: "Policy\nBulletins", group: "sector_specific", level: 4 },
+                { id: 161, label: "Interagency\nAgreement", group: "sector_specific", level: 3 },
+                { id: 162, label: "Public Data\nPolicies", group: "sector_specific", level: 3 },
+                { id: 163, label: "Transparency\nReport", group: "sector_specific", level: 4 },
+                { id: 164, label: "Accessibility\nPlan", group: "sector_specific", level: 3 },
+                { id: 165, label: "Records\nRetention", group: "sector_specific", level: 4 },
+                { id: 166, label: "Continuity of\nGovernment", group: "sector_specific", level: 3 },
+
+                // Sector-Specific: Nonprofit (167-176) - Level 3-4
+                { id: 167, label: "Case for\nSupport", group: "sector_specific", level: 3 },
+                { id: 168, label: "Fundraising\nStrategy", group: "sector_specific", level: 3 },
+                { id: 169, label: "Donor\nSegmentation", group: "sector_specific", level: 4 },
+                { id: 170, label: "Volunteer\nHandbook", group: "sector_specific", level: 4 },
+                { id: 171, label: "Impact\nReport", group: "sector_specific", level: 4 },
+                { id: 172, label: "SROI\nFramework", group: "sector_specific", level: 4 },
+                { id: 173, label: "Partner Value\nProposition", group: "sector_specific", level: 3 },
+                { id: 174, label: "Network\nGovernance", group: "sector_specific", level: 3 },
+                { id: 175, label: "Coalition\nAgreements", group: "sector_specific", level: 4 },
+                { id: 176, label: "Employer\nValue Prop", group: "workforce", level: 3 },
+
+                // Specialized: Consulting & Advanced (177-188) - Level 3-5
+                { id: 177, label: "Product\nStrategy", group: "specialized", level: 3 },
+                { id: 178, label: "Operating\nModel\nBlueprint", group: "specialized", level: 3 },
+                { id: 180, label: "Integrity\nFramework", group: "specialized", level: 3 },
+                { id: 181, label: "Delivery\nFramework", group: "specialized", level: 3 },
+                { id: 182, label: "Statement of\nWork", group: "specialized", level: 4 },
+                { id: 183, label: "Diagnostic\nToolkit", group: "specialized", level: 4 },
+                { id: 184, label: "Readiness\nAssessment", group: "specialized", level: 4 },
+                { id: 185, label: "Hypothesis\nTree", group: "specialized", level: 4 },
+                { id: 186, label: "Blueprint\nDeck", group: "specialized", level: 5 },
+                { id: 187, label: "Insights\nDeck", group: "specialized", level: 5 },
+                { id: 188, label: "Capability\nHeatmap", group: "specialized", level: 5 }
+            ],
+
+            edges: [
+                // ========== FOUNDATION RELATIONSHIPS (Level 0-1) ==========
+                { from: 4, to: 2, type: "feeds_into", label: "informs" },      // Purpose → Vision
+                { from: 2, to: 1, type: "feeds_into", label: "informs" },      // Vision → Mission
+                { from: 1, to: 5, type: "feeds_into", label: "drives" },       // Mission → Strategic Goals
+                { from: 3, to: 7, type: "feeds_into", label: "informs" },      // Values → Principles
+                { from: 3, to: 127, type: "feeds_into", label: "shapes" },     // Values → Culture
+                { from: 3, to: "brand_promise", type: "feeds_into", label: "defines" },      // Values → Brand Promise
+                { from: 3, to: "ethics_policy", type: "feeds_into", label: "shapes" },      // Values → Ethics Policy
+                { from: 9, to: 127, type: "feeds_into", label: "shapes" },     // Leadership Philosophy → Culture
+                { from: 5, to: 6, type: "feeds_into", label: "sets" },         // Goals → Priorities
+                { from: 1, to: "brand_promise", type: "feeds_into", label: "defines" },      // Mission → Brand Promise
+
+                // ========== GOVERNANCE STRUCTURE (Level 1-2) ==========
+                { from: "bylaws", to: 12, type: "feeds_into", label: "defines" },    // Bylaws → Board Charter
+                { from: 12, to: 13, type: "feeds_into", label: "sets" },       // Board Charter → Delegation
+                { from: "bylaws", to: 20, type: "feeds_into", label: "establishes" }, // Bylaws → Policy Framework
+                { from: 20, to: "ethics_policy", type: "feeds_into", label: "includes" },   // Policy Framework → Ethics
+                { from: 20, to: 15, type: "feeds_into", label: "includes" },   // Policy Framework → Conflict of Interest
+                { from: 20, to: 16, type: "feeds_into", label: "includes" },   // Policy Framework → Whistleblower
+                { from: 20, to: 21, type: "feeds_into", label: "guides" },     // Policy Framework → Procedures
+                { from: 12, to: 117, type: "feeds_into", label: "defines" },   // Board Charter → Project Governance
+
+                // ========== STRATEGIC PLANNING (Level 2-3) ==========
+                { from: 1, to: 10, type: "depends_on", label: "requires" },    // Strategic Plan needs Mission
+                { from: 2, to: 10, type: "depends_on", label: "requires" },    // Strategic Plan needs Vision
+                { from: 5, to: 10, type: "depends_on", label: "requires" },    // Strategic Plan needs Goals
+                { from: 10, to: 22, type: "feeds_into", label: "guides" },     // Strategic → Annual Plan
+                { from: 10, to: 23, type: "feeds_into", label: "guides" },     // Strategic → Operational Plan
+                { from: 10, to: 24, type: "feeds_into", label: "guides" },     // Strategic → Business Plan
+                { from: 10, to: 31, type: "feeds_into", label: "defines" },    // Strategic → Operating Model
+                { from: 10, to: 107, type: "feeds_into", label: "based on" },  // Strategic → Theory of Change
+
+                // ========== OPERATING MODEL & CAPABILITIES (Level 2-4) ==========
+                { from: 31, to: 32, type: "feeds_into", label: "defines" },    // Operating Model → Capabilities
+                { from: 32, to: 33, type: "feeds_into", label: "defines" },    // Capabilities → Service Catalog
+                { from: 31, to: 34, type: "feeds_into", label: "documented by" }, // Operating Model → Process Map
+                { from: 34, to: 35, type: "feeds_into", label: "organized as" }, // Process Map → Value Streams
+                { from: 34, to: 36, type: "feeds_into", label: "detailed in" }, // Process Map → SOPs
+                { from: 33, to: 37, type: "feeds_into", label: "governed by" }, // Service Catalog → SLAs
+                { from: 23, to: 34, type: "feeds_into", label: "documented in" }, // Operational Plan → Process Map
+
+                // ========== WORKFORCE & PEOPLE (Level 3-4) ==========
+                { from: 10, to: 51, type: "feeds_into", label: "informs" },    // Strategic Plan → Workforce Plan
+                { from: 51, to: 52, type: "feeds_into", label: "includes" },   // Workforce → Succession
+                { from: 51, to: 53, type: "feeds_into", label: "uses" },       // Workforce → Skills Matrix
+                { from: 51, to: 59, type: "feeds_into", label: "shapes" },     // Workforce → Org Chart
+                { from: 32, to: 54, type: "feeds_into", label: "defines" },    // Capability Model → Competencies
+                { from: 54, to: 53, type: "feeds_into", label: "maps to" },    // Competencies → Skills
+                { from: 54, to: 55, type: "feeds_into", label: "drives" },     // Competencies → Learning & Dev
+                { from: 54, to: 58, type: "feeds_into", label: "defines" },    // Competencies → Job Descriptions
+                { from: 55, to: 56, type: "feeds_into", label: "includes" },   // L&D → Onboarding
+                { from: 52, to: 55, type: "feeds_into", label: "informs" },    // Succession → L&D
+                { from: 51, to: 57, type: "feeds_into", label: "uses" },       // Workforce → Performance Mgmt
+                { from: 57, to: 60, type: "feeds_into", label: "informs" },    // Performance → Comp & Benefits
+                { from: 51, to: 60, type: "feeds_into", label: "drives" },     // Workforce → Comp & Benefits
+                { from: 127, to: 61, type: "feeds_into", label: "supports" },  // Culture → DEI Strategy
+                { from: 3, to: 61, type: "feeds_into", label: "guides" },      // Values → DEI
+                { from: 61, to: 56, type: "feeds_into", label: "shapes" },     // DEI → Onboarding
+
+                // ========== FINANCIAL MANAGEMENT (Level 2-4) ==========
+                { from: 66, to: 67, type: "feeds_into", label: "establishes" }, // Financial Policies → Controls
+                { from: 6, to: 65, type: "feeds_into", label: "drives" },      // Priorities → Budget
+                { from: 10, to: 65, type: "feeds_into", label: "drives" },     // Strategic Plan → Budget
+                { from: 66, to: 65, type: "depends_on", label: "governs" },    // Budget needs Policies
+                { from: 67, to: 65, type: "depends_on", label: "controls" },   // Budget needs Controls
+                { from: 10, to: 68, type: "feeds_into", label: "drives" },     // Strategic → Capital Plan
+                { from: 68, to: 65, type: "feeds_into", label: "informs" },    // Capital → Budget
+                { from: 31, to: 69, type: "feeds_into", label: "uses" },       // Operating Model → Cost Allocation
+
+                // ========== TECHNOLOGY & DATA (Level 3-4) ==========
+                { from: 10, to: 71, type: "feeds_into", label: "informs" },    // Strategic → IT Strategic
+                { from: 71, to: 74, type: "feeds_into", label: "defines" },    // IT Strategic → Enterprise Architecture
+                { from: 71, to: 75, type: "feeds_into", label: "creates" },    // IT Strategic → Tech Roadmap
+                { from: 74, to: 75, type: "feeds_into", label: "guides" },     // Architecture → Roadmap
+                { from: 20, to: 72, type: "feeds_into", label: "includes" },   // Policy Framework → Data Governance
+                { from: 20, to: 73, type: "feeds_into", label: "includes" },   // Policy Framework → Cybersecurity
+                { from: 81, to: 73, type: "feeds_into", label: "informs" },    // Risk Framework → Cybersecurity
+                { from: 72, to: 108, type: "feeds_into", label: "supports" },  // Data Governance → M&E Framework
+
+                // ========== RISK & CONTINUITY (Level 2-4) ==========
+                { from: 10, to: 81, type: "feeds_into", label: "informs" },    // Strategic → Risk Framework
+                { from: 81, to: 82, type: "feeds_into", label: "creates" },    // Risk Framework → Risk Register
+                { from: 81, to: 83, type: "feeds_into", label: "requires" },   // Risk → Business Continuity
+                { from: 83, to: 84, type: "related_to", label: "" },           // BCP ↔ COOP
+                { from: 83, to: 85, type: "feeds_into", label: "includes" },   // BCP → Disaster Recovery
+                { from: 83, to: 86, type: "feeds_into", label: "includes" },   // BCP → Crisis Comms
+                { from: 91, to: 86, type: "feeds_into", label: "includes" },   // Comms Plan → Crisis Comms
+
+                // ========== COMMUNICATIONS & ENGAGEMENT (Level 3-4) ==========
+                { from: 10, to: 91, type: "feeds_into", label: "guides" },     // Strategic → Comms Plan
+                { from: "brand_promise", to: 92, type: "feeds_into", label: "defines" },     // Brand Promise → Brand Guidelines
+                { from: 91, to: 92, type: "depends_on", label: "uses" },       // Comms → Brand Guidelines
+                { from: 91, to: 95, type: "feeds_into", label: "includes" },   // Comms → Social Media
+                { from: 10, to: 93, type: "feeds_into", label: "drives" },     // Strategic → Stakeholder Engagement
+                { from: 93, to: 94, type: "feeds_into", label: "includes" },   // Stakeholder → Public Participation
+                { from: 92, to: 95, type: "feeds_into", label: "guides" },     // Brand Guidelines → Social Media
+
+                // ========== PERFORMANCE & EVALUATION (Level 3-5) ==========
+                { from: 5, to: 101, type: "feeds_into", label: "defines" },    // Goals → Performance Framework
+                { from: 101, to: 102, type: "related_to", label: "" },         // Framework ↔ BSC
+                { from: 101, to: 103, type: "related_to", label: "" },         // Framework ↔ OKRs
+                { from: 102, to: 104, type: "feeds_into", label: "uses" },     // BSC → KPIs
+                { from: 103, to: 104, type: "feeds_into", label: "uses" },     // OKRs → KPIs
+                { from: 104, to: 105, type: "feeds_into", label: "displayed in" }, // KPIs → Dashboard
+                { from: 107, to: 106, type: "feeds_into", label: "creates" },  // Theory of Change → Logic Model
+                { from: 106, to: 108, type: "feeds_into", label: "guides" },   // Logic Model → M&E Framework
+                { from: 108, to: 109, type: "feeds_into", label: "creates" },  // M&E Framework → Evaluation Plan
+                { from: 101, to: 108, type: "feeds_into", label: "guides" },   // Performance Framework → M&E
+                { from: 109, to: 110, type: "feeds_into", label: "produces" }, // Evaluation → Annual Report
+                { from: 104, to: 110, type: "feeds_into", label: "reported in" }, // KPIs → Annual Report
+                { from: 105, to: 110, type: "feeds_into", label: "informs" },  // Dashboard → Annual Report
+
+                // ========== PROJECT & PORTFOLIO MANAGEMENT (Level 3-5) ==========
+                { from: 6, to: 116, type: "feeds_into", label: "drives" },     // Priorities → Portfolio Prioritization
+                { from: 116, to: 114, type: "feeds_into", label: "selects" },  // Portfolio → Project Charter
+                { from: 114, to: 115, type: "feeds_into", label: "initiates" }, // Charter → Project Plan
+                { from: 117, to: 114, type: "feeds_into", label: "governs" },  // Governance → Charter
+                { from: 114, to: 118, type: "feeds_into", label: "defines" },  // Charter → Benefits Realization
+                { from: 115, to: 119, type: "feeds_into", label: "generates" }, // Project Plan → Lessons Learned
+                { from: 118, to: 110, type: "feeds_into", label: "reported in" }, // Benefits → Annual Report
+                { from: 119, to: 55, type: "feeds_into", label: "informs" },   // Lessons → Learning & Dev
+
+                // ========== CHANGE & CULTURE (Level 1-4) ==========
+                { from: 10, to: 121, type: "feeds_into", label: "drives" },    // Strategic → Change Plan
+                { from: 121, to: 122, type: "feeds_into", label: "uses" },     // Change → Readiness Assessment
+                { from: 122, to: 123, type: "feeds_into", label: "informs" },  // Readiness → Adoption Plan
+                { from: 127, to: 121, type: "feeds_into", label: "supports" }, // Culture → Change
+                { from: 127, to: 128, type: "feeds_into", label: "measured by" }, // Culture → Engagement Survey
+                { from: 127, to: 129, type: "feeds_into", label: "measured by" }, // Culture → Climate Survey
+                { from: 128, to: 121, type: "feeds_into", label: "informs" },  // Engagement → Change
+                { from: 91, to: 121, type: "feeds_into", label: "supports" },  // Comms → Change
+
+                // ========== CROSS-DOMAIN CONNECTIONS ==========
+                { from: 22, to: 65, type: "depends_on", label: "funded by" },  // Annual Plan → Budget
+                { from: 23, to: 65, type: "depends_on", label: "funded by" },  // Operational Plan → Budget
+                { from: 71, to: 65, type: "depends_on", label: "funded by" },  // IT Strategic → Budget
+                { from: 57, to: 110, type: "feeds_into", label: "reported in" }, // Performance Mgmt → Annual Report
+                { from: 82, to: 110, type: "feeds_into", label: "reported in" }, // Risk Register → Annual Report
+                { from: 10, to: 61, type: "feeds_into", label: "includes" },   // Strategic → DEI
+                { from: 32, to: 71, type: "feeds_into", label: "informs" },    // Capabilities → IT Strategic
+
+                // ========== STRATEGIC & FOUNDATION EXPANSION ==========
+                { from: 1, to: 8, type: "depends_on", label: "anchors" },      // Mission → Strategic Plan
+                { from: 8, to: 22, type: "feeds_into", label: "guides" },      // Strategic Plan → Annual Plan
+                { from: 8, to: 179, type: "feeds_into", label: "defines" },    // Strategic Plan → Success Criteria
+                { from: 11, to: 8, type: "feeds_into", label: "informs" },     // Theory of Value → Strategic Plan
+                { from: 14, to: 91, type: "feeds_into", label: "shapes" },     // Org Narrative → Comms Plan
+                { from: 14, to: 168, type: "feeds_into", label: "informs" },   // Org Narrative → Fundraising Strategy
+                { from: 152, to: 8, type: "feeds_into", label: "informs" },    // Impact Manifesto → Strategic Plan
+
+                // ========== GOVERNANCE EXPANSION ==========
+                { from: "bylaws", to: 17, type: "feeds_into", label: "creates" },    // Bylaws → Delegation Matrix
+                { from: 17, to: 13, type: "related_to", label: "" },           // Delegation Matrix ↔ Delegation of Authority
+                { from: 18, to: 22, type: "feeds_into", label: "ensures" },    // Accountability Framework → Annual Plan
+                { from: 19, to: 12, type: "related_to", label: "" },           // Board Handbook ↔ Board Charter
+                { from: 12, to: "board_minutes", type: "feeds_into", label: "documented in" }, // Board Charter → Board Minutes
+                { from: "mandate_letter", to: 22, type: "feeds_into", label: "sets direction" }, // Mandate Letter → Annual Plan
+                { from: 25, to: 93, type: "feeds_into", label: "enables" },    // Community Advisory Board → Stakeholder Engagement
+                { from: 26, to: "ethics_policy", type: "feeds_into", label: "enforces" },   // Ethics Review → Ethics Policy
+                { from: 27, to: "ethics_policy", type: "related_to", label: "" },           // Whistleblower ↔ Ethics Policy
+                { from: 28, to: 165, type: "related_to", label: "" },          // Document Retention ↔ Records Retention
+                { from: 12, to: 30, type: "feeds_into", label: "establishes" }, // Board Charter → Committee Charters
+                { from: 141, to: 144, type: "feeds_into", label: "creates" },  // Compliance Framework → Compliance Calendar
+                { from: 140, to: 139, type: "related_to", label: "" },         // Ethical Decision ↔ Decision Framework
+                { from: 146, to: 15, type: "related_to", label: "" },          // Standards of Conduct ↔ Code of Ethics
+                { from: 147, to: 20, type: "feeds_into", label: "constrains" }, // Operating Guardrails → Policy Framework
+
+                // ========== OPERATIONS EXPANSION ==========
+                { from: 38, to: 37, type: "related_to", label: "" },           // SLAs ↔ Service Level Agreements
+                { from: 39, to: 33, type: "feeds_into", label: "defines standards" }, // Customer Charter → Service Catalog
+                { from: 40, to: 36, type: "related_to", label: "" },           // SOPs ↔ Standard Operating Procedures
+                { from: 41, to: 31, type: "feeds_into", label: "guides" },     // Operating Principles → Operating Model
+                { from: 42, to: 40, type: "feeds_into", label: "documented as" }, // Playbooks → SOPs
+                { from: 43, to: 34, type: "feeds_into", label: "clarifies" },  // RACI → Process Map
+                { from: 44, to: 35, type: "related_to", label: "" },           // Value Stream Map ↔ Value Streams
+                { from: 45, to: 40, type: "feeds_into", label: "stores" },     // Knowledge Base → SOPs
+                { from: 46, to: 22, type: "feeds_into", label: "structures" }, // Operating Rhythm → Annual Plan
+
+                // ========== WORKFORCE EXPANSION ==========
+                { from: 47, to: 54, type: "related_to", label: "" },           // Leadership Competencies ↔ Competency Framework
+                { from: 49, to: 54, type: "feeds_into", label: "defines" },    // Competency Dictionary → Competency Framework
+                { from: 50, to: 58, type: "feeds_into", label: "structures" }, // Role Architecture → Job Descriptions
+                { from: 62, to: 56, type: "feeds_into", label: "includes" },   // Employee Handbook → Onboarding
+                { from: 63, to: 62, type: "feeds_into", label: "part of" },    // Remote Work Policy → Employee Handbook
+                { from: 64, to: 60, type: "feeds_into", label: "part of" },    // Wellness Program → Comp & Benefits
+                { from: 149, to: 61, type: "related_to", label: "" },          // Equity Framework ↔ DEI Strategy
+                { from: 150, to: 55, type: "related_to", label: "" },          // Leadership Development ↔ Learning & Dev
+                { from: 124, to: 55, type: "feeds_into", label: "part of" },   // Training Plan → Learning & Dev
+                { from: 145, to: 62, type: "feeds_into", label: "part of" },   // Harassment Prevention → Employee Handbook
+                { from: 176, to: 51, type: "feeds_into", label: "attracts talent" }, // Employer Value Prop → Workforce Plan
+
+                // ========== FINANCIAL EXPANSION ==========
+                { from: 70, to: 65, type: "feeds_into", label: "funds" },      // Grant Management → Annual Budget
+                { from: 76, to: 66, type: "feeds_into", label: "part of" },    // Investment Policy → Financial Policies
+                { from: 77, to: 65, type: "feeds_into", label: "informs" },    // Cash Flow Forecast → Annual Budget
+                { from: 78, to: 66, type: "feeds_into", label: "part of" },    // Procurement Policy → Financial Policies
+                { from: 79, to: 68, type: "feeds_into", label: "manages" },    // Asset Management → Capital Plan
+                { from: 80, to: 69, type: "related_to", label: "" },           // Indirect Cost Rate ↔ Cost Allocation
+
+                // ========== TECHNOLOGY & DIGITAL EXPANSION ==========
+                { from: 81, to: 72, type: "feeds_into", label: "part of" },    // Privacy Policy → Data Governance
+                { from: 88, to: 71, type: "feeds_into", label: "part of" },    // Cloud Strategy → IT Strategic Plan
+                { from: 89, to: 71, type: "related_to", label: "" },           // Digital Strategy ↔ IT Strategic Plan
+                { from: 90, to: 73, type: "feeds_into", label: "informs" },    // AI Ethics → Cybersecurity Policy
+
+                // ========== RISK & CONTINUITY EXPANSION ==========
+                { from: 87, to: 82, type: "feeds_into", label: "populates" },  // Threat Assessment → Risk Register
+                { from: 88, to: 83, type: "related_to", label: "" },           // Emergency Response ↔ Business Continuity
+                { from: 89, to: 81, type: "feeds_into", label: "implements" }, // Resilience Plan → Risk Framework
+                { from: 90, to: 83, type: "feeds_into", label: "supports" },   // Safety Program → Business Continuity
+
+                // ========== COMMUNICATIONS EXPANSION ==========
+                { from: 96, to: 91, type: "feeds_into", label: "part of" },    // Media Strategy → Communications Plan
+                { from: 97, to: 91, type: "feeds_into", label: "part of" },    // Public Affairs → Communications Plan
+                { from: 98, to: 91, type: "feeds_into", label: "implements" }, // Content Strategy → Communications Plan
+                { from: 99, to: 91, type: "feeds_into", label: "guides" },     // Messaging Framework → Communications Plan
+                { from: 100, to: 86, type: "related_to", label: "" },          // Crisis Communications ↔ Crisis Comms Plan
+                { from: 125, to: 91, type: "feeds_into", label: "part of" },   // Communication Plan (Change) → Communications Plan
+
+                // ========== PERFORMANCE & EVALUATION EXPANSION ==========
+                { from: 111, to: 101, type: "related_to", label: "" },         // Outcome Framework ↔ Performance Framework
+                { from: 112, to: 108, type: "feeds_into", label: "uses" },     // Impact Measurement → M&E Framework
+                { from: 113, to: 104, type: "feeds_into", label: "defines" },  // Data Dictionary → KPIs
+                { from: 120, to: 116, type: "feeds_into", label: "displays" }, // Portfolio Dashboard → Portfolio Prioritization
+                { from: 142, to: 119, type: "feeds_into", label: "captures" }, // Learning System → Lessons Learned
+                { from: 153, to: 106, type: "related_to", label: "" },         // Outcome Chain ↔ Logic Model
+
+                // ========== CHANGE & CULTURE EXPANSION ==========
+                { from: 125, to: 121, type: "feeds_into", label: "supports" }, // Communication Plan (Change) → Change Plan
+                { from: 126, to: 121, type: "feeds_into", label: "part of" },  // Resistance Management → Change Plan
+                { from: 130, to: 127, type: "feeds_into", label: "reinforces" }, // Symbolic Actions → Culture Framework
+                { from: 151, to: 127, type: "related_to", label: "" },         // Culture Code ↔ Culture Framework
+                { from: 124, to: 123, type: "feeds_into", label: "enables" },  // Training Plan → Adoption Plan
+
+                // ========== SPECIALIZED TOOLS & FRAMEWORKS ==========
+                { from: 131, to: 31, type: "feeds_into", label: "guides" },    // Design Principles → Operating Model
+                { from: 132, to: 37, type: "feeds_into", label: "informs" },   // User Personas → Service Blueprint
+                { from: 133, to: 8, type: "feeds_into", label: "informs" },    // PESTLE → Strategic Plan
+                { from: 134, to: 8, type: "feeds_into", label: "informs" },    // SWOT → Strategic Plan
+                { from: 135, to: 8, type: "feeds_into", label: "informs" },    // Scenario Planning → Strategic Plan
+                { from: 136, to: 34, type: "feeds_into", label: "visualizes" }, // Systems Mapping → Process Map
+                { from: 137, to: 93, type: "feeds_into", label: "creates" },   // Stakeholder Mapping → Stakeholder Engagement
+                { from: 138, to: 137, type: "feeds_into", label: "informs" },  // Power Mapping → Stakeholder Mapping
+                { from: 143, to: 127, type: "feeds_into", label: "studies" },  // Ethnographic Studies → Culture Framework
+
+                // ========== SECTOR-SPECIFIC: PUBLIC SECTOR ==========
+                { from: 154, to: 148, type: "related_to", label: "" },         // Briefing Paper ↔ Executive Briefing Book
+                { from: 155, to: 20, type: "feeds_into", label: "guides" },    // Policy Guidance → Policy Framework
+                { from: 156, to: 8, type: "depends_on", label: "authorizes" }, // Legislative Mandate → Strategic Plan
+                { from: 157, to: 156, type: "feeds_into", label: "implements" }, // Legislative Agenda → Legislative Mandate
+                { from: 158, to: 110, type: "related_to", label: "" },         // Statutory Report ↔ Annual Report
+                { from: 159, to: 20, type: "feeds_into", label: "creates" },   // Rulemaking Plan → Policy Framework
+                { from: 160, to: 20, type: "feeds_into", label: "interprets" }, // Policy Bulletins → Policy Framework
+                { from: 161, to: 174, type: "related_to", label: "" },         // Interagency Agreement ↔ Network Governance
+                { from: 162, to: 72, type: "feeds_into", label: "part of" },   // Public Data Policies → Data Governance
+                { from: 163, to: 110, type: "related_to", label: "" },         // Transparency Report ↔ Annual Report
+                { from: 164, to: 33, type: "feeds_into", label: "ensures" },   // Accessibility Plan → Service Catalog
+                { from: 165, to: 28, type: "related_to", label: "" },          // Records Retention ↔ Document Retention
+                { from: 166, to: 84, type: "related_to", label: "" },          // Continuity of Government ↔ COOP Plan
+
+                // ========== SECTOR-SPECIFIC: NONPROFIT ==========
+                { from: 167, to: 168, type: "feeds_into", label: "supports" }, // Case for Support → Fundraising Strategy
+                { from: 168, to: 65, type: "feeds_into", label: "funds" },     // Fundraising Strategy → Annual Budget
+                { from: 169, to: 168, type: "feeds_into", label: "informs" },  // Donor Segmentation → Fundraising Strategy
+                { from: 170, to: 51, type: "feeds_into", label: "manages" },   // Volunteer Handbook → Workforce Plan
+                { from: 171, to: 110, type: "related_to", label: "" },         // Impact Report ↔ Annual Report
+                { from: 172, to: 112, type: "related_to", label: "" },         // SROI Framework ↔ Impact Measurement
+                { from: 173, to: 174, type: "feeds_into", label: "enables" },  // Partner Value Proposition → Network Governance
+                { from: 175, to: 174, type: "feeds_into", label: "formalizes" }, // Coalition Agreements → Network Governance
+
+                // ========== SPECIALIZED: CONSULTING & ADVANCED ==========
+                { from: 177, to: 8, type: "feeds_into", label: "informs" },    // Product Strategy → Strategic Plan
+                { from: 178, to: 31, type: "related_to", label: "" },          // Operating Model Blueprint ↔ Operating Model
+                { from: 180, to: "ethics_policy", type: "feeds_into", label: "ensures" },   // Integrity Framework → Ethics Policy
+                { from: 181, to: 115, type: "feeds_into", label: "guides" },   // Delivery Framework → Project Plan
+                { from: 182, to: 114, type: "related_to", label: "" },         // Statement of Work ↔ Project Charter
+                { from: 183, to: 8, type: "feeds_into", label: "assesses" },   // Diagnostic Toolkit → Strategic Plan
+                { from: 184, to: 122, type: "related_to", label: "" },         // Readiness Assessment ↔ Change Readiness
+                { from: 185, to: 134, type: "feeds_into", label: "structures" }, // Hypothesis Tree → SWOT Analysis
+                { from: 186, to: 181, type: "feeds_into", label: "documents" }, // Blueprint Deck → Delivery Framework
+                { from: 187, to: 186, type: "feeds_into", label: "informs" },  // Insights Deck → Blueprint Deck
+                { from: 188, to: 32, type: "feeds_into", label: "assesses" },  // Capability Heatmap → Capability Model
+
+                // ========== CROSS-FUNCTIONAL & INTEGRATIVE RELATIONSHIPS ==========
+                { from: 43, to: 59, type: "feeds_into", label: "clarifies" },  // RACI Matrix → Org Chart
+                { from: 139, to: 8, type: "feeds_into", label: "guides" },     // Decision Framework → Strategic Plan
+                { from: 8, to: 23, type: "feeds_into", label: "guides" },      // Strategic Plan → Operational Plan
+                { from: 23, to: 22, type: "feeds_into", label: "supports" },   // Operational Plan → Annual Plan
+                { from: 179, to: 101, type: "feeds_into", label: "defines" },  // Mission Success Criteria → Performance Framework
+                { from: 152, to: 1, type: "feeds_into", label: "amplifies" },  // Impact Manifesto → Mission
+                { from: 151, to: 3, type: "related_to", label: "" }            // Culture Code ↔ Core Values
+            ]
+        };
+
+        /**
+         * Initialize vis.js Network Graph
+         *
+         * This section configures and renders the interactive network visualization.
+         */
+
+        // Get the HTML container element
+        const container = document.getElementById('networkContainer');
+
+        /**
+         * Configure node appearance
+         *
+         * Each node is styled based on its group (category):
+         * - foundation: Red background (#e74c3c)
+         * - governance: Blue background (#3498db)
+         * - operations: Green background (#27ae60)
+         * - performance: Orange background (#f39c12)
+         *
+         * All nodes have:
+         * - Box shape with margin for text padding
+         * - Dark border (#2c3e50)
+         * - Orange highlight on hover/select
+         */
+        /**
+         * Color scheme for artifact categories (12 distinct categories)
+         */
+        const categoryColors = {
+            'foundation': '#e74c3c',        // Red - Mission, Vision, Values
+            'strategic': '#9b59b6',         // Purple - Strategic Plans, Goals
+            'governance': '#3498db',        // Blue - Bylaws, Board, Ethics
+            'operations': '#27ae60',        // Green - Operating Model, Processes
+            'workforce': '#1abc9c',         // Teal - HR, Talent, DEI
+            'financial': '#f39c12',         // Gold - Budgets, Capital
+            'technology': '#00acc1',        // Cyan - IT, Data, Cyber
+            'risk': '#e67e22',              // Dark Orange - Risk, Continuity
+            'communications': '#ec407a',    // Pink - Comms, Brand
+            'performance': '#ff9800',       // Orange - KPIs, Evaluation
+            'change': '#ffc107',            // Amber - Change, Culture
+            'sector_specific': '#34495e',   // Navy - Public/Nonprofit specific
+            'specialized': '#95a5a6',       // Gray - Consulting, Advanced Tools
+            'cross_functional': '#7b1fa2'   // Deep Purple - Cross-domain artifacts
+        };
+
+        const nodes = new vis.DataSet(artifactRelationships.nodes.map(node => ({
+            ...node,
+            shape: 'box',
+            margin: 10,
+            font: { size: 12, multi: true },
+            color: {
+                background: categoryColors[node.group] || '#95a5a6',
+                border: '#2c3e50',
+                highlight: {
+                    background: '#ff5722',
+                    border: '#e64a19'
+                }
+            }
+        })));
+
+        /**
+         * Configure edge (connection) appearance
+         *
+         * Edges are color-coded by relationship type:
+         * - feeds_into: Green (#27ae60) - Shows directional flow
+         * - depends_on: Blue (#3498db) - Shows dependencies
+         * - related_to: Orange (#f39c12) - Shows complementary relationships
+         *
+         * All edges have:
+         * - Directional arrows pointing to target
+         * - Curved lines for better visibility
+         */
+        const edges = new vis.DataSet(artifactRelationships.edges.map(edge => ({
+            ...edge,
+            arrows: 'to',
+            color: edge.type === 'feeds_into' ? '#27ae60' :
+                   edge.type === 'depends_on' ? '#3498db' :
+                   '#f39c12',
+            smooth: { type: 'curvedCW', roundness: 0.2 }
+        })));
+
+        // Combine nodes and edges into dataset
+        const data = { nodes, edges };
+
+        /**
+         * vis.js Network Configuration Options
+         *
+         * Physics: Enables dynamic layout with hierarchical repulsion
+         * - Nodes push away from each other for clarity
+         * - Spring forces keep connected nodes closer
+         * - Stabilization runs 1000 iterations on initial load
+         *
+         * Layout: Hierarchical top-down arrangement
+         * - Direction: UD (up-down, top to bottom)
+         * - Level separation: 150px vertical spacing
+         * - Node spacing: 200px horizontal spacing
+         * - Sorted by directed edges (dependencies flow downward)
+         *
+         * Interaction: User controls
+         * - Hover effects enabled
+         * - Navigation buttons for zoom/pan
+         * - Keyboard shortcuts enabled
+         *
+         * @see https://visjs.github.io/vis-network/docs/network/
+         */
+        const options = {
+            physics: {
+                enabled: true,
+                hierarchicalRepulsion: {
+                    centralGravity: 0.3,
+                    springLength: 150,
+                    springConstant: 0.01,
+                    nodeDistance: 180,
+                    damping: 0.09
+                },
+                solver: 'hierarchicalRepulsion',
+                stabilization: {
+                    enabled: true,
+                    iterations: 1000
+                }
+            },
+            layout: {
+                hierarchical: {
+                    enabled: true,
+                    direction: 'UD',
+                    sortMethod: 'directed',
+                    levelSeparation: 150,
+                    nodeSpacing: 200
+                }
+            },
+            interaction: {
+                hover: true,
+                tooltipDelay: 100,
+                navigationButtons: true,
+                keyboard: true
+            }
+        };
+
+        // Create the network visualization
+        const network = new vis.Network(container, data, options);
+
+        /**
+         * Event Handlers
+         */
+
+        /**
+         * Handle node click events
+         *
+         * When user clicks on an artifact node, display detailed information
+         * in the side panel including:
+         * - Artifact name and number
+         * - Category (group)
+         * - Hierarchical level
+         * - Link back to main catalog
+         */
+        network.on('click', function(params) {
+            if (params.nodes.length > 0) {
+                const nodeId = params.nodes[0];
+                const node = nodes.get(nodeId);
+                showArtifactInfo(node);
+            }
+        });
+
+        /**
+         * Display artifact information in side panel
+         *
+         * Shows details for the clicked artifact and provides navigation
+         * back to the main catalog with anchor link to specific artifact.
+         *
+         * @param {Object} node - The vis.js node object containing artifact data
+         */
+        function showArtifactInfo(node) {
+            const panel = document.getElementById('infoPanel');
+            const content = document.getElementById('infoPanelContent');
+            const label = String(node.label).replace(/\n/g, ' ');
+            const numericId = Number(node.id);
+            const hasCatalogLink = Number.isInteger(numericId) && numericId > 0;
+            const catalogLink = hasCatalogLink
+                ? `<a href="index.html#artifact-${node.id}" class="btn btn-primary" style="color: white;">View in Catalog</a>`
+                : `<p style="color: #888; font-style: italic;">Not available in catalog view</p>`;
+
+            content.innerHTML = `
+                <h2>${label}</h2>
+                <span class="artifact-number">#${node.id}</span>
+                <p><strong>Category:</strong> ${node.group}</p>
+                <p><strong>Hierarchy Level:</strong> ${node.level}</p>
+                <br>
+                <p><em>Click on connected nodes to explore relationships</em></p>
+                <br>
+                ${catalogLink}
+            `;
+
+            panel.classList.add('show');
+        }
+
+        /**
+         * Close the information panel
+         *
+         * Hides the side panel when user clicks the close button
+         * or wants to return to exploring the graph.
+         */
+        function closeInfo() {
+            document.getElementById('infoPanel').classList.remove('show');
+        }
+
+        /**
+         * Toggle physics engine on/off
+         *
+         * Physics creates the dynamic, spring-based layout where nodes
+         * repel each other and edges act like springs.
+         *
+         * Reasons to toggle physics:
+         * - Turn OFF: Freeze the layout for easier reading/screenshots
+         * - Turn ON: Let graph reorganize after adding/removing filters
+         *
+         * @global {boolean} physicsEnabled - Tracks current physics state
+         */
+        let physicsEnabled = true;
+        function togglePhysics() {
+            physicsEnabled = !physicsEnabled;
+            network.setOptions({ physics: { enabled: physicsEnabled } });
+        }
+
+        function resetNetwork() {
+            network.fit();
+            network.setOptions({ physics: { enabled: true } });
+            physicsEnabled = true;
+        }
+
+        function fitNetwork() {
+            network.fit({ animation: true });
+        }
+
+        /**
+         * Filter nodes by checked categories
+         *
+         * Shows/hides nodes based on which category checkboxes are selected.
+         * Also hides edges that connect to hidden nodes.
+         */
+        function filterCategories() {
+            const checkboxes = document.querySelectorAll('.category-filter input[type="checkbox"]');
+            const selectedCategories = Array.from(checkboxes)
+                .filter(cb => cb.checked)
+                .map(cb => cb.value);
+
+            // Update node visibility
+            nodes.forEach(node => {
+                const shouldShow = selectedCategories.includes(node.group);
+                nodes.update({ id: node.id, hidden: !shouldShow });
+            });
+
+            // Update edge visibility (hide edges if either end is hidden)
+            edges.forEach(edge => {
+                const fromNode = nodes.get(edge.from);
+                const toNode = nodes.get(edge.to);
+                const shouldShow = fromNode && toNode &&
+                                 selectedCategories.includes(fromNode.group) &&
+                                 selectedCategories.includes(toNode.group);
+                edges.update({ id: edge.id, hidden: !shouldShow });
+            });
+
+            network.fit();
+        }
+
+        /**
+         * Toggle all category checkboxes on/off
+         */
+        function toggleAllCategories() {
+            const checkboxes = document.querySelectorAll('.category-filter input[type="checkbox"]');
+            const allChecked = Array.from(checkboxes).every(cb => cb.checked);
+
+            checkboxes.forEach(cb => {
+                cb.checked = !allChecked;
+            });
+
+            filterCategories();
+        }
+
+        /**
+         * Master View - Shows only essential foundational artifacts
+         *
+         * Displays the "Universal Artifact Stack" - the bare minimum artifacts
+         * that every organization needs regardless of size, sector, or complexity.
+         *
+         * Essential artifacts include:
+         * - Strategic Foundation: Mission, Vision, Values, Purpose, Goals
+         * - Core Governance: Charter, Bylaws, Board, Ethics, Controls
+         * - Planning: Strategic Plan, Annual Plan
+         * - Operations: Operating Model, Org Structure
+         * - Financial: Annual Budget
+         * - Performance: Performance Framework, KPIs
+         */
+        function showMasterView() {
+            // Essential artifact IDs that form the universal stack
+              const masterArtifacts = [
+                  1,   // Mission Statement
+                  2,   // Vision Statement
+                  3,   // Core Values
+                  4,   // Purpose Statement
+                  5,   // Strategic Goals
+                  8,   // Strategic Plan
+                  10,  // Strategic Plan (original)
+                  "bylaws",  // Bylaws
+                  12,  // Board Charter
+                  14,  // Organizational Narrative
+                  15,  // Code of Ethics
+                  16,  // Governance Framework
+                  20,  // Internal Controls Framework
+                  22,  // Annual Plan
+                  31,  // Operating Model
+                  34,  // Org Structure
+                  59,  // Org Chart
+                  65,  // Annual Budget
+                  101, // Performance Framework
+                  104  // KPIs
+              ];
+
+            // Hide all nodes first
+            nodes.forEach(node => {
+                const shouldShow = masterArtifacts.includes(node.id);
+                nodes.update({ id: node.id, hidden: !shouldShow });
+            });
+
+            // Show only edges between visible master artifacts
+            edges.forEach(edge => {
+                const fromVisible = masterArtifacts.includes(edge.from);
+                const toVisible = masterArtifacts.includes(edge.to);
+                const shouldShow = fromVisible && toVisible;
+                edges.update({ id: edge.id, hidden: !shouldShow });
+            });
+
+            // Update checkboxes to reflect the visible categories
+            const checkboxes = document.querySelectorAll('.category-filter input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                // Check foundation, strategic, governance, operations, financial, performance
+                const masterCategories = ['foundation', 'strategic', 'governance', 'operations', 'financial', 'performance'];
+                cb.checked = masterCategories.includes(cb.value);
+            });
+
+            network.fit({ animation: true });
+
+            // Show notification
+            alert('⭐ Master View: Showing 20 essential foundational artifacts\n\nThese are the core artifacts every organization needs:\n• Strategic Foundation (Mission, Vision, Values, Purpose, Goals)\n• Core Governance (Charter, Bylaws, Board, Ethics, Controls)\n• Planning (Strategic Plan, Annual Plan)\n• Operations (Operating Model, Org Structure)\n• Financial (Annual Budget)\n• Performance (Framework, KPIs)\n\nClick "Reset View" to see all artifacts again.');
+        }
+
+        // Add event listeners to category checkboxes
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.category-filter input[type="checkbox"]');
+            checkboxes.forEach(cb => {
+                cb.addEventListener('change', filterCategories);
+            });
+        });
+
+        function filterByCategory() {
+            const category = document.getElementById('filterCategory').value;
+
+            if (category === 'all') {
+                nodes.forEach(node => {
+                    nodes.update({ id: node.id, hidden: false });
+                });
+                edges.forEach(edge => {
+                    edges.update({ id: edge.id, hidden: false });
+                });
+            } else {
+                nodes.forEach(node => {
+                    nodes.update({
+                        id: node.id,
+                        hidden: node.group !== category
+                    });
+                });
+
+                // Hide edges where both nodes are hidden
+                edges.forEach(edge => {
+                    const fromNode = nodes.get(edge.from);
+                    const toNode = nodes.get(edge.to);
+                    edges.update({
+                        id: edge.id,
+                        hidden: fromNode.group !== category && toNode.group !== category
+                    });
+                });
+            }
+
+            network.fit();
+        }
+
+        // Initialize
+        console.log('🕸️ Artifact Relationship Map loaded');
+        console.log(`Showing ${nodes.length} artifacts with ${edges.length} relationships`);
+    </script>
+</body>
+</html>
