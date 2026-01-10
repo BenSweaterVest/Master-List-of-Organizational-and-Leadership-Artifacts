@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master List of Organizational and Leadership Artifacts</title>
-    <meta name="description" content="Comprehensive catalog of 188 organizational and leadership artifacts with academic research and real-world examples">
+    <meta name="description" content="Comprehensive catalog of 193 organizational and leadership artifacts with academic research and real-world examples">
     <meta name="theme-color" content="#3498db">
     <link rel="icon" type="image/x-icon" href="https://favicon.show/thesweatervest.com">
     <link rel="manifest" href="/manifest.json">
@@ -325,57 +325,140 @@
             margin-top: 1.5rem;
         }
 
-        .methodology-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1.25rem;
+        .hero-section {
+            background: linear-gradient(135deg, #7b68ee 0%, #9370db 50%, #ba55d3 100%);
             border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            flex: 2;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
 
-        .methodology-content {
+        .two-column {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 20px;
+            margin-bottom: 20px;
         }
 
-        .methodology-section {
-            min-width: 0;
-        }
-
-        .methodology-header h3 {
-            margin: 0 0 0.5rem 0;
-            color: white;
-            font-size: 1rem;
-        }
-
-        .framework-box-full {
-            background: rgba(255,255,255,0.2);
-            border-left: 4px solid rgba(255,255,255,0.8);
-            padding: 1rem;
+        .column {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 8px;
-            margin: 0.25rem 0;
-            backdrop-filter: blur(10px);
+            padding: 20px;
         }
 
-        .framework-box-full ul,
-        .framework-box-full li,
-        .framework-box-full span {
-            color: white;
+        .hero-section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #fff;
         }
 
-        .framework-box-full ul {
-            margin: 0.5rem 0 0 0;
-        }
-
-        .framework-box-full li {
-            font-size: 0.9rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .framework-box-full span {
+        .intro-line {
+            margin-bottom: 15px;
             font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* Compact Strategic Coherence Visual */
+        .coherence-map {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .map-row {
+            display: grid;
+            grid-template-columns: 1fr 15px 1fr 15px 1fr 15px 1fr 15px 1fr;
+            align-items: center;
+        }
+
+        .concept-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 4px;
+            border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            min-height: 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .concept-title {
+            font-weight: 800;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .concept-blurb {
+            font-size: 0.6rem;
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        .artifact-box {
+            background: rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 8px 4px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            min-height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 500;
+        }
+
+        .h-arrow { font-size: 0.8rem; opacity: 0.5; }
+        .v-arrow { opacity: 0.3; font-size: 1rem; padding: 2px 0; }
+
+        /* Compact Artifact List */
+        .stack-group {
+            margin-bottom: 15px;
+            padding-left: 12px;
+            border-left: 3px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stack-group.identity {
+            border-color: rgba(255, 255, 255, 0.6);
+        }
+
+        .artifact-row {
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+        }
+
+        .term { font-weight: 700; }
+        .question { font-style: italic; opacity: 0.8; margin: 0 3px; }
+        .definition { opacity: 0.9; }
+
+        /* Table */
+        .full-width-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            padding: 20px;
+        }
+
+        .full-width-section table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 0.85rem;
+        }
+
+        .full-width-section th {
+            text-align: left;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .full-width-section td {
+            padding: 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         /* Old priority selector styles removed - using inline indicators now */
@@ -561,6 +644,13 @@
             backdrop-filter: blur(10px);
         }
 
+        @media (max-width: 1100px) {
+            .two-column { grid-template-columns: 1fr; }
+            .map-row { grid-template-columns: 1fr; gap: 4px; }
+            .h-arrow { transform: rotate(90deg); margin: 2px 0; }
+            .v-arrow { display: none; }
+        }
+
         @media (max-width: 968px) {
             .main-layout {
                 grid-template-columns: 1fr;
@@ -680,45 +770,78 @@
     <div class="header">
         <div class="container">
             <h1>Master List of Organizational and Leadership Artifacts</h1>
-            <p>A comprehensive compilation of organizational, leadership, strategic, operational, and governance artifacts used across public administration, nonprofit leadership, and general organizational management</p>
-            <div class="header-bottom">
-                <div class="methodology-header">
-                    <div class="methodology-content">
-                        <div class="methodology-section">
-                            <h3>The Strategic Foundation (Identity Layer)</h3>
-                            <div class="framework-box-full">
-                                <span style="display: block; margin: 0.5rem 0;">
-                                    <strong>Purpose</strong> (stable) → <strong>Vision</strong> (aspirational) → <strong>Mission</strong> (operational) → <strong>Values</strong> (behavioral)
-                                </span>
-                                <ul style="list-style: none; padding-left: 0;">
-                                    <li>• Purpose: "Why do we exist?"</li>
-                                    <li>• Vision: "Where are we going?"</li>
-                                    <li>• Mission: "What do we do?"</li>
-                                    <li>• Values: "How do we behave?"</li>
-                                </ul>
+            <p style="font-size: 1rem; margin-bottom: 25px; opacity: 0.85;">A comprehensive compilation of strategic, operational, and governance artifacts for public and nonprofit management.</p>
+
+            <div class="hero-section">
+                <div class="two-column">
+
+                    <div class="column">
+                        <h2>Strategic Coherence</h2>
+                        <p class="intro-line">Aligning organizational logic with formal artifacts:</p>
+                        <div class="coherence-map">
+                            <div class="map-row">
+                                <div class="concept-box"><span class="concept-title">Identity</span><span class="concept-blurb">Who are we?</span></div>
+                                <div class="h-arrow">→</div>
+                                <div class="concept-box"><span class="concept-title">Direction</span><span class="concept-blurb">How we decide</span></div>
+                                <div class="h-arrow">→</div>
+                                <div class="concept-box"><span class="concept-title">Priorities</span><span class="concept-blurb">What we fund</span></div>
+                                <div class="h-arrow">→</div>
+                                <div class="concept-box"><span class="concept-title">Action</span><span class="concept-blurb">How we work</span></div>
+                                <div class="h-arrow">→</div>
+                                <div class="concept-box"><span class="concept-title">Accountability</span><span class="concept-blurb">How we measure</span></div>
                             </div>
-                        </div>
-                        <div class="methodology-section">
-                            <h3>The Universal Artifact Stack</h3>
-                            <div class="framework-box-full">
-                                <span style="display: block; margin: 0.5rem 0;">
-                                    <strong>Identity</strong> → <strong>Direction</strong> → <strong>Priorities</strong> → <strong>Action</strong> → <strong>Accountability</strong>
-                                </span>
-                                <span style="display: block; margin: 0.5rem 0; opacity: 0.9;">
-                                    Vision & Mission → Guiding Principles/Values → Strategic Goals → Initiatives/Plans → Performance Metrics
-                                </span>
-                                <ul style="list-style: none; padding-left: 0;">
-                                    <li>• <strong>Vision Statement</strong> - Aspirational future state (Identity)</li>
-                                    <li>• <strong>Mission Statement</strong> - Current purpose and operations (Identity)</li>
-                                    <li>• <strong>Core Values</strong> - Behavioral expectations and culture (Direction)</li>
-                                    <li>• <strong>Guiding Principles</strong> - Decision-making frameworks (Direction)</li>
-                                    <li>• <strong>Strategic Goals</strong> - Major 3-5 year objectives (Priorities)</li>
-                                    <li>• <strong>Strategic Priorities</strong> - Current focus areas for resource allocation (Priorities)</li>
-                                </ul>
+                            <div class="map-row">
+                                <div class="v-arrow">↓</div><div class="v-spacer"></div>
+                                <div class="v-arrow">↓</div><div class="v-spacer"></div>
+                                <div class="v-arrow">↓</div><div class="v-spacer"></div>
+                                <div class="v-arrow">↓</div><div class="v-spacer"></div>
+                                <div class="v-arrow">↓</div>
+                            </div>
+                            <div class="map-row">
+                                <div class="artifact-box">Vision & Mission</div><div class="v-spacer"></div>
+                                <div class="artifact-box">Principles</div><div class="v-spacer"></div>
+                                <div class="artifact-box">Strategic Goals</div><div class="v-spacer"></div>
+                                <div class="artifact-box">Plans</div><div class="v-spacer"></div>
+                                <div class="artifact-box">Metrics</div>
                             </div>
                         </div>
                     </div>
-                    
+
+                    <div class="column">
+                        <h2>7 Core Artifacts</h2>
+                        <div class="artifact-stack">
+                            <div class="stack-group identity">
+                                <div class="artifact-row"><a href="#artifact-4" style="color: white; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.4);"><span class="term">Purpose</span></a> <span class="question">"Why we exist?"</span> <span class="definition">Reason for being.</span></div>
+                                <div class="artifact-row"><a href="#artifact-2" style="color: white; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.4);"><span class="term">Vision</span></a> <span class="question">"Where we are going?"</span> <span class="definition">Future state.</span></div>
+                                <div class="artifact-row"><a href="#artifact-1" style="color: white; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.4);"><span class="term">Mission</span></a> <span class="question">"What do we do?"</span> <span class="definition">Current operations.</span></div>
+                                <div class="artifact-row"><a href="#artifact-3" style="color: white; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.4);"><span class="term">Values</span></a> <span class="question">"How do we behave?"</span> <span class="definition">Cultural norms.</span></div>
+                            </div>
+                            <div class="stack-group">
+                                <div class="artifact-row"><a href="#artifact-7" style="color: white; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.4);"><span class="term">Principles</span></a> <span class="question">"How do we decide?"</span> <span class="definition">Logic frameworks.</span></div>
+                                <div class="artifact-row"><a href="#artifact-5" style="color: white; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.4);"><span class="term">Goals</span></a> <span class="question">"What outcomes?"</span> <span class="definition">3-5 year objectives.</span></div>
+                                <div class="artifact-row"><a href="#artifact-6" style="color: white; text-decoration: none; border-bottom: 1px dotted rgba(255,255,255,0.4);"><span class="term">Priorities</span></a> <span class="question">"Where to focus?"</span> <span class="definition">Resource allocation.</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="full-width-section">
+                    <h2>Integration Architecture</h2>
+                    <table>
+                        <thead>
+                            <tr><th>Layer</th><th>Function</th><th>Stability</th><th>Key Artifacts</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td><strong>Identity</strong></td><td>Defines essence</td><td>Permanent</td><td>Purpose, Vision, Mission, Values</td></tr>
+                            <tr><td><strong>Direction</strong></td><td>Decision criteria</td><td>Long-term</td><td>Guiding Principles</td></tr>
+                            <tr><td><strong>Priorities</strong></td><td>Resource focus</td><td>1-5 years</td><td>Strategic Goals & Priorities</td></tr>
+                            <tr><td><strong>Action</strong></td><td>Delivery</td><td>Annual</td><td>Plans & Initiatives</td></tr>
+                            <tr><td><strong>Accountability</strong></td><td>Validation</td><td>Ongoing</td><td>Performance Metrics</td></tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 15px; text-align: center; font-size: 0.85rem; opacity: 0.8;">
+                        → See how these artifacts interconnect in the <a href="relationships.html" style="color: white; font-weight: 600; text-decoration: underline;">Relationship Map</a>
+                    </p>
                 </div>
             </div>
         </div>
@@ -3428,6 +3551,102 @@
             },
             {
                 "number": "136",
+                "name": "Porter's Five Forces Analysis",
+                "purpose": "Analyzes industry competitive forces: bargaining power of buyers and suppliers, threat of new entrants, threat of substitutes, and competitive rivalry. Used to assess industry attractiveness and profitability potential.",
+                "example": "Technology sector analysis examining switching costs (buyer power), component suppliers (supplier power), startup barriers (new entrants), alternative solutions (substitutes), and market share battles (rivalry)",
+                "sectors": [
+                    "General",
+                    "Public"
+                ],
+                "note": "See also #134 (PESTLE) for external macro forces and #135 (SWOT) for internal/external assessment. Porter's Five Forces specifically addresses competitive industry structure.",
+                "explanationLink": {
+                    "url": "https://www.isc.hbs.edu/strategy/business-strategy/Pages/the-five-forces.aspx",
+                    "title": "Harvard Business School - The Five Forces"
+                },
+                "exampleLink": {
+                    "url": "https://online.hbs.edu/blog/post/how-to-develop-a-successful-business-strategy",
+                    "title": "Harvard Business School Online - How to Develop a Successful Business Strategy"
+                }
+            },
+            {
+                "number": "137",
+                "name": "BCG Growth-Share Matrix",
+                "purpose": "Portfolio analysis tool categorizing business units or products into four quadrants (Stars, Cash Cows, Question Marks, Dogs) based on market growth rate and relative market share. Guides resource allocation and strategic investment decisions.",
+                "example": "Corporate portfolio showing high-growth products (Stars requiring investment), mature profitable lines (Cash Cows funding growth), emerging opportunities (Question Marks needing evaluation), and declining units (Dogs for divestment consideration)",
+                "sectors": [
+                    "General",
+                    "Public"
+                ],
+                "note": "Used for portfolio management decisions about which initiatives to grow, maintain, or divest. Particularly relevant for diversified organizations managing multiple programs or service lines.",
+                "explanationLink": {
+                    "url": "https://www.bcg.com/about/overview/our-history/growth-share-matrix",
+                    "title": "Boston Consulting Group - The Growth Share Matrix"
+                },
+                "exampleLink": {
+                    "url": "https://www.smartsheet.com/content/bcg-matrix-examples",
+                    "title": "Smartsheet - BCG Matrix Examples and Templates"
+                }
+            },
+            {
+                "number": "138",
+                "name": "Strategy Map",
+                "purpose": "Visual representation showing cause-and-effect relationships between strategic objectives across Balanced Scorecard perspectives (Financial, Customer, Internal Process, Learning & Growth). Links actions to outcomes.",
+                "example": "Strategy map showing how employee training (Learning) improves process quality (Internal) which enhances customer satisfaction (Customer) leading to revenue growth (Financial)",
+                "sectors": [
+                    "Public",
+                    "Nonprofit",
+                    "General"
+                ],
+                "note": "See also #102 (Balanced Scorecard). Strategy Maps visualize the BSC logic by showing how objectives connect across perspectives. Often created together as complementary tools.",
+                "explanationLink": {
+                    "url": "https://www.balancedscorecard.org/bsc-basics/about-strategy-maps/",
+                    "title": "Balanced Scorecard Institute - About Strategy Maps"
+                },
+                "exampleLink": {
+                    "url": "https://www.clearpointstrategy.com/strategy-map/",
+                    "title": "ClearPoint Strategy - Strategy Map Examples and How to Build One"
+                }
+            },
+            {
+                "number": "139",
+                "name": "VRIO Framework",
+                "purpose": "Analyzes competitive advantage by evaluating resources across four dimensions: Value (Does it add value?), Rarity (Is it rare?), Imitability (Is it hard to imitate?), Organization (Is the firm organized to exploit it?). Determines if resources provide sustained competitive advantage.",
+                "example": "Evaluating a proprietary technology platform: Valuable (yes, improves efficiency), Rare (yes, unique algorithm), Inimitable (yes, patent protected), Organized (yes, dedicated team) = Sustained Competitive Advantage",
+                "sectors": [
+                    "General",
+                    "Public"
+                ],
+                "note": "Part of resource-based view of strategy. Helps identify which organizational capabilities provide lasting competitive advantage versus temporary advantages or competitive parity.",
+                "explanationLink": {
+                    "url": "https://www.strategyzer.com/library/the-vrio-framework",
+                    "title": "Strategyzer - The VRIO Framework"
+                },
+                "exampleLink": {
+                    "url": "https://www.cascade.app/blog/vrio-framework",
+                    "title": "Cascade - VRIO Framework Guide with Examples"
+                }
+            },
+            {
+                "number": "140",
+                "name": "Responsive Evaluation Framework",
+                "purpose": "Uses constructivist evaluation approach to identify actual outcomes of strategic objectives, which then informs future planning cycles. Emphasizes stakeholder perspectives and emergent findings rather than predetermined metrics.",
+                "example": "Post-implementation evaluation discovering that a workforce development program's unexpected benefit was building community networks, leading to new strategic objectives around social capital in the next planning cycle",
+                "sectors": [
+                    "Public",
+                    "Nonprofit"
+                ],
+                "note": "See also #109 (Program Evaluation Report). Responsive Evaluation is specifically oriented toward learning and strategy refinement rather than compliance or accountability reporting.",
+                "explanationLink": {
+                    "url": "https://methods.sagepub.com/reference/encyclopedia-of-evaluation/n479.xml",
+                    "title": "SAGE - Responsive Evaluation"
+                },
+                "exampleLink": {
+                    "url": "https://www.betterevaluation.org/methods-approaches/approaches/responsive-evaluation",
+                    "title": "BetterEvaluation - Responsive Evaluation Approach"
+                }
+            },
+            {
+                "number": "141",
                 "name": "Business Case / Problem Statement",
                 "purpose": "Formal document justifying a significant project or investment. Bridges strategic intent with project execution by outlining the problem, analyzing options (with pros/cons/costs), recommending a solution, and providing financial appraisal and implementation plan. Ensures informed decision-making and optimal resource prioritization.",
                 "example": "Enterprise software investment justification, ERP system business case with ROI analysis",
@@ -3446,7 +3665,7 @@
                 }
             },
             {
-                "number": "137",
+                "number": "142",
                 "name": "Scenario Planning / Strategic Foresight Framework",
                 "purpose": "Explores plausible futures to inform proactive strategy.",
                 "example": "\"Future of digital services in 2035\" scenario book",
@@ -3465,7 +3684,7 @@
                 }
             },
             {
-                "number": "138",
+                "number": "143",
                 "name": "Systems Map / Causal Loop Diagram",
                 "purpose": "Models complex interdependent systems.",
                 "example": "Public health systems dynamics map",
@@ -3484,7 +3703,7 @@
                 }
             },
             {
-                "number": "139",
+                "number": "144",
                 "name": "Decision-Making Framework",
                 "purpose": "Structured approach to making decisions.",
                 "example": "RAPID (Recommend, Agree, Perform, Input, Decide), consent-based decision making",
@@ -3503,7 +3722,7 @@
                 }
             },
             {
-                "number": "140",
+                "number": "145",
                 "name": "Ethical Decision Framework",
                 "purpose": "Structured lens for decisions involving moral challenges.",
                 "example": "Ethics decision tree",
@@ -3522,7 +3741,7 @@
                 }
             },
             {
-                "number": "141",
+                "number": "146",
                 "name": "Compliance Framework",
                 "purpose": "Documentation of laws, regulations, and internal controls.",
                 "example": "SOC 2, ISO 27001, GDPR, HIPAA compliance programs",
@@ -3541,7 +3760,7 @@
                 }
             },
             {
-                "number": "142",
+                "number": "147",
                 "name": "Organizational Learning System",
                 "purpose": "Infrastructure governing how the org learns, experiments, and adapts.",
                 "example": "Toyota \"Hoshin Kanri\" learning rhythm",
@@ -3559,7 +3778,7 @@
                 }
             },
             {
-                "number": "143",
+                "number": "148",
                 "name": "Ethnographic Observation Notes / Organizational Anthropology Reports",
                 "purpose": "Deep insight into organizational culture and behavior.",
                 "example": "Workplace ethnography report",
@@ -3577,7 +3796,7 @@
                 }
             },
             {
-                "number": "144",
+                "number": "149",
                 "name": "Annual Compliance Calendar",
                 "purpose": "Lists all mandatory filings, audits, reports, renewals.",
                 "example": "HR compliance calendar",
@@ -3597,7 +3816,7 @@
                 }
             },
             {
-                "number": "145",
+                "number": "150",
                 "name": "Harassment Prevention & Respectful Workplace Framework",
                 "purpose": "System including training, reporting pathways, and restorative practices.",
                 "example": "Respectful workplace program",
@@ -3616,7 +3835,7 @@
                 }
             },
             {
-                "number": "146",
+                "number": "151",
                 "name": "Principles of Practice / Standards of Professional Conduct",
                 "purpose": "Sector-specific behavioral norms beyond general ethics.",
                 "example": "NASW standards for social work, Agile Manifesto principles",
@@ -3636,7 +3855,7 @@
                 }
             },
             {
-                "number": "147",
+                "number": "152",
                 "name": "Operating Constraints List (\"Guardrails\")",
                 "purpose": "Explicit description of non-negotiables.",
                 "example": "Budget constraints, regulatory requirements",
@@ -3655,7 +3874,7 @@
                 }
             },
             {
-                "number": "148",
+                "number": "153",
                 "name": "Executive Briefing Book / Principal's Book",
                 "purpose": "Comprehensive reference for executives with key info, contacts, and context.",
                 "example": "Commissioner's briefing book",
@@ -3673,7 +3892,7 @@
                 }
             },
             {
-                "number": "149",
+                "number": "154",
                 "name": "Equity Framework / DEI Framework",
                 "purpose": "Organizational commitment and plan related to equity, diversity, inclusion.",
                 "example": "State DEI strategic plan, DEI charter",
@@ -3693,7 +3912,7 @@
                 }
             },
             {
-                "number": "150",
+                "number": "155",
                 "name": "Leadership Development Curriculum",
                 "purpose": "Formal structure for leadership training.",
                 "example": "Multi-level leadership program",
@@ -3712,7 +3931,7 @@
                 }
             },
             {
-                "number": "151",
+                "number": "156",
                 "name": "Culture Code",
                 "purpose": "Defines informal but codified workplace behavioral expectations.",
                 "example": "Netflix Culture Deck",
@@ -3730,7 +3949,7 @@
                 }
             },
             {
-                "number": "152",
+                "number": "157",
                 "name": "Impact Manifesto / Change Statement",
                 "purpose": "Public statement of intended societal value.",
                 "example": "Patagonia's \"Our reason for being\"",
@@ -3749,7 +3968,7 @@
                 }
             },
             {
-                "number": "153",
+                "number": "158",
                 "name": "Outcome Chain / Benefits Realization Map",
                 "purpose": "Links outputs → intermediate outcomes → ultimate impacts.",
                 "example": "Theory of Change outcome pathway",
@@ -3774,7 +3993,7 @@
         "title": "Specialized & Sector-Specific Frameworks",
         "artifacts": [
             {
-                "number": "154",
+                "number": "159",
                 "name": "Briefing Book / Briefing Paper / Executive Briefing Book",
                 "purpose": "Distilled, highly skimmable document providing targeted information, analysis, and policy recommendations to decision-makers.",
                 "example": "Commissioner's briefing book with \"bottom line up front,\" bulleted findings, and detailed appendices",
@@ -3792,7 +4011,7 @@
                 }
             },
             {
-                "number": "155",
+                "number": "160",
                 "name": "General Statements of Policy / Policy Guidance Documents",
                 "purpose": "Advises the public on how the agency intends to exercise its discretionary authority; technically non-binding but practically influential.",
                 "example": "Agency guidance on regulatory interpretation",
@@ -3810,7 +4029,7 @@
                 }
             },
             {
-                "number": "156",
+                "number": "161",
                 "name": "Legislative Mandate / Statutory Mission Mandate",
                 "purpose": "The legal definition of an agency's mission and authority.",
                 "example": "Minnesota statute creating an agency",
@@ -3828,7 +4047,7 @@
                 }
             },
             {
-                "number": "157",
+                "number": "162",
                 "name": "Legislative Agenda",
                 "purpose": "Prioritized list of statutes/changes the agency seeks.",
                 "example": "Annual legislative priorities",
@@ -3846,7 +4065,7 @@
                 }
             },
             {
-                "number": "158",
+                "number": "163",
                 "name": "Legislative Report / Statutory Report",
                 "purpose": "Recurring reports required by state or federal law.",
                 "example": "Annual report to legislature on cybersecurity readiness",
@@ -3864,7 +4083,7 @@
                 }
             },
             {
-                "number": "159",
+                "number": "164",
                 "name": "Rulemaking Plan",
                 "purpose": "For agencies that adopt administrative rules.",
                 "example": "Health or environmental rulemaking schedule",
@@ -3882,7 +4101,7 @@
                 }
             },
             {
-                "number": "160",
+                "number": "165",
                 "name": "Policy Interpretation Bulletins",
                 "purpose": "Clarifications for regulated communities.",
                 "example": "Tax policy guidance bulletins",
@@ -3900,7 +4119,7 @@
                 }
             },
             {
-                "number": "161",
+                "number": "166",
                 "name": "Interagency Agreement (IAA) / MOU / MOA",
                 "purpose": "Defines roles in multi-agency partnerships.",
                 "example": "Data-sharing agreement between agencies",
@@ -3918,7 +4137,7 @@
                 }
             },
             {
-                "number": "162",
+                "number": "167",
                 "name": "Public Data Policies",
                 "purpose": "Transparency and compliance with data practices laws.",
                 "example": "Minnesota Government Data Practices Act compliance",
@@ -3936,7 +4155,7 @@
                 }
             },
             {
-                "number": "163",
+                "number": "168",
                 "name": "Citizen's Guide / Transparency Report",
                 "purpose": "Accessible document explaining complex government work in plain language.",
                 "example": "\"How your government works\" guide",
@@ -3954,7 +4173,7 @@
                 }
             },
             {
-                "number": "164",
+                "number": "169",
                 "name": "Accessibility Plan (ADA/508 Compliance)",
                 "purpose": "Formal commitment and roadmap for accessibility.",
                 "example": "Digital accessibility roadmap",
@@ -3972,7 +4191,7 @@
                 }
             },
             {
-                "number": "165",
+                "number": "170",
                 "name": "Records Retention Schedule",
                 "purpose": "Legally required schedule for retention and destruction of records.",
                 "example": "State records retention schedule",
@@ -3990,7 +4209,7 @@
                 }
             },
             {
-                "number": "166",
+                "number": "171",
                 "name": "Continuity of Government Plan",
                 "purpose": "Protects state governance during emergencies.",
                 "example": "COOP for executive agencies",
@@ -4008,7 +4227,7 @@
                 }
             },
             {
-                "number": "167",
+                "number": "172",
                 "name": "Case for Support / Case Statement",
                 "purpose": "Compelling narrative to persuade donors.",
                 "example": "Red Cross fundraising case statement",
@@ -4026,7 +4245,7 @@
                 }
             },
             {
-                "number": "168",
+                "number": "173",
                 "name": "Fundraising Strategy / Development Plan",
                 "purpose": "Revenue mix, donor journey, and stewardship approach.",
                 "example": "Annual fundraising strategy",
@@ -4044,7 +4263,7 @@
                 }
             },
             {
-                "number": "169",
+                "number": "174",
                 "name": "Donor Segmentation Framework",
                 "purpose": "Categorizes donors by behavior, capacity, and affinity.",
                 "example": "Major donors, mid-level, grassroots segmentation",
@@ -4062,7 +4281,7 @@
                 }
             },
             {
-                "number": "170",
+                "number": "175",
                 "name": "Volunteer Handbook & Volunteer Rights / Volunteer Engagement Framework",
                 "purpose": "Governance for non-staff contributors.",
                 "example": "Red Cross volunteer guide",
@@ -4080,7 +4299,7 @@
                 }
             },
             {
-                "number": "171",
+                "number": "176",
                 "name": "Impact Report / Community Benefit Report",
                 "purpose": "Narrative and data report distinct from annual report.",
                 "example": "Social impact measurement report",
@@ -4098,7 +4317,7 @@
                 }
             },
             {
-                "number": "172",
+                "number": "177",
                 "name": "Social Impact Framework / Social Return on Investment (SROI)",
                 "purpose": "Measures and explains societal value created.",
                 "example": "SROI calculation methodology",
@@ -4116,7 +4335,7 @@
                 }
             },
             {
-                "number": "173",
+                "number": "178",
                 "name": "Partner Value Proposition Canvas",
                 "purpose": "Maps partnership benefits and expectations.",
                 "example": "Nonprofit partnership planning canvas",
@@ -4134,7 +4353,7 @@
                 }
             },
             {
-                "number": "174",
+                "number": "179",
                 "name": "Network Governance Model",
                 "purpose": "Defines decision-making in collaborative networks.",
                 "example": "Collective impact backbone organization roles",
@@ -4153,7 +4372,7 @@
                 }
             },
             {
-                "number": "175",
+                "number": "180",
                 "name": "Coalition / Network Agreements",
                 "purpose": "Governance for multi-stakeholder collaborations.",
                 "example": "Collective impact coalition agreement",
@@ -4172,7 +4391,7 @@
                 }
             },
             {
-                "number": "176",
+                "number": "181",
                 "name": "Value Proposition / Employer Value Proposition (EVP)",
                 "purpose": "What makes the organization attractive.",
                 "example": "\"Competitive pay, meaningful work, flexibility, growth\"",
@@ -4190,7 +4409,7 @@
                 }
             },
             {
-                "number": "177",
+                "number": "182",
                 "name": "Product Strategy",
                 "purpose": "Defines product direction and roadmap.",
                 "example": "SaaS platform product roadmap",
@@ -4208,7 +4427,7 @@
                 }
             },
             {
-                "number": "178",
+                "number": "183",
                 "name": "Operating Model Blueprint",
                 "purpose": "Visual and textual description of structure, decision rights, processes, and systems.",
                 "example": "Centralized shared services operating model",
@@ -4226,7 +4445,7 @@
                 }
             },
             {
-                "number": "179",
+                "number": "184",
                 "name": "Mission Success Criteria",
                 "purpose": "Defines \"success\" in concrete terms.",
                 "example": "NASA mission success criteria",
@@ -4245,7 +4464,7 @@
                 }
             },
             {
-                "number": "180",
+                "number": "185",
                 "name": "Integrity Framework",
                 "purpose": "Fraud prevention and ethical controls.",
                 "example": "OECD Integrity Framework",
@@ -4264,7 +4483,7 @@
                 }
             },
             {
-                "number": "181",
+                "number": "186",
                 "name": "Delivery Framework (Firm-Specific)",
                 "purpose": "Proprietary methodology for engagements.",
                 "example": "Deloitte Greenhouse, McKinsey 7S, Bain RAPID",
@@ -4282,7 +4501,7 @@
                 }
             },
             {
-                "number": "182",
+                "number": "187",
                 "name": "Statement of Work (SOW) / Engagement Charter",
                 "purpose": "Defines deliverables, scope, constraints for consulting project.",
                 "example": "Deloitte SOW template",
@@ -4300,7 +4519,7 @@
                 }
             },
             {
-                "number": "183",
+                "number": "188",
                 "name": "Diagnostic Toolkit / Discovery Framework",
                 "purpose": "Structured tools for evaluating client problems.",
                 "example": "SWOT, Root Cause Analysis (Fishbone), McKinsey 7S",
@@ -4318,7 +4537,7 @@
                 }
             },
             {
-                "number": "184",
+                "number": "189",
                 "name": "Client Readiness Assessment",
                 "purpose": "Assesses whether conditions exist to succeed.",
                 "example": "McKinsey change readiness tool",
@@ -4336,7 +4555,7 @@
                 }
             },
             {
-                "number": "185",
+                "number": "190",
                 "name": "Hypothesis Tree / Issue Tree",
                 "purpose": "Structures diagnostic hypotheses.",
                 "example": "MECE (Mutually Exclusive, Collectively Exhaustive) issue tree",
@@ -4354,7 +4573,7 @@
                 }
             },
             {
-                "number": "186",
+                "number": "191",
                 "name": "Blueprint Deck",
                 "purpose": "Mid-engagement document outlining proposed solution architecture.",
                 "example": "Consulting solution blueprint",
@@ -4372,7 +4591,7 @@
                 }
             },
             {
-                "number": "187",
+                "number": "192",
                 "name": "Insights Deck / Synthesis Pack",
                 "purpose": "Standardized output summarizing findings and themes.",
                 "example": "Executive summary deck",
@@ -4390,7 +4609,7 @@
                 }
             },
             {
-                "number": "188",
+                "number": "193",
                 "name": "Heatmap (Capability, Process, Organization)",
                 "purpose": "Visual performance ratings across functions.",
                 "example": "Capability maturity heatmap",

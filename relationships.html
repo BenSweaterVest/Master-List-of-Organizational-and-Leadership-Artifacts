@@ -499,6 +499,11 @@
                 { id: 133, label: "PESTLE\nAnalysis", group: "specialized", level: 3 },
                 { id: 134, label: "SWOT\nAnalysis", group: "specialized", level: 3 },
                 { id: 135, label: "Scenario\nPlanning", group: "specialized", level: 3 },
+                { id: 189, label: "Porter's Five\nForces", group: "specialized", level: 3 },
+                { id: 190, label: "BCG Growth-Share\nMatrix", group: "specialized", level: 3 },
+                { id: 191, label: "Strategy\nMap", group: "specialized", level: 3 },
+                { id: 192, label: "VRIO\nFramework", group: "specialized", level: 3 },
+                { id: 193, label: "Responsive\nEvaluation", group: "specialized", level: 3 },
                 { id: 136, label: "Systems\nMapping", group: "specialized", level: 4 },
                 { id: 137, label: "Stakeholder\nMapping", group: "specialized", level: 3 },
                 { id: 138, label: "Power\nMapping", group: "specialized", level: 4 },
@@ -798,6 +803,16 @@
                 { from: 133, to: 8, type: "feeds_into", label: "informs" },    // PESTLE → Strategic Plan
                 { from: 134, to: 8, type: "feeds_into", label: "informs" },    // SWOT → Strategic Plan
                 { from: 135, to: 8, type: "feeds_into", label: "informs" },    // Scenario Planning → Strategic Plan
+                { from: 189, to: 8, type: "feeds_into", label: "informs" },    // Porter's Five Forces → Strategic Plan
+                { from: 189, to: 133, type: "related_to", label: "" },         // Porter's Five Forces ↔ PESTLE
+                { from: 190, to: 5, type: "feeds_into", label: "prioritizes" }, // BCG Matrix → Strategic Goals
+                { from: 190, to: 6, type: "feeds_into", label: "allocates" },   // BCG Matrix → Strategic Priorities
+                { from: 191, to: 102, type: "related_to", label: "" },         // Strategy Map ↔ Balanced Scorecard
+                { from: 191, to: 8, type: "feeds_into", label: "maps" },       // Strategy Map → Strategic Plan
+                { from: 192, to: 31, type: "feeds_into", label: "analyzes" },  // VRIO Framework → Operating Model
+                { from: 192, to: 8, type: "feeds_into", label: "informs" },    // VRIO Framework → Strategic Plan
+                { from: 193, to: 109, type: "feeds_into", label: "informs" },  // Responsive Evaluation → Evaluation Report
+                { from: 193, to: 8, type: "feeds_into", label: "refines" },    // Responsive Evaluation → Strategic Plan
                 { from: 136, to: 34, type: "feeds_into", label: "visualizes" }, // Systems Mapping → Process Map
                 { from: 137, to: 93, type: "feeds_into", label: "creates" },   // Stakeholder Mapping → Stakeholder Engagement
                 { from: 138, to: 137, type: "feeds_into", label: "informs" },  // Power Mapping → Stakeholder Mapping

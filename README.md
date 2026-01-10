@@ -635,7 +635,7 @@ Each artifact is presented with:
 **Sectors:** Public, General
 
 ### 105. Theory of Change
-**Purpose:** Structured planning tool mapping the causal logic—the "missing middle"—between organizational activities (interventions) and desired long-term outcomes. Explains how and why desired change is expected to occur under certain conditions. Includes Long-Term Goals, specific Outcomes, Activities, and critical Assumptions (underlying conditions that must exist). Defines the "Value Agenda" for social impact and provides framework for evaluation.  
+**Purpose:** Structured planning tool mapping the causal logic (the "missing middle") between organizational activities (interventions) and desired long-term outcomes. Explains how and why desired change is expected to occur under certain conditions. Includes Long-Term Goals, specific Outcomes, Activities, and critical Assumptions (underlying conditions that must exist). Defines the "Value Agenda" for social impact and provides framework for evaluation.  
 **Example:** "Providing 1:1 mentorship (Activity) + Academic support → Increased achievement (Outcome) → College enrollment (Long-term Goal)" with assumption "Supportive family environment exists"  
 **Sectors:** Nonprofit, Public
 
@@ -1098,7 +1098,7 @@ Understanding why artifacts vary across sectors requires examining the different
 
 ### Key Insights from Comparative Analysis:
 
-1. **Universal Structure, Different Drivers:** While the motivational drivers differ profoundly—profit (business), mission (nonprofit), mandate (public)—the structure of effective leadership is remarkably similar across sectors.
+1. **Universal Structure, Different Drivers:** While the motivational drivers differ profoundly (profit for business, mission for nonprofit, mandate for public sector), the structure of effective leadership is remarkably similar across sectors.
 
 2. **Strategy-to-Performance Consistency:** All sectors require a unified, internally consistent document ecosystem where stable foundations (Purpose, Values) dictate adaptive structures (Operating Model, Theory of Change), which dictate measurement systems (KPIs, Evaluation Reports).
 

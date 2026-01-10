@@ -2,27 +2,27 @@
 
 Thank you for your interest in contributing! There are several ways you can help improve this resource.
 
-## 🎯 Ways to Contribute
+## Ways to Contribute
 
 ### 1. Submit Real-World Examples
 
-Share how your organization uses these artifacts! Real-world examples help others understand practical applications.
+Share how your organization uses these artifacts. Real-world examples help others understand practical applications.
 
 **How to submit:**
 1. Click on [Issues](../../issues)
 2. Click "New Issue"
-3. Select "📝 Submit Community Example"
+3. Select "Submit Community Example"
 4. Fill out the form with your example
 
 **What makes a good example:**
-- ✅ Concrete and specific
-- ✅ Provides context (organization type, purpose)
-- ✅ Anonymized if needed (remove confidential info)
-- ✅ Explains why it works well or lessons learned
+- Concrete and specific
+- Provides context (organization type, purpose)
+- Anonymized if needed (remove confidential info)
+- Explains why it works well or lessons learned
 
 ### 2. Improve Research Links
 
-Found a better academic source or real-world example? Let us know!
+Found a better academic source or real-world example? Let us know.
 
 **How to submit:**
 1. Open an issue describing the improvement
@@ -48,18 +48,18 @@ Found a broken link, typo, or technical problem?
 2. Describe what's wrong and where
 3. Tag with `bug` or `documentation`
 
-## 📋 Submission Guidelines
+## Submission Guidelines
 
 ### For Community Examples
 
-**✅ DO:**
+**DO:**
 - Provide real examples you've encountered or created
 - Anonymize confidential or proprietary information
 - Add context about your organization type (public/nonprofit/corporate)
 - Explain what made the artifact effective or what you learned
 - One example per issue
 
-**❌ DON'T:**
+**DON'T:**
 - Share confidential or legally protected information
 - Copy examples without permission
 - Submit hypothetical or AI-generated examples
@@ -81,7 +81,7 @@ Found a broken link, typo, or technical problem?
 - Personal blogs without citations
 - Outdated resources (prefer last 5-10 years)
 
-## 🔄 Review Process
+## Review Process
 
 1. **Submission** - You submit an example via GitHub Issues
 2. **Review** - Maintainers review for quality and appropriateness
@@ -96,27 +96,27 @@ Found a broken link, typo, or technical problem?
 - No confidential/proprietary info
 - Follows community guidelines
 
-## 🏆 Recognition
+## Recognition
 
 Contributors will be:
 - Listed in the artifact's example section (if attributed)
 - Added to CONTRIBUTORS.md
 - Thanked in release notes
 
-## 📜 Code of Conduct
+## Code of Conduct
 
 Be respectful, constructive, and professional in all interactions.
 
-## 🤝 Getting Help
+## Getting Help
 
 - Questions? Start a [Discussion](../../discussions)
 - Technical issues? Open an [Issue](../../issues)
 - Want to chat? Mention in your issue/PR
 
-## 📞 Contact
+## Contact
 
 For private inquiries, please open an issue and request private communication.
 
 ---
 
-**Thank you for helping make this resource better for everyone!** 🙏
+Thank you for helping make this resource better for everyone.
