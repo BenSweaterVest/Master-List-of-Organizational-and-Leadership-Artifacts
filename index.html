@@ -770,7 +770,7 @@
     <div class="header">
         <div class="container">
             <h1>Master List of Organizational and Leadership Artifacts</h1>
-            <p style="font-size: 1rem; margin-bottom: 25px; opacity: 0.85;">A comprehensive compilation of strategic, operational, and governance artifacts for public and nonprofit management.</p>
+            <p style="font-size: 1rem; margin-bottom: 25px; opacity: 0.85; max-width: 100%;">A comprehensive compilation of strategic, operational, and governance artifacts for public and nonprofit management.</p>
 
             <div class="hero-section">
                 <div class="two-column">
@@ -799,10 +799,10 @@
                             </div>
                             <div class="map-row">
                                 <div class="artifact-box">Vision & Mission</div><div class="v-spacer"></div>
-                                <div class="artifact-box">Principles</div><div class="v-spacer"></div>
+                                <div class="artifact-box">Guiding Principles/Values</div><div class="v-spacer"></div>
                                 <div class="artifact-box">Strategic Goals</div><div class="v-spacer"></div>
-                                <div class="artifact-box">Plans</div><div class="v-spacer"></div>
-                                <div class="artifact-box">Metrics</div>
+                                <div class="artifact-box">Initiatives/Plans</div><div class="v-spacer"></div>
+                                <div class="artifact-box">Performance Metrics</div>
                             </div>
                         </div>
                     </div>
@@ -825,8 +825,11 @@
                     </div>
                 </div>
 
-                <div class="full-width-section">
-                    <h2>Integration Architecture</h2>
+                <button onclick="toggleArchitectureTable()" id="toggleArchitectureBtn" style="display: block; margin: 15px auto 0; background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.3); color: white; padding: 6px 16px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: 600;">
+                    See More ▼
+                </button>
+
+                <div id="architectureTable" class="full-width-section" style="display: none; margin-top: 15px;">
                     <table>
                         <thead>
                             <tr><th>Layer</th><th>Function</th><th>Stability</th><th>Key Artifacts</th></tr>
@@ -896,6 +899,20 @@
 
 
     <script>
+        // Toggle architecture table visibility
+        function toggleArchitectureTable() {
+            const table = document.getElementById('architectureTable');
+            const btn = document.getElementById('toggleArchitectureBtn');
+
+            if (table.style.display === 'none') {
+                table.style.display = 'block';
+                btn.innerHTML = 'See Less ▲';
+            } else {
+                table.style.display = 'none';
+                btn.innerHTML = 'See More ▼';
+            }
+        }
+
         // Artifact data
         const artifactsData = [
     {
